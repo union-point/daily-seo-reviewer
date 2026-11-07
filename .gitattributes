@@ -1,0 +1,2 @@
+# Preserve collected response bytes and their hashes across checkouts.
+data/runs/**/responses/*.body binary

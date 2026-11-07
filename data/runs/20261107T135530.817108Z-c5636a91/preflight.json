@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "kind": "integration-preflight",
+  "run_id": "20261107T135530.817108Z-c5636a91",
+  "started_at": "2026-11-07T13:55:30.817367Z",
+  "completed_at": "2026-11-07T13:55:34.278494Z",
+  "execution_context": "local",
+  "workflow_url": null,
+  "config": {
+    "schema_version": 1,
+    "site_url": "https://www.djangoproject.com",
+    "user_agent": "DailySEOReviewer/0.1 (+https://github.com/union-point/daily-seo-reviewer)",
+    "model": "gpt-6.1-terra",
+    "request_interval": 1.0,
+    "connect_timeout": 5.0,
+    "read_timeout": 20.0,
+    "retries": 1,
+    "max_body_bytes": 4000000,
+    "max_sitemaps": 6,
+    "data_dir": "data"
+  },
+  "checks": [
+    {
+      "name": "robots",
+      "status": "passed",
+      "detail": "Robots policy loaded before crawling"
+    },
+    {
+      "name": "sitemap",
+      "status": "passed",
+      "detail": "Validated 1 sitemap documents and 1021 same-origin URLs; 0 documents deferred"
+    },
+    {
+      "name": "weblog",
+      "status": "passed",
+      "detail": "Weblog contains an HTML title and H1"
+    },
+    {
+      "name": "article",
+      "status": "passed",
+      "detail": "Article HTML validated: https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/"
+    },
+    {
+      "name": "openai",
+      "status": "skipped",
+      "detail": "Model probe disabled"
+    }
+  ],
+  "fetches": [
+    {
+      "requested_url": "https://www.djangoproject.com/robots.txt",
+      "final_url": "https://www.djangoproject.com/robots.txt",
+      "fetched_at": "2026-11-07T13:55:30.817474Z",
+      "status_code": 200,
+      "redirects": [],
+      "attempts": 1,
+      "duration_seconds": 0.377,
+      "headers": {
+        "Content-Type": "text/plain"
+      },
+      "body_path": "responses/4bbb2fa881794db2940d4ce95e3d3977.body",
+      "body_sha256": "f584941ee39cc07ee18b15f3205ac289fa5f2ce328218f97b5b0dd2bce4e9f6e",
+      "error": null
+    },
+    {
+      "requested_url": "https://www.djangoproject.com/sitemap.xml",
+      "final_url": "https://www.djangoproject.com/sitemap.xml",
+      "fetched_at": "2026-11-07T13:55:31.194947Z",
+      "status_code": 200,
+      "redirects": [],
+      "attempts": 1,
+      "duration_seconds": 1.067,
+      "headers": {
+        "Content-Type": "application/xml",
+        "X-Robots-Tag": "noindex, noodp, noarchive"
+      },
+      "body_path": "responses/fcc7e1cb1279448282c7df1f7a990046.body",
+      "body_sha256": "51282627ee7dd37d4d4414340fe5e4d29b88466deb80f6028de8c41eb987ea64",
+      "error": null
+    },
+    {
+      "requested_url": "https://www.djangoproject.com/weblog/",
+      "final_url": "https://www.djangoproject.com/weblog/",
+      "fetched_at": "2026-11-07T13:55:32.268944Z",
+      "status_code": 200,
+      "redirects": [],
+      "attempts": 1,
+      "duration_seconds": 1.128,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "body_path": "responses/94866acaf1b84b63aebc27b2498a2987.body",
+      "body_sha256": "5bfbce983b05993301287f24ca95a8f12126f69d63803a58e5ce4b592383fe74",
+      "error": null
+    },
+    {
+      "requested_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
+      "final_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
+      "fetched_at": "2026-11-07T13:55:33.401432Z",
+      "status_code": 200,
+      "redirects": [],
+      "attempts": 1,
+      "duration_seconds": 0.875,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "body_path": "responses/ac50a4a6dd7745e49b5b4d464384d0df.body",
+      "body_sha256": "7178b1c8b1779589932ddaa7368b467839b4386b60a36a3b5dc26ca94338123c",
+      "error": null
+    }
+  ],
+  "model": {
+    "status": "skipped",
+    "requested_model": "gpt-6.1-terra",
+    "returned_model": null,
+    "prompt_version": "preflight-v1",
+    "response_id": null,
+    "usage": {},
+    "detail": "Model probe disabled"
+  }
+}
