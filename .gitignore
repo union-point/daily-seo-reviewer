@@ -224,3 +224,6 @@ data/.crawl.lock
 
 # Local implementation plan
 /PLAN.md
+
+# Serialize immutable review generation
+data/reviews/.review.lock

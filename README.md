@@ -2,7 +2,7 @@
 
 An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally through the milestones described below.
 
-## Current milestone: deterministic findings and change tracking
+## Current milestone: bounded AI triage
 
 The first slice verifies site access and a schema-validated OpenAI Responses API call before expanding the crawler. A manually triggered workflow also tests Pages deployment and delivery to one GitHub Issue named **Daily SEO reviews**. Preflight results are connectivity evidence, **not SEO findings, a baseline, or a delivered daily review**.
 
@@ -12,10 +12,10 @@ Implemented:
 - Robots-first fetching with wildcard/Allow precedence using Protego, at least one second between requests, origin checks on every redirect, bounded response sizes, connect/read timeouts, one retry, and `Retry-After` handling.
 - Sitemap XML/index validation, a small bounded sitemap traversal, weblog validation, and one dated article check. Challenges stop further site checks; no bypasses are attempted.
 - Immutable per-run evidence with response bodies, SHA-256 hashes, timestamps, request metadata, errors, schema/config versions, and local/runner provenance.
-- A bounded Structured Outputs model probe, including refusal/incomplete-output handling and application validation of evidence references. No crawled text is sent to the model at this stage.
+- A bounded Structured Outputs model probe, including refusal/incomplete-output handling and application validation of evidence references. The preflight probe sends no crawled text; review triage uses the bounded projection documented below.
 - Automated tests, a JSON-only Pages smoke artifact, and retryable Issue delivery with run-ID deduplication.
 
-The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles are implemented. AI review summaries, HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
+The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles and bounded AI review summaries are implemented. HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
 
 ## Collect observations
 
@@ -60,6 +60,29 @@ Critical confirmations happen after primary collection and obey the same origin,
 `critical` means at least one confirmed critical finding; otherwise verified warnings produce `warning`, outstanding unverified findings/collection gaps produce `verification_required` when there are no verified warnings, and a complete check without active findings is `healthy`. Collection status/exit codes remain separate: a successful collection may still have critical SEO findings. The first baseline reports existing issues without claiming regressions. A change affecting strictly more than 25% of comparable pages flags investigation and never suppresses findings, including confirmed site-wide HTTP failures. This flag is not a trend inferred from a single run.
 
 The synthetic scenarios in `tests/test_detection.py` and `tests/test_crawl.py` cover baseline, persistence, worsening, failed-check uncertainty, confirmation conflicts, robots enforcement, and recovery. No synthetic regressions are inserted into collected history. The included live run `20261107T151913.294864Z-c527f39c` collected 50/50 pages and recorded two warnings; that is observed evidence, not a simulated regression.
+
+## Bounded AI triage
+
+Generate a review alongside a new collection, or from an existing collection without crawling again:
+
+```sh
+uv run --env-file .env python -m seo_reviewer run --review
+uv run --env-file .env python -m seo_reviewer review --run-id <run-id>
+```
+
+For an explicitly deterministic review, use `--skip-ai` with either command. Plain `run` still makes no model call. The collection workflow now uses `run --review` with the Actions API-key secret and model repository variable, then commits and uploads `data/reviews/*.json` with the collection data. No HTML publication or review notification is added by this milestone.
+
+Reviews are immutable versioned JSON at `data/reviews/<run-id>.json`. They contain the source snapshot path and SHA-256 digest, authoritative status/coverage/findings, deterministic summary, separately labeled AI or deterministic narrative, and generation metadata. Existing reviews are reused without another paid call, even when the requested model or `--skip-ai` changes. Changing a source snapshot is rejected. A local lock and atomic exclusive publication prevent partial review files and duplicate concurrent model calls. A failed write remains visible as a command failure; rerun the review command using the same evidence.
+
+The model receives only a bounded projection of deterministic findings, evidence references, comparable metrics, coverage, and URL-pattern groups. Raw response bodies and API keys are never included. Before/observed excerpts are untrusted crawled data; instructions explicitly prohibit following embedded commands. Input is capped at 32,000 UTF-8 bytes and 50 active findings, with omitted counts recorded. Deterministic findings remain complete in the review. Excerpts/URL samples can be truncated; full authoritative values remain in the source and stored findings.
+
+The Pydantic Structured Outputs contract contains a headline, concise summary, up to five priorities, and up to five verification items. Each item must name a supplied finding and its matching `<finding-id>:finding` evidence reference, which refers to that finding record and its stored body evidence. Application validation rejects invented, omitted, duplicate, cross-finding, or wrongly categorized references. Unverified findings belong only in verification items. The output schema contains no authoritative status, severity, count, URL, or observation fields. AI prose remains advisory: schema/reference validation cannot establish that every sentence is factually correct. Future reports must render factual evidence from the stored code-controlled values and escape all prose.
+
+Triage uses low reasoning effort, a 2,048-token output cap, a 30-second SDK request timeout, no tools, and `store=False`. The application permits at most two API attempts total; SDK retries are disabled to avoid multiplying the budget. Invalid schemas/references, incomplete output, and API errors can use the one retry; refusal/empty output immediately falls back. Missing keys, explicit opt-out, or an oversized metadata envelope also fall back without calling the model. Timeout settings apply to network operations rather than guaranteeing a strict wall-clock deadline.
+
+Every failure produces a usable deterministic narrative headed **AI summary unavailable**, with rule-specific actions and a verification bucket. Model failure alone does not change collection status or cause a nonzero exit. Authoritative fields stay intact. Each review records requested/returned model, prompt version, payload digest/size, included/omitted findings, per-attempt outcome, response ID, and token usage when available. Raw API errors and rejected output are not persisted. `Config` exposes validated limits (`ai_max_input_bytes`, `ai_max_findings`, `ai_max_output_tokens`, `ai_timeout`) for programmatic use; model selection remains `OPENAI_MODEL` / `--model`.
+
+The real review `data/reviews/20261107T155148.935096Z-6285c5ed.json` was generated from the successful hosted collection run: the AI call succeeded in one attempt while preserving warning status and 50/50 coverage. Saved synthetic tests exercise failures without fabricating collected regressions. API behavior follows the [official Structured Outputs documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
 
 ## Local development
 
@@ -144,7 +167,9 @@ seo_reviewer/
   state.py           # typed comparison index and active findings
   detection.py       # deterministic rules, confirmation decisions, and lifecycles
   preflight.py       # site checks and gate orchestration
-  triage.py          # bounded structured model connectivity probe
+  triage.py          # bounded model probe and validated AI triage
+  review.py          # immutable reviews and deterministic fallback
+  review_models.py   # versioned narrative and generation contracts
   storage.py         # immutable run snapshots and JSON export
   notification.py    # saved-result Issue delivery
 data/runs/<run-id>/
@@ -166,6 +191,6 @@ Run `uv run pytest` for mocked robots, origin/redirect, timeout, challenge, retr
 
 Two real local collection snapshots from 7 November 2026 (`20261107T144408.785631Z-a1373579` and `20261107T144617.966697Z-2f55601a`) each collected 50/50 pages. The second preserved the cohort and records 50 previous successful observations. Neither run fabricates historical SEO regressions.
 
-The next milestone adds bounded AI triage with validated finding references and deterministic fallback. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
+The next milestone adds static HTML reports, latest/archive navigation, shared styling, and review delivery. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
 
 API implementation references: [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [OpenAI Python parsing helpers](https://github.com/openai/openai-python/blob/main/helpers.md), [Protego](https://github.com/scrapy/protego), and [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

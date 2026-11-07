@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is a Python 3.13+ implementation of Daily SEO Reviewer. `seo_reviewer/` provides integration preflight, cohort collection, typed SEO extraction, evidence storage, and comparison state; `main.py` delegates to the package CLI. Dependencies are pinned in `pyproject.toml` and `uv.lock`. `README.md` documents current behavior and remaining milestones. Keep the local `PLAN.md` untracked and ignored.
+This repository is a Python 3.13+ implementation of Daily SEO Reviewer. `seo_reviewer/` provides integration preflight, cohort collection, typed SEO extraction, deterministic detection, bounded AI triage, evidence storage, and comparison state; `main.py` delegates to the package CLI. Dependencies are pinned in `pyproject.toml` and `uv.lock`. `README.md` documents current behavior and remaining milestones. Keep the local `PLAN.md` untracked and ignored.
 
 As implementation proceeds, organize `seo_reviewer/` into small modules for collection, storage, detection, AI triage, rendering, and notification. Add tests under `tests/` and report templates and a shared stylesheet alongside rendering code. Planned evidence paths are `data/runs/<run-id>/` and `data/reviews/<run-id>.json`; preserve immutable run snapshots.
 
@@ -15,6 +15,7 @@ As implementation proceeds, organize `seo_reviewer/` into small modules for coll
 - `uv add --dev pytest` — add the planned test runner as a development dependency.
 - `uv run python -m seo_reviewer run` — collect the fixed cohort and queued sitemap additions.
 - `uv run python -m seo_reviewer preflight` — check site/model access without updating comparison state.
+- `uv run python -m seo_reviewer review --run-id <run-id>` — generate a review from immutable collection evidence.
 - `uv run pytest` — run the mocked test suite.
 
 Use `uv` for environment and dependency management; manual environment activation is unnecessary with `uv run`. Commit `uv.lock` when generated for reproducible installs. GitHub Actions runs pytest; manual preflight and collection workflows verify integrations and persist evidence. No formatter or linter is configured. Document development tooling when introduced.

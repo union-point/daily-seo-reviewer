@@ -23,13 +23,31 @@ def main(argv: list[str] | None = None) -> int:
     crawl = commands.add_parser("run", help="Collect the fixed cohort and new sitemap URLs")
     crawl.add_argument("--site-url")
     crawl.add_argument("--data-dir", type=Path)
-    crawl.set_defaults(model=None)
+    crawl.add_argument("--model")
+    crawl.add_argument("--review", action="store_true", help="Also generate an immutable review")
+    crawl.add_argument("--skip-ai", action="store_true", help="Use deterministic fallback when generating a review")
+    review = commands.add_parser("review", help="Create a bounded AI/deterministic review from saved evidence")
+    review.add_argument("--run-id", required=True)
+    review.add_argument("--data-dir", type=Path)
+    review.add_argument("--model")
+    review.add_argument("--skip-ai", action="store_true")
+    review.set_defaults(site_url=None)
     args = parser.parse_args(argv)
     try:
         config = Config.from_env(site_url=args.site_url, data_dir=args.data_dir, model=args.model)
     except (ValidationError, ValueError):
         # Validation errors can include inputs. Do not echo configuration secrets.
         parser.error("Invalid configuration; check the origin, request interval, and paths")
+    if args.command == "review":
+        from seo_reviewer.review import generate_review
+        try:
+            result = generate_review(config, args.run_id, skip_ai=args.skip_ai)
+        except (OSError, ValueError) as exc:
+            print(f"Review failed ({type(exc).__name__})", file=sys.stderr)
+            return 1
+        print(f"SEO status: {result.alert_status}; narrative: {result.narrative_source}")
+        print(f"Review: {config.data_dir / 'reviews' / (result.run_id + '.json')}")
+        return 0
     if args.command == "run":
         from seo_reviewer.crawl import run_crawl
         try:
@@ -44,6 +62,14 @@ def main(argv: list[str] | None = None) -> int:
         for error in result['errors']:
             print(f"Collection error: {error}")
         print(f"Evidence: {config.data_dir / 'runs' / result['run_id'] / 'collection.json'}")
+        if args.review:
+            from seo_reviewer.review import generate_review
+            try:
+                review = generate_review(config, result['run_id'], skip_ai=args.skip_ai)
+            except (OSError, ValueError) as exc:
+                print(f"Review persistence failed ({type(exc).__name__})", file=sys.stderr)
+                return 1
+            print(f"Review narrative: {review.narrative_source}; generation: {review.generation.reason}")
         return 0 if result['status'] == 'collected' else 1
     try:
         store = RunStore(config.data_dir)

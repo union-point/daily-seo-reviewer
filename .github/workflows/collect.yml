@@ -24,16 +24,22 @@ jobs:
           python-version: "3.13"
       - run: uv sync --locked
       - run: uv run --frozen pytest
-      - name: Collect cohort and new URLs
+      - name: Collect cohort and new URLs, then generate review
         id: crawl
         continue-on-error: true
-        run: uv run --frozen python -m seo_reviewer run
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6.1-terra' }}
+        run: uv run --frozen python -m seo_reviewer run --review
       - name: Preserve evidence and comparison state
         if: always() && (steps.crawl.outcome == 'success' || steps.crawl.outcome == 'failure')
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/runs data/state.json
+          if [ -d data/reviews ]; then
+            git add data/reviews
+          fi
           if ! git diff --cached --quiet; then
             git commit -m 'Save SEO collection evidence and comparison state'
             git push
@@ -46,6 +52,7 @@ jobs:
           path: |
             data/runs/
             data/state.json
+            data/reviews/*.json
           if-no-files-found: error
           retention-days: 90
       - name: Expose collection failure

@@ -37,6 +37,10 @@ class Config(BaseModel):
     max_body_bytes: int = Field(default=4_000_000, gt=0, le=10_000_000)
     max_pages: int = Field(default=100, ge=50, le=100)
     max_sitemaps: int = Field(default=6, ge=1, le=20)
+    ai_max_input_bytes: int = Field(default=32000, ge=4000, le=64000)
+    ai_max_findings: int = Field(default=50, ge=1, le=100)
+    ai_max_output_tokens: int = Field(default=2048, ge=512, le=4096)
+    ai_timeout: float = Field(default=30, gt=0, le=60)
     data_dir: Path = Path("data")
 
     @field_validator("site_url")
