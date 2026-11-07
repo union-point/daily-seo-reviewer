@@ -1,0 +1,441 @@
+{
+  "schema_version": 1,
+  "run_id": "20261107T165531.000815Z-f06eb350",
+  "created_at": "2026-11-07T16:56:28.132263Z",
+  "collection_path": "runs/20261107T165531.000815Z-f06eb350/collection.json",
+  "collection_sha256": "c00450fee2416f47d3775e3f2ebcec6dfec5972472dcaefcc3f6e20298bf6e95",
+  "alert_status": "warning",
+  "collection_status": "collected",
+  "coverage": {
+    "attempted": 50,
+    "successful": 50,
+    "failed": 0,
+    "deferred": 0
+  },
+  "baseline_only": false,
+  "findings": [
+    {
+      "schema_version": 1,
+      "id": "7dbd6035a1140239c8086615",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261107T165531.000815Z-f06eb350",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261107T165531.000815Z-f06eb350",
+          "requested_url": "https://www.djangoproject.com/",
+          "final_url": "https://www.djangoproject.com/",
+          "fetched_at": "2026-11-07T16:55:32.182393Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 1.077,
+          "response_duration_seconds": 0.094,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/cdf109795e3d46d99d7e00a1485a3f74.body",
+          "body_sha256": "2f72d534c0bddd851a0e5db05ffaf926516415b4bb98cc29327ae155c970f6c0",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "bd9d04dd9f2cfcb9a90a4afb",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261107T165531.000815Z-f06eb350",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261107T165531.000815Z-f06eb350",
+          "requested_url": "https://www.djangoproject.com/weblog/",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "fetched_at": "2026-11-07T16:55:33.260503Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 0.999,
+          "response_duration_seconds": 0.094,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/46e074f7f32043c6a98bfb395a4665e1.body",
+          "body_sha256": "37156087afeab17966077c4f62ef8b770ca37e1ab8608989f172d9b93d2f80cd",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    }
+  ],
+  "detection": {
+    "schema_version": 1,
+    "rules_version": "1",
+    "baseline_only": false,
+    "alert_status": "warning",
+    "findings": [
+      {
+        "schema_version": 1,
+        "id": "7dbd6035a1140239c8086615",
+        "rule": "missing_description",
+        "urls": [
+          "https://www.djangoproject.com/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261107T151913.294864Z-c527f39c",
+        "last_seen_run": "20261107T165531.000815Z-f06eb350",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261107T165531.000815Z-f06eb350",
+            "requested_url": "https://www.djangoproject.com/",
+            "final_url": "https://www.djangoproject.com/",
+            "fetched_at": "2026-11-07T16:55:32.182393Z",
+            "status_code": 200,
+            "redirects": [],
+            "attempts": 1,
+            "duration_seconds": 1.077,
+            "response_duration_seconds": 0.094,
+            "headers": {
+              "Content-Type": "text/html; charset=utf-8"
+            },
+            "body_path": "responses/cdf109795e3d46d99d7e00a1485a3f74.body",
+            "body_sha256": "2f72d534c0bddd851a0e5db05ffaf926516415b4bb98cc29327ae155c970f6c0",
+            "error": null
+          }
+        ],
+        "before": null,
+        "observed": "",
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "bd9d04dd9f2cfcb9a90a4afb",
+        "rule": "missing_description",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261107T151913.294864Z-c527f39c",
+        "last_seen_run": "20261107T165531.000815Z-f06eb350",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261107T165531.000815Z-f06eb350",
+            "requested_url": "https://www.djangoproject.com/weblog/",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "fetched_at": "2026-11-07T16:55:33.260503Z",
+            "status_code": 200,
+            "redirects": [],
+            "attempts": 1,
+            "duration_seconds": 0.999,
+            "response_duration_seconds": 0.094,
+            "headers": {
+              "Content-Type": "text/html; charset=utf-8"
+            },
+            "body_path": "responses/46e074f7f32043c6a98bfb395a4665e1.body",
+            "body_sha256": "37156087afeab17966077c4f62ef8b770ca37e1ab8608989f172d9b93d2f80cd",
+            "error": null
+          }
+        ],
+        "before": null,
+        "observed": "",
+        "magnitude": 1,
+        "related_urls": []
+      }
+    ],
+    "context": [
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/"
+      },
+      {
+        "rule": "multiple_h1s",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
+        "observed": [
+          "Nominate Someone for the 2026 Malcolm Tredinnick Memorial Prize",
+          "The prize"
+        ]
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/"
+      }
+    ],
+    "comparable_pages": 50,
+    "changed_pages": 0,
+    "widespread_change": false
+  },
+  "deterministic_summary": "SEO status: warning. Collected 50 of 50 attempted pages; 0 deferred. 2 active findings. Compared with stored successful observations.",
+  "narrative": {
+    "headline": "Two pages have missing meta descriptions",
+    "summary": "All 50 attempted pages were collected. Two ongoing warning-level findings were supplied; neither is marked as a regression.",
+    "prioritized_issues": [
+      {
+        "finding_id": "7dbd6035a1140239c8086615",
+        "evidence_ids": [
+          "7dbd6035a1140239c8086615:finding"
+        ],
+        "explanation": "The homepage has an empty meta description.",
+        "recommended_action": "Add a concise, relevant meta description to the homepage."
+      },
+      {
+        "finding_id": "bd9d04dd9f2cfcb9a90a4afb",
+        "evidence_ids": [
+          "bd9d04dd9f2cfcb9a90a4afb:finding"
+        ],
+        "explanation": "The weblog page has an empty meta description.",
+        "recommended_action": "Add a concise, relevant meta description to the weblog page."
+      }
+    ],
+    "verification_items": []
+  },
+  "narrative_source": "ai",
+  "generation": {
+    "outcome": "success",
+    "reason": "validated",
+    "requested_model": "gpt-6.1-terra",
+    "prompt_version": "triage-v1",
+    "input_sha256": "357c02e795b491b69dd2e17ab55e31bccb22cc32bc916cf866faca83c60ee1d2",
+    "input_bytes": 1338,
+    "included_finding_ids": [
+      "7dbd6035a1140239c8086615",
+      "bd9d04dd9f2cfcb9a90a4afb"
+    ],
+    "omitted_findings": 0,
+    "attempts": [
+      {
+        "outcome": "success",
+        "returned_model": "gpt-6.1-terra",
+        "response_id": "resp_063ee5801303264a016aef58373db887d1be53cb9adfb7a565",
+        "usage": {
+          "input_tokens": 810,
+          "output_tokens": 230,
+          "total_tokens": 1040
+        }
+      }
+    ]
+  }
+}
