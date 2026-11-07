@@ -2,7 +2,7 @@
 
 An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally through the milestones described below.
 
-## Current milestone: cohort collection and comparison state
+## Current milestone: deterministic findings and change tracking
 
 The first slice verifies site access and a schema-validated OpenAI Responses API call before expanding the crawler. A manually triggered workflow also tests Pages deployment and delivery to one GitHub Issue named **Daily SEO reviews**. Preflight results are connectivity evidence, **not SEO findings, a baseline, or a delivered daily review**.
 
@@ -15,7 +15,7 @@ Implemented:
 - A bounded Structured Outputs model probe, including refusal/incomplete-output handling and application validation of evidence references. No crawled text is sent to the model at this stage.
 - Automated tests, a JSON-only Pages smoke artifact, and retryable Issue delivery with run-ID deduplication.
 
-The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles, AI review summaries, HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
+The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles are implemented. AI review summaries, HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
 
 ## Collect observations
 
@@ -34,6 +34,32 @@ Each page observation records requested/final URL, redirect chain, status, times
 The command exits `0` for a complete collection, `1` for partial/failed collection or state errors, and `2` for invalid arguments/configuration. Deferred page URLs and collection errors are printed explicitly. Collection status is not an SEO alert status.
 
 After pushing, run the **Collect SEO observations** workflow (`gh workflow run collect.yml --ref main`). It runs tests, collects from the default branch, commits evidence and state back to that branch, and uploads a downloadable artifact even when collection is partial. It needs repository contents write permission and permission to push to the default branch; branch protection or a concurrent external push can reject persistence, leaving the artifact available for recovery. The workflow does not deploy or notify an SEO review yet. Publication shares the existing concurrency group; no daily schedule is enabled.
+
+## Findings and change tracking
+
+Each collection snapshot now includes a versioned `detection` result: authoritative `alert_status`, findings, contextual observations, comparable/changed page counts, and a `widespread_change` investigation flag. `data/state.json` persists active findings; resolved entries remain in their immutable run snapshots. Existing state files migrate by defaulting these new fields; old snapshots are never rewritten.
+
+Rules and severity:
+
+| Rule | Severity / handling |
+| --- | --- |
+| Non-success HTTP response | Critical only when a separate same-run request confirms the same status; collection/challenge errors are unverified. |
+| Newly observed noindex/none restriction | Critical after confirmation; restrictions already present at baseline are warnings. Bot scopes are retained. |
+| Newly introduced robots exclusion | Critical after re-fetching robots and confirming the exclusion; excluded pages are never requested. Baseline exclusions are warnings. |
+| Missing title, description, or H1 | Warning on successfully parsed HTML. |
+| Duplicate title | Warning within successfully collected pages; comparisons preserve title case. |
+| Changed canonical | Warning compared with the original pre-change canonical; remains open until that value returns. |
+| Malformed JSON-LD | Warning; more malformed blocks worsens the finding. |
+
+Title changes, multiple H1s, redirects, absent structured data, and sitemap additions/removals are contextual observations. Robots body changes are recorded by digest and do not imply that rule semantics changed. Sitemap removal alone never proves deletion. Indexing directives follow [Google's robots meta specifications](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); these rules identify technical conditions, not actual ranking or traffic effects.
+
+Finding IDs are stable hashes of rule and requested URL. Each finding records severity, confidence, first/last run, baseline/regression labels, before/observed values, and evidence paths for the original request and any confirmation. States are `new`, `ongoing`, `worsened`, `resolved`, and `unverified`. Missing/failed/deferred checks cannot resolve a previous finding. Duplicate-title recovery also requires successful checks of its previously matching peers. Additional duplicate matches or malformed JSON-LD blocks can produce `worsened`. Resolved findings can recur under the same ID as a new episode.
+
+Critical confirmations happen after primary collection and obey the same origin, rate, timeout, and robots rules. They recheck existing URLs, so the 100-distinct-page cap remains intact; request totals can exceed 100. A robots policy is re-fetched at most once for exclusion confirmations. A contradictory or failed confirmation leaves the finding unverified and preserves the earlier successful comparison baseline. Confirmed noindex content remains an authoritative successfully collected observation.
+
+`critical` means at least one confirmed critical finding; otherwise verified warnings produce `warning`, outstanding unverified findings/collection gaps produce `verification_required` when there are no verified warnings, and a complete check without active findings is `healthy`. Collection status/exit codes remain separate: a successful collection may still have critical SEO findings. The first baseline reports existing issues without claiming regressions. A change affecting strictly more than 25% of comparable pages flags investigation and never suppresses findings, including confirmed site-wide HTTP failures. This flag is not a trend inferred from a single run.
+
+The synthetic scenarios in `tests/test_detection.py` and `tests/test_crawl.py` cover baseline, persistence, worsening, failed-check uncertainty, confirmation conflicts, robots enforcement, and recovery. No synthetic regressions are inserted into collected history. The included live run `20261107T151913.294864Z-c527f39c` collected 50/50 pages and recorded two warnings; that is observed evidence, not a simulated regression.
 
 ## Local development
 
@@ -115,7 +141,8 @@ seo_reviewer/
   models.py          # versioned fetch/integration evidence types
   observations.py    # typed SEO field extraction
   crawl.py           # cohort selection, discovery, collection orchestration
-  state.py           # typed comparison index
+  state.py           # typed comparison index and active findings
+  detection.py       # deterministic rules, confirmation decisions, and lifecycles
   preflight.py       # site checks and gate orchestration
   triage.py          # bounded structured model connectivity probe
   storage.py         # immutable run snapshots and JSON export
@@ -139,6 +166,6 @@ Run `uv run pytest` for mocked robots, origin/redirect, timeout, challenge, retr
 
 Two real local collection snapshots from 7 November 2026 (`20261107T144408.785631Z-a1373579` and `20261107T144617.966697Z-2f55601a`) each collected 50/50 pages. The second preserved the cohort and records 50 previous successful observations. Neither run fabricates historical SEO regressions.
 
-The next milestone adds deterministic findings, severity, lifecycle tracking, regression confirmation, and widespread-change investigation. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
+The next milestone adds bounded AI triage with validated finding references and deterministic fallback. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
 
 API implementation references: [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [OpenAI Python parsing helpers](https://github.com/openai/openai-python/blob/main/helpers.md), [Protego](https://github.com/scrapy/protego), and [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

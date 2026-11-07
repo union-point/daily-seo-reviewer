@@ -38,6 +38,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Collection stopped ({type(exc).__name__}): {exc}", file=sys.stderr)
             return 1
         print(f"{result['status']}: {result['coverage']}")
+        print(f"SEO status: {result['detection']['alert_status']}; findings: {len(result['detection']['findings'])}")
         for url in result['deferred_urls']:
             print(f"Deferred: {url}")
         for error in result['errors']:

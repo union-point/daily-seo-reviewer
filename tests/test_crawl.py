@@ -115,7 +115,7 @@ def test_removed_cohort_urls_remain_in_cohort(monkeypatch, tmp_path, clock):
 def test_failed_new_url_is_retried(monkeypatch, tmp_path, clock):
     setup_run(monkeypatch, tmp_path, ARTICLES)
     added = SITE + '/new/'
-    pages = [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(50)] + [response(404)]
+    pages = [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(50)] + [response(404), response(404)]
     failed, _ = setup_run(monkeypatch, tmp_path, ARTICLES + [added], pages)
     assert failed['observations'][-1]['outcome'] == 'http_error'
     recovered, _ = setup_run(monkeypatch, tmp_path, ARTICLES + [added])
@@ -207,3 +207,40 @@ def test_finalized_collection_cannot_receive_more_responses(tmp_path):
     evidence = FetchEvidence(requested_url=SITE, final_url=SITE, fetched_at=datetime.now(UTC))
     with pytest.raises(FileExistsError):
         store.save_response(evidence, b'changed')
+
+
+def test_confirmed_critical_is_saved_with_both_observations(monkeypatch, tmp_path, clock):
+    setup_run(monkeypatch, tmp_path, ARTICLES)
+    pages = [response(404)] + [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(49)] + [response(404)]
+    result, session = setup_run(monkeypatch, tmp_path, ARTICLES, pages)
+    issue = next(item for item in result['detection']['findings'] if item['rule'] == 'http_error')
+    assert issue['severity'] == 'critical' and issue['regression']
+    assert len(issue['evidence']) == 2
+    assert len(result['confirmations']) == 1
+    assert len(session.calls) == 53
+    assert issue['id'] in json.loads((tmp_path / 'state.json').read_text())['active_findings']
+
+
+def test_conflicting_noindex_recheck_preserves_successful_baseline(monkeypatch, tmp_path, clock):
+    setup_run(monkeypatch, tmp_path, ARTICLES)
+    old = json.loads((tmp_path / 'state.json').read_text())['latest_successful'][SITE + '/']
+    restricted = b'<title>A Title</title><meta name="robots" content="noindex"><h1>Heading</h1>'
+    pages = [response(body=restricted, **{'Content-Type': 'text/html'})] + [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(50)]
+    result, _ = setup_run(monkeypatch, tmp_path, ARTICLES, pages)
+    issue = next(item for item in result['detection']['findings'] if item['rule'] == 'indexing_restricted')
+    assert issue['state'] == 'unverified' and not issue['regression']
+    assert result['coverage']['successful'] == 50
+    assert result['status'] == 'partial_crawl'
+    assert json.loads((tmp_path / 'state.json').read_text())['latest_successful'][SITE + '/'] == old
+
+
+def test_robots_regression_rechecks_policy_without_crawling_excluded_urls(monkeypatch, tmp_path, clock):
+    setup_run(monkeypatch, tmp_path, ARTICLES)
+    policy = b'User-agent: *\nDisallow: /weblog/'
+    session = FakeSession([response(body=policy), response(body=sitemap(ARTICLES)), response(body=HTML, **{'Content-Type': 'text/html'}), response(body=policy)])
+    monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
+    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, retries=0))
+    issues = [item for item in result['detection']['findings'] if item['rule'] == 'robots_excluded']
+    assert len(issues) == 49
+    assert all(item['state'] == 'new' and item['regression'] for item in issues)
+    assert len(session.calls) == 4

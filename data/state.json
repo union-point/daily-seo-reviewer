@@ -56,21 +56,21 @@
   "latest_successful": {
     "https://www.djangoproject.com/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/",
         "final_url": "https://www.djangoproject.com/",
-        "fetched_at": "2026-11-07T15:11:57.568005Z",
+        "fetched_at": "2026-11-07T15:19:14.752804Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.83,
-        "response_duration_seconds": 0.003,
+        "duration_seconds": 1.053,
+        "response_duration_seconds": 0.102,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/fae5e3d2dd84482ca5275eb1943b7a7f.body",
-        "body_sha256": "36bc928083b295aa9bd05ef76bb1073c7a4cceb0db21099d3b2d0a3e6587ac57",
+        "body_path": "responses/02a09312711b4f558101ef132333080d.body",
+        "body_sha256": "692e459facfa3ddcbfe996aaad1be3872d9b538957ad44525b71dfa2ed8a83ae",
         "error": null
       },
       "outcome": "success",
@@ -89,21 +89,21 @@
     },
     "https://www.djangoproject.com/weblog/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/",
         "final_url": "https://www.djangoproject.com/weblog/",
-        "fetched_at": "2026-11-07T15:11:58.399793Z",
+        "fetched_at": "2026-11-07T15:19:15.806751Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.165,
-        "response_duration_seconds": 0.169,
+        "duration_seconds": 0.969,
+        "response_duration_seconds": 0.071,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/7efba478503a44c1922eef92671add9c.body",
-        "body_sha256": "80ca8b0b4e734f60a284f2e8e5bd4d2a88a828841d17e66476bf9a62d90427a2",
+        "body_path": "responses/fa10209639d54dddbde4647d1bc808bd.body",
+        "body_sha256": "83f3cf428de29a6ded5e06161c0821047917f3128a2192bbf0807155b2b1dac4",
         "error": null
       },
       "outcome": "success",
@@ -122,21 +122,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/",
-        "fetched_at": "2026-11-07T15:11:59.566359Z",
+        "fetched_at": "2026-11-07T15:19:16.777459Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.991,
-        "response_duration_seconds": 0.162,
+        "duration_seconds": 0.99,
+        "response_duration_seconds": 0.062,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/e0bfcf9dbc9a43ccb68c1d6119fdbb9f.body",
-        "body_sha256": "817fcc7decef53ea4e7ff21567d75e8ab7dabf68cddc76557ea5d1471b005ef0",
+        "body_path": "responses/3f8d0c67d95e4549932d24f9f3220e5e.body",
+        "body_sha256": "1a8605217118c7330acf029fa7916d8a69e5943530e6fef07a6da0fa237a3c63",
         "error": null
       },
       "outcome": "success",
@@ -155,21 +155,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/",
-        "fetched_at": "2026-11-07T15:12:00.559476Z",
+        "fetched_at": "2026-11-07T15:19:17.769330Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.166,
+        "duration_seconds": 1.02,
+        "response_duration_seconds": 0.084,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/d1c3bddfd51c45baaddb3e06df115668.body",
-        "body_sha256": "13eeffd463c96ca084766e6bb4b2b57538565902a9640f607c87e0a0f43fd4c3",
+        "body_path": "responses/21fc9f7b4e4044e39f8b24716c8c46a9.body",
+        "body_sha256": "0ce9b6e9ba3d059ea07bfeb01e763c7367a0b37e05a8597a0fe67bdce03e1e26",
         "error": null
       },
       "outcome": "success",
@@ -188,21 +188,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
-        "fetched_at": "2026-11-07T15:12:01.563631Z",
+        "fetched_at": "2026-11-07T15:19:18.790960Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.115,
-        "response_duration_seconds": 0.282,
+        "duration_seconds": 1.111,
+        "response_duration_seconds": 0.197,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/e3fc253fa0444dbbb784f6aea3811367.body",
-        "body_sha256": "927dbbdf9d38d4d9df777850774fc221e55b8c02fe9200e7930c6d87b8691c6f",
+        "body_path": "responses/1f0aa6386f2543bf98e9174882d13c75.body",
+        "body_sha256": "49025b8477c9a0fcc3b55b36b35144ed94e6acfc9ba730bdbcfbae7fe1cdf535",
         "error": null
       },
       "outcome": "success",
@@ -221,21 +221,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
-        "fetched_at": "2026-11-07T15:12:02.680229Z",
+        "fetched_at": "2026-11-07T15:19:19.904169Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.884,
-        "response_duration_seconds": 0.168,
+        "duration_seconds": 1.016,
+        "response_duration_seconds": 0.215,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/0439a036bad345ff956f57b15a141059.body",
-        "body_sha256": "f08282d68f26d379073baa00fdaa367320cfb4f361277e122680357ddea0ce2f",
+        "body_path": "responses/14d6dbd62c0a4390afef159fbd0372d1.body",
+        "body_sha256": "3925afbcaf51b0326ef5113f66e8a243e2255ef46a73840f770dd381cbc6c5f7",
         "error": null
       },
       "outcome": "success",
@@ -254,21 +254,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
-        "fetched_at": "2026-11-07T15:12:03.565493Z",
+        "fetched_at": "2026-11-07T15:19:20.921697Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.165,
+        "duration_seconds": 0.858,
+        "response_duration_seconds": 0.075,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/2b5c107771614502a3b5af4607312306.body",
-        "body_sha256": "22f32db45cb86ae7d27d49535ac8bd9fafec5686d999e1ea64194eb079965254",
+        "body_path": "responses/f886f03a441b42739fc514e9a7cd7957.body",
+        "body_sha256": "1ee5d5ca3578b05106773cce6e3eab2ded1871bf622b415317efdf1c12293654",
         "error": null
       },
       "outcome": "success",
@@ -287,21 +287,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
-        "fetched_at": "2026-11-07T15:12:04.563681Z",
+        "fetched_at": "2026-11-07T15:19:21.781769Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.999,
-        "response_duration_seconds": 0.166,
+        "duration_seconds": 1.107,
+        "response_duration_seconds": 0.184,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/51f55fbd73184267a1023f865774ff52.body",
-        "body_sha256": "765ab2cea212b54ee42a82f7899f9bbf3e243f2d62d9698da2974d816ed23446",
+        "body_path": "responses/891d2551ad5b48be87021c880b21b765.body",
+        "body_sha256": "1bc95d1aabfe49bf28598d911739088b64884ae2c92f003305063e220c2f46b4",
         "error": null
       },
       "outcome": "success",
@@ -321,21 +321,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/",
-        "fetched_at": "2026-11-07T15:12:05.564364Z",
+        "fetched_at": "2026-11-07T15:19:22.891281Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.107,
-        "response_duration_seconds": 0.275,
+        "duration_seconds": 1.002,
+        "response_duration_seconds": 0.188,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/5207bba662ac4007876b19377bba1cf1.body",
-        "body_sha256": "27a804da8b6a1c4ad9eff30a1d7bb065baf842549c49fc67e3638097ad8f1c13",
+        "body_path": "responses/cf4771d7efbe4429bb038b2f28093b74.body",
+        "body_sha256": "b9b1637d19691816841f58959377080eab7ab1f2776546a12e326825a9cffe84",
         "error": null
       },
       "outcome": "success",
@@ -354,21 +354,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
-        "fetched_at": "2026-11-07T15:12:06.673342Z",
+        "fetched_at": "2026-11-07T15:19:23.895349Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.89,
-        "response_duration_seconds": 0.167,
+        "duration_seconds": 0.996,
+        "response_duration_seconds": 0.186,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/166ca0f494d445709f5df9d9218c34c9.body",
-        "body_sha256": "ca131509e353a59e85c14ec1a13f07d017d7a1f3baf328e12145e08b6a4cad25",
+        "body_path": "responses/2684af5944704c9c88a47bde5220930d.body",
+        "body_sha256": "75aba5e17c4c58e4bd04c7e2e05f7739cbff69998be0becda63cdf2c8f954ffb",
         "error": null
       },
       "outcome": "success",
@@ -387,21 +387,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/",
-        "fetched_at": "2026-11-07T15:12:07.565073Z",
+        "fetched_at": "2026-11-07T15:19:24.892780Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.994,
-        "response_duration_seconds": 0.162,
+        "duration_seconds": 1.046,
+        "response_duration_seconds": 0.234,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/90d1ab8b8bdd4371b7f5336e46929cd7.body",
-        "body_sha256": "993d13e7dca278a77e8d613ee2559f59a5d85e5e61e18f01a056fc0736ba553c",
+        "body_path": "responses/48ff451f8fe44013b6bd34e61eeee0ae.body",
+        "body_sha256": "68392aeeb121e4833641e55596ce71b9a1d1f9f45e1741c064f1117a42fe9208",
         "error": null
       },
       "outcome": "success",
@@ -420,21 +420,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/",
-        "fetched_at": "2026-11-07T15:12:08.561038Z",
+        "fetched_at": "2026-11-07T15:19:25.940724Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.001,
-        "response_duration_seconds": 0.165,
+        "duration_seconds": 0.962,
+        "response_duration_seconds": 0.197,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/3848e897a4694507a7537f36990c03af.body",
-        "body_sha256": "9250383956648a3a59493cb5219845a01d54914cbacb6cd7ed74a65e0db76aca",
+        "body_path": "responses/d23982b4f7244ea2b93dfce53fde2bf0.body",
+        "body_sha256": "c5c6f020878e4ead5f4abbe7120d3241b5e5266e95820498072c70fd47e51316",
         "error": null
       },
       "outcome": "success",
@@ -453,21 +453,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/",
-        "fetched_at": "2026-11-07T15:12:09.563559Z",
+        "fetched_at": "2026-11-07T15:19:26.904706Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.119,
-        "response_duration_seconds": 0.285,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.194,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/ae4aea617031406587813227e4bb23e7.body",
-        "body_sha256": "c8061a40c0da011048d0b356e8c729a4f6ca3f161fecb631442f81016b9c5ce2",
+        "body_path": "responses/913b55346d0a472991371cd1c1afd029.body",
+        "body_sha256": "42cc05f91cd00849849a139e181af4266c650ecebdd64ddb28fe7ff2e69ff8d4",
         "error": null
       },
       "outcome": "success",
@@ -486,21 +486,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/",
-        "fetched_at": "2026-11-07T15:12:10.684385Z",
+        "fetched_at": "2026-11-07T15:19:27.901884Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.283,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.192,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/7df3fc1213d74c8d8bb5f133699ec8ba.body",
-        "body_sha256": "52dc708ccf0647d3492a35e2606a6aed8d78de35c4718a3bbc3ebf7c54b9fb36",
+        "body_path": "responses/065624cd51774395ac462d1ef3fe7d28.body",
+        "body_sha256": "9a626257c5b5a726e72a729c5164aa76c406c6eae3d165dab3f1bbab25af7183",
         "error": null
       },
       "outcome": "success",
@@ -519,21 +519,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/",
-        "fetched_at": "2026-11-07T15:12:11.682447Z",
+        "fetched_at": "2026-11-07T15:19:28.899065Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.997,
-        "response_duration_seconds": 0.282,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.194,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a97d4dbae44b4d56a2abd97c40d0380c.body",
-        "body_sha256": "ac5b074632bd545654498d507b34b15a6a4009f0d932a1bbc2fc43c7824b9d8b",
+        "body_path": "responses/d6bc70afa2a74c53a548fccc34f58eb6.body",
+        "body_sha256": "7c518d1bd7cf1d432e91de5f2920848ebe4975d129d98f204b84514f1efb3480",
         "error": null
       },
       "outcome": "success",
@@ -552,21 +552,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/",
-        "fetched_at": "2026-11-07T15:12:12.680849Z",
+        "fetched_at": "2026-11-07T15:19:29.901612Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.001,
-        "response_duration_seconds": 0.284,
+        "duration_seconds": 0.889,
+        "response_duration_seconds": 0.084,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/553a9dcf58924ecaa3a5b28c9c2b95cc.body",
-        "body_sha256": "dd93fa8b7e1239ade81ac65e8bcfecac0302c1f998bfbc8ef01483c90805e105",
+        "body_path": "responses/bbb27f15921b4fdf9a7edce89312a9ca.body",
+        "body_sha256": "0077cd5ac73fded18bd650f3b7f70452b8e280d1fb1670c66a7f752f28935b62",
         "error": null
       },
       "outcome": "success",
@@ -585,21 +585,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/",
-        "fetched_at": "2026-11-07T15:12:13.683393Z",
+        "fetched_at": "2026-11-07T15:19:30.791875Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.98,
-        "response_duration_seconds": 0.266,
+        "duration_seconds": 1.116,
+        "response_duration_seconds": 0.202,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/20239ad195a644de86c422ea325eafdf.body",
-        "body_sha256": "bc8ceb46646ada7b2e9c3643463628d4d02ffebf8909c018c06882f8adf75af4",
+        "body_path": "responses/8119d4c94afd427bb1adaadc0ba4cec1.body",
+        "body_sha256": "3b47f8a3587256885c3fb6328bcab57b7ac1eb48090919753d0141223c776b76",
         "error": null
       },
       "outcome": "success",
@@ -618,21 +618,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/",
-        "fetched_at": "2026-11-07T15:12:14.665080Z",
+        "fetched_at": "2026-11-07T15:19:31.911419Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.897,
-        "response_duration_seconds": 0.164,
+        "duration_seconds": 1.02,
+        "response_duration_seconds": 0.225,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/be706cfeb8de4e08acf703be6eadb674.body",
-        "body_sha256": "9c7e1853de7b7c8dc5068d684382593d7f458106b732ad2a2b2c0333bb078adb",
+        "body_path": "responses/b9cf563f541846489dc55d9096417e39.body",
+        "body_sha256": "2ab48f6e10c25940895b48b55ec2f4415b30f05e0c1207d5e52af91e7f3362a0",
         "error": null
       },
       "outcome": "success",
@@ -651,21 +651,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/",
-        "fetched_at": "2026-11-07T15:12:15.564349Z",
+        "fetched_at": "2026-11-07T15:19:32.933044Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.117,
-        "response_duration_seconds": 0.283,
+        "duration_seconds": 0.971,
+        "response_duration_seconds": 0.198,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/260111dcba9f401a8254e37f15f1e892.body",
-        "body_sha256": "ff8b9700b7a29ab9961b29a6946febfbd50e92db8fb13e49f91db5fd05f85ddd",
+        "body_path": "responses/1437b2ab340d49c48e41cde157156a87.body",
+        "body_sha256": "e099d4f89bfe9396ec6d0f97645111c84055da16acbbcb9413520963eb3c1455",
         "error": null
       },
       "outcome": "success",
@@ -684,21 +684,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/",
-        "fetched_at": "2026-11-07T15:12:16.682825Z",
+        "fetched_at": "2026-11-07T15:19:33.905459Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.008,
-        "response_duration_seconds": 0.293,
+        "duration_seconds": 1.052,
+        "response_duration_seconds": 0.251,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/acc5e1c8822949ffa8b73058d0914ade.body",
-        "body_sha256": "cbd794b34e4610d74ae39adbd73093ac51c110ecbe1a689ace2830c3ac4b7780",
+        "body_path": "responses/0986eee3c83f4fd5bccf8eb35ae0a72a.body",
+        "body_sha256": "d20ca354b2a5bfcca9f9f6c7fbb61a475564001d32730e7f87c2a3fbbc9f3e73",
         "error": null
       },
       "outcome": "success",
@@ -717,21 +717,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/",
-        "fetched_at": "2026-11-07T15:12:17.692775Z",
+        "fetched_at": "2026-11-07T15:19:34.959891Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.979,
-        "response_duration_seconds": 0.273,
+        "duration_seconds": 0.96,
+        "response_duration_seconds": 0.213,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/7196f3eed32d424ca73ed97df669a370.body",
-        "body_sha256": "8044db2d78f41f2ad771209e9bfa453f9545fdc829be2ec8fc04cfcf2a095a49",
+        "body_path": "responses/4c86de173c024d198558d5b42b556a13.body",
+        "body_sha256": "123bfc0889cae7656fbad3587a03d770a876f0d1686cbc6b7871451864ee28ca",
         "error": null
       },
       "outcome": "success",
@@ -750,21 +750,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/",
-        "fetched_at": "2026-11-07T15:12:18.673129Z",
+        "fetched_at": "2026-11-07T15:19:35.921460Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.277,
+        "duration_seconds": 0.985,
+        "response_duration_seconds": 0.2,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/f80b13169cde4c11a298913f11525721.body",
-        "body_sha256": "fed03dfc1e60d88ff4a7e14794b1bcd792f6f779104d7601106e79a235c79343",
+        "body_path": "responses/5a12c28b49a748cd847ff8acadc3519f.body",
+        "body_sha256": "d9de36b2687257bfc9b6414db1df0008abd0c1344065354c06f56e8f3819a387",
         "error": null
       },
       "outcome": "success",
@@ -783,21 +783,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/",
-        "fetched_at": "2026-11-07T15:12:19.677118Z",
+        "fetched_at": "2026-11-07T15:19:36.908736Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
         "duration_seconds": 1.0,
-        "response_duration_seconds": 0.278,
+        "response_duration_seconds": 0.202,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/4e939650d4744008bf56260cb4ab3116.body",
-        "body_sha256": "a4e1df1565b06fddff45beabad5ee93169f5c51ff66d4de5c96783e2965d8cef",
+        "body_path": "responses/be2e274d7b674e9fb89ace0944a5ef3a.body",
+        "body_sha256": "c7812983b486c04eb7b3f1a7ab8376d7d3354b8b16ef827e15a93ed71ac81e0d",
         "error": null
       },
       "outcome": "success",
@@ -816,21 +816,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/",
-        "fetched_at": "2026-11-07T15:12:20.678835Z",
+        "fetched_at": "2026-11-07T15:19:37.911043Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.989,
-        "response_duration_seconds": 0.269,
+        "duration_seconds": 0.977,
+        "response_duration_seconds": 0.182,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/c05892210f6448d39e590a817f80a0ed.body",
-        "body_sha256": "0d2fd8300ead5b1790b82812c4a21e4984a8c1cdda4357d5c5f44e47d3e117e1",
+        "body_path": "responses/d94bf985fcd042cfa72a62eb7c3ddb2d.body",
+        "body_sha256": "6ff8be5ddbeae616d756677ffc43989ff0767a75186733ee712e79331a0f8e45",
         "error": null
       },
       "outcome": "success",
@@ -849,21 +849,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/",
-        "fetched_at": "2026-11-07T15:12:21.669429Z",
+        "fetched_at": "2026-11-07T15:19:38.889951Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.997,
-        "response_duration_seconds": 0.268,
+        "duration_seconds": 1.003,
+        "response_duration_seconds": 0.186,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/cb6151619c09415c8025abf1052f266d.body",
-        "body_sha256": "bf12a5f79234b533c2839732a3256c1624980755462984a346d16c0d37ec637f",
+        "body_path": "responses/1fb6dcd012d94531b52061379d8b57a8.body",
+        "body_sha256": "7d96a80522c9e51f0fe5f5143bfbd05e0fc8ea829ad30eaa925b114779ecf57d",
         "error": null
       },
       "outcome": "success",
@@ -882,21 +882,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/",
-        "fetched_at": "2026-11-07T15:12:22.668681Z",
+        "fetched_at": "2026-11-07T15:19:39.895098Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.272,
+        "duration_seconds": 0.987,
+        "response_duration_seconds": 0.176,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/bf0ec110ad63448f8ad79d86c0a980af.body",
-        "body_sha256": "77314dbc501066ec172c93c24a2d9af4ad8c16ff26bb2e14de51bcec3234a0f7",
+        "body_path": "responses/d8762301e21448e9a1a78da44c4fcefb.body",
+        "body_sha256": "2a371e16e1274c4ca0387514a073d45b9e8097cbece862919c44b75a26eb6230",
         "error": null
       },
       "outcome": "success",
@@ -915,21 +915,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/",
-        "fetched_at": "2026-11-07T15:12:23.671923Z",
+        "fetched_at": "2026-11-07T15:19:40.884061Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.013,
-        "response_duration_seconds": 0.286,
+        "duration_seconds": 0.886,
+        "response_duration_seconds": 0.063,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/3ed352c0246544ddb8903db111f24869.body",
-        "body_sha256": "0a15cbf07e31338ae5f5602ab55f5b4bc0bebb43b7bbdd6df77cb7715155d923",
+        "body_path": "responses/8bf01158c6314a4488624c84ce75fe1d.body",
+        "body_sha256": "8af13a5065ff5763c55a32f1a1783c3c4b99516358c6291830b81e3b2a52c021",
         "error": null
       },
       "outcome": "success",
@@ -948,21 +948,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/",
-        "fetched_at": "2026-11-07T15:12:24.686756Z",
+        "fetched_at": "2026-11-07T15:19:41.772403Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.998,
-        "response_duration_seconds": 0.286,
+        "duration_seconds": 1.154,
+        "response_duration_seconds": 0.219,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/b268f421504e41fea86358e8b3bf02e0.body",
-        "body_sha256": "e45b5c6da6251cbd8edfd66bb6d7649d11f4ee5ebd8ffc412416b2ddfaf49c4e",
+        "body_path": "responses/83422fa4aaa448d6bf504ae976f89747.body",
+        "body_sha256": "3007b1ed66a1a3a00c41fa396ca3f0bdb59fdd3d42b2bd45acf3131f4400ea8b",
         "error": null
       },
       "outcome": "success",
@@ -981,21 +981,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/",
-        "fetched_at": "2026-11-07T15:12:25.686710Z",
+        "fetched_at": "2026-11-07T15:19:42.928292Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.879,
-        "response_duration_seconds": 0.166,
+        "duration_seconds": 0.962,
+        "response_duration_seconds": 0.183,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/d25a30f029e8404dbd1bafa43d746c61.body",
-        "body_sha256": "c9eb1884683c0b59d4ba7f7cd4fc6fcfce6e49560a390243f6fc435ea44e8e17",
+        "body_path": "responses/6faced7b1c314d588e234c2a37dcef65.body",
+        "body_sha256": "461f287e3dbcf1d1c379f90e1d2d0ee062eb5d1fafa33990160c31e62c6043ce",
         "error": null
       },
       "outcome": "success",
@@ -1014,21 +1014,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/",
-        "fetched_at": "2026-11-07T15:12:26.567127Z",
+        "fetched_at": "2026-11-07T15:19:43.891926Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.12,
-        "response_duration_seconds": 0.288,
+        "duration_seconds": 0.999,
+        "response_duration_seconds": 0.184,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/315c366323284ed2b1dfe184525b77fb.body",
-        "body_sha256": "272a47534504bd58b273d13bc15d0b137929f48a1c602f28966e4dd5f1ea0e63",
+        "body_path": "responses/6266b50678c0489f862f7e88befb77cb.body",
+        "body_sha256": "6fa794dad25c756063a735039ef3f4e0bc1a774556363258e5d010ce80233683",
         "error": null
       },
       "outcome": "success",
@@ -1047,21 +1047,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/",
-        "fetched_at": "2026-11-07T15:12:27.688968Z",
+        "fetched_at": "2026-11-07T15:19:44.893069Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.989,
-        "response_duration_seconds": 0.278,
+        "duration_seconds": 1.005,
+        "response_duration_seconds": 0.191,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/5c8a9fe984584d8ca843247679f5ed4c.body",
-        "body_sha256": "45a2b26a10dbf22b5f6229d3612b2545ceb56fdd41b3a84df04375c2822acb8d",
+        "body_path": "responses/9f46f1fc9f1b4f4390d00f5764baef2e.body",
+        "body_sha256": "5f09b45a99da5135bf57e79ff733b55e4c1fc6e64938e4be81f9dd9209e10d0a",
         "error": null
       },
       "outcome": "success",
@@ -1080,21 +1080,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/",
-        "fetched_at": "2026-11-07T15:12:28.679473Z",
+        "fetched_at": "2026-11-07T15:19:45.900449Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.994,
-        "response_duration_seconds": 0.274,
+        "duration_seconds": 0.989,
+        "response_duration_seconds": 0.182,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/fceeaf9aa6a24e92872cf6819adbb169.body",
-        "body_sha256": "84dd608cbdad82a766fcf588847293122ec8cfd8febbc5c27dde44fc7a0a6841",
+        "body_path": "responses/11f009ac7c844c4987b620eee14d0b17.body",
+        "body_sha256": "b8803dab52a1f75ed3a690434656e37a89383081f259da43354bdd94cc98aceb",
         "error": null
       },
       "outcome": "success",
@@ -1113,21 +1113,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/",
-        "fetched_at": "2026-11-07T15:12:29.674933Z",
+        "fetched_at": "2026-11-07T15:19:46.891846Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.007,
-        "response_duration_seconds": 0.282,
+        "duration_seconds": 1.019,
+        "response_duration_seconds": 0.204,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/5dc10fcd779344f5b5623b3ea6f9cf39.body",
-        "body_sha256": "de4c76b115a7133afa6750836603767842bb422fb826be1d79f9cc5893ecf4c9",
+        "body_path": "responses/dc936d9f0ab94fea8bfc97aaff688df7.body",
+        "body_sha256": "633164e8d7319e018628049a80ff263f6e4beafee32ee0ecc4cdbd4e8d954628",
         "error": null
       },
       "outcome": "success",
@@ -1146,21 +1146,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/",
-        "fetched_at": "2026-11-07T15:12:30.683178Z",
+        "fetched_at": "2026-11-07T15:19:47.912550Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.874,
-        "response_duration_seconds": 0.158,
+        "duration_seconds": 0.86,
+        "response_duration_seconds": 0.065,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/d50a81a5f67f436b8ebb9130b2c1c277.body",
-        "body_sha256": "fb03d271cd91b5620d8c38e623ab3ff6b348181f0230b3caf2e3165d8a001b42",
+        "body_path": "responses/13b8593b443443568e6ac3e65afddcd5.body",
+        "body_sha256": "f32e238f8b09eff9bb1415332f7039e12572c4876c5fd4afa18544da07ab8fd9",
         "error": null
       },
       "outcome": "success",
@@ -1179,21 +1179,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/",
-        "fetched_at": "2026-11-07T15:12:31.559225Z",
+        "fetched_at": "2026-11-07T15:19:48.774646Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.12,
-        "response_duration_seconds": 0.279,
+        "duration_seconds": 1.124,
+        "response_duration_seconds": 0.191,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/59efc586eeaf4129aa5d8ce1e1e9ad6d.body",
-        "body_sha256": "215625b5c4e5f5a32ada97d533a263114defeea787009a03b134acdc8f830842",
+        "body_path": "responses/ca808f63bf2d4f8e9ead69f317c5080c.body",
+        "body_sha256": "7f2c48e43fd445e409b3b83beb4a25c257e8c23d5dd04ecdc2903f6e8654f9a7",
         "error": null
       },
       "outcome": "success",
@@ -1212,21 +1212,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/",
-        "fetched_at": "2026-11-07T15:12:32.680754Z",
+        "fetched_at": "2026-11-07T15:19:49.901641Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.986,
-        "response_duration_seconds": 0.266,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.194,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/87e2105a14404d3a8b8da3d0d388c569.body",
-        "body_sha256": "6e3ad60c4c3be3da83969f1c8b790a821c02328a78fead56c0866014c1849948",
+        "body_path": "responses/e81ea1c7003c4ae5adf91ecf9b41c4fe.body",
+        "body_sha256": "e1c2afe11f9b7b51cfdbdd332d68b993e1b78002b5dd07058a5405a87c6107aa",
         "error": null
       },
       "outcome": "success",
@@ -1245,21 +1245,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/",
-        "fetched_at": "2026-11-07T15:12:33.668046Z",
+        "fetched_at": "2026-11-07T15:19:50.904797Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.999,
-        "response_duration_seconds": 0.266,
+        "duration_seconds": 0.983,
+        "response_duration_seconds": 0.18,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/eccad8c973a14c38b3800c81a2c145d5.body",
-        "body_sha256": "f87ea803c0b8a6b4f41163dc06a9d0514538c2eeafe20ccb0654678755fb57be",
+        "body_path": "responses/6540f70ee4eb437ab538c3eba07165aa.body",
+        "body_sha256": "bfb024841041901863a979624f1ab88d87b16a549d26be784f5096da8610f158",
         "error": null
       },
       "outcome": "success",
@@ -1278,21 +1278,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/",
-        "fetched_at": "2026-11-07T15:12:34.668360Z",
+        "fetched_at": "2026-11-07T15:19:51.890099Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.017,
-        "response_duration_seconds": 0.285,
+        "duration_seconds": 1.142,
+        "response_duration_seconds": 0.325,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/79c05d670c4142aca5f14595e5e922c7.body",
-        "body_sha256": "c4d01b4486c01ca5a842d903ceaef7b182a741d4f170914bb9334dfbe1aeabcd",
+        "body_path": "responses/5ec9e08ca1174f7c9f759aac05eac999.body",
+        "body_sha256": "fd0daf3fa5e8e2cc51c60a968a0d8de6e628182a1996801a8c924786e0080fd5",
         "error": null
       },
       "outcome": "success",
@@ -1311,21 +1311,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/",
-        "fetched_at": "2026-11-07T15:12:35.687293Z",
+        "fetched_at": "2026-11-07T15:19:53.034075Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.992,
-        "response_duration_seconds": 0.279,
+        "duration_seconds": 0.869,
+        "response_duration_seconds": 0.195,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/7aa9ca8b1fc94defae04a0ae531f8dd1.body",
-        "body_sha256": "8bc4885a5c74ce54c8ce1e5edfc5ce13f34726646ce034c516db6a505b502376",
+        "body_path": "responses/e3d40f6eaf7b4792bbdef30c413a168a.body",
+        "body_sha256": "e7a98f077f95ba3d5c2c0762a7298a74af5bdc7163c9017ac50abea36cc00189",
         "error": null
       },
       "outcome": "success",
@@ -1344,21 +1344,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/",
-        "fetched_at": "2026-11-07T15:12:36.680731Z",
+        "fetched_at": "2026-11-07T15:19:53.905617Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.276,
+        "duration_seconds": 1.002,
+        "response_duration_seconds": 0.199,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/981441b9b6f04c3cae98b3db22e95c30.body",
-        "body_sha256": "b378c5e2d1123addeb6d1a223de1667026f478820077d073099c648f54db5cdf",
+        "body_path": "responses/8d64e3bcc53e4a6c9fa5f355b3e0fa61.body",
+        "body_sha256": "7fd25253580ae8d255cd2ac235ac967f0143617361e24881769f3464a6afefd7",
         "error": null
       },
       "outcome": "success",
@@ -1377,21 +1377,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/",
-        "fetched_at": "2026-11-07T15:12:37.678540Z",
+        "fetched_at": "2026-11-07T15:19:54.909498Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.013,
-        "response_duration_seconds": 0.291,
+        "duration_seconds": 0.866,
+        "response_duration_seconds": 0.066,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/1ddc1e1cdd4a43e79011db4d20994e4c.body",
-        "body_sha256": "45174ea2a6583c5349be26668bd003da3ea687e3c10dc478edf1725871a452c7",
+        "body_path": "responses/b9963c034ebd4d018387c50315294361.body",
+        "body_sha256": "40e1a63a0e3f00addab64b4f2f015ef0fafd32995dbedef5ecac6c15015745bb",
         "error": null
       },
       "outcome": "success",
@@ -1410,21 +1410,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/",
-        "fetched_at": "2026-11-07T15:12:38.693206Z",
+        "fetched_at": "2026-11-07T15:19:55.777959Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.981,
-        "response_duration_seconds": 0.273,
+        "duration_seconds": 1.195,
+        "response_duration_seconds": 0.265,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/136d31c9ab534f66962decb1fd6c44a2.body",
-        "body_sha256": "3303ea060316171a521449797b770e53fa19db03147ca107c8cdaf8166b4743f",
+        "body_path": "responses/f7850db8e4994ec79ce3b2092d9fec06.body",
+        "body_sha256": "fc2940743c1d64827f59559af682b3ca8f9503e5c958b17290bc645a660e0daa",
         "error": null
       },
       "outcome": "success",
@@ -1443,21 +1443,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/",
-        "fetched_at": "2026-11-07T15:12:39.675696Z",
+        "fetched_at": "2026-11-07T15:19:56.975103Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.045,
-        "response_duration_seconds": 0.32,
+        "duration_seconds": 0.922,
+        "response_duration_seconds": 0.188,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/22b312b09d4640d19d7293f74aee7b66.body",
-        "body_sha256": "f5584897552347e3cc8cf55061226719f7045a77f01d2b796157ee71ad7e0c36",
+        "body_path": "responses/68264e2031584ae2b15c2a1dd910e841.body",
+        "body_sha256": "b5c4dde36743c1b34a99582c80a3b1c0effeb27ab6d2158c7c20955b14ebaadf",
         "error": null
       },
       "outcome": "success",
@@ -1476,21 +1476,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/",
-        "fetched_at": "2026-11-07T15:12:40.722222Z",
+        "fetched_at": "2026-11-07T15:19:57.899915Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.031,
-        "response_duration_seconds": 0.352,
+        "duration_seconds": 1.002,
+        "response_duration_seconds": 0.193,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/376e797d2f234661b0a77119fd85ecda.body",
-        "body_sha256": "e6b0b4e0c6ea76bba481bc88e1fbcc8ffb55c78fab06f6a83dcbcfc1abedee0e",
+        "body_path": "responses/1fe38467bf46469ca0f2f7c878a08f17.body",
+        "body_sha256": "e39a56b4ba2135a0f4164f607c375bc1c2982d306a718f7252a6b6679f06d1ec",
         "error": null
       },
       "outcome": "success",
@@ -1509,21 +1509,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/05/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/",
-        "fetched_at": "2026-11-07T15:12:41.754972Z",
+        "fetched_at": "2026-11-07T15:19:58.904067Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.35,
+        "duration_seconds": 0.877,
+        "response_duration_seconds": 0.072,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/94288385a2f74eb2a35116427a76f93e.body",
-        "body_sha256": "e44ebec847710b4d7417354a993e50f16bd0d7bb339c88f11f7cca0539a699be",
+        "body_path": "responses/1eeee255a9564a39a8e97d20c16d3cd5.body",
+        "body_sha256": "bb4619c8bbee362d76514818aacf4e0715e83c34ce559436ae6ae5eedfe331ae",
         "error": null
       },
       "outcome": "success",
@@ -1542,21 +1542,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/",
-        "fetched_at": "2026-11-07T15:12:42.752548Z",
+        "fetched_at": "2026-11-07T15:19:59.782931Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.935,
-        "response_duration_seconds": 0.287,
+        "duration_seconds": 1.115,
+        "response_duration_seconds": 0.189,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/fc844712d14e432fa8ad5057eb76c8f6.body",
-        "body_sha256": "fa9b9252e7a7637f55012d8624e26d16261f4b18fcfa842ef14af770cb96a73d",
+        "body_path": "responses/0ca2da037dbf47ef803458c9db81382e.body",
+        "body_sha256": "53efbdcb8cab3dc8583dafc22f0b3c91179fb944c374ef00d65f30cd1e504b48",
         "error": null
       },
       "outcome": "success",
@@ -1575,21 +1575,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/",
-        "fetched_at": "2026-11-07T15:12:43.689781Z",
+        "fetched_at": "2026-11-07T15:20:00.899630Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.999,
-        "response_duration_seconds": 0.287,
+        "duration_seconds": 1.008,
+        "response_duration_seconds": 0.198,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/2f6241bfbe244bdca7b81a7240fbc1ba.body",
-        "body_sha256": "bbe9813d083459beef69c45a955d352ecd911c2d1f6834e6ac00692f3ffd3075",
+        "body_path": "responses/338414e8d6bb489898cfda396f4bbc7b.body",
+        "body_sha256": "7b73005e65109ef95ccad4a16e92e8ea16f89ee028d2f8c39fc6c5d6ddaf01f5",
         "error": null
       },
       "outcome": "success",
@@ -1608,21 +1608,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/",
-        "fetched_at": "2026-11-07T15:12:44.690080Z",
+        "fetched_at": "2026-11-07T15:20:01.909326Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.988,
-        "response_duration_seconds": 0.277,
+        "duration_seconds": 0.994,
+        "response_duration_seconds": 0.194,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/18d524d4d2bd4340982610170cdba4a8.body",
-        "body_sha256": "2106af915457679001e884c263966f1c8fc9342cbb0b7501e8f5cdecbc8026ff",
+        "body_path": "responses/b9ab8e9e75b2466190d50237cc2f0ffe.body",
+        "body_sha256": "9ae13a6c72a53520b7a3397a71d5de533fad7d48a7f6d86b90a619dc884e104a",
         "error": null
       },
       "outcome": "success",
@@ -1641,21 +1641,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/",
-        "fetched_at": "2026-11-07T15:12:45.680167Z",
+        "fetched_at": "2026-11-07T15:20:02.905040Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.0,
-        "response_duration_seconds": 0.278,
+        "duration_seconds": 1.016,
+        "response_duration_seconds": 0.212,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/f59d6e1a819f4a818291016c1ccb1a75.body",
-        "body_sha256": "c375298bc148ea54fc407ee5f3d3bd321c68d66247608aeaeb934794cd887e8d",
+        "body_path": "responses/03b2ae473cd2404083e90c12c94c788e.body",
+        "body_sha256": "afc85db8ab42ede623d4627c02583b83815a5dd38b5c939ea21802320a0b0018",
         "error": null
       },
       "outcome": "success",
@@ -1674,21 +1674,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261107T151156.310930Z-217e07f9",
+      "run_id": "20261107T151913.294864Z-c527f39c",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
-        "fetched_at": "2026-11-07T15:12:46.681892Z",
+        "fetched_at": "2026-11-07T15:20:03.922111Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.999,
-        "response_duration_seconds": 0.279,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.214,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/021db16a2bf2400db1f761e7faafeab3.body",
-        "body_sha256": "7dd637ebeae9043a6c9a3cd8c99f87ecff21c89458e8fe1431328624485e9055",
+        "body_path": "responses/0733fff578714b07bd99cc94a21ab584.body",
+        "body_sha256": "bb1ce81a828fc395f241e5f7359cbea49e109104eb7cf94ab03a0007e5b52d5f",
         "error": null
       },
       "outcome": "success",
@@ -2729,7 +2729,7 @@
     "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
     "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/"
   ],
-  "sitemap_run_id": "20261107T151156.310930Z-217e07f9",
+  "sitemap_run_id": "20261107T151913.294864Z-c527f39c",
   "known_sitemap_urls": [
     "https://www.djangoproject.com/",
     "https://www.djangoproject.com/accessibility/",
@@ -3786,7 +3786,98 @@
         "deferred": 0
       },
       "completed_at": "2026-11-07T15:12:47.683511+00:00"
+    },
+    {
+      "run_id": "20261107T151913.294864Z-c527f39c",
+      "status": "collected",
+      "alert_status": "warning",
+      "coverage": {
+        "attempted": 50,
+        "successful": 50,
+        "failed": 0,
+        "deferred": 0
+      },
+      "completed_at": "2026-11-07T15:20:04.927316+00:00"
     }
   ],
-  "latest_run_id": "20261107T151156.310930Z-217e07f9"
+  "active_findings": {
+    "7dbd6035a1140239c8086615": {
+      "schema_version": 1,
+      "id": "7dbd6035a1140239c8086615",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "new",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261107T151913.294864Z-c527f39c",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261107T151913.294864Z-c527f39c",
+          "requested_url": "https://www.djangoproject.com/",
+          "final_url": "https://www.djangoproject.com/",
+          "fetched_at": "2026-11-07T15:19:14.752804Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 1.053,
+          "response_duration_seconds": 0.102,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/02a09312711b4f558101ef132333080d.body",
+          "body_sha256": "692e459facfa3ddcbfe996aaad1be3872d9b538957ad44525b71dfa2ed8a83ae",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    },
+    "bd9d04dd9f2cfcb9a90a4afb": {
+      "schema_version": 1,
+      "id": "bd9d04dd9f2cfcb9a90a4afb",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "new",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261107T151913.294864Z-c527f39c",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261107T151913.294864Z-c527f39c",
+          "requested_url": "https://www.djangoproject.com/weblog/",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "fetched_at": "2026-11-07T15:19:15.806751Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 0.969,
+          "response_duration_seconds": 0.071,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/fa10209639d54dddbde4647d1bc808bd.body",
+          "body_sha256": "83f3cf428de29a6ded5e06161c0821047917f3128a2192bbf0807155b2b1dac4",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    }
+  },
+  "robots_sha256": "f584941ee39cc07ee18b15f3205ac289fa5f2ce328218f97b5b0dd2bce4e9f6e",
+  "latest_run_id": "20261107T151913.294864Z-c527f39c"
 }

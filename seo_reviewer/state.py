@@ -5,6 +5,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 from seo_reviewer.observations import Observation
+from seo_reviewer.detection import Finding
 
 
 class ComparisonState(BaseModel):
@@ -17,4 +18,6 @@ class ComparisonState(BaseModel):
     known_sitemap_urls: list[str] = Field(default_factory=list)
     pending_urls: list[str] = Field(default_factory=list)
     history: list[dict[str, object]] = Field(default_factory=list)
+    active_findings: dict[str, Finding] = Field(default_factory=dict)
+    robots_sha256: str | None = None
     latest_run_id: str | None = None
