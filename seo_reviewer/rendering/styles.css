@@ -129,9 +129,5 @@ td:first-child { min-width: 160px; }
 .assessment { border-top: 4px solid var(--accent); }
 .check-results { margin-top: 24px; }
 .issue-assessment { font-size: 20px; }
-.action-plan { padding-left: 24px; }
-.action-plan > li { padding: 20px 24px; margin-bottom: 16px; }
-.action-plan > li::marker { color: var(--accent); font-weight: 700; }
-@media (max-width: 680px) {
-  .action-plan > li { padding: 20px 16px; }
-}
+.prioritized-list { padding-left: 24px; }
+.prioritized-list > li::marker { color: var(--accent); font-weight: 700; }

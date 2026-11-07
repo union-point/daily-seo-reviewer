@@ -19,7 +19,7 @@
   <p class="eyebrow">Assessment &amp; priorities</p>
   {% if report.narrative_source == 'ai' %}
   <h2 id="assessment-heading" class="assessment-title">{{ report.narrative.headline }}</h2>
-  <div class="assessment panel"><p class="lede">{{ report.narrative.summary }}</p><a href="#action-plan-heading">See the action plan ↓</a></div>
+  <div class="assessment panel"><p class="lede">{{ report.narrative.summary }}</p><a href="#issues-1">See priorities and next steps ↓</a></div>
   {% else %}
   <h2 id="assessment-heading">What needs attention</h2>
   <div class="assessment panel"><p class="lede">{{ presentation.summary }}</p><p class="muted">AI summary unavailable. The page checks and recommended actions are still available.</p></div>
@@ -32,26 +32,13 @@
   </div>
 </section>
 
-<section aria-labelledby="action-plan-heading">
-  <h2 id="action-plan-heading">Your action plan</h2>
-  <p class="muted">Suggested owners are starting points for assigning work. Recheck each page after making changes.</p>
-  <ol class="action-plan">
-    {% for item in action_plan %}
-    <li class="panel">
-      <h3><a href="#{{ item.anchor }}">{{ item.title }}</a>{% if item.finding.state == 'unverified' %} · Verify first{% endif %}</h3>
-      <p>{{ item.action }}</p>
-      <p><strong>Suggested owner:</strong> {{ item.suggested_owner }}</p>
-      <p><strong>Done when:</strong> {{ item.verification }}</p>
-    </li>
-    {% else %}<li class="panel">{{ 'Complete the missing checks before deciding whether fixes are needed.' if presentation.incomplete else 'No fixes are currently indicated. Review the next report for changes.' }}</li>{% endfor %}
-  </ol>
-</section>
-
 {% for section in sections %}
 {% set section_index = loop.index %}
 <section aria-labelledby="issues-{{ section_index }}">
   <div class="section-header"><h2 id="issues-{{ section_index }}">{{ section.title }}</h2><span class="muted">{{ section['items'] | length }} {{ 'issue' if section['items'] | length == 1 else 'issues' }}</span></div>
+  {% if section.title == 'Priority issues' and section['items'] %}<ol class="prioritized-list">{% endif %}
   {% for item in section['items'] %}
+  {% if section.title == 'Priority issues' %}<li>{% endif %}
   <article class="finding finding--{{ item.finding.severity }}" aria-labelledby="issue-{{ section_index }}-{{ loop.index }}">
     <div class="finding-header">
       <h3 id="issue-{{ section_index }}-{{ loop.index }}">{{ item.title }}</h3>
@@ -76,6 +63,7 @@
     <p><strong>Why it matters:</strong> {{ item.matters }}</p>
     <div class="action-block">
       <p><strong>Next action:</strong> {{ item.action }}</p>
+      {% if item.finding.state != 'resolved' %}<p><strong>Done when:</strong> {{ item.verification }}</p>{% endif %}
     </div>
     <details><summary>For specialists</summary>
       <dl class="observation-grid">
@@ -85,7 +73,9 @@
       <ul class="evidence-list">{% for evidence in item.evidence %}<li>{% if evidence.href %}<a href="{{ evidence.href }}">{{ evidence.label }}</a>{% else %}<span>{{ evidence.label }}</span>{% endif %}</li>{% else %}<li><a href="{{ collection_json_href }}">View collection data</a></li>{% endfor %}</ul>
     </details>
   </article>
+  {% if section.title == 'Priority issues' %}</li>{% endif %}
   {% else %}<p class="empty-state">{{ 'No issues awaiting verification' if section.title == 'Needs verification' else 'No ' ~ section.title | lower }} in this report.</p>{% endfor %}
+  {% if section.title == 'Priority issues' and section['items'] %}</ol>{% endif %}
 </section>
 {% endfor %}
 

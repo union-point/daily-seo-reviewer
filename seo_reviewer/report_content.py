@@ -165,7 +165,6 @@ def issue_presentation(finding: Finding) -> dict:
         'before': observation_text(finding.rule, finding.before),
         'observed': observation_text(finding.rule, finding.observed),
         'observation_label': 'Last seen' if finding.state in {'resolved', 'unverified'} else 'Now',
-        'suggested_owner': 'Content team' if finding.rule in {'missing_title', 'missing_description', 'duplicate_title', 'missing_h1'} else 'Web team',
         'verification': {
             'missing_title': 'Run a new check and confirm the page has a descriptive title.',
             'duplicate_title': 'Recheck all affected pages and confirm their titles are distinct.',

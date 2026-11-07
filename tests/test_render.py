@@ -286,11 +286,11 @@ def test_assessment_and_action_plan_use_saved_analysis_without_note_labels(tmp_p
     assert not tree.xpath('//script')
     assert 'saved assessment' in tree.text_content()
     assert 'AI note' not in tree.text_content()
-    plan = tree.xpath('//ol[@class="action-plan"]')[0]
+    plan = tree.xpath('//ol[@class="prioritized-list"]')[0]
     assert 'Write a useful homepage description.' in plan.text_content()
-    assert 'Content team' in plan.text_content() and 'Done when:' in plan.text_content()
-    target = plan.xpath('.//a/@href')[0][1:]
-    assert tree.xpath('//*[@id=$target]', target=target)
+    assert 'Suggested owner' not in tree.text_content() and 'Done when:' in plan.text_content()
+    assert tree.text_content().count('Write a useful homepage description.') == 1
+    assert 'Your action plan' not in tree.text_content()
     assert tree.xpath('//article/p[@class="issue-assessment"]')[0].text == 'Start with the homepage description.'
 
 
@@ -300,7 +300,8 @@ def test_action_plan_excludes_resolved_and_rechecks_unverified(tmp_path):
     save_review(data, findings=findings)
     render_site(data, output)
     tree = html.fromstring((output / 'index.html').read_text())
-    plan = tree.xpath('//ol[@class="action-plan"]')[0]
-    assert len(plan.xpath('./li')) == 1
-    assert 'Verify first' in plan.text_content()
-    assert 'Complete a reliable follow-up check' in plan.text_content()
+    assert not tree.xpath('//ol[@class="prioritized-list"]')
+    unverified = tree.xpath('//article')[0]
+    assert 'Needs verification' in unverified.text_content()
+    assert 'Complete a reliable follow-up check' in unverified.text_content()
+    assert 'Done when:' not in tree.xpath('//article')[1].text_content()
