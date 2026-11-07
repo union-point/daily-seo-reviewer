@@ -155,6 +155,12 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
             'collected_at': display_time(collected), 'published_at': display_time(now), 'freshness': freshness,
             'baseline': review.baseline_only, 'sections': sections, 'history': history[:5],
             'presentation': report_presentation(review, collection),
+            'action_plan': [
+                {**item, 'anchor': f'issue-{section_index}-{item_index}'}
+                for section_index, section in enumerate(sections, 1)
+                if section['title'] != 'Resolved issues'
+                for item_index, item in enumerate(section['items'], 1)
+            ],
             'archive_href': link('archive/index.html'), 'review_json_href': link(f'data/reviews/{review.run_id}.json'),
             'collection_json_href': link(f'data/runs/{review.run_id}/collection.json'),
             'workflow_href': safe_url(workflow_url) if require_run_id == review.run_id else None,

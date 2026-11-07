@@ -15,14 +15,36 @@
   <p class="muted">Published {{ published_at }} · {{ freshness }}</p>
 </header>
 
-<section aria-labelledby="summary-heading">
-  <h2 id="summary-heading">Summary</h2>
-  <div class="panel">
-    <p>{{ presentation.summary }}</p>
-    {% if presentation.changes %}<p>{{ presentation.changes }}</p>{% endif %}
+<section aria-labelledby="assessment-heading">
+  <p class="eyebrow">Assessment &amp; priorities</p>
+  {% if report.narrative_source == 'ai' %}
+  <h2 id="assessment-heading" class="assessment-title">{{ report.narrative.headline }}</h2>
+  <div class="assessment panel"><p class="lede">{{ report.narrative.summary }}</p><a href="#action-plan-heading">See the action plan ↓</a></div>
+  {% else %}
+  <h2 id="assessment-heading">What needs attention</h2>
+  <div class="assessment panel"><p class="lede">{{ presentation.summary }}</p><p class="muted">AI summary unavailable. The page checks and recommended actions are still available.</p></div>
+  {% endif %}
+  <div class="check-results">
+    <h3>What the checks confirmed</h3>
+    {% if report.narrative_source == 'ai' %}<p>{{ presentation.summary }}</p>{% endif %}
+    <p>{{ presentation.changes }}</p>
     {% if report.detection.get('widespread_change') %}<p class="notice status--warning">Changes affect many checked pages. Ask your web team to review recent site-wide changes before fixing pages one by one.</p>{% endif %}
-    {% if report.narrative_source != 'ai' %}<p class="muted">AI summary unavailable. The page checks and recommended actions are still available.</p>{% endif %}
   </div>
+</section>
+
+<section aria-labelledby="action-plan-heading">
+  <h2 id="action-plan-heading">Your action plan</h2>
+  <p class="muted">Suggested owners are starting points for assigning work. Recheck each page after making changes.</p>
+  <ol class="action-plan">
+    {% for item in action_plan %}
+    <li class="panel">
+      <h3><a href="#{{ item.anchor }}">{{ item.title }}</a>{% if item.finding.state == 'unverified' %} · Verify first{% endif %}</h3>
+      <p>{{ item.action }}</p>
+      <p><strong>Suggested owner:</strong> {{ item.suggested_owner }}</p>
+      <p><strong>Done when:</strong> {{ item.verification }}</p>
+    </li>
+    {% else %}<li class="panel">{{ 'Complete the missing checks before deciding whether fixes are needed.' if presentation.incomplete else 'No fixes are currently indicated. Review the next report for changes.' }}</li>{% endfor %}
+  </ol>
 </section>
 
 {% for section in sections %}
@@ -39,6 +61,7 @@
       </div>
     </div>
     {% if item.finding.state == 'unverified' %}<p class="notice status--warning">The current condition is unknown. The latest check could not confirm whether this issue remains or has been resolved.</p>{% endif %}
+    {% if item.explanation %}<p class="issue-assessment">{{ item.explanation }}</p>{% endif %}
     <p><strong>What happened:</strong> {{ item.happened }}</p>
     <p class="field-label">Affected pages</p>
     <ul class="url-list">
@@ -53,7 +76,6 @@
     <p><strong>Why it matters:</strong> {{ item.matters }}</p>
     <div class="action-block">
       <p><strong>Next action:</strong> {{ item.action }}</p>
-      {% if item.explanation %}<p class="muted"><strong>AI note:</strong> {{ item.explanation }}</p>{% endif %}
     </div>
     <details><summary>For specialists</summary>
       <dl class="observation-grid">

@@ -271,3 +271,36 @@ def test_removed_preferred_page_is_explained_without_claiming_new_target(tmp_pat
     assert 'points search engines to a different' not in text
     assert 'https://example.com/preferred' in text
     assert 'Not set' in text
+
+
+def test_assessment_and_action_plan_use_saved_analysis_without_note_labels(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    review = save_review(data, source='ai')
+    review.narrative.headline = 'Focus on the pages people find first'
+    review.narrative.summary = '<script>saved assessment</script>'
+    review.narrative.prioritized_issues = [AIItem(finding_id='f1', evidence_ids=['f1:finding'], explanation='Start with the homepage description.', recommended_action='Write a useful homepage description.')]
+    (data / 'reviews/run-1.json').write_text(review.model_dump_json())
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    assert tree.xpath('//*[@id="assessment-heading"]')[0].text == review.narrative.headline
+    assert not tree.xpath('//script')
+    assert 'saved assessment' in tree.text_content()
+    assert 'AI note' not in tree.text_content()
+    plan = tree.xpath('//ol[@class="action-plan"]')[0]
+    assert 'Write a useful homepage description.' in plan.text_content()
+    assert 'Content team' in plan.text_content() and 'Done when:' in plan.text_content()
+    target = plan.xpath('.//a/@href')[0][1:]
+    assert tree.xpath('//*[@id=$target]', target=target)
+    assert tree.xpath('//article/p[@class="issue-assessment"]')[0].text == 'Start with the homepage description.'
+
+
+def test_action_plan_excludes_resolved_and_rechecks_unverified(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    findings = [Finding(id=state, rule='http_error', urls=['https://example.com/' + state], severity='critical', state=state, first_seen_run='run-1', last_seen_run='run-1') for state in ('resolved', 'unverified')]
+    save_review(data, findings=findings)
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    plan = tree.xpath('//ol[@class="action-plan"]')[0]
+    assert len(plan.xpath('./li')) == 1
+    assert 'Verify first' in plan.text_content()
+    assert 'Complete a reliable follow-up check' in plan.text_content()

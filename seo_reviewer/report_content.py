@@ -165,4 +165,16 @@ def issue_presentation(finding: Finding) -> dict:
         'before': observation_text(finding.rule, finding.before),
         'observed': observation_text(finding.rule, finding.observed),
         'observation_label': 'Last seen' if finding.state in {'resolved', 'unverified'} else 'Now',
+        'suggested_owner': 'Content team' if finding.rule in {'missing_title', 'missing_description', 'duplicate_title', 'missing_h1'} else 'Web team',
+        'verification': {
+            'missing_title': 'Run a new check and confirm the page has a descriptive title.',
+            'duplicate_title': 'Recheck all affected pages and confirm their titles are distinct.',
+            'missing_description': 'Run a new check and confirm the page has a useful search description.',
+            'missing_h1': 'Run a new check and confirm the main heading is present.',
+            'canonical_changed': 'Recheck the page and confirm the preferred search version matches your decision.',
+            'http_error': 'Recheck the page and confirm visitors can open it, or verify that its removal was intended.',
+            'robots_excluded': 'Recheck crawling access after confirming whether the restriction is intended.',
+            'indexing_restricted': 'Recheck the search instructions after confirming whether exclusion is intended.',
+            'malformed_json_ld': 'Run a new check and confirm the structured information has no formatting errors.',
+        }.get(finding.rule, 'Run a new check and review the result with your web team.') if finding.state != 'unverified' else 'Complete a reliable follow-up check and confirm whether the issue persists or has been resolved.',
     }

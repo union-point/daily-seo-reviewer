@@ -11,3 +11,5 @@ Source: README.md collection/detection/review contracts and the user's HTML repo
 - Accessibility baseline: semantic headings/landmarks, keyboard links/disclosures, visible focus, text status, and WCAG AA contrast. Native controls accept platform-owned behavior.
 - Daily Issue summary uses code-derived facts and actions. One run-ID marker prevents duplicates across delivery retries; a failed publication produces an explicit delivery warning instead of linking an older review as current.
 - Permission/delivery source: repository workflow and existing `GitHubDelivery`; generated review data remains public under the established public repository contract. No raw response bodies are copied into the Pages artifact.
+
+The report leads with the saved assessment and its headline, followed by an ordered action plan and priority explanations. Individual explanations have no “AI note” labels. Suggested owners and completion checks are standard workflow guidance; recommendations and ordering reuse saved analysis where available. Coverage and confirmed changes remain code-derived and visible. No saved reviews are rewritten or extra model calls made to render the report.
