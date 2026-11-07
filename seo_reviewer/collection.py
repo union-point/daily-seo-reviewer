@@ -96,6 +96,7 @@ class Collector:
                 evidence.error = None
                 evidence.status_code = None
                 evidence.headers = {}
+                request_started = time.monotonic()
                 try:
                     with self.session.get(
                         current, allow_redirects=False, stream=True,
@@ -118,6 +119,8 @@ class Collector:
                 except requests.RequestException as exc:
                     # Error class is safe to persist; exception strings can contain credentials.
                     evidence.error = type(exc).__name__
+                finally:
+                    evidence.response_duration_seconds = (evidence.response_duration_seconds or 0) + time.monotonic() - request_started
                 if any(marker in body[:100_000].lower() for marker in CHALLENGE_MARKERS):
                     evidence.error = "challenge_response"
                     break
@@ -148,6 +151,7 @@ class Collector:
             self.store.save_response(evidence.model_copy(deep=True), body)
             current = target
             body = b""
+        evidence.response_duration_seconds = round(evidence.response_duration_seconds or 0, 3)
         evidence.duration_seconds = round(time.monotonic() - started, 3)
         self.store.save_response(evidence, body)
         self.fetches.append(evidence)

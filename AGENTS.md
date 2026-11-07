@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is a Python 3.13+ scaffold for Daily SEO Reviewer. `main.py` currently prints a greeting; `pyproject.toml` defines project metadata with no dependencies. `.python-version` selects Python 3.13, `README.md` is empty, and `PLAN.md` describes the intended implementation.
+This repository is a Python 3.13+ implementation of Daily SEO Reviewer. `seo_reviewer/` provides integration preflight, cohort collection, typed SEO extraction, evidence storage, and comparison state; `main.py` delegates to the package CLI. Dependencies are pinned in `pyproject.toml` and `uv.lock`. `README.md` documents current behavior; `PLAN.md` tracks remaining milestones.
 
 As implementation proceeds, organize `seo_reviewer/` into small modules for collection, storage, detection, AI triage, rendering, and notification. Add tests under `tests/` and report templates and a shared stylesheet alongside rendering code. Planned evidence paths are `data/runs/<run-id>/` and `data/reviews/<run-id>.json`; preserve immutable run snapshots.
 
@@ -10,13 +10,14 @@ As implementation proceeds, organize `seo_reviewer/` into small modules for coll
 
 - `uv sync` — create `.venv` and install project dependencies.
 - `uv run python --version` — confirm the project uses Python 3.13 or newer.
-- `uv run main.py` — run the current scaffold.
+- `uv run main.py --help` — inspect the compatibility entrypoint.
 - `uv add <package>` — add a runtime dependency.
 - `uv add --dev pytest` — add the planned test runner as a development dependency.
-- `uv run python -m seo_reviewer run` — intended CLI from `PLAN.md`; unavailable until the package is implemented.
-- `uv run pytest` — run tests once pytest and the test suite are added.
+- `uv run python -m seo_reviewer run` — collect the fixed cohort and queued sitemap additions.
+- `uv run python -m seo_reviewer preflight` — check site/model access without updating comparison state.
+- `uv run pytest` — run the mocked test suite.
 
-Use `uv` for environment and dependency management; manual environment activation is unnecessary with `uv run`. Commit `uv.lock` when generated for reproducible installs. No build pipeline, test runner dependency, formatter, or linter is configured yet. Document development tooling when introduced.
+Use `uv` for environment and dependency management; manual environment activation is unnecessary with `uv run`. Commit `uv.lock` when generated for reproducible installs. GitHub Actions runs pytest; manual preflight and collection workflows verify integrations and persist evidence. No formatter or linter is configured. Document development tooling when introduced.
 
 ## Coding Style & Naming Conventions
 
@@ -28,7 +29,9 @@ Use the planned pytest framework with `tests/test_<module>.py` files and `test_<
 
 ## Commit & Pull Request Guidelines
 
-History contains only `Initial commit`, so no established message convention exists. Use concise, imperative subjects describing one cohesive change. PRs should explain behavior changes, reference relevant plan items or issues, and include validation commands and results. Include screenshots when changing generated reports.
+Always commit completed changes locally after validation. Do not push unless the user requests it.
+
+Use concise, imperative subjects describing one cohesive change. PRs should explain behavior changes, reference relevant plan items or issues, and include validation commands and results. Include screenshots when changing generated reports.
 
 ## Security & Configuration
 

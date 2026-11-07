@@ -145,3 +145,16 @@ def test_timeout_after_retry_does_not_reuse_previous_status(make_collector):
     result = collector.fetch("https://example.com/")
     assert result.evidence.error == "Timeout"
     assert result.evidence.status_code is None
+
+
+def test_response_duration_excludes_rate_limit_wait(make_collector, clock):
+    collector, session = make_collector([response(404), response()])
+    collector.load_robots()
+    original = session.get
+    def timed_get(*args, **kwargs):
+        clock.now += 0.25
+        return original(*args, **kwargs)
+    session.get = timed_get
+    item = collector.fetch('https://example.com/').evidence
+    assert item.response_duration_seconds == 0.25
+    assert item.duration_seconds == 1.25

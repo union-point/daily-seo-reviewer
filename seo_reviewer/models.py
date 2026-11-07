@@ -16,6 +16,7 @@ class FetchEvidence(BaseModel):
     redirects: list[str] = Field(default_factory=list)
     attempts: int = 0
     duration_seconds: float = 0
+    response_duration_seconds: float | None = None
     headers: dict[str, str] = Field(default_factory=dict)
     body_path: str | None = None
     body_sha256: str | None = None

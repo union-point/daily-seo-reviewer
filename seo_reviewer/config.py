@@ -35,6 +35,7 @@ class Config(BaseModel):
     read_timeout: float = Field(default=20, gt=0, le=60)
     retries: int = Field(default=1, ge=0, le=2)
     max_body_bytes: int = Field(default=4_000_000, gt=0, le=10_000_000)
+    max_pages: int = Field(default=100, ge=50, le=100)
     max_sitemaps: int = Field(default=6, ge=1, le=20)
     data_dir: Path = Path("data")
 
@@ -56,6 +57,8 @@ class Config(BaseModel):
                 "model": "OPENAI_MODEL",
                 "user_agent": "SEO_USER_AGENT",
                 "request_interval": "SEO_REQUEST_INTERVAL",
+                "max_pages": "SEO_MAX_PAGES",
+                "max_sitemaps": "SEO_MAX_SITEMAPS",
                 "data_dir": "SEO_DATA_DIR",
             }.items()
             if env in os.environ

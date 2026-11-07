@@ -6,7 +6,9 @@
 - A real local site-only probe passed robots, sitemap, weblog, and one article; evidence is retained under `data/runs/20261107T135530.817108Z-c5636a91/`. OpenAI was explicitly skipped. This is not an SEO baseline or proof of GitHub-runner access.
 - A subsequent local preflight in `data/runs/20261107T140017.433642Z-a9112e38/` passed all site checks and the schema/reference-validated model probe. Hosted-runner access, Pages deployment, and Issue delivery still require the manual workflow.
 - Repository setup verified: the `OPENAI_API_KEY` Actions secret and `OPENAI_MODEL` repository variable exist, and Pages uses GitHub Actions as its source. Local `.env` configuration can be loaded using `uv run --env-file .env`.
-- **Hour 1 gate remains open:** publish the implementation and execute the manual workflow to prove runner/model/deployment/Issue delivery. Full crawler and later milestones remain pending until this gate passes.
+- **Hour 1 gate passed:** hosted run [42382361069](https://github.com/union-point/daily-seo-reviewer/actions/runs/42382361069) verified runner/model access, Pages deployment, and Issue delivery.
+- Hours 2–3 implemented locally: `run` CLI, fixed 50-URL cohort, bounded new-URL queue, typed SEO observations, immutable collection snapshots, atomic latest-successful comparison state, rolling coverage history, and manual collection/persistence workflow. Two real local runs each collected all 50 pages; the second preserved the cohort and recorded all 50 previous successful observations. Hosted collection validation follows after publishing this milestone.
+- Next: deterministic findings and lifecycles (hour 4); current collection statuses do not claim SEO health or regressions.
 
 ## 1. Outcome and defaults
 

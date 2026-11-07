@@ -2,7 +2,7 @@
 
 An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally from [PLAN.md](PLAN.md).
 
-## Current milestone: integration preflight
+## Current milestone: cohort collection and comparison state
 
 The first slice verifies site access and a schema-validated OpenAI Responses API call before expanding the crawler. A manually triggered workflow also tests Pages deployment and delivery to one GitHub Issue named **Daily SEO reviews**. Preflight results are connectivity evidence, **not SEO findings, a baseline, or a delivered daily review**.
 
@@ -15,7 +15,25 @@ Implemented:
 - A bounded Structured Outputs model probe, including refusal/incomplete-output handling and application validation of evidence references. No crawled text is sent to the model at this stage.
 - Automated tests, a JSON-only Pages smoke artifact, and retryable Issue delivery with run-ID deduplication.
 
-Not implemented yet: the `run` command, fixed 50-page cohort, incremental 100-page collection, SEO extraction/detection, comparison state/history, AI review summaries, HTML reports, persistent published archives, daily scheduling, or the final submission recording. Those follow the integration gate in `PLAN.md`.
+The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles, AI review summaries, HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
+
+## Collect observations
+
+```sh
+uv run python -m seo_reviewer run
+```
+
+This command makes no model calls and requires no API key. On the first successful discovery it fixes exactly 50 URLs: homepage, weblog index, and the 48 most recent dated articles in the sitemap (date order, with URL as a stable tie-breaker). It refuses to establish a smaller cohort. Each subsequent run retains those URLs, including URLs removed from the sitemap, and checks up to 50 newly discovered URLs. The initial sitemap inventory does not cause old pages outside the cohort to be crawled on the second run. Failed/deferred additions stay queued, and successful additions leave the queue. Complete sitemap removal drops a queued addition; it does not prove deletion of a cohort page.
+
+Each page observation records requested/final URL, redirect chain, status, timestamps, total elapsed and network response durations, title, description, H1s, resolved canonicals, robots meta, X-Robots-Tag, and JSON-LD block/error counts. Whitespace is normalized while meaningful case and URL differences remain intact. Missing fields on otherwise collected HTML remain distinct from HTTP, robots, timeout, challenge, content-type, and parsing failures.
+
+`data/runs/<run-id>/collection.json` is immutable and contains config/provenance, current observations, prior successful observations for attempted URLs, coverage, the cohort, sitemap membership/deltas, errors, and deferred URLs. Raw robots, sitemap, and page responses remain alongside it. The first usable collection is baseline-only. Incomplete sitemap discovery cannot establish the cohort or claim membership removals; an existing cohort can still be checked. Challenges stop further page requests.
+
+`data/state.json` is a versioned, atomically replaced index: fixed cohort, per-URL latest-successful observations, last complete sitemap inventory, pending additions, latest run ID, and a rolling 90-run aggregate history. All original snapshots are retained. Failed attempts never replace successful observations. A process lock serializes local runs; a schema/origin mismatch fails before collection. Use a separate `--data-dir` for another origin. A crash after snapshot finalization but before index publication can leave an unindexed snapshot; the previous state remains usable.
+
+The command exits `0` for a complete collection, `1` for partial/failed collection or state errors, and `2` for invalid arguments/configuration. Deferred page URLs and collection errors are printed explicitly. Collection status is not an SEO alert status.
+
+After pushing, run the **Collect SEO observations** workflow (`gh workflow run collect.yml --ref main`). It runs tests, collects from the default branch, commits evidence and state back to that branch, and uploads a downloadable artifact even when collection is partial. It needs repository contents write permission and permission to push to the default branch; branch protection or a concurrent external push can reject persistence, leaving the artifact available for recovery. The workflow does not deploy or notify an SEO review yet. Publication shares the existing concurrency group; no daily schedule is enabled.
 
 ## Local development
 
@@ -45,7 +63,7 @@ uv run --env-file .env python -m seo_reviewer preflight --publish-dir site
 
 The key is read by the OpenAI SDK; it is never stored in configuration or evidence. `.env` files are ignored by Git but are not automatically loaded without `--env-file`. Never commit API keys. A real probe uses API quota and may incur a small charge.
 
-Exit codes:
+Preflight exit codes:
 
 | Code | Meaning |
 | --- | --- |
@@ -65,6 +83,8 @@ A missing key is a skipped check, never a successful integration test. A failed 
 | `SEO_USER_AGENT` | `DailySEOReviewer/0.1 (+https://github.com/union-point/daily-seo-reviewer)` | none |
 | `SEO_REQUEST_INTERVAL` | `1` second, minimum `1` | none |
 | `SEO_DATA_DIR` | `data` | `--data-dir` |
+| `SEO_MAX_PAGES` | `100`, allowed range `50–100` | none |
+| `SEO_MAX_SITEMAPS` | `6`, allowed range `1–20` | none |
 
 Use the canonical `www` origin explicitly. An origin has no path, credentials, query, or fragment. Cross-origin redirects are refused, including redirects from the bare domain to `www`. The preflight currently expects the Django-style `/weblog/` and dated article paths; changing the origin alone does not make it a generic-site crawler. `OPENAI_MODEL=gpt-6.1-sol` selects the alternative from the plan. The model probe uses low reasoning effort, at most 512 output tokens, a 30-second SDK timeout per attempt, and at most one SDK retry.
 
@@ -84,7 +104,7 @@ Permissions are scoped by job: repository read for collection, Pages/OIDC writes
 
 If only notification fails, rerun the failed notification job. It downloads the saved preflight artifact and checks all comment pages for the run marker before posting. It updates an existing result when deployment status changes. An uncertain POST can therefore be retried without another crawl. For key/site fixes, run the whole preflight again. Test/setup failures that occur before a result exists remain visible in Actions; a separate pipeline-failure Issue notification is deferred to the hardening milestone.
 
-The workflow does not commit data yet. Runner artifacts expire after 90 days; download and retain evidence until durable data persistence is implemented. The Pages smoke artifact is replaced on each deployment and is not an archive.
+The preflight workflow retains evidence only in artifacts; the collection workflow commits its snapshots and state. Runner artifacts expire after 90 days. The Pages smoke artifact is replaced on each deployment and is not an archive.
 
 ## Evidence and provenance
 
@@ -92,27 +112,33 @@ The workflow does not commit data yet. Runner artifacts expire after 90 days; do
 seo_reviewer/
   config.py          # validated, non-secret configuration
   collection.py      # rate-limited, robots-aware HTTP client
-  models.py          # versioned integration evidence types
+  models.py          # versioned fetch/integration evidence types
+  observations.py    # typed SEO field extraction
+  crawl.py           # cohort selection, discovery, collection orchestration
+  state.py           # typed comparison index
   preflight.py       # site checks and gate orchestration
   triage.py          # bounded structured model connectivity probe
   storage.py         # immutable run snapshots and JSON export
   notification.py    # saved-result Issue delivery
 data/runs/<run-id>/
-  preflight.json     # checks, config, provenance, and model outcome
+  preflight.json     # integration runs only
+  collection.json    # collection runs only: observations and previous evidence
   fetches.jsonl      # request evidence, including redirect responses
   responses/*.body   # bounded raw response bytes (untrusted content)
 ```
 
-Snapshots use unique timestamp/UUID run IDs and refuse existing run directories or finalized-run writes. They never update comparison/baseline state. A response body is diagnostic input, not executable or trusted HTML; the smoke deployment contains JSON only. HTTP headers persisted are limited to content type, redirect location, retry timing, and indexing headers. API exception messages and tokens are not persisted.
+Snapshots use unique timestamp/UUID run IDs and refuse existing run directories or finalized-run writes. Preflight snapshots never update comparison state; collection runs publish state only after finalizing their snapshot. A response body is diagnostic input, not executable or trusted HTML; the smoke deployment contains JSON only. HTTP headers persisted are limited to content type, redirect location, retry timing, and indexing headers. API exception messages and tokens are not persisted.
 
 The included local snapshot `data/runs/20261107T135530.817108Z-c5636a91/` records a real **7 November 2026** site-only probe: robots, 1,021 same-origin sitemap URLs, weblog, and one article passed; OpenAI was explicitly skipped. It establishes neither SEO health nor runner access. Test fixtures are synthetic and are kept under `tests/`, separate from collected evidence.
 
-The subsequent local snapshot `data/runs/20261107T140017.433642Z-a9112e38/` passed the site checks and schema/reference-validated model probe. This verifies local model access; the hosted integration gate remains pending.
+The subsequent local snapshot `data/runs/20261107T140017.433642Z-a9112e38/` passed the site checks and schema/reference-validated model probe. This verifies local model access. The hosted integration gate subsequently passed in [run 42382361069](https://github.com/union-point/daily-seo-reviewer/actions/runs/42382361069), including Pages and Issue delivery.
 
 ## Validation and next milestone
 
 Run `uv run pytest` for mocked robots, origin/redirect, timeout, challenge, retry, XML, immutable storage, model-reference, CLI, and notification-deduplication cases. Tests do not require a network connection or API key. CI uses the locked environment. No formatter, linter, or coverage threshold is configured.
 
-Once the real integration gate passes, implement the persistent fixed cohort, detailed page observations, latest-successful state, and coverage reporting described in hours 2–3 of the plan. Subsequent milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
+Two real local collection snapshots from 7 November 2026 (`20261107T144408.785631Z-a1373579` and `20261107T144617.966697Z-2f55601a`) each collected 50/50 pages. The second preserved the cohort and records 50 previous successful observations. Neither run fabricates historical SEO regressions.
+
+The next milestone adds deterministic findings, severity, lifecycle tracking, regression confirmation, and widespread-change investigation. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
 
 API implementation references: [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [OpenAI Python parsing helpers](https://github.com/openai/openai-python/blob/main/helpers.md), [Protego](https://github.com/scrapy/protego), and [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

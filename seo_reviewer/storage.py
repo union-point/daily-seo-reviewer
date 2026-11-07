@@ -21,7 +21,7 @@ class RunStore:
 
     def save_response(self, evidence: FetchEvidence, body: bytes) -> None:
         """Persist raw bytes and their digest before appending evidence metadata."""
-        if (self.path / "preflight.json").exists():
+        if any((self.path / name).exists() for name in ("preflight.json", "collection.json")):
             raise FileExistsError("Run is already finalized")
         relative = Path("responses") / f"{uuid4().hex}.body"
         with (self.path / relative).open("xb") as output:
