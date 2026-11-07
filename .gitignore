@@ -221,3 +221,6 @@ __marimo__/
 
 # Local crawler serialization lock
 data/.crawl.lock
+
+# Local implementation plan
+/PLAN.md

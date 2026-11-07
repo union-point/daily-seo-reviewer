@@ -1,6 +1,6 @@
 # Daily SEO Reviewer
 
-An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally from [PLAN.md](PLAN.md).
+An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally through the milestones described below.
 
 ## Current milestone: cohort collection and comparison state
 

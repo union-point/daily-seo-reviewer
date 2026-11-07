@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is a Python 3.13+ implementation of Daily SEO Reviewer. `seo_reviewer/` provides integration preflight, cohort collection, typed SEO extraction, evidence storage, and comparison state; `main.py` delegates to the package CLI. Dependencies are pinned in `pyproject.toml` and `uv.lock`. `README.md` documents current behavior; `PLAN.md` tracks remaining milestones.
+This repository is a Python 3.13+ implementation of Daily SEO Reviewer. `seo_reviewer/` provides integration preflight, cohort collection, typed SEO extraction, evidence storage, and comparison state; `main.py` delegates to the package CLI. Dependencies are pinned in `pyproject.toml` and `uv.lock`. `README.md` documents current behavior and remaining milestones. Keep the local `PLAN.md` untracked and ignored.
 
 As implementation proceeds, organize `seo_reviewer/` into small modules for collection, storage, detection, AI triage, rendering, and notification. Add tests under `tests/` and report templates and a shared stylesheet alongside rendering code. Planned evidence paths are `data/runs/<run-id>/` and `data/reviews/<run-id>.json`; preserve immutable run snapshots.
 
