@@ -188,7 +188,7 @@ def test_marketer_report_hides_internal_details_but_preserves_evidence(tmp_path)
     assert 'Some checks or page discovery could not be completed.' in visible
     assert visible.count('AI summary unavailable') == 1
     assert 'Search description missing' in visible
-    for label in ('What happened:', 'Affected pages', 'Why it matters:', 'Next action:'):
+    for label in ('Affected pages', 'Next action:'):
         assert label in visible
     assert not tree.xpath('//details[@open]')
     technical_links = tree.xpath('//a[contains(@href, "/data/") or contains(@href, "github.com")]')
@@ -288,7 +288,13 @@ def test_assessment_and_action_plan_use_saved_analysis_without_note_labels(tmp_p
     assert 'AI note' not in tree.text_content()
     plan = tree.xpath('//ol[@class="prioritized-list"]')[0]
     assert 'Write a useful homepage description.' in plan.text_content()
-    assert 'Suggested owner' not in tree.text_content() and 'Done when:' in plan.text_content()
+    assert 'Suggested owner' not in tree.text_content()
+    assert 'Verify the change:' in plan.text_content()
+    visible_issue = main_report_text(plan)
+    assert 'What happened:' not in visible_issue and 'Why it matters:' not in visible_issue
+    assert 'The page has no search description.' not in visible_issue
+    assert 'A useful description can help people decide' not in visible_issue
+    assert 'Done when:' not in visible_issue
     assert tree.text_content().count('Write a useful homepage description.') == 1
     assert 'Your action plan' not in tree.text_content()
     assert tree.xpath('//article/p[@class="issue-assessment"]')[0].text == 'Start with the homepage description.'

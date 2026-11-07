@@ -26,7 +26,6 @@
   {% endif %}
   <div class="check-results">
     <h3>What the checks confirmed</h3>
-    {% if report.narrative_source == 'ai' %}<p>{{ presentation.summary }}</p>{% endif %}
     <p>{{ presentation.changes }}</p>
     {% if report.detection.get('widespread_change') %}<p class="notice status--warning">Changes affect many checked pages. Ask your web team to review recent site-wide changes before fixing pages one by one.</p>{% endif %}
   </div>
@@ -48,8 +47,12 @@
       </div>
     </div>
     {% if item.finding.state == 'unverified' %}<p class="notice status--warning">The current condition is unknown. The latest check could not confirm whether this issue remains or has been resolved.</p>{% endif %}
-    {% if item.explanation %}<p class="issue-assessment">{{ item.explanation }}</p>{% endif %}
-    <p><strong>What happened:</strong> {{ item.happened }}</p>
+    {% if item.explanation %}
+    <p class="issue-assessment">{{ item.explanation }}</p>
+    {% else %}
+    <p>{{ item.happened }}</p>
+    <p>{{ item.matters }}</p>
+    {% endif %}
     <p class="field-label">Affected pages</p>
     <ul class="url-list">
       {% for url in item.urls %}<li>{% if url.href %}<a class="data" href="{{ url.href }}">{{ url.label }}</a>{% else %}<span class="data">{{ url.label }}</span>{% endif %}</li>{% endfor %}
@@ -60,12 +63,12 @@
       <div><dt>{{ item.observation_label }}</dt><dd>{{ item.observed }}</dd></div>
     </dl>
     {% endif %}
-    <p><strong>Why it matters:</strong> {{ item.matters }}</p>
     <div class="action-block">
       <p><strong>Next action:</strong> {{ item.action }}</p>
-      {% if item.finding.state != 'resolved' %}<p><strong>Done when:</strong> {{ item.verification }}</p>{% endif %}
+      {% if not item.explanation and item.finding.state != 'resolved' %}<p><strong>Done when:</strong> {{ item.verification }}</p>{% endif %}
     </div>
     <details><summary>For specialists</summary>
+      {% if item.explanation %}<p><strong>Verify the change:</strong> {{ item.verification }}</p>{% endif %}
       <dl class="observation-grid">
         <div><dt>Previous observation</dt><dd class="data">{{ item.raw_before }}</dd></div>
         <div><dt>{{ 'Last recorded observation' if item.finding.state in ['resolved', 'unverified'] else 'Current observation' }}</dt><dd class="data">{{ item.raw_observed }}</dd></div>
