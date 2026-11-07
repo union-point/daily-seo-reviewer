@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from typing import Literal
 from urllib.parse import urlsplit, urlunsplit
 
 from pydantic import BaseModel, Field, field_validator
@@ -23,6 +24,22 @@ def origin(url: str) -> str:
     return urlunsplit((parts.scheme, host, "", "", ""))
 
 
+class PageSpeedConfig(BaseModel):
+    enabled: bool = True
+    strategies: list[Literal['mobile', 'desktop']] = Field(default_factory=lambda: ['mobile', 'desktop'], min_length=1, max_length=2)
+    max_pages: int = Field(default=3, ge=1, le=10)
+    read_timeout: float = Field(default=60, gt=0, le=120)
+    retries: int = Field(default=1, ge=0, le=2)
+    poor_score: float = Field(default=50, gt=0, le=100)
+
+    @field_validator('strategies')
+    @classmethod
+    def unique_strategies(cls, value: list[str]) -> list[str]:
+        if len(set(value)) != len(value):
+            raise ValueError('PageSpeed strategies must be unique')
+        return value
+
+
 class Config(BaseModel):
     schema_version: int = 1
     site_url: str = "https://www.djangoproject.com"
@@ -42,6 +59,7 @@ class Config(BaseModel):
     ai_max_output_tokens: int = Field(default=2048, ge=512, le=4096)
     ai_timeout: float = Field(default=30, gt=0, le=60)
     data_dir: Path = Path("data")
+    pagespeed: PageSpeedConfig = Field(default_factory=PageSpeedConfig)
 
     @field_validator("site_url")
     @classmethod
@@ -67,5 +85,14 @@ class Config(BaseModel):
             }.items()
             if env in os.environ
         }
+        pagespeed = {field: os.environ[env] for field, env in {
+            'enabled': 'PAGESPEED_ENABLED', 'max_pages': 'PAGESPEED_MAX_PAGES',
+            'read_timeout': 'PAGESPEED_READ_TIMEOUT', 'retries': 'PAGESPEED_RETRIES',
+            'poor_score': 'PAGESPEED_POOR_SCORE',
+        }.items() if env in os.environ}
+        if 'PAGESPEED_STRATEGIES' in os.environ:
+            pagespeed['strategies'] = [value.strip() for value in os.environ['PAGESPEED_STRATEGIES'].split(',')]
+        if pagespeed:
+            values['pagespeed'] = pagespeed
         values.update({key: value for key, value in overrides.items() if value is not None})
         return cls.model_validate(values)

@@ -35,6 +35,19 @@ class RunStore:
         with (self.path / "preflight.json").open("x", encoding="utf-8") as output:
             output.write(result.model_dump_json(indent=2) + "\n")
 
+    def save_diagnostic(self, kind: str, body: bytes) -> tuple[str, str]:
+        """Save compact, non-executable external diagnostics before finalization."""
+        if kind != 'pagespeed':
+            raise ValueError('Unknown diagnostic kind')
+        if any((self.path / name).exists() for name in ('preflight.json', 'collection.json')):
+            raise FileExistsError('Run is already finalized')
+        directory = self.path / kind
+        directory.mkdir(exist_ok=True)
+        relative = Path(kind) / (uuid4().hex + '.json')
+        with (self.path / relative).open('xb') as output:
+            output.write(body)
+        return relative.as_posix(), hashlib.sha256(body).hexdigest()
+
 
 def publish_probe(result: Preflight, directory: Path) -> None:
     """Export only JSON for the Pages smoke test; HTML reviews come later."""

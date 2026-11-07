@@ -87,6 +87,11 @@ TRIAGE_INSTRUCTIONS = (
     "to verify, not an established cause. Do not force a sequence when fixes are equivalent. "
     "Do not repeat the same explanation verbatim for related pages. Use a short paragraph "
     "for the summary and one or two sentences per issue. No AI labels or internal rule codes."
+    " PageSpeed findings are Lighthouse lab measurements, distinct from CrUX field data. "
+    "SEO score is a technical Lighthouse diagnostic, never an overall ranking or traffic metric. "
+    "Respect the supplied device strategy, measured values and audit evidence. Lab results vary; "
+    "do not infer user-wide impact or historical changes beyond the deterministic regression label. "
+    "Recommend Lighthouse-specific fixes only when supported by a supplied failed audit."
 )
 
 
@@ -139,8 +144,26 @@ def build_triage_input(config: Config, collection: dict, findings: list[Finding]
             'before_excerpt': json.dumps(finding.before, ensure_ascii=False)[:800],
             'observed_excerpt': json.dumps(finding.observed, ensure_ascii=False)[:800],
             'evidence_ids': [finding.id + ':finding'],
-            'evidence': [{'run_id': evidence.get('run_id'), 'body_path': evidence.get('body_path'), 'body_sha256': evidence.get('body_sha256')} for evidence in finding.evidence[:2]],
+            "evidence": [
+                {
+                    "run_id": evidence.get("run_id"),
+                    "body_path": evidence.get("body_path"),
+                    "body_sha256": evidence.get("body_sha256"),
+                    "strategy": evidence.get("strategy"),
+                    "measurement_source": "Lighthouse lab" if evidence.get("strategy") else None,
+                    "lighthouse_version": evidence.get("lighthouse_version"),
+                }
+                for evidence in finding.evidence[:2]
+            ],
         }
+        if finding.rule == 'pagespeed_performance' and isinstance(finding.observed, dict):
+            row['supporting_audits'] = []
+            for observation in collection.get('pagespeed', {}).get('observations', []):
+                if observation.get('status') != 'unavailable' and observation.get('url') in finding.urls and observation.get('strategy') == finding.observed.get('strategy'):
+                    row['supporting_audits'] = [
+                        {key: audit.get(key) for key in ('id', 'title', 'description', 'score', 'display_value', 'numeric_value', 'numeric_unit')}
+                        for audit in observation.get('audits', {}).values() if audit.get('failed')
+                    ][:3]
         payload['findings'].append(row)
         payload['omitted_findings'] -= 1
         if encoded_size() > config.ai_max_input_bytes:

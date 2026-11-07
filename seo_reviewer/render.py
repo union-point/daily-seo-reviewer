@@ -49,6 +49,79 @@ def display_time(value: str | datetime) -> str:
     return date.astimezone(ZoneInfo('Asia/Yerevan')).strftime('%d %b %Y, %H:%M Asia/Yerevan')
 
 
+def pagespeed_presentation(collection: dict) -> dict:
+    """Project saved lab/field measurements without fetching or inferring impact."""
+    saved = collection.get('pagespeed')
+    if saved is None:
+        return {'rows': [], 'empty': 'PageSpeed measurements were not collected in this older report.'}
+    if not saved.get('enabled', False):
+        return {'rows': [], 'empty': 'PageSpeed collection was disabled for this run.'}
+    rows = []
+    previous = saved.get('previous_observations', {})
+
+    def number(value: object, *, milliseconds: bool = False) -> str:
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+            return 'Unavailable'
+        return f'{value / 1000:.2f} s' if milliseconds else f'{value:g}'
+
+    def field_percentile(name: str, value: object) -> str:
+        if name == 'CUMULATIVE_LAYOUT_SHIFT_SCORE' and isinstance(value, (int, float)):
+            return number(value / 100)
+        if name.endswith('_MS') or name in {'INTERACTION_TO_NEXT_PAINT', 'EXPERIMENTAL_TIME_TO_FIRST_BYTE'}:
+            return number(value, milliseconds=True)
+        return number(value) + ' (API units)'
+
+    for observation in saved.get('observations', []):
+        url, strategy = observation['url'], observation['strategy']
+        unavailable = observation.get('status') == 'unavailable'
+        metrics = observation.get('metrics', {}) if not unavailable else {}
+        performance = observation.get('performance_score') if not unavailable else None
+        seo = observation.get('seo_score') if not unavailable else None
+        prior = previous.get(strategy + '\n' + url)
+        comparable = bool(prior and not unavailable and prior.get('status') != 'unavailable'
+            and observation.get('lighthouse_version') and observation.get('final_url')
+            and prior.get('url') == url and prior.get('strategy') == strategy
+            and prior.get('lighthouse_version') == observation.get('lighthouse_version')
+            and prior.get('final_url') == observation.get('final_url'))
+        changes = []
+        if comparable:
+            for label, key, current in [('Performance', 'performance_score', performance), ('SEO', 'seo_score', seo)]:
+                before = prior.get(key)
+                if isinstance(before, (int, float)) and isinstance(current, (int, float)):
+                    delta = current - before
+                    changes.append(f'{label} {delta:+g} points')
+        audits = []
+        if not unavailable:
+            for audit in observation.get('audits', {}).values():
+                if audit.get('failed'):
+                    audits.append({**audit, 'score_text': number(audit.get('score')),
+                        'observed': audit.get('display_value') or (
+                            number(audit.get('numeric_value')) + ' ' + (audit.get('numeric_unit') or '')
+                            if audit.get('numeric_value') is not None else 'Not recorded')})
+        fields = []
+        for key, label in [('crux_page', 'Page'), ('crux_origin', 'Origin')]:
+            field = observation.get(key) or {}
+            scope = 'Origin fallback' if key == 'crux_page' and field.get('scope') == 'origin' else label
+            fields.append({'scope': scope, 'status': field.get('status', 'unavailable'),
+                'category': field.get('overall_category') or 'Not recorded',
+                'metrics': [{'name': name, 'percentile': field_percentile(name, value.get('percentile')),
+                    'category': value.get('category') or 'Not recorded'}
+                    for name, value in field.get('metrics', {}).items()]})
+        rows.append({
+            'url': url, 'href': safe_url(url), 'strategy': strategy.capitalize(),
+            'status': {'success': 'Measured', 'incomplete': 'Incomplete', 'unavailable': 'Unavailable'}.get(observation.get('status'), 'Unavailable'),
+            'tone': 'info' if observation.get('status') == 'success' else 'warning',
+            'performance': number(performance), 'seo': number(seo),
+            'metrics': [{'label': label, 'value': number(metrics.get(key), milliseconds=key.endswith('_ms'))}
+                for key, label in [('lcp_ms', 'LCP'), ('cls', 'CLS'), ('fcp_ms', 'FCP'), ('tbt_ms', 'TBT'), ('speed_index_ms', 'Speed Index')]],
+            'changes': '; '.join(changes) if changes else 'No comparable measurements',
+            'collected_at': display_time(observation['collected_at']),
+            'version': observation.get('lighthouse_version') or 'Not recorded',
+            'missing': observation.get('missing', []), 'audits': audits, 'fields': fields,
+        })
+    return {'rows': rows, 'empty': 'No successfully collected pages were available for PageSpeed analysis.'}
+
+
 def load_reviews(data_dir: Path) -> list[tuple[Review, dict, bytes]]:
     rows = []
     for path in (data_dir / 'reviews').glob('*.json'):
@@ -160,6 +233,7 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
             'collected_at': display_time(collected), 'published_at': display_time(now), 'freshness': freshness,
             'baseline': review.baseline_only, 'sections': sections, 'history': history[:5],
             'presentation': report_presentation(review, collection),
+            'pagespeed': pagespeed_presentation(collection),
             'archive_href': link('archive/index.html'), 'review_json_href': link(f'data/reviews/{review.run_id}.json'),
             'collection_json_href': link(f'data/runs/{review.run_id}/collection.json'),
             'workflow_href': safe_url(workflow_url) if require_run_id == review.run_id else None,

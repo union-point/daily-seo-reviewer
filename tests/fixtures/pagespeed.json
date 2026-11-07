@@ -1,0 +1,113 @@
+{
+  "lighthouseResult": {
+    "requestedUrl": "https://example.com/",
+    "finalUrl": "https://example.com/",
+    "fetchTime": "2026-11-08T05:00:00Z",
+    "lighthouseVersion": "13.0.0",
+    "configSettings": {
+      "formFactor": "mobile"
+    },
+    "categories": {
+      "performance": {
+        "score": 0.35,
+        "auditRefs": [
+          {
+            "id": "largest-contentful-paint"
+          },
+          {
+            "id": "cumulative-layout-shift"
+          },
+          {
+            "id": "first-contentful-paint"
+          },
+          {
+            "id": "total-blocking-time"
+          },
+          {
+            "id": "speed-index"
+          },
+          {
+            "id": "unused-javascript"
+          }
+        ]
+      },
+      "seo": {
+        "score": 0.9,
+        "auditRefs": [
+          {
+            "id": "document-title"
+          }
+        ]
+      }
+    },
+    "audits": {
+      "largest-contentful-paint": {
+        "id": "largest-contentful-paint",
+        "title": "largest-contentful-paint",
+        "description": "Synthetic metric fixture",
+        "score": 0.2,
+        "scoreDisplayMode": "numeric",
+        "numericValue": 5200,
+        "numericUnit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "id": "cumulative-layout-shift",
+        "title": "cumulative-layout-shift",
+        "description": "Synthetic metric fixture",
+        "score": 1,
+        "scoreDisplayMode": "numeric",
+        "numericValue": 0.02,
+        "numericUnit": "unitless"
+      },
+      "first-contentful-paint": {
+        "id": "first-contentful-paint",
+        "title": "first-contentful-paint",
+        "description": "Synthetic metric fixture",
+        "score": 1,
+        "scoreDisplayMode": "numeric",
+        "numericValue": 1500,
+        "numericUnit": "millisecond"
+      },
+      "total-blocking-time": {
+        "id": "total-blocking-time",
+        "title": "total-blocking-time",
+        "description": "Synthetic metric fixture",
+        "score": 1,
+        "scoreDisplayMode": "numeric",
+        "numericValue": 150,
+        "numericUnit": "millisecond"
+      },
+      "speed-index": {
+        "id": "speed-index",
+        "title": "speed-index",
+        "description": "Synthetic metric fixture",
+        "score": 1,
+        "scoreDisplayMode": "numeric",
+        "numericValue": 3200,
+        "numericUnit": "millisecond"
+      },
+      "document-title": {
+        "id": "document-title",
+        "title": "Document has a title",
+        "description": "Add a descriptive title.",
+        "score": 0,
+        "scoreDisplayMode": "binary"
+      },
+      "unused-javascript": {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "description": "Remove unused code to reduce network bytes.",
+        "score": 0.3,
+        "scoreDisplayMode": "metricSavings",
+        "displayValue": "Potential savings of 150 KiB",
+        "numericValue": 150,
+        "numericUnit": "kilobyte"
+      },
+      "final-screenshot": {
+        "details": {
+          "data": "data:image/jpeg;base64,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      }
+    }
+  }
+}

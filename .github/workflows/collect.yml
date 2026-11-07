@@ -36,6 +36,10 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6.1-terra' }}
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+          PAGESPEED_ENABLED: ${{ vars.PAGESPEED_ENABLED || 'true' }}
+          PAGESPEED_STRATEGIES: ${{ vars.PAGESPEED_STRATEGIES || 'mobile,desktop' }}
+          PAGESPEED_MAX_PAGES: ${{ vars.PAGESPEED_MAX_PAGES || '3' }}
         run: uv run --frozen python -m seo_reviewer run --review --run-id-file .current-run.json
       - name: Preserve evidence before publication
         if: always() && (steps.crawl.outcome == 'success' || steps.crawl.outcome == 'failure')

@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 from seo_reviewer.observations import Observation
 from seo_reviewer.detection import Finding
+from seo_reviewer.pagespeed import PageSpeedObservation
 
 
 class ComparisonState(BaseModel):
@@ -21,3 +22,4 @@ class ComparisonState(BaseModel):
     active_findings: dict[str, Finding] = Field(default_factory=dict)
     robots_sha256: str | None = None
     latest_run_id: str | None = None
+    pagespeed_successful: dict[str, PageSpeedObservation] = Field(default_factory=dict)

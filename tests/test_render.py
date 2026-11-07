@@ -369,3 +369,97 @@ def test_report_does_not_link_unsafe_website_configuration(tmp_path):
     tree = html.fromstring((output / 'index.html').read_text())
     assert 'Website: Not recorded' in tree.text_content()
     assert not tree.xpath('//a[starts-with(@href,"javascript:")]')
+
+
+def pagespeed_observation(**overrides):
+    item = {
+        'run_id': 'run-1', 'url': 'https://example.com/', 'strategy': 'mobile',
+        'collected_at': '2026-11-07T12:00:00+00:00', 'status': 'success',
+        'performance_score': 42, 'seo_score': 90,
+        'metrics': {'lcp_ms': 4200, 'cls': 0.3, 'fcp_ms': 1200, 'tbt_ms': 600, 'speed_index_ms': 3500},
+        'audits': {'document-title': {'id': 'document-title', 'category': 'seo', 'failed': True,
+            'title': '<script>untrusted()</script>', 'description': 'Document has no title.',
+            'score': 0, 'display_value': None, 'numeric_value': None, 'numeric_unit': None}},
+        'missing': [], 'lighthouse_version': '13.0.0', 'final_url': 'https://example.com/',
+        'crux_page': {'status': 'unavailable'}, 'crux_origin': {'status': 'unavailable'},
+    }
+    item.update(overrides)
+    return item
+
+
+def test_pagespeed_reports_lab_metrics_and_escaped_audits(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    mobile = pagespeed_observation()
+    desktop = pagespeed_observation(strategy='desktop', performance_score=88)
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [mobile, desktop]}})
+    render_site(data, output)
+    page = (output / 'index.html').read_text()
+    tree = html.fromstring(page)
+    section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
+    assert len(section.xpath('.//tbody/tr')) == 2
+    assert section.xpath('.//table[@class="pagespeed-table"]')
+    assert len(section.xpath('.//tbody/tr[1]/td[@class="pagespeed-values"]')) == 3
+    assert 'Mobile' in section.text_content() and 'Desktop' in section.text_content()
+    for value in ['4.20 s', '0.3', '1.20 s', '0.60 s', '3.50 s', '42', '90']:
+        assert value in section.text_content()
+    assert 'laboratory measurements' in section.text_content()
+    assert 'CrUX Page field data:' in section.text_content()
+    assert 'Unavailable' in section.text_content()
+    assert section.xpath('.//details/summary')
+    assert not tree.xpath('//script')
+    assert '&lt;script&gt;untrusted()&lt;/script&gt;' in page
+    assert page == (output / 'reviews/run-1.html').read_text()
+
+
+@pytest.mark.parametrize('saved,message', [
+    (None, 'older report'),
+    ({'enabled': False, 'observations': []}, 'disabled'),
+    ({'enabled': True, 'observations': []}, 'No successfully collected pages'),
+])
+def test_pagespeed_empty_states(tmp_path, saved, message):
+    from seo_reviewer.render import pagespeed_presentation
+    collection = {} if saved is None else {'pagespeed': saved}
+    assert message in pagespeed_presentation(collection)['empty']
+
+
+def test_pagespeed_unavailable_measurement_never_displays_stored_scores(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    item = pagespeed_observation(status='unavailable', error='Timeout')
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
+    assert 'does not confirm a website performance problem' in section.text_content()
+    assert '42' not in section.text_content() and '4.20 s' not in section.text_content()
+    assert not section.xpath('.//li/strong[contains(text(), "untrusted")]')
+
+
+@pytest.mark.parametrize('prior_changes,expected', [
+    ({}, 'Performance -10 points'),
+    ({'strategy': 'desktop'}, 'No comparable measurements'),
+    ({'url': 'https://example.com/other'}, 'No comparable measurements'),
+    ({'lighthouse_version': '12.0.0'}, 'No comparable measurements'),
+    ({'final_url': 'https://example.com/other'}, 'No comparable measurements'),
+    ({'status': 'unavailable'}, 'No comparable measurements'),
+])
+def test_pagespeed_changes_require_matching_measurements(prior_changes, expected):
+    from seo_reviewer.render import pagespeed_presentation
+    current = pagespeed_observation()
+    prior = pagespeed_observation(performance_score=52, **prior_changes)
+    result = pagespeed_presentation({'pagespeed': {'enabled': True,
+        'observations': [current], 'previous_observations': {'mobile\nhttps://example.com/': prior}}})
+    assert expected in result['rows'][0]['changes']
+
+
+def test_pagespeed_incomplete_preserves_missing_values_and_field_scope(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    item = pagespeed_observation(status='incomplete', performance_score=None,
+        metrics={'lcp_ms': None, 'cls': 0}, missing=['performance_score', 'lcp_ms'],
+        crux_page={'status': 'available', 'scope': 'origin', 'overall_category': 'FAST',
+            'metrics': {'CUMULATIVE_LAYOUT_SHIFT_SCORE': {'percentile': 12, 'category': 'FAST'}}})
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
+    render_site(data, output)
+    page = html.fromstring((output / 'index.html').read_text()).text_content()
+    assert 'Incomplete' in page and 'LCP: Unavailable' in page and 'CLS: 0' in page
+    assert 'Some measurements or audit results are missing' in page
+    assert 'CrUX Origin fallback field data:' in page and '0.12' in page

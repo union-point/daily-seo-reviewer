@@ -12,6 +12,7 @@ from seo_reviewer.review_models import AIItem, Narrative, Review
 from seo_reviewer.triage import triage_findings
 
 ACTIONS = {
+    'pagespeed_performance': 'Review the failed Lighthouse performance audits and reproduce the lab result before choosing a fix.',
     'missing_title': 'Add a descriptive, page-specific title.',
     'duplicate_title': 'Give these pages distinct titles that describe their content.',
     'missing_description': 'Add a concise, page-specific meta description.',

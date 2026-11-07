@@ -237,7 +237,7 @@ def test_reanalysis_preserves_original_and_renderer_uses_revision(collection, mo
     source = (config.data_dir / original.collection_path).read_bytes()
     client(monkeypatch, [response(narrative())])
     updated, revision_path = reanalyse_review(config, 'run1')
-    assert revision_path.exists() and updated.generation.prompt_version == 'triage-v2'
+    assert revision_path.exists() and updated.generation.prompt_version == 'triage-v3'
     assert path.read_bytes() == before
     assert (config.data_dir / original.collection_path).read_bytes() == source
     assert latest_analysis(config.data_dir, original) == updated

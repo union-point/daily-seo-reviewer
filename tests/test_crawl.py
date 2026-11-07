@@ -24,7 +24,7 @@ def setup_run(monkeypatch, tmp_path, urls, page_responses=None, sitemap_response
         page_responses = [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(100)]
     session = FakeSession([response(404), sitemap_response or response(body=sitemap(urls)), *page_responses])
     monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
-    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, retries=0, **config))
+    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, pagespeed={'enabled': False}, retries=0, **config))
     return result, session
 
 
@@ -128,7 +128,7 @@ def test_robots_failure_cannot_replace_state(monkeypatch, tmp_path, clock):
     original = json.loads((tmp_path / 'state.json').read_text())
     session = FakeSession([response(403)])
     monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
-    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, retries=0))
+    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, pagespeed={'enabled': False}, retries=0))
     state = json.loads((tmp_path / 'state.json').read_text())
     assert state['latest_successful'] == original['latest_successful']
     assert state['sitemap_urls'] == original['sitemap_urls']
@@ -150,6 +150,7 @@ def test_origin_change_requires_separate_state(monkeypatch, tmp_path, clock):
 
 
 def test_run_cli(monkeypatch, tmp_path, clock):
+    monkeypatch.setenv('PAGESPEED_ENABLED', 'false')
     from seo_reviewer.__main__ import main
     session = FakeSession([response(404), response(body=sitemap(ARTICLES))] + [response(body=HTML, **{'Content-Type': 'text/html'}) for _ in range(50)])
     monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
@@ -181,7 +182,7 @@ def test_insufficient_articles_preserves_failure_evidence(monkeypatch, tmp_path,
 def test_first_success_after_robots_failure_is_baseline(monkeypatch, tmp_path, clock):
     session = FakeSession([response(403)])
     monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
-    run_crawl(Config(site_url=SITE, data_dir=tmp_path, retries=0))
+    run_crawl(Config(site_url=SITE, data_dir=tmp_path, pagespeed={'enabled': False}, retries=0))
     result, _ = setup_run(monkeypatch, tmp_path, ARTICLES)
     assert result['baseline_only']
     assert result['sitemap_added'] == []
@@ -239,7 +240,7 @@ def test_robots_regression_rechecks_policy_without_crawling_excluded_urls(monkey
     policy = b'User-agent: *\nDisallow: /weblog/'
     session = FakeSession([response(body=policy), response(body=sitemap(ARTICLES)), response(body=HTML, **{'Content-Type': 'text/html'}), response(body=policy)])
     monkeypatch.setattr('seo_reviewer.collection.requests.Session', lambda: session)
-    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, retries=0))
+    result = run_crawl(Config(site_url=SITE, data_dir=tmp_path, pagespeed={'enabled': False}, retries=0))
     issues = [item for item in result['detection']['findings'] if item['rule'] == 'robots_excluded']
     assert len(issues) == 49
     assert all(item['state'] == 'new' and item['regression'] for item in issues)

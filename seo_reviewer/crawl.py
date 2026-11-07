@@ -17,6 +17,8 @@ from seo_reviewer.detection import Finding, critical_signature, detect, needs_co
 from seo_reviewer.preflight import sitemap_locations
 from seo_reviewer.storage import RunStore
 from seo_reviewer.state import ComparisonState
+from seo_reviewer.pagespeed import PageSpeedObservation, collect_pagespeed, measurement_key
+from seo_reviewer.pagespeed_detection import detect_pagespeed, is_pagespeed
 
 
 def article_date(url: str) -> tuple[int, int, int] | None:
@@ -109,7 +111,8 @@ def run_crawl(config: Config) -> dict:
         pending_new = set(state.get('pending_urls', []))
         confirmations: dict[str, Observation] = {}
         previous_typed = {url: Observation.model_validate(value) for url, value in state['latest_successful'].items()}
-        active = {key: Finding.model_validate(value) for key, value in state['active_findings'].items()}
+        all_active = {key: Finding.model_validate(value) for key, value in state['active_findings'].items()}
+        active = {key: item for key, item in all_active.items() if not is_pagespeed(item)}
         robots = None
         try:
             robots = collector.load_robots()
@@ -169,6 +172,15 @@ def run_crawl(config: Config) -> dict:
             if url in confirmations and critical_signature(confirmations[url]) != critical_signature(item):
                 errors.append(f'Critical recheck inconclusive: {url}')
         detection = detect(observations, previous_typed, active, confirmations, store.run_id)
+        pagespeed = collect_pagespeed(config, store, observations)
+        previous_pagespeed = {key: PageSpeedObservation.model_validate(value) for key, value in state['pagespeed_successful'].items()}
+        pagespeed_findings = detect_pagespeed(pagespeed, previous_pagespeed,
+            {key: item for key, item in all_active.items() if is_pagespeed(item)}, store.run_id, config.pagespeed)
+        detection['findings'].extend(item.model_dump(mode='json') for item in pagespeed_findings)
+        if any(item.state not in {'resolved', 'unverified'} for item in pagespeed_findings) and detection['alert_status'] != 'critical':
+            detection['alert_status'] = 'warning'
+        if detection['alert_status'] == 'healthy' and (any(item.state == 'unverified' for item in pagespeed_findings) or any(item.status != 'success' for item in pagespeed)):
+            detection['alert_status'] = 'verification_required'
         if errors or deferred or len(successful) != len(observations):
             if detection['alert_status'] == 'healthy':
                 detection['alert_status'] = 'verification_required'
@@ -179,6 +191,11 @@ def run_crawl(config: Config) -> dict:
         comparable = {item.evidence.requested_url: previous[item.evidence.requested_url] for item in observations if item.evidence.requested_url in previous}
         summary = {
             'schema_version': 1, 'kind': 'collection', 'run_id': store.run_id,
+            'pagespeed': {
+                'enabled': config.pagespeed.enabled,
+                'observations': [item.model_dump(mode='json') for item in pagespeed],
+                'previous_observations': {measurement_key(item): previous_pagespeed[measurement_key(item)].model_dump(mode='json') for item in pagespeed if measurement_key(item) in previous_pagespeed},
+            },
             'started_at': started, 'completed_at': datetime.now(UTC).isoformat(),
             'config': config.model_dump(mode='json'), 'cohort': cohort,
             'execution_context': 'github-actions' if os.environ.get('GITHUB_ACTIONS') == 'true' else 'local',
@@ -207,6 +224,9 @@ def run_crawl(config: Config) -> dict:
             output.flush()
             os.fsync(output.fileno())
         state['active_findings'] = {item['id']: item for item in detection['findings'] if item['state'] != 'resolved'}
+        for item in pagespeed:
+            if item.status == 'success':
+                state['pagespeed_successful'][measurement_key(item)] = item.model_dump(mode='json')
         if robots_digest:
             state['robots_sha256'] = robots_digest
         state['cohort'] = cohort

@@ -35,6 +35,48 @@ The command exits `0` for a complete collection, `1` for partial/failed collecti
 
 After pushing, run the **Collect SEO observations** workflow (`gh workflow run collect.yml --ref main`). It runs tests, collects from the default branch, commits evidence and state back to that branch, and uploads a downloadable artifact even when collection is partial. It needs repository contents write permission and permission to push to the default branch; branch protection or a concurrent external push can reject persistence, leaving the artifact available for recovery. The workflow then renders and deploys Pages and delivers a daily Issue comment. Publication shares the existing concurrency group and runs daily at 09:17 Asia/Yerevan.
 
+## PageSpeed Insights and Lighthouse
+
+Normal collection optionally calls the official [PageSpeed Insights API v5](https://developers.google.com/speed/docs/insights/rest/v5/pagespeedapi/runpagespeed) for **Performance and SEO** categories. It uses the existing HTTP dependency and adds no crawler, CrUX API client, or model calls. By default, up to **3 successfully collected pages** are audited with **mobile and desktop** strategies: at most 6 initial requests. Selection is deterministic from collected final URLs: homepage first when available, then distinct path depths/families to favor an index and a detail page. Redirect aliases are deduplicated; failed, robots-excluded and off-origin pages are ineligible. URL shape is a heuristic for page type, not content classification; no domain-specific paths are used by this integration.
+
+Configuration follows the existing environment-variable conventions, not a new YAML loader. Copy [`.env.example`](.env.example) to `.env`, fill only the credentials you use, then run:
+
+```sh
+uv run --env-file .env python -m seo_reviewer run --review
+# Disable only PageSpeed; the existing SEO checks still run:
+PAGESPEED_ENABLED=false uv run python -m seo_reviewer run --review
+```
+
+`.env` is ignored and loaded only when explicitly passed to `uv`. In code, the equivalent defaults are `Config(pagespeed={"enabled": True, "strategies": ["mobile", "desktop"], "max_pages": 3})`.
+
+| Variable | Default / bounds |
+| --- | --- |
+| `PAGESPEED_ENABLED` | `true` |
+| `PAGESPEED_STRATEGIES` | `mobile,desktop`; either or both, without duplicates |
+| `PAGESPEED_MAX_PAGES` | `3`; 1–10 pages, independently of the crawl budget |
+| `PAGESPEED_API_KEY` | Optional, unset; read only when making PSI requests |
+| `PAGESPEED_READ_TIMEOUT` | `60` seconds per attempt; greater than 0, at most 120 |
+| `PAGESPEED_RETRIES` | `1`; 0–2 transient retries per measurement |
+| `PAGESPEED_POOR_SCORE` | `50` out of 100; greater than 0, at most 100 |
+
+Google's [getting-started guide](https://developers.google.com/speed/docs/insights/v5/get-started) permits requests without an API key and recommends a key for automation. To obtain one, create/select a Google Cloud project, enable **PageSpeed Insights API**, create an API key under **APIs & Services → Credentials**, and restrict the key to that API. Set `PAGESPEED_API_KEY` locally or add it as an optional Actions repository secret (`gh secret set PAGESPEED_API_KEY`, entering it at the prompt). The collection workflow passes that secret and the optional repository variables `PAGESPEED_ENABLED`, `PAGESPEED_STRATEGIES`, and `PAGESPEED_MAX_PAGES`. Preflight remains the existing site/model integration gate and makes no PSI requests. No key is saved in configuration, evidence, logs, or published reports.
+
+**Lab versus field:** Performance/SEO scores (0–100), Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), First Contentful Paint (FCP), Total Blocking Time (TBT), and Speed Index come from **Lighthouse laboratory measurements**. Times are stored in milliseconds, CLS is unitless; the report formats times in seconds. These are synthetic measurements, not actual visitor traffic. Lighthouse SEO score describes its technical checks; it is not an overall search-ranking or organic-traffic metric. Actionable failed audits retain IDs, titles, descriptions, scores, and available numeric/display observations.
+
+When PSI returns CrUX `loadingExperience` or `originLoadingExperience`, these **field data** remain separate, including explicit page/origin-fallback scope, original percentile units and distributions. They are never substituted for lab measurements. Missing CrUX is explicitly unavailable and does not make otherwise complete Lighthouse data fail. Google [plans to discontinue field data in PSI](https://developers.google.com/speed/docs/insights/v5/get-started); this integration deliberately makes no separate CrUX API requests and continues to work without it.
+
+**Deterministic checks:** A warning requires a Performance score below the configured threshold **and** at least one poor lab value: LCP > 4,000 ms, CLS > 0.25, or TBT > 600 ms. These are conservative investigation thresholds, not a field Core Web Vitals pass/fail assessment. Each explicitly failed, scored Lighthouse SEO audit produces a warning. Manual, not-applicable, informative and errored audits never become confirmed failures. Available partial evidence can support a finding; missing measurements cannot prove recovery.
+
+Comparisons use the same exact URL and strategy, with matching Lighthouse version and final URL for historical claims. A new performance regression also requires a previously non-problematic, complete core measurement and a core metric crossing its poor boundary with an increase of at least **30% and 1,000 ms LCP / 0.1 CLS / 300 ms TBT**, respectively. Score fluctuations alone do not create regressions. A new SEO regression requires that exact audit previously passed. First observations remain baseline issues; active issues remain ongoing until a usable check no longer meets the rule, or that SEO audit explicitly passes. Missing, failed, deferred or omitted measurements leave previous findings unverified. Lab regressions are investigation signals, not proof of real-user or business impact.
+
+Snapshots store normalized observations under `pagespeed`, with URL, strategy, collection time, status (`success`, `incomplete`, `unavailable`), missing fields, metrics and audit evidence. `pagespeed/*.json` files retain compact diagnostic projections with SHA-256 digests; screenshots, DOM tables, resource waterfalls and full Lighthouse reports are omitted to bound evidence growth. Only fully successful measurements replace `state.json` comparison entries. Snapshots without PageSpeed fields remain valid and show an explicit older-report state. Saved review generation, AI reanalysis and rendering use only immutable saved evidence and never request PageSpeed again; existing review hashes and narrative-reference validation still apply. The same bounded triage call can explain PageSpeed findings and supplied failed audits, with deterministic fallback when AI is unavailable.
+
+The **Performance & Lighthouse** report section shows audited URLs/strategies, scores, available metrics, factual comparable score deltas and explicit unavailable states. Failed-audit descriptions and page/origin CrUX availability live in a native expandable technical disclosure. Priority findings use the existing report issue list. All untrusted text is escaped; no raw Lighthouse JSON is printed in the primary report.
+
+**Reliability and limits:** Requests run serially with the configured site request interval (minimum one second), a connect timeout and separate PSI read timeout, no HTTP redirects, at most 8 MB per response, and bounded retries for timeouts/connection failures, HTTP 429 and transient 5xx errors. `Retry-After` is honored up to 60 seconds; longer delays are deferred. An exhausted 429 or 403 defers remaining PSI requests for the run. Service failures do not change crawl success/exit status or stop review/publication; missing Lighthouse data can set `verification_required` while keeping measured SEO findings authoritative. They never become confirmed website performance problems or zero scores.
+
+Google Cloud project quotas, shared unauthenticated limits, API latency, inaccessible pages and run-to-run variation apply. Check the PageSpeed API quota dashboard for your project's current limits rather than assuming a universal allowance. Default retries permit up to 12 total requests; repeated timeouts can add several minutes to collection. Raising page/retry/timeout limits can exceed the existing 20-minute workflow budget; keep scheduled settings conservative. There is no persistent API cache beyond saved run evidence: a fresh collection deliberately measures again, while review retries reuse snapshots. History begins with the first successful comparable PageSpeed measurement; old reports are never backfilled.
+
 ## Findings and change tracking
 
 Each collection snapshot now includes a versioned `detection` result: authoritative `alert_status`, findings, contextual observations, comparable/changed page counts, and a `widespread_change` investigation flag. `data/state.json` persists active findings; resolved entries remain in their immutable run snapshots. Existing state files migrate by defaulting these new fields; old snapshots are never rewritten.
@@ -186,6 +228,8 @@ seo_reviewer/
   collection.py      # rate-limited, robots-aware HTTP client
   models.py          # versioned fetch/integration evidence types
   observations.py    # typed SEO field extraction
+  pagespeed.py       # bounded PSI collection and typed lab/field observations
+  pagespeed_detection.py # conservative URL/strategy-specific Lighthouse checks
   crawl.py           # cohort selection, discovery, collection orchestration
   state.py           # typed comparison index and active findings
   detection.py       # deterministic rules, confirmation decisions, and lifecycles
@@ -203,6 +247,7 @@ data/runs/<run-id>/
   collection.json    # collection runs only: observations and previous evidence
   fetches.jsonl      # request evidence, including redirect responses
   responses/*.body   # bounded raw response bytes (untrusted content)
+  pagespeed/*.json    # compact Lighthouse diagnostic evidence with snapshot digests
 ```
 
 Snapshots use unique timestamp/UUID run IDs and refuse existing run directories or finalized-run writes. Preflight snapshots never update comparison state; collection runs publish state only after finalizing their snapshot. A response body is diagnostic input, not executable or trusted HTML; the smoke deployment contains JSON only. HTTP headers persisted are limited to content type, redirect location, retry timing, and indexing headers. API exception messages and tokens are not persisted.
@@ -230,4 +275,4 @@ uv run --env-file .env python -m seo_reviewer review --run-id <run-id> --refresh
 uv run python -m seo_reviewer.render --base-path ''
 ```
 
-Successful reanalyses are immutable files under `data/review_revisions/<run-id>/`. Rendering selects the newest analysis for the same collection, checks that all authoritative facts match the original review, and validates finding/evidence references. A failed reanalysis leaves earlier results intact. Ordinary review retries remain idempotent. Prompt v2 supplies grouped prevalence and lifecycle counts before bounded detail truncation; asks for concise significance, caveats, related issues and a justified order of fixes; and forbids invented traffic or ranking effects. The snippet guidance follows [Google Search Central](https://developers.google.com/search/docs/appearance/snippet): Google primarily builds snippets from page content and may use the meta description.
+Successful reanalyses are immutable files under `data/review_revisions/<run-id>/`. Rendering selects the newest analysis for the same collection, checks that all authoritative facts match the original review, and validates finding/evidence references. A failed reanalysis leaves earlier results intact. Ordinary review retries remain idempotent. Prompt v3 retains grouped prevalence and lifecycle counts before bounded detail truncation; asks for concise significance, caveats, related issues and a justified order of fixes; and forbids invented traffic or ranking effects. It also distinguishes Lighthouse lab measurements from field data and grounds performance advice in supplied failed audits. The snippet guidance follows [Google Search Central](https://developers.google.com/search/docs/appearance/snippet): Google primarily builds snippets from page content and may use the meta description.

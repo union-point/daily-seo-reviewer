@@ -84,7 +84,7 @@ def report_presentation(review: Review, collection: dict) -> dict:
         status_label, status_tone = ('Check incomplete' if incomplete else 'Needs verification', 'warning')
     if active:
         summary = f'{len(active)} issue{"s" if len(active) != 1 else ""} to address on the checked pages. Start with the priority issues below.'
-    elif incomplete or unverified:
+    elif incomplete or unverified or review.alert_status == 'verification_required':
         summary = 'There is not enough verified information to give the checked pages an all-clear. Complete the checks before drawing conclusions.'
     else:
         summary = 'No current issues were found by these checks. This report covers selected pages, not the whole site.'
@@ -107,6 +107,8 @@ def report_presentation(review: Review, collection: dict) -> dict:
         errors.append('Some checks or page discovery could not be completed.')
     elif collection.get('request_errors'):
         errors.append('Some requests had problems. Recheck the affected pages before drawing conclusions.')
+    if any(item.get('status') != 'success' for item in collection.get('pagespeed', {}).get('observations', [])):
+        errors.append('Some Lighthouse measurements are unavailable or incomplete. This does not confirm a website performance problem.')
     return {
         'coverage_text': f'{checked} of {total} pages checked' if total else 'No pages checked',
         'incomplete': incomplete, 'status_label': status_label, 'status_tone': status_tone,
@@ -121,6 +123,14 @@ def observation_text(rule: str, value: object) -> str:
         return 'Not recorded'
     if value == '' or value == []:
         return 'Not set'
+    if rule == 'pagespeed_performance' and isinstance(value, dict):
+        parts = []
+        for key, label, unit in [('score', 'Performance score', '/100'), ('lcp_ms', 'LCP', ' ms'), ('cls', 'CLS', ''), ('tbt_ms', 'TBT', ' ms')]:
+            if value.get(key) is not None:
+                parts.append(f'{label}: {value[key]}{unit}')
+        return '; '.join(parts) or 'Unavailable'
+    if rule.startswith('lighthouse_seo:') and isinstance(value, dict):
+        return value.get('display_value') or (f"Audit score: {value['score']}/1" if value.get('score') is not None else 'Not recorded')
     if rule == 'malformed_json_ld':
         count = len(value) if isinstance(value, list) else 1
         return f'{count} formatting problem{"s" if count != 1 else ""}'
@@ -141,6 +151,19 @@ def issue_presentation(finding: Finding) -> dict:
         'This may affect how people find or use the page.',
         'Ask your web team to review the page and the saved check details.',
     ))
+    if finding.rule == 'pagespeed_performance' or finding.rule.startswith('lighthouse_seo:'):
+        observed = finding.observed if isinstance(finding.observed, dict) else {}
+        strategy = str(observed.get('strategy') or next((item.get('strategy') for item in finding.evidence if item.get('strategy')), 'Unknown')).capitalize()
+        if finding.rule == 'pagespeed_performance':
+            title = f'Performance needs attention · {strategy}'
+            happened = 'Lighthouse laboratory measurements crossed the configured performance thresholds.'
+            matters = 'The measured loading or layout behavior warrants investigation. A single lab run does not establish real-user impact.'
+            action = 'Ask your web team to inspect the failed Lighthouse audits in the technical details and repeat the measurement after changes.'
+        else:
+            title = f"Lighthouse SEO check: {observed.get('title') or 'Needs review'} · {strategy}"
+            happened = 'A Lighthouse SEO audit failed on this page.'
+            matters = 'This diagnostic identifies a specific technical condition; it does not measure rankings or organic traffic.'
+            action = 'Ask your web team to review this audit’s description and observed value in the Lighthouse technical details, apply the relevant fix, and recheck.'
     if finding.rule == 'canonical_changed' and finding.observed == []:
         happened = 'The page no longer names a preferred version for search.'
     if finding.state == 'unverified':

@@ -75,6 +75,40 @@
 {% endif %}
 {% endfor %}
 
+<section aria-labelledby="performance-heading">
+  <h2 id="performance-heading">Performance &amp; Lighthouse</h2>
+  {% if pagespeed.rows %}
+  <p class="muted">Lighthouse laboratory measurements for selected pages. Scores are out of 100; SEO scores describe these checks, not search rankings or organic traffic. Results vary between runs.</p>
+  <div class="table-region" role="region" aria-label="Performance and Lighthouse measurements" tabindex="0">
+    <table class="pagespeed-table">
+      <caption>Mobile and desktop measurements are compared separately. Score changes alone do not confirm a regression.</caption>
+      <thead><tr><th scope="col">Page / strategy</th><th scope="col">Performance</th><th scope="col">SEO</th><th scope="col">Lab metrics</th><th scope="col">Change</th></tr></thead>
+      <tbody>{% for row in pagespeed.rows %}<tr>
+        <td>{% if row.href %}<a class="data" href="{{ row.href }}">{{ row.url }}</a>{% else %}<span class="data">{{ row.url }}</span>{% endif %}<br><strong>{{ row.strategy }}</strong><br><span class="status-badge status--{{ row.tone }}">{{ row.status }}</span></td>
+        <td class="pagespeed-values">{{ row.performance }}</td><td class="pagespeed-values">{{ row.seo }}</td>
+        <td class="pagespeed-values">{% for metric in row.metrics %}{{ metric.label }}: {{ metric.value }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td>
+        <td>{{ row.changes }}</td>
+      </tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Lighthouse technical details and field-data availability</summary>
+    <p class="muted">LCP measures loading of the largest content; CLS measures layout movement; FCP is first content; TBT is blocking time. Speed Index describes visual loading progress. These are lab results. CrUX field data reflects real-user experiences when supplied by PageSpeed; page and origin data have different scopes.</p>
+    {% for row in pagespeed.rows %}
+    <h3>{{ row.url }} · {{ row.strategy }}</h3>
+    <p class="muted">Collected {{ row.collected_at }} · Lighthouse {{ row.version }}</p>
+    {% if row.status == 'Unavailable' %}<p class="notice status--warning">PageSpeed could not provide a usable measurement. This does not confirm a website performance problem.</p>{% endif %}
+    {% if row.missing %}<p class="notice status--warning">Some measurements or audit results are missing. Available values remain shown above; missing values are unknown.</p>{% endif %}
+    {% if row.audits %}
+    <p class="field-label">Failed Lighthouse audits</p>
+    <ul class="evidence-list">{% for audit in row.audits %}<li><strong>{{ audit.title }}</strong> ({{ audit.category }})<br>{{ audit.description }}<br><span class="data">{{ audit.id }}</span> · Score {{ audit.score_text }} / 1 · Observed: {{ audit.observed }}</li>{% endfor %}</ul>
+    {% elif row.status == 'Measured' %}<p>No actionable failed audits were recorded.</p>{% endif %}
+    <ul class="evidence-list">{% for field in row.fields %}<li><strong>CrUX {{ field.scope }} field data:</strong> {% if field.status == 'available' %}Available · {{ field.category }}{% if field.metrics %}<ul>{% for metric in field.metrics %}<li><span class="data">{{ metric.name }}</span>: {{ metric.percentile }} · {{ metric.category }}</li>{% endfor %}</ul>{% endif %}{% else %}Unavailable. No field measurement is inferred from laboratory results.{% endif %}</li>{% endfor %}</ul>
+    {% endfor %}
+  </details>
+  {% else %}<p class="empty-state">{{ pagespeed.empty }}</p>{% endif %}
+</section>
+
 <section aria-labelledby="history-heading">
   <div class="section-header"><h2 id="history-heading">Recent reports</h2><a href="{{ archive_href }}">Full archive</a></div>
   {% if history %}
