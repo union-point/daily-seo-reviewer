@@ -2,7 +2,7 @@
 
 An evidence-backed technical SEO reviewer for `www.djangoproject.com`, implemented incrementally through the milestones described below.
 
-## Current milestone: bounded AI triage
+## Current milestone: HTML reports and daily delivery
 
 The first slice verifies site access and a schema-validated OpenAI Responses API call before expanding the crawler. A manually triggered workflow also tests Pages deployment and delivery to one GitHub Issue named **Daily SEO reviews**. Preflight results are connectivity evidence, **not SEO findings, a baseline, or a delivered daily review**.
 
@@ -15,7 +15,7 @@ Implemented:
 - A bounded Structured Outputs model probe, including refusal/incomplete-output handling and application validation of evidence references. The preflight probe sends no crawled text; review triage uses the bounded projection documented below.
 - Automated tests, a JSON-only Pages smoke artifact, and retryable Issue delivery with run-ID deduplication.
 
-The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles and bounded AI review summaries are implemented. HTML reports, daily review delivery/scheduling, and the final submission recording are subsequent milestones.
+The fixed cohort, detailed SEO extraction, persistent comparison state, and manual collection workflow are now implemented. Deterministic SEO findings/lifecycles and bounded AI review summaries are implemented. HTML reports, archives, daily Pages publication, and Issue delivery are implemented. The remaining submission work is hosted end-to-end validation, final hardening, and the demonstration recording.
 
 ## Collect observations
 
@@ -33,7 +33,7 @@ Each page observation records requested/final URL, redirect chain, status, times
 
 The command exits `0` for a complete collection, `1` for partial/failed collection or state errors, and `2` for invalid arguments/configuration. Deferred page URLs and collection errors are printed explicitly. Collection status is not an SEO alert status.
 
-After pushing, run the **Collect SEO observations** workflow (`gh workflow run collect.yml --ref main`). It runs tests, collects from the default branch, commits evidence and state back to that branch, and uploads a downloadable artifact even when collection is partial. It needs repository contents write permission and permission to push to the default branch; branch protection or a concurrent external push can reject persistence, leaving the artifact available for recovery. The workflow does not deploy or notify an SEO review yet. Publication shares the existing concurrency group; no daily schedule is enabled.
+After pushing, run the **Collect SEO observations** workflow (`gh workflow run collect.yml --ref main`). It runs tests, collects from the default branch, commits evidence and state back to that branch, and uploads a downloadable artifact even when collection is partial. It needs repository contents write permission and permission to push to the default branch; branch protection or a concurrent external push can reject persistence, leaving the artifact available for recovery. The workflow then renders and deploys Pages and delivers a daily Issue comment. Publication shares the existing concurrency group and runs daily at 09:17 Asia/Yerevan.
 
 ## Findings and change tracking
 
@@ -70,7 +70,7 @@ uv run --env-file .env python -m seo_reviewer run --review
 uv run --env-file .env python -m seo_reviewer review --run-id <run-id>
 ```
 
-For an explicitly deterministic review, use `--skip-ai` with either command. Plain `run` still makes no model call. The collection workflow now uses `run --review` with the Actions API-key secret and model repository variable, then commits and uploads `data/reviews/*.json` with the collection data. No HTML publication or review notification is added by this milestone.
+For an explicitly deterministic review, use `--skip-ai` with either command. Plain `run` still makes no model call. The collection workflow now uses `run --review` with the Actions API-key secret and model repository variable, then commits and uploads `data/reviews/*.json` with the collection data. The same workflow now also publishes HTML reports and delivers the saved review.
 
 Reviews are immutable versioned JSON at `data/reviews/<run-id>.json`. They contain the source snapshot path and SHA-256 digest, authoritative status/coverage/findings, deterministic summary, separately labeled AI or deterministic narrative, and generation metadata. Existing reviews are reused without another paid call, even when the requested model or `--skip-ai` changes. Changing a source snapshot is rejected. A local lock and atomic exclusive publication prevent partial review files and duplicate concurrent model calls. A failed write remains visible as a command failure; rerun the review command using the same evidence.
 
@@ -83,6 +83,29 @@ Triage uses low reasoning effort, a 2,048-token output cap, a 30-second SDK requ
 Every failure produces a usable deterministic narrative headed **AI summary unavailable**, with rule-specific actions and a verification bucket. Model failure alone does not change collection status or cause a nonzero exit. Authoritative fields stay intact. Each review records requested/returned model, prompt version, payload digest/size, included/omitted findings, per-attempt outcome, response ID, and token usage when available. Raw API errors and rejected output are not persisted. `Config` exposes validated limits (`ai_max_input_bytes`, `ai_max_findings`, `ai_max_output_tokens`, `ai_timeout`) for programmatic use; model selection remains `OPENAI_MODEL` / `--model`.
 
 The real review `data/reviews/20261107T155148.935096Z-6285c5ed.json` was generated from the successful hosted collection run: the AI call succeeded in one attempt while preserving warning status and 50/50 coverage. Saved synthetic tests exercise failures without fabricating collected regressions. API behavior follows the [official Structured Outputs documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
+
+## HTML reports and daily delivery
+
+Build the latest review and the complete saved-review archive without crawling or calling the model:
+
+```sh
+uv run python -m seo_reviewer.render --base-path /daily-seo-reviewer
+python3 -m http.server 8000 --directory site
+```
+
+For local preview, use `--base-path ''` (or serve the generated tree under a matching `/daily-seo-reviewer/` parent). `--output-dir` selects a different generated directory. The renderer refuses to replace unrelated nonempty directories or evidence paths; it can upgrade the old preflight smoke directory. `site/` is generated and ignored. `DESIGN.md` and `UX-CONTRACT.md` document the shared presentation contract; [desktop](docs/screenshots/report-desktop.jpg) and [mobile](docs/screenshots/report-mobile.jpg) previews show real saved evidence.
+
+The shared Jinja report template renders `/index.html` and `/reviews/<run-id>.html`. The archive starts at `/archive/index.html`, with static pages of 30 reviews and a 20-row recent-history table. Latest means newest collection time, independent of AI generation time. All report/data/CSS links honor the repository Pages base path. Evidence digests are verified before rendering. Only saved review JSON and collection JSON are copied into the Pages artifact; raw crawled response bodies remain in repository evidence and workflow artifacts. Report links show the stored body path and digest for reproducibility.
+
+Report order: collected date → code-derived SEO and collection status/freshness → coverage → deterministic summary and separately labeled AI advisory → prioritized findings with actions and before/observed evidence → resolved and verification items → history → archive/data links → limitations and errors. Baseline-only, healthy, partial-crawl, collection-failed, unverified, empty-archive and AI-fallback states are explicit. Freshness is measured **at publication**, with a 36-hour stale threshold; static pages do not update after deployment. Report dates use Asia/Yerevan. HTML output autoescapes all crawled/model content, accepts only HTTP(S) external links, and includes a restrictive content security policy. No JavaScript framework, remote fonts, or executable crawled HTML is published.
+
+The collection workflow runs daily at **09:17 Asia/Yerevan** (`17 5 * * *` UTC), and supports manual runs. GitHub may delay scheduled execution. Jobs are serialized and scoped to the default branch. Data is committed before building/deploying the Pages artifact. Permissions are per job: contents write for persisted evidence, Pages/OIDC writes for deployment, and Issue write plus Actions/repository read for delivery. Configure Pages to use GitHub Actions and allow the default branch in the `github-pages` environment.
+
+One Issue named **Daily SEO reviews** receives status, coverage, code-derived top actions, a link to the exact archived report, and the workflow-run link. Subscribe to that Issue for notifications. An AI failure still delivers a deterministic review; no new findings still produces a daily summary. Collection failures/partial crawls can publish their saved reviews and remain visible as workflow failures. If review creation/build/deployment fails, notification attempts a clearly labeled pipeline/publication failure message instead of claiming that an older report is current.
+
+Notification downloads the **exact artifact ID output by its collection job**, so retrying only `notify` reuses the saved current review without recrawling or calling the model. A rerun-all whose new collection fails cannot silently reuse an earlier attempt's review. Existing run-ID comment markers prevent duplicates across uncertain POSTs; when deployment later succeeds, retry delivery updates the existing comment with its report link. If only notification fails, rerun that job. If deployment fails, rerun the failed deployment and notification jobs. Full reruns collect new immutable evidence. Build/deployment/notification failures remain in Actions, and artifacts remain available for 90 days; committed evidence has durable history. Repository branch protection or an external concurrent push can reject evidence persistence, preventing deployment and triggering a failure notification attempt.
+
+The old integration preflight now checks site/model access without publishing by default. Its `publish_smoke` input explicitly enables the initial smoke deployment and Issue probe; that option replaces the Pages site and is intended only for initial setup. Use the collection workflow for daily reports.
 
 ## Local development
 
@@ -144,14 +167,14 @@ After the code is on the default branch:
 1. Add an Actions repository secret named `OPENAI_API_KEY` (for example, `gh secret set OPENAI_API_KEY`). Enter the key through the secret prompt, not a committed file. Optionally set the Actions repository variable `OPENAI_MODEL`; the workflow uses it unless you supply a manual model override, falling back to `gpt-6.1-terra` when neither is set.
 2. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
 3. Ensure Issues are enabled and the `github-pages` environment permits deployments from the default branch.
-4. Run **Actions → Integration preflight → Run workflow** from the default branch, or `gh workflow run preflight.yml`.
+4. For initial setup only, run **Integration preflight** with `publish_smoke` enabled to test Pages/Issue delivery. Later preflight runs leave publication disabled by default.
 5. Inspect the downloadable `preflight-evidence-<attempt>` artifact, deployed `/preflight.json`, and the **Daily SEO reviews** Issue. Subscribe to that Issue to receive notifications.
 
-The workflow runs tests before network checks, uploads failure evidence, deploys a JSON smoke artifact, and posts the gate outcome. It fails if site/model checks or deployment fail, or if delivery fails. A successful local probe does not prove GitHub-runner access. Full gate success requires the runner checks, Pages deployment, **and** successful Issue delivery in the same workflow.
+The preflight workflow runs tests and uploads network/model evidence. When `publish_smoke` is enabled it also deploys a JSON smoke artifact and posts the gate outcome. It fails if site/model checks or deployment fail, or if delivery fails. A successful local probe does not prove GitHub-runner access. Full gate success requires the runner checks, Pages deployment, **and** successful Issue delivery in the same workflow.
 
-Permissions are scoped by job: repository read for collection, Pages/OIDC writes for deployment, and Issue write plus Actions/repository read for notification. Publication is serialized. There is no schedule yet; the planned `17 5 * * *` UTC schedule (09:17 Asia/Yerevan) comes after complete daily-review behavior exists.
+Permissions are scoped by job: repository read for collection, Pages/OIDC writes for deployment, and Issue write plus Actions/repository read for notification. Publication is serialized. The collection/review workflow now has the `17 5 * * *` UTC schedule (09:17 Asia/Yerevan).
 
-If only notification fails, rerun the failed notification job. It downloads the saved preflight artifact and checks all comment pages for the run marker before posting. It updates an existing result when deployment status changes. An uncertain POST can therefore be retried without another crawl. For key/site fixes, run the whole preflight again. Test/setup failures that occur before a result exists remain visible in Actions; a separate pipeline-failure Issue notification is deferred to the hardening milestone.
+If only notification fails, rerun the failed notification job. It downloads the saved preflight artifact and checks all comment pages for the run marker before posting. It updates an existing result when deployment status changes. An uncertain POST can therefore be retried without another crawl. For key/site fixes, run the whole preflight again. Preflight test/setup failures remain visible in Actions. The daily collection workflow also attempts a failure Issue comment when no current review artifact exists.
 
 The preflight workflow retains evidence only in artifacts; the collection workflow commits its snapshots and state. Runner artifacts expire after 90 days. The Pages smoke artifact is replaced on each deployment and is not an archive.
 
@@ -171,7 +194,10 @@ seo_reviewer/
   review.py          # immutable reviews and deterministic fallback
   review_models.py   # versioned narrative and generation contracts
   storage.py         # immutable run snapshots and JSON export
-  notification.py    # saved-result Issue delivery
+  notification.py    # shared Issue client and integration delivery
+  daily_delivery.py  # retryable daily-review/failure comments
+  render.py          # safe static site build and data projection
+  rendering/         # shared Jinja templates and stylesheet
 data/runs/<run-id>/
   preflight.json     # integration runs only
   collection.json    # collection runs only: observations and previous evidence
@@ -191,6 +217,6 @@ Run `uv run pytest` for mocked robots, origin/redirect, timeout, challenge, retr
 
 Two real local collection snapshots from 7 November 2026 (`20261107T144408.785631Z-a1373579` and `20261107T144617.966697Z-2f55601a`) each collected 50/50 pages. The second preserved the cohort and records 50 previous successful observations. Neither run fabricates historical SEO regressions.
 
-The next milestone adds static HTML reports, latest/archive navigation, shared styling, and review delivery. Later milestones add deterministic findings/lifecycles, bounded AI triage with deterministic fallback, escaped Jinja reports, daily delivery, and durable history.
+Next: run the complete hosted workflow to verify report deployment and daily Issue delivery, then review remaining hardening and prepare the 7–9 minute demonstration. The workflow schedule activates after this change reaches the default branch.
 
 API implementation references: [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [OpenAI Python parsing helpers](https://github.com/openai/openai-python/blob/main/helpers.md), [Protego](https://github.com/scrapy/protego), and [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

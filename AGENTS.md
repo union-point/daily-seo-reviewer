@@ -16,6 +16,7 @@ As implementation proceeds, organize `seo_reviewer/` into small modules for coll
 - `uv run python -m seo_reviewer run` — collect the fixed cohort and queued sitemap additions.
 - `uv run python -m seo_reviewer preflight` — check site/model access without updating comparison state.
 - `uv run python -m seo_reviewer review --run-id <run-id>` — generate a review from immutable collection evidence.
+- `uv run python -m seo_reviewer.render --base-path /daily-seo-reviewer` — build static reports from saved reviews.
 - `uv run pytest` — run the mocked test suite.
 
 Use `uv` for environment and dependency management; manual environment activation is unnecessary with `uv run`. Commit `uv.lock` when generated for reproducible installs. GitHub Actions runs pytest; manual preflight and collection workflows verify integrations and persist evidence. No formatter or linter is configured. Document development tooling when introduced.

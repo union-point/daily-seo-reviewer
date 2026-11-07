@@ -3,6 +3,10 @@ name: Integration preflight
 on:
   workflow_dispatch:
     inputs:
+      publish_smoke:
+        description: Deploy initial smoke page (replaces the report site)
+        type: boolean
+        default: false
       model:
         description: Optional model override (defaults to repository OPENAI_MODEL variable)
         required: false
@@ -49,12 +53,17 @@ jobs:
           name: preflight-result-${{ github.run_attempt }}
           path: site/preflight.json
           if-no-files-found: error
+      - name: Enforce checks when not deploying a smoke page
+        if: ${{ !inputs.publish_smoke && steps.probe.outcome != 'success' }}
+        run: exit 1
       - name: Package Pages smoke test
+        if: inputs.publish_smoke
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
   deploy:
+    if: inputs.publish_smoke
     needs: probe
     permissions:
       pages: write
@@ -73,7 +82,7 @@ jobs:
 
   notify:
     needs: [probe, deploy]
-    if: ${{ always() && !cancelled() && needs.probe.result == 'success' }}
+    if: ${{ always() && !cancelled() && needs.probe.result == 'success' && inputs.publish_smoke }}
     permissions:
       contents: read
       actions: read

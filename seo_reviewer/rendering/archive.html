@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="page-header">
+  <p class="eyebrow">Collected review history</p>
+  <h1>Review archive</h1>
+  <p class="lede">Browse reviews from real collection runs. This archive contains collected history, with no synthetic runs or trends.</p>
+</header>
+
+{% if entries %}
+<section class="panel" aria-labelledby="archive-heading">
+  <h2 id="archive-heading">Saved reviews</h2>
+  <p class="muted">{{ total_reviews }} saved review{% if total_reviews != 1 %}s{% endif %}. Dates show collection time in Asia/Yerevan.</p>
+  <div class="table-region" role="region" aria-label="Saved reviews table, scroll horizontally to view all columns" tabindex="0">
+    <table class="archive-table">
+      <caption>Collected reviews, newest collection first</caption>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">SEO status</th>
+          <th scope="col">Coverage</th>
+          <th scope="col">Explanation source</th>
+          <th scope="col">Review</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in entries %}
+        <tr>
+          <th scope="row">{{ entry.date }}</th>
+          <td><span class="status-badge status--{{ entry.status }}">{{ entry.status | replace("_", " ") | capitalize }}</span></td>
+          <td>{{ entry.coverage }}</td>
+          <td>{{ entry.narrative_source }}</td>
+          <td><a href="{{ entry.href }}">View review <span class="data">{{ entry.run_id }}</span></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% if page_count > 1 %}
+<nav class="pagination" aria-label="Review archive pages">
+  {% if previous_href %}<a href="{{ previous_href }}" rel="prev">Previous page</a>{% endif %}
+  <span aria-current="page">Page {{ page_number }} of {{ page_count }}</span>
+  {% if next_href %}<a href="{{ next_href }}" rel="next">Next page</a>{% endif %}
+</nav>
+{% endif %}
+{% else %}
+<section class="panel empty-state" aria-labelledby="empty-archive-heading">
+  <h2 id="empty-archive-heading">No reviews yet</h2>
+  <p>Run collection and generate a review to create the first archive entry. Saved reviews will appear here after publication.</p>
+</section>
+{% endif %}
+{% endblock %}

@@ -2,20 +2,26 @@ name: Collect SEO observations
 
 on:
   workflow_dispatch:
+  schedule:
+    # 09:17 Asia/Yerevan (UTC+04:00).
+    - cron: '17 5 * * *'
 
 concurrency:
   group: daily-seo-reviewer-publication
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   collect:
-    # Persist state only on the default branch; do not create diverging cohorts.
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
+    outputs:
+      delivery_artifact_id: ${{ steps.delivery.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@v6
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
@@ -24,14 +30,14 @@ jobs:
           python-version: "3.13"
       - run: uv sync --locked
       - run: uv run --frozen pytest
-      - name: Collect cohort and new URLs, then generate review
+      - name: Collect cohort and generate review
         id: crawl
         continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6.1-terra' }}
-        run: uv run --frozen python -m seo_reviewer run --review
-      - name: Preserve evidence and comparison state
+        run: uv run --frozen python -m seo_reviewer run --review --run-id-file .current-run.json
+      - name: Preserve evidence before publication
         if: always() && (steps.crawl.outcome == 'success' || steps.crawl.outcome == 'failure')
         run: |
           git config user.name 'github-actions[bot]'
@@ -44,7 +50,23 @@ jobs:
             git commit -m 'Save SEO collection evidence and comparison state'
             git push
           fi
-      - name: Upload collected evidence
+      - name: Build current report and archive
+        env:
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PAGE_BASE: /${{ github.event.repository.name }}
+        run: uv run --frozen python -m seo_reviewer.render --base-path "$PAGE_BASE" --run-id-file .current-run.json --delivery-dir delivery --workflow-url "$WORKFLOW_URL"
+      - name: Save review for retryable delivery
+        id: delivery
+        uses: actions/upload-artifact@v7
+        with:
+          name: daily-delivery-${{ github.run_attempt }}
+          path: delivery/review.json
+          if-no-files-found: error
+      - name: Package Pages report
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Upload collected evidence even on failure
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -55,6 +77,50 @@ jobs:
             data/reviews/*.json
           if-no-files-found: error
           retention-days: 90
-      - name: Expose collection failure
-        if: steps.crawl.outcome == 'failure'
-        run: exit 1
+
+  deploy:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deployment
+
+  notify:
+    needs: [collect, deploy]
+    if: ${{ always() && !cancelled() && github.ref_name == github.event.repository.default_branch }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.11.28"
+          python-version: "3.13"
+      - run: uv sync --locked
+      - uses: actions/download-artifact@v8
+        if: needs.collect.outputs.delivery_artifact_id != ''
+        continue-on-error: true
+        with:
+          artifact-ids: ${{ needs.collect.outputs.delivery_artifact_id }}
+          path: downloaded
+      - name: Deliver daily review or pipeline failure
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_URL: ${{ needs.deploy.outputs.page_url }}
+          DEPLOYMENT_RESULT: ${{ needs.deploy.result }}
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: uv run --frozen python -m seo_reviewer.daily_delivery --artifact-dir downloaded --pages-url "$PAGES_URL" --workflow-url "$WORKFLOW_URL" --workflow-run-id "$GITHUB_RUN_ID" --deployment-result "$DEPLOYMENT_RESULT"

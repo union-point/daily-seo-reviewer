@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }} · Daily SEO Reviewer</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="light">
+  <link rel="stylesheet" href="{{ base }}/assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead wrapper">
+    <a class="brand" href="{{ base }}/index.html">Daily SEO Reviewer</a>
+    <nav aria-label="Main navigation">
+      <a href="{{ base }}/index.html">Latest review</a>
+      <a href="{{ archive_href | default(base ~ '/archive/index.html') }}">Archive</a>
+    </nav>
+  </header>
+  <main id="main" class="wrapper" tabindex="-1">{% block content %}{% endblock %}</main>
+  <footer class="site-footer wrapper">
+    <p>Daily SEO Reviewer · Immutable collection evidence, deterministic findings, advisory explanations.</p>
+    <p>Report dates use Asia/Yerevan. Freshness is recorded at publication.</p>
+  </footer>
+</body>
+</html>

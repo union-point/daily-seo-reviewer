@@ -24,6 +24,7 @@ def main(argv: list[str] | None = None) -> int:
     crawl.add_argument("--site-url")
     crawl.add_argument("--data-dir", type=Path)
     crawl.add_argument("--model")
+    crawl.add_argument("--run-id-file", type=Path, help="Write current run identity for publication")
     crawl.add_argument("--review", action="store_true", help="Also generate an immutable review")
     crawl.add_argument("--skip-ai", action="store_true", help="Use deterministic fallback when generating a review")
     review = commands.add_parser("review", help="Create a bounded AI/deterministic review from saved evidence")
@@ -52,6 +53,9 @@ def main(argv: list[str] | None = None) -> int:
         from seo_reviewer.crawl import run_crawl
         try:
             result = run_crawl(config)
+            if args.run_id_file:
+                import json
+                args.run_id_file.write_text(json.dumps({"run_id": result["run_id"]}) + "\n")
         except (OSError, ValueError) as exc:
             print(f"Collection stopped ({type(exc).__name__}): {exc}", file=sys.stderr)
             return 1

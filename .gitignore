@@ -227,3 +227,8 @@ data/.crawl.lock
 
 # Serialize immutable review generation
 data/reviews/.review.lock
+
+# Generated publication and delivery intermediates
+.current-run.json
+/delivery/
+/downloaded/
