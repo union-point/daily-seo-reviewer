@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
 from seo_reviewer.detection import RANK
+from seo_reviewer.review import latest_analysis
 from seo_reviewer.report_content import issue_presentation, report_presentation
 from seo_reviewer.review_models import Review
 
@@ -63,7 +64,7 @@ def load_reviews(data_dir: Path) -> list[tuple[Review, dict, bytes]]:
         collection = json.loads(raw)
         if collection['run_id'] != review.run_id:
             raise ValueError('Collection/run identity mismatch')
-        rows.append((review, collection, raw))
+        rows.append((latest_analysis(data_dir, review), collection, raw))
     return sorted(rows, key=lambda row: (datetime.fromisoformat(row[1]['completed_at']), row[0].run_id), reverse=True)
 
 
@@ -196,7 +197,7 @@ def main(argv: list[str] | None = None) -> int:
             if not run_id:
                 raise ValueError('Delivery requires the current run manifest')
             args.delivery_dir.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(args.data_dir / 'reviews' / f'{run_id}.json', args.delivery_dir / 'review.json')
+            shutil.copyfile(args.output_dir / 'data/reviews' / f'{run_id}.json', args.delivery_dir / 'review.json')
         print(f"Rendered {result['review_count']} reviews; latest: {result['latest_run_id']}")
         return 0
     except (OSError, ValueError, KeyError) as exc:

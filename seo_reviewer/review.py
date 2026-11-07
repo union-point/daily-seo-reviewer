@@ -24,6 +24,61 @@ ACTIONS = {
 }
 
 
+def reanalyse_review(config: Config, run_id: str) -> tuple[Review, Path]:
+    """Save a new analysis without altering the original review or evidence."""
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*', run_id):
+        raise ValueError('Invalid run ID')
+    if not (config.data_dir / 'reviews' / f'{run_id}.json').is_file():
+        raise ValueError('Refresh requires an existing saved review')
+    original = generate_review(config, run_id)
+    raw = (config.data_dir / original.collection_path).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != original.collection_sha256:
+        raise ValueError('Saved review source digest mismatch')
+    narrative, generation = triage_findings(config, json.loads(raw), original.findings)
+    if narrative is None:
+        raise ValueError(f'Analysis unavailable: {generation.reason}')
+    updated = original.model_copy(update={
+        'created_at': datetime.now(UTC), 'narrative': narrative,
+        'narrative_source': 'ai', 'generation': generation,
+    })
+    directory = config.data_dir / 'review_revisions' / run_id
+    directory.mkdir(parents=True, exist_ok=True)
+    import os
+    import tempfile
+    target = directory / (updated.created_at.strftime('%Y%m%dT%H%M%S.%fZ') + '.json')
+    with tempfile.NamedTemporaryFile(mode='w', dir=directory, delete=False) as stream:
+        temporary = Path(stream.name)
+        try:
+            stream.write(updated.model_dump_json(indent=2) + '\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+            os.link(temporary, target)
+        finally:
+            temporary.unlink(missing_ok=True)
+    return updated, target
+
+
+def latest_analysis(data_dir: Path, original: Review) -> Review:
+    """Only narrative metadata may differ in a published analysis revision."""
+    candidates = [original]
+    mutable = {'created_at', 'narrative', 'narrative_source', 'generation'}
+    for path in (data_dir / 'review_revisions' / original.run_id).glob('*.json'):
+        revision = Review.model_validate_json(path.read_text())
+        if revision.model_dump(exclude=mutable) != original.model_dump(exclude=mutable):
+            raise ValueError('Analysis revision changed authoritative review facts')
+        if revision.narrative_source != 'ai' or revision.generation.outcome != 'success':
+            raise ValueError('Analysis revision must contain a successful AI result')
+        from seo_reviewer.triage import validate_narrative
+        payload = {'findings': [
+            {'id': item.id, 'state': item.state, 'evidence_ids': [item.id + ':finding']}
+            for item in original.findings if item.state != 'resolved'
+            and item.id in revision.generation.included_finding_ids
+        ]}
+        validate_narrative(revision.narrative, payload)
+        candidates.append(revision)
+    return max(candidates, key=lambda item: item.created_at)
+
+
 def fallback_narrative(findings: list[Finding], summary: str) -> Narrative:
     def item(finding: Finding) -> AIItem:
         return AIItem(

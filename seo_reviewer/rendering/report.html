@@ -16,23 +16,22 @@
 </header>
 
 <section aria-labelledby="assessment-heading">
-  <p class="eyebrow">Assessment &amp; priorities</p>
+  <h2 id="assessment-heading">Today's summary</h2>
   {% if report.narrative_source == 'ai' %}
-  <h2 id="assessment-heading" class="assessment-title">{{ report.narrative.headline }}</h2>
-  <div class="assessment panel"><p class="lede">{{ report.narrative.summary }}</p><a href="#issues-1">See priorities and next steps ↓</a></div>
+  <div class="assessment panel"><h3>{{ report.narrative.headline }}</h3><p class="lede">{{ report.narrative.summary }}</p>{% if sections[0]['items'] %}<a href="#issues-1">See priorities and next steps ↓</a>{% endif %}</div>
   {% else %}
-  <h2 id="assessment-heading">What needs attention</h2>
   <div class="assessment panel"><p class="lede">{{ presentation.summary }}</p><p class="muted">AI summary unavailable. The page checks and recommended actions are still available.</p></div>
   {% endif %}
-  <div class="check-results">
-    <h3>What the checks confirmed</h3>
-    <p>{{ presentation.changes }}</p>
+  {% if report.narrative_source != 'ai' %}<div class="check-results">
+    {% if presentation.changes %}<p><strong>Changes:</strong> {{ presentation.changes }}</p>{% endif %}
+    {% if baseline %}<p>This is your first report. Comparison history starts here; future checks will show what changed.</p>{% endif %}
     {% if report.detection.get('widespread_change') %}<p class="notice status--warning">Changes affect many checked pages. Ask your web team to review recent site-wide changes before fixing pages one by one.</p>{% endif %}
-  </div>
+  </div>{% endif %}
 </section>
 
 {% for section in sections %}
 {% set section_index = loop.index %}
+{% if section['items'] or report.narrative_source != 'ai' %}
 <section aria-labelledby="issues-{{ section_index }}">
   <div class="section-header"><h2 id="issues-{{ section_index }}">{{ section.title }}</h2><span class="muted">{{ section['items'] | length }} {{ 'issue' if section['items'] | length == 1 else 'issues' }}</span></div>
   {% if section.title == 'Priority issues' and section['items'] %}<ol class="prioritized-list">{% endif %}
@@ -64,22 +63,15 @@
     </dl>
     {% endif %}
     <div class="action-block">
-      <p><strong>Next action:</strong> {{ item.action }}</p>
+      <p><strong>Recommended action:</strong> {{ item.action }}</p>
       {% if not item.explanation and item.finding.state != 'resolved' %}<p><strong>Done when:</strong> {{ item.verification }}</p>{% endif %}
     </div>
-    <details><summary>For specialists</summary>
-      {% if item.explanation %}<p><strong>Verify the change:</strong> {{ item.verification }}</p>{% endif %}
-      <dl class="observation-grid">
-        <div><dt>Previous observation</dt><dd class="data">{{ item.raw_before }}</dd></div>
-        <div><dt>{{ 'Last recorded observation' if item.finding.state in ['resolved', 'unverified'] else 'Current observation' }}</dt><dd class="data">{{ item.raw_observed }}</dd></div>
-      </dl>
-      <ul class="evidence-list">{% for evidence in item.evidence %}<li>{% if evidence.href %}<a href="{{ evidence.href }}">{{ evidence.label }}</a>{% else %}<span>{{ evidence.label }}</span>{% endif %}</li>{% else %}<li><a href="{{ collection_json_href }}">View collection data</a></li>{% endfor %}</ul>
-    </details>
   </article>
   {% if section.title == 'Priority issues' %}</li>{% endif %}
   {% else %}<p class="empty-state">{{ 'No issues awaiting verification' if section.title == 'Needs verification' else 'No ' ~ section.title | lower }} in this report.</p>{% endfor %}
   {% if section.title == 'Priority issues' and section['items'] %}</ol>{% endif %}
 </section>
+{% endif %}
 {% endfor %}
 
 <section aria-labelledby="history-heading">
@@ -97,14 +89,6 @@
   <h2 id="limitations-heading">About this report</h2>
   <div class="panel">
     <p>This report checks selected pages, so it is not a complete site audit. Pages that could not be checked remain unknown.</p>
-    <p>The report shows saved results. Its freshness was recorded at publication and does not update automatically.</p>
-    <details><summary>For specialists</summary>
-      <ul class="link-list"><li><a href="{{ review_json_href }}">Review data</a></li><li><a href="{{ collection_json_href }}">Collection data</a></li>{% if workflow_href %}<li><a href="{{ workflow_href }}">Workflow run</a></li>{% endif %}{% if repository_href %}<li><a href="{{ repository_href }}">Repository evidence</a></li>{% endif %}</ul>
-      {% if report.generation.reason %}<p><strong>Summary generation:</strong> {{ report.generation.reason }}</p>{% endif %}
-      <details><summary>Collection errors ({{ collection.get('errors', []) | length }})</summary><ul>{% for error in collection.get('errors', []) %}<li class="data">{{ error }}</li>{% else %}<li>No collection errors recorded.</li>{% endfor %}</ul></details>
-      <details><summary>Request errors ({{ collection.get('request_errors', []) | length }})</summary><ul>{% for error in collection.get('request_errors', []) %}<li class="data">{{ error }}</li>{% else %}<li>No request errors recorded.</li>{% endfor %}</ul></details>
-      <details><summary>Deferred pages ({{ collection.get('deferred_urls', []) | length }})</summary><ul>{% for url in collection.get('deferred_urls', []) %}<li class="data">{{ url }}</li>{% else %}<li>No pages deferred.</li>{% endfor %}</ul></details>
-    </details>
   </div>
 </section>
 {% endblock %}

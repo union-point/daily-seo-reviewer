@@ -35,7 +35,7 @@ class Generation(BaseModel):
     outcome: Literal['success', 'unavailable'] = 'unavailable'
     reason: str
     requested_model: str
-    prompt_version: str = 'triage-v1'
+    prompt_version: str = 'triage-v2'
     input_sha256: str
     input_bytes: int
     included_finding_ids: list[str]

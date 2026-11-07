@@ -214,3 +214,55 @@ def test_oversized_metadata_envelope_falls_back_without_api(collection, monkeypa
     output, metadata = triage_findings(config, data, findings)
     assert output is None and metadata.reason == 'input_budget_exceeded'
     assert metadata.attempts == []
+
+
+def test_group_context_counts_pages_and_lifecycle_before_truncation(collection):
+    config, data, findings = collection
+    original = findings[0].model_copy(update={'state': 'ongoing'})
+    second = original.model_copy(update={'id': 'second', 'urls': ['https://example.com/weblog/']})
+    uncertain = original.model_copy(update={'id': 'unknown', 'state': 'unverified', 'urls': ['https://example.com/unknown']})
+    config.ai_max_findings = 1
+    payload = build_triage_input(config, data, [original, second, uncertain])
+    assert payload['issue_groups'][0] == {'rule': 'missing_description', 'verified_affected_pages': 2, 'unverified_affected_pages': 1, 'ongoing_issues': 2, 'new_regressions': 0}
+    assert payload['lifecycle_counts'] == {'ongoing': 2, 'unverified': 1}
+    assert payload['omitted_findings'] == 2
+
+
+def test_reanalysis_preserves_original_and_renderer_uses_revision(collection, monkeypatch):
+    from seo_reviewer.review import reanalyse_review, latest_analysis
+    config, data, _ = collection
+    original = generate_review(config, 'run1', skip_ai=True)
+    path = config.data_dir / 'reviews/run1.json'
+    before = path.read_bytes()
+    source = (config.data_dir / original.collection_path).read_bytes()
+    client(monkeypatch, [response(narrative())])
+    updated, revision_path = reanalyse_review(config, 'run1')
+    assert revision_path.exists() and updated.generation.prompt_version == 'triage-v2'
+    assert path.read_bytes() == before
+    assert (config.data_dir / original.collection_path).read_bytes() == source
+    assert latest_analysis(config.data_dir, original) == updated
+    changed = updated.model_copy(update={'alert_status': 'healthy'})
+    revision_path.write_text(changed.model_dump_json())
+    with pytest.raises(ValueError, match='authoritative'):
+        latest_analysis(config.data_dir, original)
+
+
+def test_failed_reanalysis_does_not_replace_previous_result(collection, monkeypatch):
+    from seo_reviewer.review import reanalyse_review
+    config, _, _ = collection
+    generate_review(config, 'run1', skip_ai=True)
+    before = (config.data_dir / 'reviews/run1.json').read_bytes()
+    monkeypatch.delenv('OPENAI_API_KEY', raising=False)
+    with pytest.raises(ValueError, match='missing_api_key'):
+        reanalyse_review(config, 'run1')
+    assert (config.data_dir / 'reviews/run1.json').read_bytes() == before
+    assert not list((config.data_dir / 'review_revisions').rglob('*.json'))
+
+
+def test_refresh_requires_existing_review_without_making_api_call(collection, monkeypatch):
+    from seo_reviewer.review import reanalyse_review
+    config, _, _ = collection
+    calls = client(monkeypatch, [])
+    with pytest.raises(ValueError, match='existing saved review'):
+        reanalyse_review(config, 'run1')
+    assert calls == []

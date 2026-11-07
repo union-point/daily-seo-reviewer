@@ -106,7 +106,7 @@ def report_presentation(review: Review, collection: dict) -> dict:
     if collection.get('errors') or collection.get('sitemap_complete') is False:
         errors.append('Some checks or page discovery could not be completed.')
     elif collection.get('request_errors'):
-        errors.append('Some requests had problems. See “For specialists” for details.')
+        errors.append('Some requests had problems. Recheck the affected pages before drawing conclusions.')
     return {
         'coverage_text': f'{checked} of {total} pages checked' if total else 'No pages checked',
         'incomplete': incomplete, 'status_label': status_label, 'status_tone': status_tone,

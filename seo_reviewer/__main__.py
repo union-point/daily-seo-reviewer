@@ -32,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     review.add_argument("--data-dir", type=Path)
     review.add_argument("--model")
     review.add_argument("--skip-ai", action="store_true")
+    review.add_argument("--refresh-ai", action="store_true", help="Save a new analysis revision from immutable evidence")
     review.set_defaults(site_url=None)
     args = parser.parse_args(argv)
     try:
@@ -42,7 +43,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "review":
         from seo_reviewer.review import generate_review
         try:
-            result = generate_review(config, args.run_id, skip_ai=args.skip_ai)
+            if args.refresh_ai:
+                if args.skip_ai:
+                    raise ValueError('Cannot refresh AI with skip-ai')
+                from seo_reviewer.review import reanalyse_review
+                result, revision_path = reanalyse_review(config, args.run_id)
+                print(f"Analysis revision: {revision_path}")
+            else:
+                result = generate_review(config, args.run_id, skip_ai=args.skip_ai)
         except (OSError, ValueError) as exc:
             print(f"Review failed ({type(exc).__name__})", file=sys.stderr)
             return 1

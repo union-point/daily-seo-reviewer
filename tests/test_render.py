@@ -52,7 +52,7 @@ def test_escaping_shared_template_and_safe_data_links(tmp_path):
     assert not tree.xpath('//script | //img')
     assert len(tree.xpath('//h1')) == 1
     assert '&lt;script&gt;' in latest and '&lt;img' in latest
-    assert 'Next action:' in latest
+    assert 'Recommended action:' in latest
     assert 'Asia/Yerevan' in latest
     assert not list(output.rglob('*.body'))
     assert_local_links_resolve(output, '/daily-seo-reviewer')
@@ -188,12 +188,13 @@ def test_marketer_report_hides_internal_details_but_preserves_evidence(tmp_path)
     assert 'Some checks or page discovery could not be completed.' in visible
     assert visible.count('AI summary unavailable') == 1
     assert 'Search description missing' in visible
-    for label in ('Affected pages', 'Next action:'):
+    for label in ('Affected pages', 'Recommended action:'):
         assert label in visible
     assert not tree.xpath('//details[@open]')
     technical_links = tree.xpath('//a[contains(@href, "/data/") or contains(@href, "github.com")]')
-    assert technical_links
-    assert all(link.xpath('ancestor::details[summary="For specialists"]') for link in technical_links)
+    assert not technical_links
+    assert not tree.xpath("//details")
+    assert "For specialists" not in tree.text_content()
     assert not tree.xpath('//*[contains(@class, "coverage-grid")]')
     assert json.loads((output / 'data/reviews/run-1.json').read_bytes()) == json.loads(original_review)
     assert (output / 'data/runs/run-1/collection.json').read_bytes() == original_collection
@@ -282,14 +283,15 @@ def test_assessment_and_action_plan_use_saved_analysis_without_note_labels(tmp_p
     (data / 'reviews/run-1.json').write_text(review.model_dump_json())
     render_site(data, output)
     tree = html.fromstring((output / 'index.html').read_text())
-    assert tree.xpath('//*[@id="assessment-heading"]')[0].text == review.narrative.headline
+    assert tree.xpath('//*[@id="assessment-heading"]')[0].text == "Today's summary"
+    assert review.narrative.headline in tree.text_content()
     assert not tree.xpath('//script')
     assert 'saved assessment' in tree.text_content()
     assert 'AI note' not in tree.text_content()
     plan = tree.xpath('//ol[@class="prioritized-list"]')[0]
     assert 'Write a useful homepage description.' in plan.text_content()
     assert 'Suggested owner' not in tree.text_content()
-    assert 'Verify the change:' in plan.text_content()
+    assert not plan.xpath('.//details')
     visible_issue = main_report_text(plan)
     assert 'What happened:' not in visible_issue and 'Why it matters:' not in visible_issue
     assert 'The page has no search description.' not in visible_issue
@@ -311,3 +313,36 @@ def test_action_plan_excludes_resolved_and_rechecks_unverified(tmp_path):
     assert 'Needs verification' in unverified.text_content()
     assert 'Complete a reliable follow-up check' in unverified.text_content()
     assert 'Done when:' not in tree.xpath('//article')[1].text_content()
+
+
+def test_delivery_and_report_select_same_analysis_revision(tmp_path):
+    from seo_reviewer.render import main
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    original = save_review(data)
+    revised = original.model_copy(deep=True)
+    revised.created_at = original.created_at + timedelta(days=1)
+    revised.narrative_source = 'ai'
+    revised.generation.outcome = 'success'
+    revised.narrative.headline = 'A refreshed analysis'
+    revision = data / 'review_revisions/run-1/revision.json'
+    revision.parent.mkdir(parents=True)
+    revision.write_text(revised.model_dump_json())
+    pointer = tmp_path / 'current.json'
+    pointer.write_text('{"run_id":"run-1"}')
+    assert main(['--data-dir', str(data), '--output-dir', str(output), '--run-id-file', str(pointer), '--delivery-dir', str(tmp_path / 'delivery')]) == 0
+    delivered = Review.model_validate_json((tmp_path / 'delivery/review.json').read_text())
+    assert delivered.narrative.headline == 'A refreshed analysis'
+    assert 'A refreshed analysis' in (output / 'index.html').read_text()
+    assert Review.model_validate_json((data / 'reviews/run-1.json').read_text()) == original
+
+
+def test_ai_report_omits_optional_stock_copy_and_empty_sections(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    save_review(data, source='ai', findings=[], alert='healthy')
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    assert not tree.xpath('//details')
+    assert not tree.xpath('//*[@class="check-results"]')
+    assert not tree.xpath('//a[@href="#issues-1"]')
+    assert 'No resolved issues' not in tree.text_content()
+    assert 'No issues awaiting verification' not in tree.text_content()
