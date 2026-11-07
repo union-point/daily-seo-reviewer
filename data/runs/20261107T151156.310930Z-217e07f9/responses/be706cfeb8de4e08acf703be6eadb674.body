@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ROBOTS" content="ALL" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Copyright" content="Django Software Foundation" />
+    <meta name="keywords" content="Python, Django, framework, open-source" />
+    <meta name="description" content="Posted by Sarah Abderemane on Aug. 31, 2026" />
+    <meta name="fediverse:creator" content="@django@fosstodon.org" />
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://static.djangoproject.com/img/icon-touch.e4872c4da341.png">
+    <link rel="icon" sizes="192x192" href="https://static.djangoproject.com/img/icon-touch.e4872c4da341.png">
+    <link rel="shortcut icon" href="https://static.djangoproject.com/img/favicon.6dbf28c0650e.ico">
+    <meta name="msapplication-TileColor" content="#113228">
+    <meta name="msapplication-TileImage" content="https://static.djangoproject.com/img/icon-tile.b01ac0ef9f67.png">
+    <meta name="theme-color" content="#0C4B33">
+
+    
+    
+        <meta property="og:type" content="article" />
+    
+        <meta property="og:title" content="DSF member of the month - Benjamin Balder Bach" />
+    
+        <meta property="og:description" content="Posted by Sarah Abderemane on Aug. 31, 2026" />
+    
+        <meta property="og:article:published_time" content="2026-08-31T00:00:00" />
+    
+        <meta property="og:article:author" content="Sarah Abderemane" />
+    
+        <meta property="og:image" content="https://media.djangoproject.com/blog/images/2026/09/ben-profile.jpg" />
+    
+        <meta property="og:image:alt" content="Benjamin&#x27;s profile, smiling with his glasses to the camera. He wears a black top and the background is white." />
+    
+        <meta property="og:url" content="https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/" />
+    
+        <meta property="og:site_name" content="Django Project" />
+    
+        <meta property="twitter:card" content="summary" />
+    
+        <meta property="twitter:creator" content="djangoproject" />
+    
+        <meta property="twitter:site" content="djangoproject" />
+    
+
+
+    
+      <!-- Privacy-friendly analytics by Plausible -->
+      <script async src="https://analytics.python.org/js/pa-vpHLG0R-txTE4LicNIQU7.js"></script>
+      <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+      </script>
+    
+
+    <title>DSF member of the month - Benjamin Balder Bach | Weblog | Django</title>
+
+    <link rel="stylesheet" href="https://static.djangoproject.com/css/output.3bc08a372066.css" >
+
+    <script src="https://static.djangoproject.com/js/mod/switch-dark-mode.139625c684db.js"></script>
+    
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.djangoproject.com/rss/weblog/" />
+
+  </head>
+
+  <body id="generic" class="blog">
+    
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+
+<header id="top">
+  <div class="container container--flex--wrap--mobile">
+    <a class="logo" href="https://www.djangoproject.com/">Django</a>
+    <p class="meta">The web framework for perfectionists with deadlines.</p>
+    <button class="menu-button">
+      <i class="icon icon-reorder" aria-hidden="true"></i>
+      <span class="visuallyhidden">Menu</span>
+    </button>
+    <nav aria-labelledby="navigation-header">
+      <span id="navigation-header" class="visuallyhidden">Main navigation</span>
+      <ul>
+        <li>
+          <a href="https://www.djangoproject.com/start/overview/">Overview</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/download/">Download</a>
+        </li>
+        <li>
+          <a href="https://docs.djangoproject.com/">Documentation</a>
+        </li>
+        <li class="active">
+          <a href="https://www.djangoproject.com/weblog/">News</a>
+        </li>
+        <li>
+          <a href="https://github.com/django/django" target="_blank" rel="noopener">Code</a>
+        </li>
+        <li>
+          <a href="https://code.djangoproject.com/">Issues</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/community/">Community</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/foundation/">Foundation</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/fundraising/">&#9829; Donate</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/sponsor/">Sponsor</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      
+<search class="search form-input" aria-labelledby="docs-search-label">
+  <form action="https://docs.djangoproject.com/en/6.1/search/">
+    <label id="docs-search-label" class="visuallyhidden" for="id_q">Search</label>
+    <input type="search" name="q" placeholder="Search" id="id_q">
+    <input type="hidden" name="category" value="">
+
+    <button type="submit">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span class="visuallyhidden">Search</span>
+    </button>
+  </form>
+</search>
+
+      
+
+<button class="theme-toggle">
+  <div class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</div>
+  <div class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</div>
+  <div class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</div>
+
+  <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+  <i aria-hidden="true" class="theme-icon-when-auto icon icon-adjust"></i>
+  <i aria-hidden="true" class="theme-icon-when-dark icon icon-moon-o"></i>
+  <i aria-hidden="true" class="theme-icon-when-light icon icon-sun-o"></i>
+</button>
+
+    </div>
+  </div>
+</header>
+
+    
+
+    <div id="billboard">
+      
+
+
+    </div>
+
+    <section class="copy-banner">
+      <div class="container ">
+        
+  <p>
+  <a href="https://www.djangoproject.com/weblog/">News &amp; Events</a>
+  </p>
+
+      </div>
+    </section>
+
+    <div class="container sidebar-right">
+      <main id="main-content">
+
+        
+          
+        
+
+        
+    <h1>DSF member of the month - Benjamin Balder Bach</h1>
+
+    <span class="meta">
+        Posted by <strong>Sarah Abderemane</strong> on Aug. 31, 2026
+    </span>
+    <div class="blog-entry-body"><p>For August 2026, we welcome Benjamin Balder Bach as our DSF member of the month! ⭐</p>
+<p><img alt="Benjamin's profile, smiling with his glasses to the camera. He wears a black top and the background is white." loading="lazy" src="https://media.djangoproject.com/blog/images/2026/09/ben-profile.jpg"></p>
+<p>Benjamin has long been part of the Django community, serving for years as an organizer of Django Day Copenhagen and as Chair of the Social Media Working Group. He is a DSF member since June 2020!</p>
+<p>You can learn more about Benjamin by visiting <a href="https://www.overtag.dk/v2/about/">Benjamin's website</a> and <a href="https://github.com/benjaoming">his GitHub Profile</a>.</p>
+<p>Let’s spend some time getting to know Benjamin better!</p>
+<h2 id="s-can-you-tell-us-a-little-about-yourself-hobbies-education-etc">Can you tell us a little about yourself? (hobbies, education, etc)</h2>
+<p>Hello! I like DIY in general, so whether it's software, cooking, sewing, growing plants or building stuff with wood - I really like practical things with a finish in sight. I really don't mind when it's <em>not</em> a software project, though 😇</p>
+<p>I'll try to nail what my education and work is about: I started as a self-taught programmer when I had a job at 15 (as a web designer). Before that, I had been delivering newspapers and cleaning toilets at my school, so it was a pretty big leap forward. I knew HTML but learned about SQL and ASP classic (not .net) because my employer back in 2000 let me learn while working. Fast-forward, I studied Computer Science from 2005 and took my masters degree in Digital Design and Communication - heavily inspired by years of PHP and Django experience, my thesis ended up being about "Risky and Rapid Design Spaces" (2013) - a concept/anecdote that I still stand by. It becomes relevant in the context of Django because the front-and-center message and goal of the framework is to "encourages rapid development".</p>
+<p>"Rapid" means that we iterate and deploy changes quickly (with lots of aspects of what that means). But I think we need to understand and frame the "risky" part, especially understanding that a GIANT risk-avertion factor is to have developers understand and share context with users, whether they are clients, customers or staff colleagues. For instance, while I was working at Read the Docs, we had developers rotating on frontline support, meaning that everyone in the team would understand the users's experience and build solutions based on that. I've also been part of smaller organizations where I would read the exception traceback data, fetch the customer's email and write/call them to ask for more details and fix their problem immediately. This was before GDPR, but I can attest that the customer satisfaction of being cold-called by a system developer that was working on their technical issue was high! I think the Django Fellows are a perfect example of how this works: People doing software development are directly engaging with the stakeholders, and the design is happening within that process. It's not to say that UX or architecture shouldn't happen, but more to say that context overlaps are desirable to risk-avertion, not the opposite.</p>
+<p>Silo... nobody wants a silo. But context! Everybody wants that!</p>
+<p>Currently, I look forward to Carlos Alcaraz making his comeback. And then I hope that in 2027, I can make it to <a href="https://djangomed.eu/">Django on the Med</a> - and I envy everyone going there this year!! I'll try to make up for this by having a nice time at <a href="https://2026.djangoday.dk/">Django Day Copenhagen</a>.</p>
+<h2 id="s-im-curious-where-your-nickname-benjaoming-comes-from">I'm curious, where your nickname "Benjaoming" comes from?</h2>
+<p>I picked a nickname as a teenager and used it so many times that it became impossible to get rid of. But let's be honest: Out of some random teenage thought, I wanted my first name "Benjamin" to sound Chinese. The first variation was "Ben Jao Ming", but eventually it just became "benjaoming". I had a childhood friend with a Chinese name who changed his name to an English name. I think possibly hundreds of millions of people have changed their names to some Anglo version, so if I have to make an excuse about why this is somehow cool over 20 years later, that'll have to be it!</p>
+<h2 id="s-how-did-you-start-using-django">How did you start using Django?</h2>
+<p>In 2008, I had learned Python by building a distributed file system in FUSE (if you don't know it, don't worry.. but let's just say FUSE and Wobbly Windows were an insane period in the Linux Desktop era). Back then, I was actually using PHP for everything involving websites, but almost instantly, I was happy with Python and became involved in founding an organization to advance computer reuse and refurbishment - which of course needed a website - back then, Django was the one-stop shop for building websites with Python. And it still is 🥳</p>
+<p>Can I be excused with a quick interjection? This history of Django was something I was trying to figure out when Django turned 20 years (last year). There is an <a href="https://birthday20.djangoproject.com/timeline/">un-published timeline</a> here that I think we can leak, and it contains instructions to get in touch about finishing it.</p>
+<p>The organization I was building with my first Django projects, <a href="https://fairinternational.org/en/">FAIR Allocation of Infotech Resources</a>, turned out to be a 10+ year engagement where me and others built a platform for reusing computers. This spanned everything from embedded systems that scanned and wiped the subject of reuse, to Gnome desktop applications and an online warehouse. We reused tens of thousands of computers in Denmark and Norway. We couldn't have done all this without Django - people would ask for a feature for the operation, and we'd just turn it into reality immediately. I don't even think we had an issue tracker for the initial years. To begin with, it was just emails/meetings/workshop fire-fighting, commits and manual deploys.</p>
+<p>Can I be excused with a SECOND quick interjection? There's a lot to learn from the simplicity of the past. People may think that a proper operation requires CI/CD, full test coverage, AI integration, project management etc. But if we want to know what "rapid development" means in 2026, we shouldn't accept all the current standards.</p>
+<p>At some point during this venture, I needed a wiki in Python, which was called django-simplewiki in 2009. MIT sponsored some development work because they were using it for edX, and it became a popular project called <a href="https://www.django-wiki.org">django-wiki</a>.</p>
+<p>At this early stage, I didn't know so much about the Django community, but when I met another Django developer in Copenhagen (valberg), we ended up going to Poland for DjangoCon Europe 2013 in Warsaw. Because there's such a long history of DjangoCon Europe, I've added a <a href="https://en.wikipedia.org/wiki/Django_(web_framework)#Europe">whole table to the Wikipedia article</a>. The table is in the general Django article, but because it's so long, I think we might need a new separate Wikipedia article about DjangoCon ✌️</p>
+<p>I've done a lot of professional work with valberg, and today we're running an association called data.coop for people in Denmark to break free from Big Tech. Together with valberg and emilkjer, we've been been running Django Denmark since 2018, and that's been quite a journey!</p>
+<h2 id="s-what-other-framework-do-you-know-and-if-there-is-anything-you-would-like-to-have-in-django-if-you-had-magical-powers">What other framework do you know and if there is anything you would like to have in Django if you had magical powers?</h2>
+<p>I did some evaluation of FastAPI and SQLAlchemy - and also <a href="https://django-ninja.dev/">django-ninja</a>! I think it's interesting how SQLAlchemy approached typing and async, especially how beautifully they <a href="https://docs.sqlalchemy.org/en/20/changelog/migration_20.html">curated the transition from SQLAlchemy 1.0 to 2.0</a> (typed). When people object that Django's ORM doesn't utilize types, I would say: Try using SQLAlchemy, Alembic and FastAPI yourself, maybe try putting all the bits and pieces together for a full project. You might end up concluding - as I did - that for many many cases, having Django's ORM, migrations and other batteries included is just a simpler, cleaner, more maintainable solution. And there's django-ninja which gets you very close to the FastAPI experience, while staying in the Django world.</p>
+<p>I really liked building APIs with FastAPI and dependency injection. I think it's a promising idea to <a href="https://2024.djangoday.dk/talks/joseph/">combine FastAPI and Django</a>, so in no way do the two frameworks need to contradict one-another.</p>
+<p>On that same note: I've tried a 2 times to combine Hugo and Django, and they both went well: So you build all the frontend with Hugo, and it outputs the templates and static files that Django renders. An example is <a href="https://github.com/djangocon/2019.djangocon.eu/blob/27ed5d5f703a6a8e8f9bc0edee7a971929aa5c22/Makefile#L2-L6">from the 2019 DjangoCon Europe's website</a>. That way, you can have a static website AND a dynamic website in the same project/repository etc.</p>
+<h2 id="s-what-projects-are-you-working-on-now">What projects are you working on now?</h2>
+<p>I've been migrating <a href="https://codeberg.org/django-money/django-money">django-money</a> from GitHub to Codeberg. That means the project is now on a platform that <a href="https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html">protects FLOSS from LLMs</a> and is owned by an Open Source community rather than Silicon Valley/Big Tech. Together with my co-maintainer, <a href="https://dygalo.dev/">Dmitry Dygalo</a>, we acknowledge that we have taken on some extra work and costs to operate our own independent CI for testing. I look forward to seeing what a self-hosted CI can do, for instance we can customize our own base images moving forward to have something that's fully tailored for Python projects and don't need to install other actions to do the work.</p>
+<h2 id="s-which-django-libraries-are-your-favorite-core-or-3rd-party">Which Django libraries are your favorite (core or 3rd party)?</h2>
+<p>Here's a list of things on my mind these days:</p>
+<ul>
+<li><a href="https://pypi.org/project/django-admin-action-forms/">django-admin-action-forms</a> is a project I think is so good (💌 Michał Pokusa!), it needs to be adopted somehow for the Django Admin itself. It proposes a very simple way to configure forms for Django Admin actions... and I need that <em>all the time</em>!</li>
+<li><a href="https://pypi.org/project/django-markdownfield/">django-markdownfield</a> makes its way into many projects I work on as a very easy way to enhance an otherwise boring TextField.</li>
+<li><a href="https://pypi.org/project/django-migrations-ci/">django-migrations-ci</a> is an application that can possibly help speed up the CI and save CPU and energy resources on many larger projects. Of course, the simple answer could be to manage and squash migrations - but the enterprise reality might be different.</li>
+<li><a href="https://codeberg.org/django-money/django-money/">django-money</a> is a project <a href="https://tech.davis-hansson.com/p/clickbait/">I was handed commit rights to</a> and it's been following me around in most Django projects up until now. It's just really good to make sure you get money values correct in e-commerce.</li>
+<li><a href="https://wagtail.org/">Wagtail</a> is a flagship Django project that doesn't need further introduction. But some of the key points of this project is that the organization and worker-owned cooperative Torchbox keeps lending resources to help Django itself advance.</li>
+</ul>
+<h2 id="s-what-are-the-top-three-things-in-django-that-you-like">What are the top three things in Django that you like?</h2>
+<ol>
+<li>
+<p><strong>Reliability of the admin</strong> : I've been almost entire engaged professionally with the Django Admin for the past 2 years, in the sense that building administrative interfaces has been a prime my clients. The primary win of the Django admin is that custom-built functionality rarely breaks - so if we're a company and we pay someone to build something in the Django Admin, we still have it many years after, most often passing cleanly through upgrades.</p>
+</li>
+<li>
+<p><strong>Matureness of the ORM</strong> : I can do what I need with the ORM. Many advanced needs are covered, and debugging queries is easy and efficient with tools like django-debug-toolbar.</p>
+</li>
+<li>
+<p><strong>Matureness of the community</strong> : My favorite example is that we still do not have typing. Why not? You will need to dive into on of Carlton Gibson's talk <a href="https://www.youtube.com/watch?v=I8jX9ZVYilY">Static Islands, Dynamic Sea</a>. But basically, we are taking advantage of both worlds and not suddenly band-waggoning around a new trend. Discussions are allowed to take time. I also really like the <a href="https://github.com/django/new-features">new features</a> where we've found a similar path of patience between the issue tracker and Django Enhancement Proposals (DEPs).</p>
+</li>
+</ol>
+<h2 id="s-you-are-one-of-the-board-members-of-django-danmark-and-organizer-of-django-day-copenhagen-since-multiple-years-thats-great-how-did-everything-started">You are one of the board members of "Django Danmark" and organizer of Django Day Copenhagen since multiple years, that's great! How did everything started?</h2>
+<p>Actually, we were a lot of people from Copenhagen that met at a couple DjangoCon Europe conferences <em>outside</em> of Copenhagen! So let's not underestimate the impact of this, we may have known one another from professional settings and studies, but at the end of all that, we were inspired at the DjangoCon Europe events to go home and do more...</p>
+<p>So up until 2018, we had lots of small, informal gatherings as meetups. For a few years, often 50 people would show up. Companies hosted, paid for the pizza etc. People put in efforts to prepare talks. That way, a community formed and friendships were made.</p>
+<p>However, we were seeing a dip in normal meetups back in 2017 and wanted to have more momentum for the events, so we opted for a single-day, annual conference with tickets. We needed to incorporate an association for this to happen, but it happened with Django Day Copenhagen 2018. And then a year later, we hosted DjangoCon Europe 2019 in Copenhagen which boosted the economy of the association dramatically.</p>
+<p>We've always volunteered and never taken out any payment for anyone involved. That way, we've kept the profits to give back to community activities and supported other communities around the world.</p>
+<p>I was never alone in this, but thanks to Víðir Valberg Guðmundsson (valberg) and Emil Kjer, we've been able to sustain the setup for many years through Django Denmark.</p>
+<p><strong>You have organize different type of events, including bigger one like DjangoCon Europe. What are the things to consider to start an event and keep it sustainable according to you?</strong></p>
+<p>This is gonna be an even longer rant then! I'll try to vary it, but otherwise my pet peeve is <a href="https://overtag.dk/v2/blog/code-globally-meet-locally/">Code globally, meet locally</a>.</p>
+<p>So firstly, start small, meet some people, get a network. Use whatever you have to start the first meetups. Don't get overwhelmed, but instead focus on meeting other people that you enjoy being with.</p>
+<p>We've always looked for other local non-profits and municipal venues to do what we want. We explore our networks. We don't have any principal issues around working with commercial partners, but once we reached the state of paying for venues and food, then in order to keep things affordable, we like to work with like-minded organizations and people, so we've often had to skip the commercial venues.</p>
+<p>This also echoed a larger mission: It's very helpful when a company lets their employees do community work in work hours, and it's certainly the right thing to do. Because companies benefit from open source communities, and when they contribute back in the open, it gives them other benefits, too! But if we were to establish a budget around a fully commercial event activity (it's more expensive!), we would lose a lot of aspects of actually having a community. So even though it's not strictly speaking a problem to pay a profit-making entity to do things, we would have had a dramatically different pricing of events, making them either impossible or exclusive in way that the full community could no longer be included. You might have a different situation.</p>
+<p>Sponsors are almost impossible to get around no matter what: We've varied it a bit. From working with "sponsors" and having dedicated a process to try and sell sponsorships, we changed to just "corporate supporter" tickets, which is a ticket for companies that give them benefits included in a standard corporate ticket.</p>
+<p>Events don't have to be at commercial conference venues: The most important part is that people are together and someone prepares something for the event - talks, food, drinks etc. If you want to just do something social, then announce a park or a bar where people can meet! If you want talks, then maybe you just need a library - we did that several times! Or even better, you're a university student and can use the university!!</p>
+<p>For DjangoCon Europe 2019, we ended up with an amazing circus and theater production school. And actually most cities have very similar options. So if you see Django as something cultural, you will likely find inspiring <em>cultural</em> options for both the venue, the food, and the content.</p>
+<h2 id="s-related-to-events-you-are-a-member-of-the-dsf-events-support-working-group-can-you-tell-us-a-bit-more-about-this-working-group">Related to events, you are a member of the DSF Events Support Working Group, can you tell us a bit more about this working group?</h2>
+<p>Yes, absolutely! We're a new working group that grew out of a previous working group established to support new organizers of DjangoCon <em>Europe</em>. The idea was that experienced organizers could help new organizers. There's a special situation for the DSF where DjangoCon Europe doesn't actually have its own organization, but everytime a new episode happens, someone local/new is fully responsible for all the finances etc. That's a lot of work. As a consequence of that, the Portuguese team from Evolutio has also been hosting a lot of events.</p>
+<p>We decided to have a working group to support EVERYONE, EVERYWHERE doing Django-related events. So if you have an event brewing and you have questions, you can always write to events-support@djangoproject.com.</p>
+<p>We would like more organizers to <a href="https://github.com/django/dsf-working-groups/blob/main/active/events-support.md">join the working group</a>.</p>
+<h2 id="s-i-know-you-have-a-deep-interest-in-data-privacy-what-are-the-recommendations-you-would-give-to-someone-who-would-like-to-do-their-best-in-their-django-applications">I know you have a deep interest in data privacy, what are the recommendations you would give to someone who would like to do their best in their Django applications?</h2>
+<p>I don't think we're close enough to have a privacy-by-design setup in Django. We could do much more for model/ORM design to have support for anonymization, right-to-be-forgotten, consent etc.</p>
+<p>I've been working a lot with consent, and one of the things that I learned was that the agreement made with a user when they <em>consent to something</em> needs to be manageable both the user - and the data controller, too.. but I hear "consent management" all to often ONLY refer to the data controller's ability to manage. The real change would be to design for the user's ability to manage their consent.</p>
+<p>But we can't go around and re-invent bespoke solutions for this every time. We need a simple solution. And again, like I pitched in the beginning with Risky and Rapid Design Spaces - here's another option for the developer to gain enough context to produce relevant solutions out of their own thinking and intutition. From my experience, many developers LOVE privacy, so having a developer-oriented implementation of consent-based data management could add a great ally of the legal department to guard the user's interests. Developers are writing the data models and processing, so they're very like likely to be the first ones to go "oh! that needs the user's consent!"</p>
+<h2 id="s-you-are-the-chair-of-the-dsf-social-media-working-group-one-of-the-people-behind-the-official-django-account-thats-really-nice-how-does-it-look-like">You are the chair of the DSF Social Media Working Group, one of the people behind the Official Django account, that's really nice! How does it look like?</h2>
+<p>We're around 8-9 active members in the group, but everyone is very low-key active, meaning that there's always someone posting stuff! It works very well in the sense that no one has taken on a lot of work. And it leaves some room for improvement, too, since the DSF has a lot of accounts with a lot of followers and a lot of stuff to post about!</p>
+<p>We have a flow similar to working with code on GitHub: Someone suggests a post, and someone else reviews/approves it. We might do a very simple post to get something out quickly, and other times we talk about the content and plan something for a longer time, for instance Feature Fridays.</p>
+<p>At the moment, we are mixing two kinds of flows: first, sometimes we notice news and post it on our own initiative, and second, sometimes we are asked if we can help another working group or the DSF board to post. We have a kind of inbox for that.</p>
+<p>But I would say we are always happy to receive tips of something that would make for a great post. We have <a href="https://forms.gle/y7RWVAXHr5FfqeBYA">a form if you have suggestions</a> and our DMs are open!</p>
+<h2 id="s-after-so-many-times-in-the-django-community-what-makes-you-stay">After so many times in the Django community, what makes you stay?</h2>
+<p>I think Django was always the ray of hope and inspiration for me to build software: The world never needed <em>more</em> software nor web frameworks, so I always loved that Django had a respectful and inclusive community where we were able to talk about other values than just "l'art pour l'art". We don't necessarily need more software, and we don't necessarily just need <em>better</em> software, in that framing everything remains a technical question - we need <em>purpose</em>. And to be in a diverse community that is able to talk about making itself more inclusive, opening the job market and opportunity space for the whole world, and understanding and addressing privileges and disadvantages is <em>key</em> for our community to maintain its <em>purpose</em>.</p>
+<h2 id="s-how-do-you-envision-the-future-of-django-from-your-perspective">How do you envision the future of Django from your perspective?</h2>
+<p>Simple answer: Our community attracts smart people that collaborate well, and thus we'll keep having a smart framework.</p>
+<h2 id="s-is-there-anything-else-youd-like-to-say">Is there anything else you’d like to say?</h2>
+<p>I love that we use the green heart emoji in Django settings 💚</p>
+<hr>
+<p><strong>Thank you for doing the interview, Benjamin !</strong></p></div>
+
+        <a href="#top" class="backtotop"><i class="icon icon-chevron-up"></i> Back to Top</a>
+      </main>
+
+      
+  <div role="complementary">
+    <h2 class="visuallyhidden" id="aside-header">Additional Information</h2>
+    
+
+
+  <div class="fundraising-sidebar">
+    <h3>Support Django!</h3>
+
+    <div class="small-heart">
+      <img src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg" alt="Support Django!" />
+    </div>
+
+    <div class="small-cta">
+      <ul class="list-links-small">
+        <li><a href="https://www.djangoproject.com/fundraising/">
+          Akseli Nelander donated to the Django Software Foundation to support Django development. Donate today!
+        </a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+    
+      <h3>Upcoming Events</h3>
+      <ul class="list-events">
+        
+          <li>
+            <a href="https://2027.djangocon.eu" target="_blank">DjangoCon Europe 2027</a>
+            <span class="meta"><span>Feb. 17, 2027</span>  |  Innsbruck, Austria 🇦🇹</span>
+            <i class="icon icon-calendar"></i>
+          </li>
+        
+          <li>
+            <a href="https://2027.djangocon.us" target="_blank">DjangoCon US 2027</a>
+            <span class="meta"><span>Sept. 13, 2027</span>  |  Riverside, California, USA 🇺🇸</span>
+            <i class="icon icon-calendar"></i>
+          </li>
+        
+      </ul>
+    
+    <p><a href="https://www.djangoproject.com/foundation/conferences/">Want your event listed here?</a></p>
+
+    
+
+  <div class="corporate-members">
+    <h3>Sponsored Fellow, Diamond and Platinum Members</h3>
+    
+      <div class="clearfix">
+        <div class="member-logo">
+          <a href="https://sentry.io/for/django/" title="Sentry">
+            
+              <img
+                
+                  src="https://media.djangoproject.com/cache/7a/f9/7af9c770dc49465739a82c91a0eb3d51.png"
+                
+                alt="Sentry" />
+            
+          </a>
+        </div>
+        <div class="small-cta">
+          <ul class="list-links-small">
+            <li><strong>Sentry</strong></li>
+            <li><a href="https://sentry.io/for/django/" title="Sentry">
+              Monitor your Django Code
+Resolve performance bottlenecks and errors using monitoring, replays, logs and Seer an AI agent for debugging.
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="clearfix">
+        <div class="member-logo">
+          <a href="https://jb.gg/ybja10" title="JetBrains">
+            
+              <img
+                
+                  src="https://media.djangoproject.com/cache/c0/ea/c0ea128467983e64aab91cd27e7918c0.png"
+                
+                alt="JetBrains" />
+            
+          </a>
+        </div>
+        <div class="small-cta">
+          <ul class="list-links-small">
+            <li><strong>JetBrains</strong></li>
+            <li><a href="https://jb.gg/ybja10" title="JetBrains">
+              JetBrains delivers intelligent software solutions that make developers more productive by simplifying their challenging tasks, automating the routine, and helping them adopt the best development practices. PyCharm is the Python IDE for Professional Developers by JetBrains providing a complete set of tools for productive Python, Web and scientific development.
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="clearfix">
+        <div class="member-logo">
+          <a href="https://kraken.tech" title="Kraken Tech">
+            
+              <img
+                
+                  src="https://media.djangoproject.com/cache/71/4b/714b3473ed0cf3665f6b894d3be9491e.png"
+                
+                alt="Kraken Tech" />
+            
+          </a>
+        </div>
+        <div class="small-cta">
+          <ul class="list-links-small">
+            <li><strong>Kraken Tech</strong></li>
+            <li><a href="https://kraken.tech" title="Kraken Tech">
+              Kraken is the most-loved operating system for energy. Powered by our Utility-Grade AI™ and deep industry know-how, we help utilities transform their technology and operations so they can lead the energy transition. Delivering better outcomes from generation through distribution to supply, Kraken powers 70+ million accounts worldwide, and is on a mission to make a big, green dent in the universe.
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="clearfix">
+        <div class="member-logo">
+          <a href="https://posthog.com" title="PostHog">
+            
+              <img
+                
+                  src="https://media.djangoproject.com/cache/c7/e4/c7e40c86262b3d455526e8f94a899303.png"
+                
+                alt="PostHog" />
+            
+          </a>
+        </div>
+        <div class="small-cta">
+          <ul class="list-links-small">
+            <li><strong>PostHog</strong></li>
+            <li><a href="https://posthog.com" title="PostHog">
+              PostHog is an all-in-one developer platform for building successful products. We provide product analytics, web analytics, session replay, error tracking, feature flags, experiments, surveys, LLM observability, data warehouse, CDP, workflows, logs, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    
+    <ul class="list-links-small">
+      <li><a href="https://www.djangoproject.com/sponsor/">Become a sponsor</a></li>
+    </ul>
+  </div>
+
+
+
+    
+
+    <h3><span>Archives</span></h3>
+    
+
+
+<ul class="list-collapsing active">
+  
+    <li id="year2026" class="active">
+      <h2><a href="https://www.djangoproject.com/weblog/2026/">2026</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/nov/">November 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/oct/">October 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/sep/">September 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/aug/">August 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/jul/">July 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/jun/">June 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/may/">May 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/apr/">April 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/mar/">March 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/feb/">February 2026</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2026/jan/">January 2026</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2025">
+      <h2><a href="https://www.djangoproject.com/weblog/2025/">2025</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/dec/">December 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/nov/">November 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/oct/">October 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/sep/">September 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/aug/">August 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/jul/">July 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/jun/">June 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/may/">May 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/apr/">April 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/mar/">March 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/feb/">February 2025</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2025/jan/">January 2025</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2024">
+      <h2><a href="https://www.djangoproject.com/weblog/2024/">2024</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/dec/">December 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/nov/">November 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/oct/">October 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/sep/">September 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/aug/">August 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/jul/">July 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/jun/">June 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/may/">May 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/apr/">April 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/mar/">March 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/feb/">February 2024</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2024/jan/">January 2024</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2023">
+      <h2><a href="https://www.djangoproject.com/weblog/2023/">2023</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/dec/">December 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/nov/">November 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/oct/">October 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/sep/">September 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/aug/">August 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/jul/">July 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/jun/">June 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/may/">May 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/apr/">April 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/mar/">March 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/feb/">February 2023</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2023/jan/">January 2023</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2022">
+      <h2><a href="https://www.djangoproject.com/weblog/2022/">2022</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/dec/">December 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/nov/">November 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/oct/">October 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/sep/">September 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/aug/">August 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/jul/">July 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/jun/">June 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/may/">May 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/apr/">April 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/mar/">March 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/feb/">February 2022</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2022/jan/">January 2022</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2021">
+      <h2><a href="https://www.djangoproject.com/weblog/2021/">2021</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/dec/">December 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/nov/">November 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/oct/">October 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/sep/">September 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/aug/">August 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/jul/">July 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/jun/">June 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/may/">May 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/apr/">April 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/mar/">March 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/feb/">February 2021</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2021/jan/">January 2021</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2020">
+      <h2><a href="https://www.djangoproject.com/weblog/2020/">2020</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/dec/">December 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/nov/">November 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/oct/">October 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/sep/">September 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/aug/">August 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/jul/">July 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/jun/">June 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/may/">May 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/apr/">April 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/mar/">March 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/feb/">February 2020</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2020/jan/">January 2020</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2019">
+      <h2><a href="https://www.djangoproject.com/weblog/2019/">2019</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/dec/">December 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/nov/">November 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/oct/">October 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/sep/">September 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/aug/">August 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/jul/">July 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/jun/">June 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/may/">May 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/apr/">April 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/mar/">March 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/feb/">February 2019</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2019/jan/">January 2019</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2018">
+      <h2><a href="https://www.djangoproject.com/weblog/2018/">2018</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/dec/">December 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/nov/">November 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/oct/">October 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/aug/">August 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/jul/">July 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/jun/">June 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/may/">May 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/apr/">April 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/mar/">March 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/feb/">February 2018</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2018/jan/">January 2018</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2017">
+      <h2><a href="https://www.djangoproject.com/weblog/2017/">2017</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/dec/">December 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/nov/">November 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/oct/">October 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/sep/">September 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/aug/">August 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/jul/">July 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/jun/">June 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/may/">May 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/apr/">April 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/mar/">March 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/feb/">February 2017</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2017/jan/">January 2017</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2016">
+      <h2><a href="https://www.djangoproject.com/weblog/2016/">2016</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/dec/">December 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/nov/">November 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/oct/">October 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/sep/">September 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/aug/">August 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/jul/">July 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/jun/">June 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/may/">May 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/apr/">April 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/mar/">March 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/feb/">February 2016</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2016/jan/">January 2016</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2015">
+      <h2><a href="https://www.djangoproject.com/weblog/2015/">2015</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/dec/">December 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/nov/">November 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/oct/">October 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/sep/">September 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/aug/">August 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/jul/">July 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/jun/">June 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/may/">May 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/apr/">April 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/mar/">March 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/feb/">February 2015</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2015/jan/">January 2015</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2014">
+      <h2><a href="https://www.djangoproject.com/weblog/2014/">2014</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/dec/">December 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/nov/">November 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/oct/">October 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/sep/">September 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/aug/">August 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/jul/">July 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/jun/">June 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/may/">May 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/apr/">April 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/mar/">March 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/feb/">February 2014</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2014/jan/">January 2014</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2013">
+      <h2><a href="https://www.djangoproject.com/weblog/2013/">2013</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/dec/">December 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/nov/">November 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/oct/">October 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/sep/">September 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/aug/">August 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/jul/">July 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/jun/">June 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/may/">May 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/apr/">April 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/mar/">March 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/feb/">February 2013</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2013/jan/">January 2013</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2012">
+      <h2><a href="https://www.djangoproject.com/weblog/2012/">2012</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/dec/">December 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/nov/">November 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/oct/">October 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/sep/">September 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/aug/">August 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/jul/">July 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/jun/">June 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/may/">May 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/apr/">April 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/mar/">March 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/feb/">February 2012</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2012/jan/">January 2012</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2011">
+      <h2><a href="https://www.djangoproject.com/weblog/2011/">2011</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/dec/">December 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/nov/">November 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/sep/">September 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/aug/">August 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/jun/">June 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/apr/">April 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/mar/">March 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/feb/">February 2011</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2011/jan/">January 2011</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2010">
+      <h2><a href="https://www.djangoproject.com/weblog/2010/">2010</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/dec/">December 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/nov/">November 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/oct/">October 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/sep/">September 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/may/">May 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/apr/">April 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/mar/">March 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/feb/">February 2010</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2010/jan/">January 2010</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2009">
+      <h2><a href="https://www.djangoproject.com/weblog/2009/">2009</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/dec/">December 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/oct/">October 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/aug/">August 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/jul/">July 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/may/">May 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/mar/">March 2009</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2009/feb/">February 2009</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2008">
+      <h2><a href="https://www.djangoproject.com/weblog/2008/">2008</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/nov/">November 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/oct/">October 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/sep/">September 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/aug/">August 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/jul/">July 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/jun/">June 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/may/">May 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/apr/">April 2008</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2008/jan/">January 2008</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2007">
+      <h2><a href="https://www.djangoproject.com/weblog/2007/">2007</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/dec/">December 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/nov/">November 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/oct/">October 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/sep/">September 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/aug/">August 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/jul/">July 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/jun/">June 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/may/">May 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/apr/">April 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/mar/">March 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/feb/">February 2007</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2007/jan/">January 2007</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2006">
+      <h2><a href="https://www.djangoproject.com/weblog/2006/">2006</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/dec/">December 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/nov/">November 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/oct/">October 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/sep/">September 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/aug/">August 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/jul/">July 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/jun/">June 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/may/">May 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/apr/">April 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/mar/">March 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/feb/">February 2006</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2006/jan/">January 2006</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+    <li id="year2005">
+      <h2><a href="https://www.djangoproject.com/weblog/2005/">2005</a> <i class="collapsing-icon icon icon-plus"></i></h2>
+      <div class="collapsing-content">
+        <ul class="list-links-small">
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/dec/">December 2005</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/nov/">November 2005</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/oct/">October 2005</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/sep/">September 2005</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/aug/">August 2005</a></li>
+          
+            <li><a href="https://www.djangoproject.com/weblog/2005/jul/">July 2005</a></li>
+          
+        </ul>
+        <p></p>
+      </div>
+    </li>
+  
+</ul>
+
+
+    <h3><span>RSS Feeds</span></h3>
+    <ul class="list-links-small rss-list">
+      <li><a href="https://www.djangoproject.com/rss/weblog/">Latest news entries</a></li>
+      <li><a href="https://code.djangoproject.com/timeline?daysback=90&max=50&wiki=on&ticket=on&changeset=on&milestone=on&format=rss">Recent code changes</a></li>
+    </ul>
+  </div>
+
+      
+
+    </div>
+
+     
+     
+
+    
+    
+    
+
+    
+      
+
+<footer>
+  <div class="subfooter">
+    <div class="container">
+      <h2 class="visuallyhidden">Django Links</h2>
+      <div class="column-container">
+        <div class="col-learn-more">
+          <h3>Learn More</h3>
+          <ul>
+            <li><a href="https://www.djangoproject.com/start/overview/">About Django</a></li>
+            
+            <li><a href="https://www.djangoproject.com/start/">Getting Started with Django</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/teams/">Team Organization</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/">Django Software Foundation</a></li>
+            <li><a href="https://www.djangoproject.com/conduct/">Code of Conduct</a></li>
+            <li><a href="https://www.djangoproject.com/diversity/">Diversity Statement</a></li>
+          </ul>
+        </div>
+
+        <div class="col-get-involved">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="https://www.djangoproject.com/community/">Join a Group</a></li>
+            <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/">Contribute
+              to Django</a></li>
+            <li><a
+              href="https://docs.djangoproject.com/en/dev/internals/contributing/bugs-and-features/">Submit
+              a Bug</a></li>
+            <li><a
+              href="https://docs.djangoproject.com/en/dev/internals/security/#reporting-security-issues">Report
+              a Security Issue</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/individual-members/">Individual membership</a></li>
+          </ul>
+        </div>
+
+        <div class="col-get-help">
+          <h3>Get Help</h3>
+          <ul>
+            <li><a href="https://docs.djangoproject.com/en/stable/faq/">Getting Help FAQ</a>
+            </li>
+            <li><a href="https://chat.djangoproject.com" target="_blank">Django Discord</a></li>
+            <li><a href="https://forum.djangoproject.com/" target="_blank">Official Django Forum</a></li>
+          </ul>
+        </div>
+
+        <div class="col-follow-us">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://github.com/django">GitHub</a></li>
+            <li><a href="https://x.com/djangoproject">X</a></li>
+            <li><a href="https://fosstodon.org/@django" rel="me">Fediverse (Mastodon)</a></li>
+            <li><a href="https://bsky.app/profile/djangoproject.com">Bluesky</a></li>
+            <li><a href="https://www.linkedin.com/company/django-software-foundation">LinkedIn</a></li>
+            <li><a href="https://www.djangoproject.com/rss/weblog/">News RSS</a></li>
+          </ul>
+        </div>
+
+        <div class="col-support-us">
+          <h3>Support Us</h3>
+          <ul>
+            <li><a href="https://www.djangoproject.com/sponsor/">Sponsor Django</a></li>
+            <li><a href="https://www.djangoproject.com/fundraising/">Donate to Django</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/corporate-members/">Corporate membership</a></li>
+            <li><a href="https://django.threadless.com/" target="_blank">Official merchandise store</a></li>
+            <li><a href="https://www.djangoproject.com/foundation/donate/#benevity-giving">Benevity Workplace Giving Program</a></li>
+            <li><a href="https://github.com/sponsors/django" target="_blank" rel="noopener">GitHub Sponsors</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <a class="logo" href="https://www.djangoproject.com/">Django</a>
+      </div>
+      <ul class="thanks">
+        <li>
+          <span>Hosting by</span> <a class="in-kind-donors" href="https://www.djangoproject.com/fundraising/#in-kind-donors">In-kind
+            donors</a>
+        </li>
+        <li class="design"><span>Design by</span> <a class="threespot" href="https://www.threespot.com">Threespot</a>
+          <span class="ampersand">&amp;</span> <a class="andrevv" href="http://andrevv.com/">andrevv</a></li>
+      </ul>
+      <p class="copyright">&copy; 2005-2026
+        <a href="https://www.djangoproject.com/foundation/"> Django Software
+          Foundation</a> and individual contributors. Django is a
+        <a href="https://www.djangoproject.com/trademarks/">registered
+          trademark</a> of the Django Software Foundation.
+      </p>
+    </div>
+  </div>
+
+</footer>
+
+    
+
+    
+      
+      <script>
+        function extless(input) {
+          return input.replace(/(.*)\.[^.]+$/, '$1');
+        }
+        var require = {
+          shim: {
+            'jquery': [],
+            'stripe': {
+              exports: 'Stripe'
+            }
+          },
+          paths: {
+            "jquery": extless("https://static.djangoproject.com/js/lib/jquery.min.5790ead7ad3b.js"),
+            "mod/list-collapsing": extless("https://static.djangoproject.com/js/mod/list-collapsing.2d844151b2ec.js"),
+            "mod/stripe-change-card": extless("https://static.djangoproject.com/js/mod/stripe-change-card.fb7229cdd9b0.js"),
+            "mod/switch-dark-mode": extless("https://static.djangoproject.com/js/mod/switch-dark-mode.139625c684db.js"),
+            "stripe-checkout": "https://checkout.stripe.com/checkout",
+            "stripe": "https://js.stripe.com/v3/?" // ? needed due to require.js
+          }
+        };
+      </script>
+      <script data-main="https://static.djangoproject.com/js/main.8677b21133eb.js" src="https://static.djangoproject.com/js/lib/require.177879fbe7dd.js"></script>
+      <script src="https://static.djangoproject.com/js/djangoproject.ae16178f2b1f.js"></script>
+    
+  </body>
+</html>
