@@ -26,7 +26,7 @@ rounded:
 
 ## Overview
 
-A product report for maintainers deciding which technical SEO conditions need investigation. The reference is a laboratory inspection sheet: calm blue ink, explicit provenance, readable evidence. The signature is a finding ledger with a status-colored left edge and source references, not ornamental charts or a promotional hero. Avoid marketing dashboards, glowing dark panels, and newspaper columns. English UI, Asia/Yerevan dates, light theme only.
+A product report for marketers deciding which SEO issues need action. The reference is a calm inspection sheet: blue ink, clear priorities, readable changes. The signature is an issue ledger with a status-colored left edge and a concrete next action. Provenance is available through optional specialist disclosures. Avoid marketing dashboards, glowing dark panels, and newspaper columns. English UI, Asia/Yerevan dates, light theme only.
 
 ## Colors
 
@@ -34,11 +34,11 @@ Runtime source of truth: `seo_reviewer/rendering/styles.css` CSS variables. The 
 
 ## Typography
 
-Display family only for page titles; system sans for prose; monospace for run IDs, URLs and digests. Body 16px/1.6, section headings 22px, report title 36px (28px on phones), data 13px. External fonts are unnecessary. Long values wrap; factual values are never hidden behind hover.
+Display family only for page titles; system sans for prose; monospace for URLs and optional technical observations. Body 16px/1.6, section headings 22px, report title 36px (28px on phones), data 13px. External fonts are unnecessary. Long values wrap; factual values are never hidden behind hover.
 
 ## Layout
 
-A centered 1080px reading surface with a compact masthead and latest/archive navigation. Report sections follow the implementation brief: title/date, status/freshness, coverage, summary, priorities/evidence/actions, resolved and verification items, history, archive/data links, limitations. Spacing follows a 4px base. At 680px and below columns stack. Document owns vertical scroll; semantic tables may scroll horizontally inside labeled regions. Tables keep a 760px minimum width and scroll horizontally in their labeled region on phones. History is limited to 20 rows per report; archive lists use static pages of 30 reviews.
+A centered 1080px reading surface with a compact masthead and latest/archive navigation. Report sections show title/check date, status and concise coverage, summary and changes, priority issues and actions, issues needing verification, resolved issues, recent reports, and limitations with optional specialist links. Incomplete checks and unverified issues are prominent; an incomplete check never gives an all-clear. Spacing follows a 4px base. At 680px and below columns stack. Document owns vertical scroll; semantic tables may scroll horizontally inside labeled regions. Tables keep a 520px minimum width and scroll horizontally in their labeled region on phones. Recent reports are limited to five rows per report; dates are the links; archive lists use static pages of 30 reviews.
 
 ## Elevation & Depth
 
@@ -54,4 +54,4 @@ Shared `base.html` owns landmarks/navigation and stylesheet; `report.html` is re
 
 ## Do's and Don'ts
 
-Show authoritative facts before advisory AI prose. Keep code-derived counts and statuses outside AI sentences. Link to JSON evidence and full repository snapshots; do not publish crawled HTML as executable pages. Keep latest and archive layout identical. Do not add form controls, a client framework, or deceptive interactive rows.
+Show authoritative facts before advisory AI prose. Keep code-derived coverage and statuses outside AI sentences. Each issue explains what happened, affected pages, why it matters, and the next action. Use “first report” and “new issue” only when supported by comparison evidence. Keep run/finding identifiers, rule codes, confidence values, and digests out of the report text. Place JSON, repository/workflow links, raw observations, and diagnostic details in closed “For specialists” disclosures; do not publish crawled HTML as executable pages. Keep latest and archive layout identical. Do not add form controls, a client framework, or deceptive interactive rows.

@@ -14,7 +14,7 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
 from seo_reviewer.detection import RANK
-from seo_reviewer.review import ACTIONS
+from seo_reviewer.report_content import issue_presentation, report_presentation
 from seo_reviewer.review_models import Review
 
 TEMPLATES = Path(__file__).with_name('rendering')
@@ -104,10 +104,11 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
     (output_dir / 'reviews').mkdir()
     (output_dir / 'archive').mkdir()
     history = [
-        {'run_id': review.run_id, 'date': display_time(collection['completed_at']), 'status': review.alert_status,
-         'coverage': f"{review.coverage['successful']}/{review.coverage['attempted']} collected; {review.coverage['failed']} failed; {review.coverage['deferred']} deferred", 'href': link(f'reviews/{review.run_id}.html'),
-         'narrative_source': 'AI-assisted' if review.narrative_source == 'ai' else 'Deterministic fallback'}
+        {'date': display_time(collection['completed_at']),
+         'status_label': presentation['status_label'], 'status_tone': presentation['status_tone'],
+         'coverage': presentation['coverage_text'], 'href': link(f'reviews/{review.run_id}.html')}
         for review, collection, _ in rows
+        for presentation in [report_presentation(review, collection)]
     ]
     for review, collection, raw in rows:
         report_dir = output_dir / 'data/reviews'
@@ -119,11 +120,11 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
         prose = {item.finding_id: item for item in [*review.narrative.prioritized_issues, *review.narrative.verification_items]}
         ranking = {item.finding_id: index for index, item in enumerate(review.narrative.prioritized_issues)}
         sections = []
-        for title, allowed in [('Prioritized issues', {'new', 'ongoing', 'worsened'}), ('Resolved issues', {'resolved'}), ('Verification items', {'unverified'})]:
+        for title, allowed in [('Priority issues', {'new', 'ongoing', 'worsened'}), ('Needs verification', {'unverified'}), ('Resolved issues', {'resolved'})]:
             findings = sorted((finding for finding in review.findings if finding.state in allowed), key=lambda finding: (ranking.get(finding.id, 99), -RANK[finding.severity], finding.rule, finding.id))
             items = []
             for finding in findings:
-                explanation = prose.get(finding.id)
+                explanation = prose.get(finding.id) if review.narrative_source == 'ai' else None
                 refs = []
                 for record in finding.evidence:
                     run_id = record.get('run_id', '')
@@ -135,20 +136,25 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
                             target.mkdir(parents=True, exist_ok=True)
                             shutil.copyfile(data_dir / 'runs' / run_id / 'collection.json', target / 'collection.json')
                             href = link(f'data/runs/{run_id}/collection.json')
-                    refs.append({'label': f"{run_id} · {record.get('body_path', 'no response body')} · SHA-256 {record.get('body_sha256') or 'unavailable'}", 'href': href})
-                items.append({
-                    'finding': finding, 'action': explanation.recommended_action if explanation else ACTIONS.get(finding.rule, 'Review the stored evidence.'),
-                    'explanation': explanation.explanation if explanation else '', 'advisory_source': 'ai' if explanation and review.narrative_source == 'ai' else 'deterministic', 'evidence': refs,
-                    'urls': [{'label': url, 'href': safe_url(url)} for url in finding.urls],
-                    'before': json.dumps(finding.before, ensure_ascii=False), 'observed': json.dumps(finding.observed, ensure_ascii=False),
-                })
+                    refs.append({'label': 'Saved page check' if len(finding.evidence) == 1 else f'Saved page check {len(refs) + 1}', 'href': href})
+                item = {
+                    **issue_presentation(finding), 'finding': finding,
+                    'explanation': explanation.explanation if explanation and finding.state not in {'resolved', 'unverified'} else '',
+                    'evidence': refs,
+                    'urls': [{'label': url, 'href': safe_url(url)} for url in dict.fromkeys([*finding.urls, *finding.related_urls])],
+                    'raw_before': json.dumps(finding.before, ensure_ascii=False), 'raw_observed': json.dumps(finding.observed, ensure_ascii=False),
+                }
+                if explanation and finding.state not in {'resolved', 'unverified'}:
+                    item['action'] = explanation.recommended_action
+                items.append(item)
             sections.append({'title': title, 'items': items})
         collected = datetime.fromisoformat(collection['completed_at'])
-        freshness = 'Stale at publication (over 36 hours old)' if now - collected > timedelta(hours=36) else 'Within 36 hours at publication'
+        freshness = 'Check is over 36 hours old. Run a new check before relying on this report.' if now - collected > timedelta(hours=36) else 'Check was less than 36 hours old when published.'
         context = {
-            'page_title': 'Technical SEO review', 'base': base, 'report': review, 'collection': collection,
+            'page_title': 'Daily SEO review', 'base': base, 'report': review, 'collection': collection,
             'collected_at': display_time(collected), 'published_at': display_time(now), 'freshness': freshness,
-            'baseline': review.baseline_only, 'sections': sections, 'history': history[:20],
+            'baseline': review.baseline_only, 'sections': sections, 'history': history[:5],
+            'presentation': report_presentation(review, collection),
             'archive_href': link('archive/index.html'), 'review_json_href': link(f'data/reviews/{review.run_id}.json'),
             'collection_json_href': link(f'data/runs/{review.run_id}/collection.json'),
             'workflow_href': safe_url(workflow_url) if require_run_id == review.run_id else None,
