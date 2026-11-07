@@ -98,5 +98,5 @@ jobs:
           PAGES_URL: ${{ needs.deploy.outputs.page_url }}
           DEPLOYMENT_RESULT: ${{ needs.deploy.result }}
         run: |
-          evidence=$(uv run --frozen python -c 'from pathlib import Path; paths = sorted(Path("downloaded").glob("preflight-result-*/preflight.json"), key=lambda p: int(p.parent.name.rsplit("-", 1)[1])); print(paths[-1])')
+          evidence=$(uv run --frozen python -c 'from pathlib import Path; from seo_reviewer.notification import latest_preflight; print(latest_preflight(Path("downloaded")))')
           uv run --frozen python -m seo_reviewer.notification --evidence "$evidence" --pages-url "$PAGES_URL" --deployment-result "$DEPLOYMENT_RESULT"

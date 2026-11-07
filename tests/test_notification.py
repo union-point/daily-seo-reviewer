@@ -68,3 +68,19 @@ def test_retry_updates_existing_gate_result_without_duplicate_comment(monkeypatc
     assert delivery.deliver("run-1", "passed") is True
     assert calls[-1][:2] == ("PATCH", "/issues/comments/9")
     assert not any(method == "POST" for method, _, _ in calls)
+
+
+def test_latest_preflight_handles_flat_extraction(tmp_path):
+    from seo_reviewer.notification import latest_preflight
+    result = tmp_path / "preflight.json"
+    result.write_text("{}")
+    assert latest_preflight(tmp_path) == result
+
+
+def test_latest_preflight_selects_latest_numeric_attempt(tmp_path):
+    from seo_reviewer.notification import latest_preflight
+    for attempt in (2, 10):
+        folder = tmp_path / f"preflight-result-{attempt}"
+        folder.mkdir()
+        (folder / "preflight.json").write_text("{}")
+    assert latest_preflight(tmp_path).parent.name == "preflight-result-10"

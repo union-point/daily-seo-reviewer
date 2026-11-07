@@ -13,6 +13,17 @@ from seo_reviewer.models import Preflight
 ISSUE_TITLE = "Daily SEO reviews"
 
 
+def latest_preflight(directory: Path) -> Path:
+    """Handle both single-artifact flat extraction and multiple-attempt folders."""
+    candidates = list(directory.glob("preflight-result-*/preflight.json"))
+    if candidates:
+        return max(candidates, key=lambda path: int(path.parent.name.rsplit("-", 1)[1]))
+    direct = directory / "preflight.json"
+    if direct.is_file():
+        return direct
+    raise FileNotFoundError("No saved preflight result found in downloaded artifacts")
+
+
 class GitHubDelivery:
     def __init__(self, repository: str, token: str) -> None:
         if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
