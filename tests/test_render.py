@@ -346,3 +346,26 @@ def test_ai_report_omits_optional_stock_copy_and_empty_sections(tmp_path):
     assert not tree.xpath('//a[@href="#issues-1"]')
     assert 'No resolved issues' not in tree.text_content()
     assert 'No issues awaiting verification' not in tree.text_content()
+
+
+@pytest.mark.parametrize('status', ['collected', 'collection_failed'])
+def test_report_identifies_configured_website_before_results(tmp_path, status):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    save_review(data, status=status, findings=[], collection_updates={'config': {'site_url': 'https://www.djangoproject.com'}})
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    header = tree.xpath('//header[contains(@class,"page-header")]')[0]
+    link = header.xpath('.//a[@href="https://www.djangoproject.com"]')[0]
+    assert link.text == 'www.djangoproject.com'
+    assert 'www.djangoproject.com' in tree.xpath('//title')[0].text
+    assert 'Website: Not recorded' not in header.text_content()
+    assert_local_links_resolve(output, '')
+
+
+def test_report_does_not_link_unsafe_website_configuration(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    save_review(data, collection_updates={'config': {'site_url': 'javascript:alert(1)'}})
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    assert 'Website: Not recorded' in tree.text_content()
+    assert not tree.xpath('//a[starts-with(@href,"javascript:")]')

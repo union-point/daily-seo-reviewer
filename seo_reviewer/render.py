@@ -150,9 +150,13 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
                 items.append(item)
             sections.append({'title': title, 'items': items})
         collected = datetime.fromisoformat(collection['completed_at'])
+        site_url = safe_url(collection.get('config', {}).get('site_url'))
+        site_name = urlsplit(site_url).netloc if site_url else None
         freshness = 'Check is over 36 hours old. Run a new check before relying on this report.' if now - collected > timedelta(hours=36) else 'Check was less than 36 hours old when published.'
         context = {
-            'page_title': 'Daily SEO review', 'base': base, 'report': review, 'collection': collection,
+            'page_title': f'{site_name} · Daily SEO review' if site_name else 'Daily SEO review',
+            'site_url': site_url, 'site_name': site_name,
+            'base': base, 'report': review, 'collection': collection,
             'collected_at': display_time(collected), 'published_at': display_time(now), 'freshness': freshness,
             'baseline': review.baseline_only, 'sections': sections, 'history': history[:5],
             'presentation': report_presentation(review, collection),

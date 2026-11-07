@@ -3,6 +3,7 @@
 <header class="page-header">
   <p class="eyebrow">Daily review · Asia/Yerevan</p>
   <h1>Daily SEO review</h1>
+  <p class="lede">Website: {% if site_url %}<a href="{{ site_url }}">{{ site_name }}</a>{% else %}Not recorded{% endif %}</p>
   <p class="lede">Checked {{ collected_at }}</p>
   <div class="status-line">
     <span class="status-badge status--{{ presentation.status_tone }}">{{ presentation.status_label }}</span>
