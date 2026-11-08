@@ -53,9 +53,9 @@ def pagespeed_presentation(collection: dict) -> dict:
     """Project saved lab/field measurements without fetching or inferring impact."""
     saved = collection.get('pagespeed')
     if saved is None:
-        return {'rows': [], 'empty': 'PageSpeed measurements were not collected in this older report.'}
+        return {'rows': [], 'pages': [], 'empty': 'PageSpeed measurements were not collected in this older report.'}
     if not saved.get('enabled', False):
-        return {'rows': [], 'empty': 'PageSpeed collection was disabled for this run.'}
+        return {'rows': [], 'pages': [], 'empty': 'PageSpeed collection was disabled for this run.'}
     rows = []
     previous = saved.get('previous_observations', {})
 
@@ -70,6 +70,31 @@ def pagespeed_presentation(collection: dict) -> dict:
         if name.endswith('_MS') or name in {'INTERACTION_TO_NEXT_PAINT', 'EXPERIMENTAL_TIME_TO_FIRST_BYTE'}:
             return number(value, milliseconds=True)
         return number(value) + ' (API units)'
+
+    def failure_reason(observation: dict) -> str:
+        labels = {
+            'Timeout': 'PageSpeed request timed out.',
+            'ReadTimeout': 'PageSpeed request timed out.',
+            'ConnectTimeout': 'Connection to PageSpeed timed out.',
+            'ConnectionError': 'Could not connect to PageSpeed.',
+            'quota_deferred': 'Not requested after an earlier API access or rate-limit response.',
+            'retry_deferred': 'Retry deferred because PageSpeed requested a longer wait.',
+            'invalid_response': 'PageSpeed returned an invalid response.',
+            'missing_lighthouse_result': 'PageSpeed did not return Lighthouse results.',
+            'lighthouse_runtime_error': 'Lighthouse could not complete the page measurement.',
+            'strategy_mismatch': 'PageSpeed returned a different device strategy.',
+            'url_mismatch': 'PageSpeed returned results for a different URL.',
+            'invalid_url': 'PageSpeed returned an invalid page URL.',
+            'sensitive_response': 'The response was omitted because it contained sensitive information.',
+        }
+        status = observation.get('http_status')
+        error = observation.get('error')
+        if status is None and isinstance(error, str) and re.fullmatch(r'http_[45][0-9]{2}', error):
+            status = int(error[5:])
+        if isinstance(status, int) and not isinstance(status, bool) and 400 <= status <= 599:
+            return {429: 'PageSpeed returned HTTP 429 (rate limit).',
+                403: 'PageSpeed returned HTTP 403 (access denied).'}.get(status, f'PageSpeed returned HTTP {status}.')
+        return labels.get(error, 'PageSpeed did not provide a usable measurement.') if isinstance(error, str) else 'PageSpeed did not provide a usable measurement.'
 
     for observation in saved.get('observations', []):
         url, strategy = observation['url'], observation['strategy']
@@ -112,14 +137,35 @@ def pagespeed_presentation(collection: dict) -> dict:
             'status': {'success': 'Measured', 'incomplete': 'Incomplete', 'unavailable': 'Unavailable'}.get(observation.get('status'), 'Unavailable'),
             'tone': 'info' if observation.get('status') == 'success' else 'warning',
             'performance': number(performance), 'seo': number(seo),
+            'scores': [{'label': label, 'value': number(value)} for label, value in [('Performance', performance), ('SEO', seo)]
+                if number(value) != 'Unavailable'],
             'metrics': [{'label': label, 'value': number(metrics.get(key), milliseconds=key.endswith('_ms'))}
-                for key, label in [('lcp_ms', 'LCP'), ('cls', 'CLS'), ('fcp_ms', 'FCP'), ('tbt_ms', 'TBT'), ('speed_index_ms', 'Speed Index')]],
-            'changes': '; '.join(changes) if changes else 'No comparable measurements',
+                for key, label in [('lcp_ms', 'LCP'), ('cls', 'CLS'), ('fcp_ms', 'FCP'), ('tbt_ms', 'TBT'), ('speed_index_ms', 'Speed Index')]
+                if number(metrics.get(key)) != 'Unavailable'],
+            'changes': '; '.join(changes),
             'collected_at': display_time(observation['collected_at']),
             'version': observation.get('lighthouse_version') or 'Not recorded',
             'missing': observation.get('missing', []), 'audits': audits, 'fields': fields,
+            'failure_reason': failure_reason(observation) if unavailable else '',
+            'raw_status': observation.get('status'),
         })
-    return {'rows': rows, 'empty': 'No successfully collected pages were available for PageSpeed analysis.'}
+    pages = {}
+    for row in rows:
+        if row['scores'] or row['metrics']:
+            page = pages.setdefault(row['url'], {'url': row['url'], 'href': row['href'], 'rows': [], 'has_changes': False})
+            page['rows'].append(row)
+            page['has_changes'] = page['has_changes'] or bool(row['changes'])
+    for page in pages.values():
+        page['rows'].sort(key=lambda row: row['strategy'] != 'Mobile')
+    failures = [row for row in rows if row['raw_status'] != 'success']
+    reasons = list(dict.fromkeys(row['failure_reason'] for row in sorted(failures, key=lambda row: row['failure_reason'].startswith('Not requested')) if row['failure_reason']))
+    return {'rows': rows, 'pages': list(pages.values()), 'failures': failures,
+        'planned': len(rows), 'completed': sum(row['raw_status'] == 'success' for row in rows),
+        'incomplete': sum(row['raw_status'] == 'incomplete' for row in rows),
+        'unavailable': sum(row['raw_status'] == 'unavailable' for row in rows),
+        'reason': reasons[0] if reasons else '',
+        'empty': 'No successfully collected pages were available for PageSpeed analysis.'}
+
 
 
 def load_reviews(data_dir: Path) -> list[tuple[Review, dict, bytes]]:

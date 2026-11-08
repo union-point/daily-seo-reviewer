@@ -20,7 +20,6 @@
   --space: 4px;
   --radius-panel: 8px;
   --table-min-width: 520px;
-  --pagespeed-table-min-width: 800px;
   scrollbar-gutter: stable;
 }
 * { box-sizing: border-box; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar-width: auto; }
@@ -89,7 +88,6 @@ details[open] summary { margin-bottom: 12px; }
 .table-region { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-panel); background: var(--surface); scrollbar-gutter: stable; }
 .panel .table-region { border-radius: 4px; }
 table { min-width: var(--table-min-width); width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
-.pagespeed-table { min-width: var(--pagespeed-table-min-width); }
 .pagespeed-table th, .pagespeed-table .pagespeed-values { white-space: nowrap; }
 .pagespeed-table td:not(:first-child) { overflow-wrap: normal; }
 caption { padding: 12px 16px; text-align: left; color: var(--muted); font-size: 13px; }

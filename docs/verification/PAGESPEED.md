@@ -10,3 +10,10 @@
 - Screenshots: [desktop](../screenshots/pagespeed-desktop.png), [phone](../screenshots/pagespeed-mobile.png), [technical details](../screenshots/pagespeed-details.png). These are mock examples, not live PSI results.
 
 No live PSI request, paid model call, GitHub Actions run, publication or push was performed. Real project quotas, unauthenticated availability and hosted latency require a normal configured collection run. URL-shape selection is heuristic. Lighthouse variability and absent/removed CrUX data remain explicit limitations. Physical touch scrolling, screen-reader speech and a formal accessibility audit were not performed.
+
+## Compact report states — 8 November 2026
+
+- Presentation-only update: all-failed PSI runs show one factual panel with completed/planned counts. Useful partial readings group by URL and device, with one collection warning. Empty metrics/history placeholders and the PageSpeed header notice were removed; collector/detection and saved evidence were not changed.
+- Full suite: **231 passed**. Independent verification: **54 rendering tests passed**, no requirement deviations. Compilation and diff checks passed.
+- Rebuilt local site from actual saved run `20261107T232735.327863Z-bc2825d5`: 0/6 completed, recorded HTTP429, five deferred requests; main SEO coverage remains50/50. No live API requests or sample Lighthouse results were generated.
+- [Real saved-data screenshot](../screenshots/pagespeed-unavailable-real.png) captured and inspected using local headless Chromium at1280px width. New mobile geometry and interactive browser checks remain unverified; native responsive table regions and disclosures are retained. Older screenshots document the earlier layout with synthetic data.

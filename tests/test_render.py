@@ -398,7 +398,7 @@ def test_pagespeed_reports_lab_metrics_and_escaped_audits(tmp_path):
     section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
     assert len(section.xpath('.//tbody/tr')) == 2
     assert section.xpath('.//table[@class="pagespeed-table"]')
-    assert len(section.xpath('.//tbody/tr[1]/td[@class="pagespeed-values"]')) == 3
+    assert len(section.xpath('.//tbody/tr[1]/td/span[@class="pagespeed-values"]')) == 7
     assert 'Mobile' in section.text_content() and 'Desktop' in section.text_content()
     for value in ['4.20 s', '0.3', '1.20 s', '0.60 s', '3.50 s', '42', '90']:
         assert value in section.text_content()
@@ -436,11 +436,11 @@ def test_pagespeed_unavailable_measurement_never_displays_stored_scores(tmp_path
 
 @pytest.mark.parametrize('prior_changes,expected', [
     ({}, 'Performance -10 points'),
-    ({'strategy': 'desktop'}, 'No comparable measurements'),
-    ({'url': 'https://example.com/other'}, 'No comparable measurements'),
-    ({'lighthouse_version': '12.0.0'}, 'No comparable measurements'),
-    ({'final_url': 'https://example.com/other'}, 'No comparable measurements'),
-    ({'status': 'unavailable'}, 'No comparable measurements'),
+    ({'strategy': 'desktop'}, ''),
+    ({'url': 'https://example.com/other'}, ''),
+    ({'lighthouse_version': '12.0.0'}, ''),
+    ({'final_url': 'https://example.com/other'}, ''),
+    ({'status': 'unavailable'}, ''),
 ])
 def test_pagespeed_changes_require_matching_measurements(prior_changes, expected):
     from seo_reviewer.render import pagespeed_presentation
@@ -448,7 +448,7 @@ def test_pagespeed_changes_require_matching_measurements(prior_changes, expected
     prior = pagespeed_observation(performance_score=52, **prior_changes)
     result = pagespeed_presentation({'pagespeed': {'enabled': True,
         'observations': [current], 'previous_observations': {'mobile\nhttps://example.com/': prior}}})
-    assert expected in result['rows'][0]['changes']
+    assert expected in result['rows'][0]['changes'] if expected else result['rows'][0]['changes'] == ''
 
 
 def test_pagespeed_incomplete_preserves_missing_values_and_field_scope(tmp_path):
@@ -460,6 +460,88 @@ def test_pagespeed_incomplete_preserves_missing_values_and_field_scope(tmp_path)
     save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
     render_site(data, output)
     page = html.fromstring((output / 'index.html').read_text()).text_content()
-    assert 'Incomplete' in page and 'LCP: Unavailable' in page and 'CLS: 0' in page
+    assert 'Incomplete' in page and 'LCP: Unavailable' not in page and 'CLS: 0' in page
+    assert 'Performance: Unavailable' not in page
+    assert '0 of 1 planned measurements completed' in page and '1 incomplete' in page
     assert 'Some measurements or audit results are missing' in page
     assert 'CrUX Origin fallback field data:' in page and '0.12' in page
+
+
+def test_pagespeed_all_failures_show_compact_observed_reason_and_no_table(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    rows = [pagespeed_observation(status='unavailable', error='http_429', http_status=429),
+        pagespeed_observation(status='unavailable', strategy='desktop', error='quota_deferred')]
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': rows}})
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
+    assert not section.xpath('.//table')
+    assert 'Performance data unavailable' in section.text_content()
+    assert '0 of 2 planned measurements completed' in section.text_content()
+    assert 'HTTP 429 (rate limit)' in section.text_content()
+    assert 'main SEO audit results above' in section.text_content()
+    assert section.xpath('./details/summary')[0].text == 'PageSpeed collection details'
+    assert 'Not requested after an earlier API access or rate-limit response.' in section.xpath('./details')[0].text_content()
+    assert 'LCP:' not in section.text_content() and 'No comparable measurements' not in section.text_content()
+    assert 'CrUX' not in section.text_content()
+    assert not tree.xpath('//header[contains(@class,"page-header")]//*[contains(text(),"Some Lighthouse measurements")]')
+
+
+def test_pagespeed_partial_groups_available_strategies_and_one_warning(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    rows = [pagespeed_observation(strategy='desktop'), pagespeed_observation(),
+        pagespeed_observation(url='https://example.com/other', status='unavailable', error='Timeout')]
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': rows}})
+    render_site(data, output)
+    section = html.fromstring((output / 'index.html').read_text()).xpath('//section[@aria-labelledby="performance-heading"]')[0]
+    assert len(section.xpath('./div[@class="check-results"]')) == 1
+    main = section.xpath('./div[@class="check-results"]')[0]
+    assert len(main.xpath('.//h3/a')) == 1
+    assert main.xpath('.//tbody/tr/th/text()') == ['Mobile', 'Desktop']
+    assert len(section.xpath('./p[contains(@class,"notice")]')) == 1
+    assert '2 of 3 planned measurements completed' in section.text_content()
+    assert 'https://example.com/other' not in main.text_content()
+    assert 'PageSpeed request timed out' in section.xpath('./details')[0].text_content()
+    assert 'Unavailable' not in main.text_content()
+    assert not main.xpath('.//th[text()="Change"]')
+
+
+@pytest.mark.parametrize('error,http_status,expected', [
+    ('http_403', 403, 'HTTP 403 (access denied)'),
+    ('ReadTimeout', None, 'request timed out'),
+    ('invalid_response', None, 'invalid response'),
+    ('<script>secret-api-key</script>', None, 'did not provide a usable measurement'),
+    ('http_429?key=secret-api-key', None, 'did not provide a usable measurement'),
+])
+def test_pagespeed_errors_use_saved_safe_labels_without_guessing_causes(tmp_path, error, http_status, expected):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    item = pagespeed_observation(status='unavailable', error=error, http_status=http_status)
+    save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
+    render_site(data, output)
+    page = (output / 'index.html').read_text()
+    assert expected in page and 'secret-api-key' not in page
+    assert 'missing API key' not in page and 'project quota' not in page
+    assert not html.fromstring(page).xpath('//script')
+
+
+def test_pagespeed_failure_does_not_add_header_warning_or_claim_failed_seo_audit_completed(tmp_path):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    item = pagespeed_observation(status='unavailable', error='http_429', http_status=429)
+    save_review(data, findings=[], status='collection_failed', alert='verification_required',
+        collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    header = tree.xpath('//header[contains(@class,"page-header")]')[0]
+    assert 'Lighthouse' not in header.text_content() and 'PageSpeed' not in header.text_content()
+    assert 'Check incomplete' in header.text_content() or 'Needs verification' in header.text_content()
+    section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
+    assert 'SEO audit completed' not in section.text_content()
+    assert 'SEO audit is healthy' not in section.text_content()
+
+
+def test_pagespeed_failure_summary_prefers_actual_error_over_deferred_rows():
+    from seo_reviewer.render import pagespeed_presentation
+    rows = [pagespeed_observation(status='unavailable', strategy='desktop', error='quota_deferred'),
+        pagespeed_observation(status='unavailable', error='http_429', http_status=429)]
+    result = pagespeed_presentation({'pagespeed': {'enabled': True, 'observations': rows}})
+    assert 'HTTP 429' in result['reason']

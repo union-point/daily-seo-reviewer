@@ -107,8 +107,6 @@ def report_presentation(review: Review, collection: dict) -> dict:
         errors.append('Some checks or page discovery could not be completed.')
     elif collection.get('request_errors'):
         errors.append('Some requests had problems. Recheck the affected pages before drawing conclusions.')
-    if any(item.get('status') != 'success' for item in collection.get('pagespeed', {}).get('observations', [])):
-        errors.append('Some Lighthouse measurements are unavailable or incomplete. This does not confirm a website performance problem.')
     return {
         'coverage_text': f'{checked} of {total} pages checked' if total else 'No pages checked',
         'incomplete': incomplete, 'status_label': status_label, 'status_tone': status_tone,
