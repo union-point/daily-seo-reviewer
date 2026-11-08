@@ -240,3 +240,6 @@ data/reviews/.review.lock
 *.[mM][dD]
 !AGENTS.md
 !README.md
+
+# Local documentation screenshots and verification artifacts
+/docs/
