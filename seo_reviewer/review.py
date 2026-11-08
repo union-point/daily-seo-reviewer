@@ -11,20 +11,6 @@ from seo_reviewer.detection import Finding, RANK
 from seo_reviewer.review_models import AIItem, Narrative, Review
 from seo_reviewer.triage import triage_findings
 
-ACTIONS = {
-    'pagespeed_performance': 'Review the failed Lighthouse performance audits and reproduce the lab result before choosing a fix.',
-    'missing_title': 'Add a descriptive, page-specific title.',
-    'duplicate_title': 'Give these pages distinct titles that describe their content.',
-    'missing_description': 'Add a concise, page-specific meta description.',
-    'missing_h1': 'Add a meaningful primary heading.',
-    'malformed_json_ld': 'Validate and correct the malformed JSON-LD blocks.',
-    'canonical_changed': 'Verify the canonical target and restore it if the change was unintended.',
-    'http_error': 'Verify the response and restore the page or confirm the intended removal.',
-    'robots_excluded': 'Check whether the robots exclusion was intended before changing the policy.',
-    'indexing_restricted': 'Verify whether the indexing restriction is intended before removing it.',
-}
-
-
 def reanalyse_review(config: Config, run_id: str) -> tuple[Review, Path]:
     """Save a new analysis without altering the original review or evidence."""
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*', run_id):
@@ -81,17 +67,20 @@ def latest_analysis(data_dir: Path, original: Review) -> Review:
 
 
 def fallback_narrative(findings: list[Finding], summary: str) -> Narrative:
+    from seo_reviewer.report_content import issue_presentation
+
     def item(finding: Finding) -> AIItem:
+        copy = issue_presentation(finding)
         return AIItem(
             finding_id=finding.id, evidence_ids=[finding.id + ':finding'],
-            explanation=f'{finding.rule.replace("_", " ")} ({finding.state}).',
-            recommended_action=ACTIONS.get(finding.rule, 'Review the stored evidence and verify the condition.'),
+            title=copy['title'], explanation=copy['happened'] + ' ' + copy['matters'],
+            recommended_action=copy['action'], completion_criterion=copy['verification'],
         )
     ranked = sorted(findings, key=lambda finding: (-RANK[finding.severity], finding.rule, finding.id))
     return Narrative(
         headline='AI summary unavailable', summary=summary,
-        prioritized_issues=[item(finding) for finding in ranked if finding.state not in {'resolved', 'unverified'}][:5],
-        verification_items=[item(finding) for finding in ranked if finding.state == 'unverified'][:5],
+        prioritized_issues=[item(finding) for finding in ranked if finding.state not in {'resolved', 'unverified'}],
+        verification_items=[item(finding) for finding in ranked if finding.state == 'unverified'],
     )
 
 

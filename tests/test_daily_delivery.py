@@ -4,12 +4,14 @@ from test_render import save_review
 from seo_reviewer.daily_delivery import latest_delivery_review, main, review_comment
 
 
-def test_daily_comment_uses_code_facts_and_static_actions(tmp_path):
+def test_daily_comment_uses_code_facts_and_saved_actions(tmp_path):
     review = save_review(tmp_path / 'data')
+    from seo_reviewer.review_models import AIItem
+    review.narrative.prioritized_issues = [AIItem(finding_id='f1', evidence_ids=['f1:finding'], explanation='Recorded issue', recommended_action='SENTINEL saved action')]
     body = review_comment(review, 'https://example.com/daily-seo-reviewer/', 'https://github.com/owner/repo/actions/runs/123', 'success')
     assert '1/1' in body and '**warning**' in body
     assert '/daily-seo-reviewer/reviews/run-1.html' in body
-    assert 'page-specific meta description' in body
+    assert 'SENTINEL saved action' in body
     assert '<img' not in body and '<script' not in body
     assert 'AI summary unavailable' in body
 

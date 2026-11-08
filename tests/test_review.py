@@ -30,7 +30,7 @@ def collection(tmp_path):
 
 
 def narrative(finding_id='finding-1', **overrides):
-    return Narrative(headline='Review description coverage', summary='Check the supplied finding.', prioritized_issues=[AIItem(finding_id=finding_id, evidence_ids=[finding_id + ':finding'], explanation='A description is missing.', recommended_action='Add a description.')], verification_items=[], **overrides)
+    return Narrative(headline='Review description coverage', summary='Check the supplied finding.', prioritized_issues=[AIItem(title='Unique issue title', completion_criterion='Unique completion check', finding_id=finding_id, evidence_ids=[finding_id + ':finding'], explanation='A description is missing.', recommended_action='Add a description.')], verification_items=[], **overrides)
 
 
 def client(monkeypatch, replies):
@@ -237,7 +237,7 @@ def test_reanalysis_preserves_original_and_renderer_uses_revision(collection, mo
     source = (config.data_dir / original.collection_path).read_bytes()
     client(monkeypatch, [response(narrative())])
     updated, revision_path = reanalyse_review(config, 'run1')
-    assert revision_path.exists() and updated.generation.prompt_version == 'triage-v3'
+    assert revision_path.exists() and updated.generation.prompt_version == 'triage-v4'
     assert path.read_bytes() == before
     assert (config.data_dir / original.collection_path).read_bytes() == source
     assert latest_analysis(config.data_dir, original) == updated

@@ -23,7 +23,7 @@ def save_review(directory, run_id='run-1', date=None, alert='warning', status='c
     (path / 'collection.json').write_bytes(raw)
     (path / 'responses').mkdir(exist_ok=True)
     (path / 'responses/public.body').write_text('<script>doNotPublishRawHTML()</script>')
-    review = Review(run_id=run_id, created_at=date, collection_path=f'runs/{run_id}/collection.json', collection_sha256=hashlib.sha256(raw).hexdigest(), alert_status=alert, collection_status=status, coverage=coverage, baseline_only=baseline, findings=findings, detection={'widespread_change': False}, deterministic_summary='Authoritative code summary', narrative=Narrative(headline='AI summary unavailable' if source == 'deterministic' else 'Review findings', summary='<img src=x onerror=alert(1)>', prioritized_issues=[], verification_items=[]), narrative_source=source, generation=Generation(reason='disabled', requested_model='gpt-6.1-terra', input_sha256='abc', input_bytes=0, included_finding_ids=[], omitted_findings=0))
+    review = Review(run_id=run_id, created_at=date, collection_path=f'runs/{run_id}/collection.json', collection_sha256=hashlib.sha256(raw).hexdigest(), alert_status=alert, collection_status=status, coverage=coverage, baseline_only=baseline, findings=findings, detection={'widespread_change': False}, deterministic_summary='Authoritative code summary', narrative=Narrative(headline='AI summary unavailable' if source == 'deterministic' else 'Review findings', summary='<img src=x onerror=alert(1)>', prioritized_issues=[], verification_items=[]), narrative_source=source, generation=Generation(prompt_version='triage-v3', reason='disabled', requested_model='gpt-6.1-terra', input_sha256='abc', input_bytes=0, included_finding_ids=[], omitted_findings=0))
     (directory / 'reviews').mkdir(exist_ok=True)
     (directory / 'reviews' / f'{run_id}.json').write_text(review.model_dump_json())
     return review
@@ -545,3 +545,61 @@ def test_pagespeed_failure_summary_prefers_actual_error_over_deferred_rows():
         pagespeed_observation(status='unavailable', error='http_429', http_status=429)]
     result = pagespeed_presentation({'pagespeed': {'enabled': True, 'observations': rows}})
     assert 'HTTP 429' in result['reason']
+
+
+def test_ai_narrative_sentinels_survive_serialization_without_template_calls(tmp_path, monkeypatch):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    findings = [Finding(id=state, rule='lighthouse_seo:document-title', urls=['https://example.com/' + state], severity='warning', state=state, first_seen_run='run-1', last_seen_run='run-1', observed={'score': 0}) for state in ('new', 'unverified', 'resolved')]
+    review = save_review(data, source='ai', findings=findings)
+    review.narrative.headline = 'SENTINEL executive heading'
+    review.narrative.summary = 'SENTINEL executive assessment'
+    for state, bucket in [('new', review.narrative.prioritized_issues), ('unverified', review.narrative.verification_items)]:
+        bucket.append(AIItem(finding_id=state, evidence_ids=[state + ':finding'], title='SENTINEL title ' + state,
+            explanation='SENTINEL explanation ' + state, recommended_action='SENTINEL recommendation ' + state,
+            completion_criterion='SENTINEL completion ' + state))
+    raw = review.model_dump_json()
+    (data / 'reviews/run-1.json').write_text(raw)
+    def forbidden(*args):
+        pytest.fail('AI rendering invoked deterministic fallback narrative generation')
+    monkeypatch.setattr('seo_reviewer.render.fallback_issue_presentation', forbidden)
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    assert len(tree.xpath('//article')) == 2
+    for state in ('new', 'unverified'):
+        for label in ('title', 'explanation', 'recommendation', 'completion'):
+            assert 'SENTINEL ' + label + ' ' + state in tree.text_content()
+    assert 'SENTINEL executive assessment' in tree.text_content()
+    assert 'A Lighthouse SEO audit failed on this page.' not in tree.text_content()
+    assert 'Run a new check and review the result with your web team.' not in tree.text_content()
+    assert 'Additional recorded findings' in tree.text_content()
+    assert 'resolved' in tree.xpath('//details[summary="View recorded findings"]')[0].text_content().lower()
+    saved = Review.model_validate_json((output / 'data/reviews/run-1.json').read_text())
+    assert saved.narrative_source == 'ai' and saved.findings == findings
+    assert saved.narrative == Review.model_validate_json(raw).narrative
+
+
+def test_ai_unanalysed_findings_are_facts_without_fallback_cards(tmp_path, monkeypatch):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    save_review(data, source='ai')
+    monkeypatch.setattr('seo_reviewer.render.fallback_issue_presentation', lambda _: pytest.fail('mixed AI/fallback mode'))
+    render_site(data, output)
+    tree = html.fromstring((output / 'index.html').read_text())
+    assert not tree.xpath('//article')
+    assert 'Additional recorded findings' in tree.text_content()
+    assert 'missing_description' in tree.text_content()
+    assert 'Ask your web team' not in tree.text_content()
+
+
+def test_complete_saved_fallback_is_rendered_without_generating_new_prose(tmp_path, monkeypatch):
+    data, output = tmp_path / 'data', tmp_path / 'site'
+    review = save_review(data)
+    review.narrative.summary = 'SAVED deterministic summary'
+    review.narrative.prioritized_issues = [AIItem(finding_id='f1', evidence_ids=['f1:finding'], title='SAVED fallback title',
+        explanation='SAVED fallback explanation', recommended_action='SAVED fallback action', completion_criterion='SAVED fallback completion')]
+    (data / 'reviews/run-1.json').write_text(review.model_dump_json())
+    monkeypatch.setattr('seo_reviewer.render.fallback_issue_presentation', lambda _: pytest.fail('new fallback prose in renderer'))
+    render_site(data, output)
+    page = html.fromstring((output / 'index.html').read_text()).text_content()
+    for label in ('summary', 'title', 'explanation', 'action', 'completion'):
+        assert 'SAVED ' + ('deterministic summary' if label == 'summary' else 'fallback ' + label) in page
+    assert 'AI summary unavailable' in page

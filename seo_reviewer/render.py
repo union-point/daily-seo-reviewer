@@ -15,7 +15,7 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoes
 
 from seo_reviewer.detection import RANK
 from seo_reviewer.review import latest_analysis
-from seo_reviewer.report_content import issue_presentation, report_presentation
+from seo_reviewer.report_content import fallback_issue_presentation, issue_facts, report_presentation
 from seo_reviewer.review_models import Review
 
 TEMPLATES = Path(__file__).with_name('rendering')
@@ -240,11 +240,12 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
         prose = {item.finding_id: item for item in [*review.narrative.prioritized_issues, *review.narrative.verification_items]}
         ranking = {item.finding_id: index for index, item in enumerate(review.narrative.prioritized_issues)}
         sections = []
+        additional_findings = []
         for title, allowed in [('Priority issues', {'new', 'ongoing', 'worsened'}), ('Needs verification', {'unverified'}), ('Resolved issues', {'resolved'})]:
             findings = sorted((finding for finding in review.findings if finding.state in allowed), key=lambda finding: (ranking.get(finding.id, 99), -RANK[finding.severity], finding.rule, finding.id))
             items = []
             for finding in findings:
-                explanation = prose.get(finding.id) if review.narrative_source == 'ai' else None
+                narrative = prose.get(finding.id)
                 refs = []
                 for record in finding.evidence:
                     run_id = record.get('run_id', '')
@@ -258,14 +259,29 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
                             href = link(f'data/runs/{run_id}/collection.json')
                     refs.append({'label': 'Saved page check' if len(finding.evidence) == 1 else f'Saved page check {len(refs) + 1}', 'href': href})
                 item = {
-                    **issue_presentation(finding), 'finding': finding,
-                    'explanation': explanation.explanation if explanation and finding.state not in {'resolved', 'unverified'} else '',
+                    **issue_facts(finding), 'finding': finding,
                     'evidence': refs,
                     'urls': [{'label': url, 'href': safe_url(url)} for url in dict.fromkeys([*finding.urls, *finding.related_urls])],
                     'raw_before': json.dumps(finding.before, ensure_ascii=False), 'raw_observed': json.dumps(finding.observed, ensure_ascii=False),
                 }
-                if explanation and finding.state not in {'resolved', 'unverified'}:
-                    item['action'] = explanation.recommended_action
+                if narrative is None and review.generation.prompt_version == 'triage-v4':
+                    additional_findings.append(item)
+                    continue
+                if review.narrative_source == 'ai':
+                    if narrative is None:
+                        additional_findings.append(item)
+                        continue
+                    item.update(title=narrative.title or 'Recorded finding',
+                        explanation=narrative.explanation, action=narrative.recommended_action,
+                        verification=narrative.completion_criterion or '')
+                elif narrative and narrative.title and narrative.completion_criterion:
+                    item.update(title=narrative.title, explanation=narrative.explanation,
+                        action=narrative.recommended_action, verification=narrative.completion_criterion)
+                else:
+                    # Historical fallback artifacts predate complete saved issue narratives.
+                    legacy = fallback_issue_presentation(finding)
+                    item.update(title=legacy['title'], explanation=legacy['happened'] + ' ' + legacy['matters'],
+                        action=legacy['action'], verification=legacy['verification'] if finding.state != 'resolved' else '')
                 items.append(item)
             sections.append({'title': title, 'items': items})
         collected = datetime.fromisoformat(collection['completed_at'])
@@ -278,6 +294,7 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
             'base': base, 'report': review, 'collection': collection,
             'collected_at': display_time(collected), 'published_at': display_time(now), 'freshness': freshness,
             'baseline': review.baseline_only, 'sections': sections, 'history': history[:5],
+            'additional_findings': additional_findings,
             'presentation': report_presentation(review, collection),
             'pagespeed': pagespeed_presentation(collection),
             'archive_href': link('archive/index.html'), 'review_json_href': link(f'data/reviews/{review.run_id}.json'),

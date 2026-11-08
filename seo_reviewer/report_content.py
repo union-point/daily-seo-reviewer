@@ -82,12 +82,6 @@ def report_presentation(review: Review, collection: dict) -> dict:
     status_label, status_tone = labels.get(review.alert_status, ('Needs verification', 'warning'))
     if review.alert_status == 'healthy' and (incomplete or unverified):
         status_label, status_tone = ('Check incomplete' if incomplete else 'Needs verification', 'warning')
-    if active:
-        summary = f'{len(active)} issue{"s" if len(active) != 1 else ""} to address on the checked pages. Start with the priority issues below.'
-    elif incomplete or unverified or review.alert_status == 'verification_required':
-        summary = 'There is not enough verified information to give the checked pages an all-clear. Complete the checks before drawing conclusions.'
-    else:
-        summary = 'No current issues were found by these checks. This report covers selected pages, not the whole site.'
     if review.baseline_only:
         changes = 'First report: these checks are the starting point for future comparisons. Issues found today are not confirmed new issues.'
     else:
@@ -110,7 +104,7 @@ def report_presentation(review: Review, collection: dict) -> dict:
     return {
         'coverage_text': f'{checked} of {total} pages checked' if total else 'No pages checked',
         'incomplete': incomplete, 'status_label': status_label, 'status_tone': status_tone,
-        'summary': summary, 'changes': changes, 'unverified_count': unverified,
+        'changes': changes, 'unverified_count': unverified,
         'error_summary': ' '.join(errors),
     }
 
@@ -143,7 +137,23 @@ def observation_text(rule: str, value: object) -> str:
     return str(value)
 
 
-def issue_presentation(finding: Finding) -> dict:
+def issue_facts(finding: Finding) -> dict:
+    """Format authoritative values and static labels without generating prose."""
+    state = {'unverified': 'Needs verification', 'resolved': 'Resolved',
+        'worsened': 'Worsened', 'ongoing': 'Still present'}.get(
+            finding.state, 'New issue' if finding.regression else 'First observed')
+    return {
+        'state_label': state,
+        'priority_label': {'critical': 'High priority', 'warning': 'Needs attention', 'info': 'Note'}[finding.severity],
+        'show_change': finding.state not in {'resolved', 'unverified'} and finding.before is not None and finding.before != finding.observed,
+        'before': observation_text(finding.rule, finding.before),
+        'observed': observation_text(finding.rule, finding.observed),
+        'observation_label': 'Last seen' if finding.state in {'resolved', 'unverified'} else 'Now',
+    }
+
+
+def fallback_issue_presentation(finding: Finding) -> dict:
+    """Generate deterministic prose only for the explicit fallback path."""
     title, happened, matters, action = ISSUE_COPY.get(finding.rule, (
         'Page needs review', 'A page check found a condition that needs investigation.',
         'This may affect how people find or use the page.',
@@ -180,12 +190,7 @@ def issue_presentation(finding: Finding) -> dict:
         state = 'New issue' if finding.regression else 'First observed'
     return {
         'title': title, 'happened': happened, 'matters': matters, 'action': action,
-        'state_label': state,
-        'priority_label': {'critical': 'High priority', 'warning': 'Needs attention', 'info': 'Note'}[finding.severity],
-        'show_change': finding.state not in {'resolved', 'unverified'} and finding.before is not None and finding.before != finding.observed,
-        'before': observation_text(finding.rule, finding.before),
-        'observed': observation_text(finding.rule, finding.observed),
-        'observation_label': 'Last seen' if finding.state in {'resolved', 'unverified'} else 'Now',
+        **issue_facts(finding),
         'verification': {
             'missing_title': 'Run a new check and confirm the page has a descriptive title.',
             'duplicate_title': 'Recheck all affected pages and confirm their titles are distinct.',
@@ -198,3 +203,8 @@ def issue_presentation(finding: Finding) -> dict:
             'malformed_json_ld': 'Run a new check and confirm the structured information has no formatting errors.',
         }.get(finding.rule, 'Run a new check and review the result with your web team.') if finding.state != 'unverified' else 'Complete a reliable follow-up check and confirm whether the issue persists or has been resolved.',
     }
+
+
+def issue_presentation(finding: Finding) -> dict:
+    """Backward-compatible entry point for deterministic fallback consumers."""
+    return fallback_issue_presentation(finding)

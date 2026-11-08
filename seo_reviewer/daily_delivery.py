@@ -7,10 +7,8 @@ from pathlib import Path
 
 import requests
 
-from seo_reviewer.detection import RANK
 from seo_reviewer.notification import GitHubDelivery
 from seo_reviewer.render import safe_url
-from seo_reviewer.review import ACTIONS
 from seo_reviewer.review_models import Review
 
 
@@ -31,8 +29,9 @@ def review_comment(review: Review, pages_url: str, workflow_url: str, deployment
         'AI summary unavailable; deterministic review provided.' if review.narrative_source == 'deterministic' else 'AI explanation available; factual status and evidence are determined by code.',
         '', 'Top actions:',
     ]
-    rules = list(dict.fromkeys(finding.rule for finding in sorted(active, key=lambda item: (-RANK[item.severity], item.rule))))[:3]
-    lines += ['- ' + ACTIONS.get(rule, 'Review the saved finding evidence.') for rule in rules] or ['- No active verified issues; continue monitoring.']
+    active_ids = {finding.id for finding in active}
+    actions = [item.recommended_action for item in review.narrative.prioritized_issues if item.finding_id in active_ids][:3]
+    lines += ['- ' + action for action in actions] or ['- No saved priority recommendations. See the report for recorded findings.']
     if verification:
         lines.append('- Recheck unverified findings before treating them as confirmed or resolved.')
     if deployment == 'success':

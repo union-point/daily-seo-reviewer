@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from seo_reviewer.detection import Finding
 
@@ -14,14 +14,29 @@ class AIItem(BaseModel):
     evidence_ids: list[str] = Field(min_length=1, max_length=3)
     explanation: str = Field(min_length=1, max_length=800)
     recommended_action: str = Field(min_length=1, max_length=800)
+    # Absent only in historical artifacts; new model output uses TriageItem.
+    title: str | None = None
+    completion_criterion: str | None = None
 
 
 class Narrative(BaseModel):
     model_config = ConfigDict(extra='forbid')
     headline: str = Field(min_length=1, max_length=160)
     summary: str = Field(min_length=1, max_length=1200)
-    prioritized_issues: list[AIItem] = Field(max_length=5)
-    verification_items: list[AIItem] = Field(max_length=5)
+    prioritized_issues: list[AIItem]
+    verification_items: list[AIItem]
+
+
+class TriageItem(AIItem):
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
+    title: str = Field(min_length=1, max_length=160)
+    completion_criterion: str = Field(min_length=1, max_length=800)
+
+
+class TriageNarrative(Narrative):
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
+    prioritized_issues: list[TriageItem] = Field(max_length=5)
+    verification_items: list[TriageItem] = Field(max_length=5)
 
 
 class GenerationAttempt(BaseModel):
@@ -35,7 +50,7 @@ class Generation(BaseModel):
     outcome: Literal['success', 'unavailable'] = 'unavailable'
     reason: str
     requested_model: str
-    prompt_version: str = 'triage-v3'
+    prompt_version: str = 'triage-v4'
     input_sha256: str
     input_bytes: int
     included_finding_ids: list[str]
@@ -59,3 +74,11 @@ class Review(BaseModel):
     narrative: Narrative
     narrative_source: Literal['ai', 'deterministic']
     generation: Generation
+
+    @model_validator(mode='after')
+    def validate_current_ai_narrative(self) -> 'Review':
+        if self.narrative_source == 'ai' and self.generation.prompt_version == 'triage-v4':
+            if self.generation.outcome != 'success':
+                raise ValueError('AI mode requires successful generation')
+            TriageNarrative.model_validate(self.narrative.model_dump())
+        return self

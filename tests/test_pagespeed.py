@@ -360,7 +360,7 @@ def test_pagespeed_findings_use_existing_bounded_ai_validation_and_fallback(tmp_
     assert row['supporting_audits'][0]['id'] in item.audits
     assert len(json.dumps(bounded, ensure_ascii=False, separators=(',', ':')).encode()) <= config.ai_max_input_bytes
     narrative = Narrative(headline='Review lab loading performance', summary='Investigate the measured lab result.', prioritized_issues=[
-        AIItem(finding_id=row['id'], evidence_ids=[row['id'] + ':finding'], explanation='Lighthouse reports poor lab loading.', recommended_action='Inspect the recorded failed audits.')], verification_items=[])
+        AIItem(title='Unique issue title', completion_criterion='Unique completion check', finding_id=row['id'], evidence_ids=[row['id'] + ':finding'], explanation='Lighthouse reports poor lab loading.', recommended_action='Inspect the recorded failed audits.')], verification_items=[])
     calls = client(monkeypatch, [model_response(narrative)])
     result, metadata = triage_findings(config, data, findings)
     assert result and metadata.outcome == 'success' and len(calls) == 2
