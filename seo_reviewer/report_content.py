@@ -1,6 +1,7 @@
 """Plain-language presentation of saved facts; never change detection or evidence."""
 
 from seo_reviewer.detection import Finding
+from seo_reviewer.issue_groups import group_issues
 from seo_reviewer.review_models import Review
 
 
@@ -66,9 +67,10 @@ def report_presentation(review: Review, collection: dict) -> dict:
         checked < total or total == 0 or coverage['failed'] > 0
         or review.collection_status != 'collected' or bool(collection.get('errors'))
     )
-    active = [item for item in review.findings if item.state not in {'resolved', 'unverified'}]
-    unverified = sum(item.state == 'unverified' for item in review.findings)
-    resolved = sum(item.state == 'resolved' for item in review.findings)
+    distinct = [group.representative.model_copy(update={'state': group.state}) for group in group_issues(review.findings)]
+    active = [item for item in distinct if item.state not in {'resolved', 'unverified'}]
+    unverified = sum(item.state == 'unverified' for item in distinct)
+    resolved = sum(item.state == 'resolved' for item in distinct)
     new = sum(item.regression and item.state == 'new' for item in active)
     worse = sum(item.state == 'worsened' for item in active)
     existing = sum(item.state == 'ongoing' for item in active)
@@ -87,7 +89,7 @@ def report_presentation(review: Review, collection: dict) -> dict:
     else:
         changes = f'{new} new issue{"s" if new != 1 else ""}, {worse} worsened, {existing} still present, {resolved} resolved.'
         if first_observed:
-            changes += f' {first_observed} issue{"s were" if first_observed != 1 else " was"} observed for the first time; {"they are" if first_observed != 1 else "it is"} not confirmed as {"new issues" if first_observed != 1 else "a new issue"}.'
+            changes += f' {first_observed} issue{"s were" if first_observed != 1 else " was"} detected for the first time; {"they are" if first_observed != 1 else "it is"} not confirmed as {"new issues" if first_observed != 1 else "a new issue"}.'
         if unverified:
             changes += f' {unverified} issue{"s" if unverified != 1 else ""} still need verification.'
         if incomplete:
@@ -141,7 +143,7 @@ def issue_facts(finding: Finding) -> dict:
     """Format authoritative values and static labels without generating prose."""
     state = {'unverified': 'Needs verification', 'resolved': 'Resolved',
         'worsened': 'Worsened', 'ongoing': 'Still present'}.get(
-            finding.state, 'New issue' if finding.regression else 'First observed')
+            finding.state, 'New issue' if finding.regression else 'First detected')
     return {
         'state_label': state,
         'priority_label': {'critical': 'High priority', 'warning': 'Needs attention', 'info': 'Note'}[finding.severity],
@@ -187,7 +189,7 @@ def fallback_issue_presentation(finding: Finding) -> dict:
     elif finding.state == 'ongoing':
         state = 'Still present'
     else:
-        state = 'New issue' if finding.regression else 'First observed'
+        state = 'New issue' if finding.regression else 'First detected'
     return {
         'title': title, 'happened': happened, 'matters': matters, 'action': action,
         **issue_facts(finding),

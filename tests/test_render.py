@@ -249,7 +249,7 @@ def test_first_observation_is_not_called_new_issue_without_regression(tmp_path):
     render_site(data, output)
     tree = html.fromstring((output / 'index.html').read_text())
     assert 'First report' in main_report_text(tree)
-    assert 'First observed' in main_report_text(tree.xpath('//article')[0])
+    assert 'First detected' in main_report_text(tree.xpath('//article')[0])
     assert 'New issue' not in main_report_text(tree.xpath('//article')[0])
 
 
@@ -259,7 +259,7 @@ def test_newly_checked_page_does_not_imply_issue_existed_in_previous_report(tmp_
     render_site(data, output)
     text = main_report_text(html.fromstring((output / 'index.html').read_text()))
     assert '0 still present' in text
-    assert '1 issue was observed for the first time' in text
+    assert '1 issue was detected for the first time' in text
 
 
 def test_removed_preferred_page_is_explained_without_claiming_new_target(tmp_path):
@@ -396,11 +396,11 @@ def test_pagespeed_reports_lab_metrics_and_escaped_audits(tmp_path):
     page = (output / 'index.html').read_text()
     tree = html.fromstring(page)
     section = tree.xpath('//section[@aria-labelledby="performance-heading"]')[0]
-    assert len(section.xpath('.//tbody/tr')) == 2
+    assert len(section.xpath('.//tbody/tr')) == 7
     assert section.xpath('.//table[@class="pagespeed-table"]')
-    assert len(section.xpath('.//tbody/tr[1]/td/span[@class="pagespeed-values"]')) == 7
+    assert section.xpath('.//thead/tr/th/text()') == ['Metric', 'Mobile', 'Desktop']
     assert 'Mobile' in section.text_content() and 'Desktop' in section.text_content()
-    for value in ['4.20 s', '0.3', '1.20 s', '0.60 s', '3.50 s', '42', '90']:
+    for value in ['4.20 s', '0.300', '1.20 s', '600 ms', '3.50 s', '42 / 100', '90 / 100']:
         assert value in section.text_content()
     assert 'laboratory measurements' in section.text_content()
     assert 'CrUX Page field data:' in section.text_content()
@@ -460,7 +460,7 @@ def test_pagespeed_incomplete_preserves_missing_values_and_field_scope(tmp_path)
     save_review(data, findings=[], collection_updates={'pagespeed': {'enabled': True, 'observations': [item]}})
     render_site(data, output)
     page = html.fromstring((output / 'index.html').read_text()).text_content()
-    assert 'Incomplete' in page and 'LCP: Unavailable' not in page and 'CLS: 0' in page
+    assert 'Incomplete' in page and 'LCP: Unavailable' not in page and '0.000' in page
     assert 'Performance: Unavailable' not in page
     assert '0 of 1 planned measurements completed' in page and '1 incomplete' in page
     assert 'Some measurements or audit results are missing' in page
@@ -497,7 +497,7 @@ def test_pagespeed_partial_groups_available_strategies_and_one_warning(tmp_path)
     assert len(section.xpath('./div[@class="check-results"]')) == 1
     main = section.xpath('./div[@class="check-results"]')[0]
     assert len(main.xpath('.//h3/a')) == 1
-    assert main.xpath('.//tbody/tr/th/text()') == ['Mobile', 'Desktop']
+    assert main.xpath('.//thead/tr/th/text()') == ['Metric', 'Mobile', 'Desktop']
     assert len(section.xpath('./p[contains(@class,"notice")]')) == 1
     assert '2 of 3 planned measurements completed' in section.text_content()
     assert 'https://example.com/other' not in main.text_content()
@@ -571,8 +571,8 @@ def test_ai_narrative_sentinels_survive_serialization_without_template_calls(tmp
     assert 'SENTINEL executive assessment' in tree.text_content()
     assert 'A Lighthouse SEO audit failed on this page.' not in tree.text_content()
     assert 'Run a new check and review the result with your web team.' not in tree.text_content()
-    assert 'Additional recorded findings' in tree.text_content()
-    assert 'resolved' in tree.xpath('//details[summary="View recorded findings"]')[0].text_content().lower()
+    assert 'Additional technical findings' in tree.text_content()
+    assert 'resolved' in tree.xpath('//details[summary="View technical findings"]')[0].text_content().lower()
     saved = Review.model_validate_json((output / 'data/reviews/run-1.json').read_text())
     assert saved.narrative_source == 'ai' and saved.findings == findings
     assert saved.narrative == Review.model_validate_json(raw).narrative
@@ -585,7 +585,7 @@ def test_ai_unanalysed_findings_are_facts_without_fallback_cards(tmp_path, monke
     render_site(data, output)
     tree = html.fromstring((output / 'index.html').read_text())
     assert not tree.xpath('//article')
-    assert 'Additional recorded findings' in tree.text_content()
+    assert 'Additional technical findings' in tree.text_content()
     assert 'missing_description' in tree.text_content()
     assert 'Ask your web team' not in tree.text_content()
 

@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
 from seo_reviewer.detection import RANK
+from seo_reviewer.issue_groups import group_issues
 from seo_reviewer.review import latest_analysis
 from seo_reviewer.report_content import fallback_issue_presentation, issue_facts, report_presentation
 from seo_reviewer.review_models import Review
@@ -63,6 +64,17 @@ def pagespeed_presentation(collection: dict) -> dict:
         if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
             return 'Unavailable'
         return f'{value / 1000:.2f} s' if milliseconds else f'{value:g}'
+
+    def lab_value(name: str, value: object) -> str:
+        if number(value) == 'Unavailable':
+            return 'Unavailable'
+        if name in {'performance_score', 'seo_score'}:
+            return f'{value:.0f} / 100'
+        if name == 'cls':
+            return f'{value:.3f}'
+        if name == 'tbt_ms':
+            return f'{value:.0f} ms'
+        return number(value, milliseconds=True)
 
     def field_percentile(name: str, value: object) -> str:
         if name == 'CUMULATIVE_LAYOUT_SHIFT_SCORE' and isinstance(value, (int, float)):
@@ -136,10 +148,10 @@ def pagespeed_presentation(collection: dict) -> dict:
             'url': url, 'href': safe_url(url), 'strategy': strategy.capitalize(),
             'status': {'success': 'Measured', 'incomplete': 'Incomplete', 'unavailable': 'Unavailable'}.get(observation.get('status'), 'Unavailable'),
             'tone': 'info' if observation.get('status') == 'success' else 'warning',
-            'performance': number(performance), 'seo': number(seo),
-            'scores': [{'label': label, 'value': number(value)} for label, value in [('Performance', performance), ('SEO', seo)]
+            'performance': lab_value('performance_score', performance), 'seo': lab_value('seo_score', seo),
+            'scores': [{'label': label, 'value': lab_value(key, value)} for label, key, value in [('Performance', 'performance_score', performance), ('SEO', 'seo_score', seo)]
                 if number(value) != 'Unavailable'],
-            'metrics': [{'label': label, 'value': number(metrics.get(key), milliseconds=key.endswith('_ms'))}
+            'metrics': [{'label': label, 'value': lab_value(key, metrics.get(key))}
                 for key, label in [('lcp_ms', 'LCP'), ('cls', 'CLS'), ('fcp_ms', 'FCP'), ('tbt_ms', 'TBT'), ('speed_index_ms', 'Speed Index')]
                 if number(metrics.get(key)) != 'Unavailable'],
             'changes': '; '.join(changes),
@@ -157,6 +169,24 @@ def pagespeed_presentation(collection: dict) -> dict:
             page['has_changes'] = page['has_changes'] or bool(row['changes'])
     for page in pages.values():
         page['rows'].sort(key=lambda row: row['strategy'] != 'Mobile')
+        page_rows = [row for row in rows if row['url'] == page['url']]
+        by_strategy = {row['strategy']: row for row in page_rows}
+        page['columns'] = [
+            {'strategy': strategy, 'status': by_strategy[strategy]['status'],
+             'available': bool(by_strategy[strategy]['scores'] or by_strategy[strategy]['metrics'])}
+            for strategy in ('Mobile', 'Desktop') if strategy in by_strategy
+        ]
+        page['measurements'] = []
+        for label in ('Performance', 'SEO', 'LCP', 'CLS', 'FCP', 'TBT', 'Speed Index'):
+            values = []
+            for column in page['columns']:
+                row = by_strategy[column['strategy']]
+                values.append(next((entry['value'] for entry in row['scores'] + row['metrics'] if entry['label'] == label), None))
+            if any(value is not None for value in values):
+                page['measurements'].append({'label': label, 'values': values, 'score': label in {'Performance', 'SEO'}})
+        path = urlsplit(page['url']).path or '/'
+        page['label'] = 'Homepage — /' if path == '/' else (path if len(path) <= 64 else '/…/' + path.rstrip('/').rsplit('/', 1)[-1][:48] + '/')
+        page['has_missing'] = any(value is None for metric in page['measurements'] for value in metric['values'])
     failures = [row for row in rows if row['raw_status'] != 'success']
     reasons = list(dict.fromkeys(row['failure_reason'] for row in sorted(failures, key=lambda row: row['failure_reason'].startswith('Not requested')) if row['failure_reason']))
     return {'rows': rows, 'pages': list(pages.values()), 'failures': failures,
@@ -241,8 +271,10 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
         ranking = {item.finding_id: index for index, item in enumerate(review.narrative.prioritized_issues)}
         sections = []
         additional_findings = []
+        groups = group_issues(review.findings, set(prose))
+        grouped = {group.representative.id: group for group in groups}
         for title, allowed in [('Priority issues', {'new', 'ongoing', 'worsened'}), ('Needs verification', {'unverified'}), ('Resolved issues', {'resolved'})]:
-            findings = sorted((finding for finding in review.findings if finding.state in allowed), key=lambda finding: (ranking.get(finding.id, 99), -RANK[finding.severity], finding.rule, finding.id))
+            findings = sorted((group.representative for group in groups if group.representative.state in allowed), key=lambda finding: (ranking.get(finding.id, 99), -RANK[finding.severity], finding.rule, finding.id))
             items = []
             for finding in findings:
                 narrative = prose.get(finding.id)
@@ -260,11 +292,17 @@ def render_site(data_dir: Path, output_dir: Path, *, base: str = '', now: dateti
                     refs.append({'label': 'Saved page check' if len(finding.evidence) == 1 else f'Saved page check {len(refs) + 1}', 'href': href})
                 item = {
                     **issue_facts(finding), 'finding': finding,
+                    'supporting_findings': [{'finding': member, **issue_facts(member)} for member in grouped[finding.id].members if member.id != finding.id],
+                    'history_status': grouped[finding.id].history,
                     'evidence': refs,
                     'urls': [{'label': url, 'href': safe_url(url)} for url in dict.fromkeys([*finding.urls, *finding.related_urls])],
                     'raw_before': json.dumps(finding.before, ensure_ascii=False), 'raw_observed': json.dumps(finding.observed, ensure_ascii=False),
                 }
-                if narrative is None and review.generation.prompt_version == 'triage-v4':
+                if grouped[finding.id].history == 'not_comparable':
+                    item['state_label'] = 'First detected · history unknown'
+                elif grouped[finding.id].history == 'previously_detected' and finding.state == 'new':
+                    item['state_label'] = 'Still present'
+                if narrative is None and review.generation.prompt_version in {'triage-v4', 'triage-v5'}:
                     additional_findings.append(item)
                     continue
                 if review.narrative_source == 'ai':

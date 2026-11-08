@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from seo_reviewer.config import Config
 from seo_reviewer.models import ModelProbe
 from seo_reviewer.detection import Finding
+from seo_reviewer.issue_groups import group_issues, historical_status
 from seo_reviewer.review_models import Generation, Narrative, TriageNarrative
 
 
@@ -96,6 +97,12 @@ TRIAGE_INSTRUCTIONS = (
     "Respect the supplied device strategy, measured values and audit evidence. Lab results vary; "
     "do not infer user-wide impact or historical changes beyond the deterministic regression label. "
     "Recommend Lighthouse-specific fixes only when supported by a supplied failed audit."
+    " Count canonical actionable issues, not source findings. Supporting crawler and Lighthouse "
+    "checks are evidence for the same issue. historical_status is authoritative: not_comparable "
+    "means the issue's earlier condition is unknown. A first Lighthouse measurement is first "
+    "detection, never proof of prior presence or a new regression. baseline_issue is a starting "
+    "measurement label, not historical proof. Do not say baseline issues were previously present "
+    "without previously_detected history. Distinguish additional evidence from additional issues."
 )
 
 
@@ -110,7 +117,9 @@ def build_triage_input(config: Config, collection: dict, findings: list[Finding]
         path = urlsplit(observation['evidence']['requested_url']).path
         group = '/weblog/articles/' if path.startswith('/weblog/') and path != '/weblog/' else path[:80]
         groups[group] += 1
-    eligible = [finding for finding in findings if finding.state != 'resolved']
+    canonical_groups = group_issues(findings)
+    group_by_representative = {group.representative.id: group for group in canonical_groups}
+    eligible = [group.representative.model_copy(update={'state': group.state}) for group in canonical_groups if group.representative.state != "resolved"]
     ranked = sorted(eligible, key=lambda finding: (-RANK[finding.severity], finding.state == 'unverified', finding.rule, finding.id))
     issue_groups = []
     for rule in sorted({item.rule for item in eligible})[:20]:
@@ -132,8 +141,11 @@ def build_triage_input(config: Config, collection: dict, findings: list[Finding]
         'widespread_change': collection['detection']['widespread_change'],
         'url_pattern_groups': dict(sorted(groups.items())[:20]),
         "issue_groups": issue_groups,
-        "lifecycle_counts": dict(Counter(item.state for item in findings)),
-        "new_regressions": sum(item.state == "new" and item.regression for item in findings),
+        "lifecycle_counts": dict(Counter(group.state for group in canonical_groups)),
+        "new_regressions": sum(group.history == 'confirmed_regression' and group.representative.state == 'new' for group in canonical_groups),
+        "historical_counts": dict(Counter(group.history for group in canonical_groups)),
+        "distinct_actionable_issues": len(eligible),
+        "source_findings": len(findings),
         "group_scope": "All active findings, before detail truncation; only the first 20 rule groups are listed. Successful page count is coverage.successful, not a whole-site denominator.",
         'findings': [], 'omitted_findings': len(eligible),
     }
@@ -144,6 +156,13 @@ def build_triage_input(config: Config, collection: dict, findings: list[Finding]
             'id': finding.id, 'rule': finding.rule, 'severity': finding.severity,
             'state': finding.state, 'baseline_issue': finding.baseline_issue,
             'regression': finding.regression, 'confidence': finding.confidence,
+            "canonical_issue_id": group_by_representative[finding.id].id,
+            "historical_status": group_by_representative[finding.id].history,
+            "supporting_checks": [
+                {'finding_id': item.id, 'rule': item.rule, 'state': item.state,
+                 'history': historical_status(item),
+                 'strategy': (item.observed.get('strategy') if isinstance(item.observed, dict) else None)}
+                for item in group_by_representative[finding.id].members[:10]],
             'urls': [url[:500] for url in finding.urls[:3]],
             'before_excerpt': json.dumps(finding.before, ensure_ascii=False)[:800],
             'observed_excerpt': json.dumps(finding.observed, ensure_ascii=False)[:800],

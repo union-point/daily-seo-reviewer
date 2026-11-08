@@ -62,6 +62,10 @@
       <p><strong>Recommended action:</strong> {{ item.action }}</p>
       {% if item.verification %}<p><strong>Done when:</strong> {{ item.verification }}</p>{% endif %}
     </div>
+    {% if item.supporting_findings %}<details>
+      <summary>{{ item.supporting_findings | length }} supporting {{ 'check' if item.supporting_findings | length == 1 else 'checks' }}</summary>
+      <ul class="evidence-list">{% for support in item.supporting_findings %}<li><span class="data">{{ support.finding.rule }}</span>{% if support.finding.observed is mapping and support.finding.observed.get('strategy') %} · {{ support.finding.observed.strategy | capitalize }}{% endif %} · {{ support.observed }}</li>{% endfor %}</ul>
+    </details>{% endif %}
   </article>
   {% if section.title == 'Priority issues' %}</li>{% endif %}
   {% else %}<p class="empty-state">{{ 'No issues awaiting verification' if section.title == 'Needs verification' else 'No ' ~ section.title | lower }} in this report.</p>{% endfor %}
@@ -72,10 +76,10 @@
 
 {% if additional_findings %}
 <section aria-labelledby="additional-findings-heading">
-  <h2 id="additional-findings-heading">Additional recorded findings</h2>
-  <p class="muted">{{ additional_findings | length }} findings have no saved issue narrative in this review. Their recorded facts remain available below.</p>
+  <h2 id="additional-findings-heading">Additional technical findings</h2>
+  <p class="muted">{{ additional_findings | length }} additional {{ 'observation is' if additional_findings | length == 1 else 'observations are' }} available for detailed review.</p>
   <details>
-    <summary>View recorded findings</summary>
+    <summary>View technical findings</summary>
     <ul class="evidence-list">{% for item in additional_findings %}<li>
       <span class="data">{{ item.finding.rule }}</span> · {{ item.priority_label }} · {{ item.state_label }}
       <ul class="url-list">{% for url in item.urls %}<li>{% if url.href %}<a class="data" href="{{ url.href }}">{{ url.label }}</a>{% else %}<span class="data">{{ url.label }}</span>{% endif %}</li>{% endfor %}</ul>
@@ -93,18 +97,18 @@
   {% if pagespeed.failures %}<p class="notice status--warning"><strong>{{ pagespeed.completed }} of {{ pagespeed.planned }} planned measurements completed.</strong> {% if pagespeed.incomplete %}{{ pagespeed.incomplete }} incomplete. {% endif %}{% if pagespeed.unavailable %}{{ pagespeed.unavailable }} unavailable. {% endif %}{% if pagespeed.reason %}{{ pagespeed.reason }} {% endif %}Available measurements are shown below. This does not confirm a website performance problem or change the main SEO audit results above.</p>{% else %}<p class="muted">{{ pagespeed.completed }} of {{ pagespeed.planned }} planned measurements completed.</p>{% endif %}
   {% for page in pagespeed.pages %}
   <div class="check-results">
-    <h3>{% if page.href %}<a class="data" href="{{ page.href }}">{{ page.url }}</a>{% else %}<span class="data">{{ page.url }}</span>{% endif %}</h3>
-    <div class="table-region" role="region" aria-label="{{ page.url }} Lighthouse measurements" tabindex="0">
+    <h3>{% if page.href %}<a href="{{ page.href }}">{{ page.label }}</a>{% else %}<span>{{ page.label }}</span>{% endif %}</h3>
+    <div class="table-region" role="region" aria-label="{{ page.label }} Lighthouse measurements" tabindex="0">
       <table class="pagespeed-table">
-        <caption class="visually-hidden">Available laboratory measurements by device strategy{% if page.has_changes %}; score changes alone do not confirm a regression{% endif %}</caption>
-        <thead><tr><th scope="col">Strategy</th><th scope="col">Available lab measurements</th>{% if page.has_changes %}<th scope="col">Change</th>{% endif %}</tr></thead>
-        <tbody>{% for row in page.rows %}<tr>
-          <th scope="row">{{ row.strategy }}</th>
-          <td>{% for value in row.scores + row.metrics %}<span class="pagespeed-values">{{ value.label }}: {{ value.value }}</span>{% if not loop.last %} · {% endif %}{% endfor %}</td>
-          {% if page.has_changes %}<td>{{ row.changes }}</td>{% endif %}
+        <caption>Laboratory measurements{% if page.has_missing %}. — means not recorded{% endif %}.</caption>
+        <thead><tr><th scope="col">Metric</th>{% for column in page.columns %}<th scope="col">{{ column.strategy }}{% if not column.available %}<br><span class="muted">Not measured</span>{% elif column.status == 'Incomplete' %}<br><span class="muted">Incomplete</span>{% endif %}</th>{% endfor %}</tr></thead>
+        <tbody>{% for metric in page.measurements %}<tr{% if metric.score %} class="pagespeed-score"{% endif %}>
+          <th scope="row">{{ metric.label }}</th>
+          {% for value in metric['values'] %}<td>{{ value if value is not none else '—' }}</td>{% endfor %}
         </tr>{% endfor %}</tbody>
       </table>
     </div>
+    {% if page.has_changes %}<p class="muted">{% for row in page.rows if row.changes %}{{ row.strategy }}: {{ row.changes }}.{% if not loop.last %} {% endif %}{% endfor %} Score changes alone do not confirm a regression.</p>{% endif %}
   </div>
   {% endfor %}
   {% else %}

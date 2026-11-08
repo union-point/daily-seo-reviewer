@@ -8,6 +8,7 @@ from pathlib import Path
 
 from seo_reviewer.config import Config
 from seo_reviewer.detection import Finding, RANK
+from seo_reviewer.issue_groups import group_issues
 from seo_reviewer.review_models import AIItem, Narrative, Review
 from seo_reviewer.triage import triage_findings
 
@@ -76,7 +77,7 @@ def fallback_narrative(findings: list[Finding], summary: str) -> Narrative:
             title=copy['title'], explanation=copy['happened'] + ' ' + copy['matters'],
             recommended_action=copy['action'], completion_criterion=copy['verification'],
         )
-    ranked = sorted(findings, key=lambda finding: (-RANK[finding.severity], finding.rule, finding.id))
+    ranked = sorted([group.representative for group in group_issues(findings)], key=lambda finding: (-RANK[finding.severity], finding.rule, finding.id))
     return Narrative(
         headline='AI summary unavailable', summary=summary,
         prioritized_issues=[item(finding) for finding in ranked if finding.state not in {'resolved', 'unverified'}],
@@ -106,7 +107,7 @@ def generate_review(config: Config, run_id: str, *, skip_ai: bool = False) -> Re
         if collection.get('schema_version') != 1 or collection.get('run_id') != run_id or 'detection' not in collection:
             raise ValueError('Review requires a matching collection snapshot with detection')
         findings = [Finding.model_validate(value) for value in collection['detection']['findings']]
-        count = sum(finding.state != 'resolved' for finding in findings)
+        count = sum(group.representative.state != 'resolved' for group in group_issues(findings))
         coverage = collection['coverage']
         summary = (
             f"SEO status: {collection['detection']['alert_status']}. "

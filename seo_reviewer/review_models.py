@@ -50,7 +50,7 @@ class Generation(BaseModel):
     outcome: Literal['success', 'unavailable'] = 'unavailable'
     reason: str
     requested_model: str
-    prompt_version: str = 'triage-v4'
+    prompt_version: str = 'triage-v5'
     input_sha256: str
     input_bytes: int
     included_finding_ids: list[str]
@@ -77,7 +77,7 @@ class Review(BaseModel):
 
     @model_validator(mode='after')
     def validate_current_ai_narrative(self) -> 'Review':
-        if self.narrative_source == 'ai' and self.generation.prompt_version == 'triage-v4':
+        if self.narrative_source == 'ai' and self.generation.prompt_version in {'triage-v4', 'triage-v5'}:
             if self.generation.outcome != 'success':
                 raise ValueError('AI mode requires successful generation')
             TriageNarrative.model_validate(self.narrative.model_dump())
