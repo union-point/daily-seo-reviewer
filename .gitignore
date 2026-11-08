@@ -232,3 +232,11 @@ data/reviews/.review.lock
 .current-run.json
 /delivery/
 /downloaded/
+
+# Local verification artifacts
+/data/narrative_verification/
+
+# Keep only repository instructions and README in Markdown
+*.[mM][dD]
+!AGENTS.md
+!README.md
