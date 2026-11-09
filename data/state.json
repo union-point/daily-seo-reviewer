@@ -56,21 +56,21 @@
   "latest_successful": {
     "https://www.djangoproject.com/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/",
         "final_url": "https://www.djangoproject.com/",
-        "fetched_at": "2026-11-08T11:59:42.179654Z",
+        "fetched_at": "2026-11-09T08:11:36.697489Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.079,
-        "response_duration_seconds": 0.11,
+        "duration_seconds": 0.869,
+        "response_duration_seconds": 0.015,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/468069e5ba4547beb1546f1198cda7b9.body",
-        "body_sha256": "554dadf4f02e0b452963d87f1883d6dcccbcd46667b11c2d37074c2c8f0e9a3d",
+        "body_path": "responses/a68d31455b4e4e6dafbaa5cd5bd475f2.body",
+        "body_sha256": "58777baa8f925b021fbf066c50b0f50ca3dd42fcba0b68b313e07a2c65c90e71",
         "error": null
       },
       "outcome": "success",
@@ -89,21 +89,21 @@
     },
     "https://www.djangoproject.com/weblog/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/",
         "final_url": "https://www.djangoproject.com/weblog/",
-        "fetched_at": "2026-11-08T11:59:43.260158Z",
+        "fetched_at": "2026-11-09T08:11:37.567492Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.431,
-        "response_duration_seconds": 0.542,
+        "duration_seconds": 1.131,
+        "response_duration_seconds": 0.146,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/546cc5b007674badb539b786a96d5eff.body",
-        "body_sha256": "9fb21c063b8304ce52388ffd303781d0a6150c6168f03f83e7caf6b090e042da",
+        "body_path": "responses/4b7603aa80c646c78ab1ef4379c6132b.body",
+        "body_sha256": "054db0664f852ceef519fcef7c53a8d0069af2ead80e9c76d3324b15ce7f4777",
         "error": null
       },
       "outcome": "success",
@@ -122,21 +122,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/",
-        "fetched_at": "2026-11-08T11:59:44.693135Z",
+        "fetched_at": "2026-11-09T08:11:38.699233Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.565,
-        "response_duration_seconds": 0.109,
+        "duration_seconds": 0.99,
+        "response_duration_seconds": 0.137,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/2c11006edc6c4b60be719c137f68ae91.body",
-        "body_sha256": "4fc946e0b1825ba3fd483632ce07f91155624a4c4713fa2c8b4cf841057dce2f",
+        "body_path": "responses/b45448031c214c2ea23b399cbe280cfd.body",
+        "body_sha256": "1e7f183b36c84f21f3d76a42f31af261b267ab22546bf15f8f8d32abdc693f07",
         "error": null
       },
       "outcome": "success",
@@ -155,21 +155,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/",
-        "fetched_at": "2026-11-08T11:59:45.259998Z",
+        "fetched_at": "2026-11-09T08:11:39.689964Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.124,
-        "response_duration_seconds": 0.235,
+        "duration_seconds": 1.01,
+        "response_duration_seconds": 0.148,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/8b4fdc76751a4a9e90ef94c8d5e8eeff.body",
-        "body_sha256": "bb8ec6ecf4de600b2818682c1739aa02cbf5bdaecdba1b98dd0cfb6392c9775c",
+        "body_path": "responses/d670053da0d5466e920448389ecbd813.body",
+        "body_sha256": "014e8c11f1149ba4d8047f0fb8324ee2213951f7d681b8657b346689ea193e8f",
         "error": null
       },
       "outcome": "success",
@@ -188,21 +188,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/",
-        "fetched_at": "2026-11-08T11:59:46.386018Z",
+        "fetched_at": "2026-11-09T08:11:40.701448Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.783,
-        "response_duration_seconds": 0.019,
+        "duration_seconds": 0.997,
+        "response_duration_seconds": 0.146,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/8c0806686e3b4ceb8df42238176cde95.body",
-        "body_sha256": "88fc387395f4280d414717c5f618eec791f49a08ca4b3c5c511a8fe6cc211801",
+        "body_path": "responses/364ff712206d46c9a75ac411bea379eb.body",
+        "body_sha256": "e03099ec2028d6f87d9e42cd1c6699ec8c62c80d29ca419481d877a19301c33a",
         "error": null
       },
       "outcome": "success",
@@ -221,21 +221,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
-        "fetched_at": "2026-11-08T11:59:47.170747Z",
+        "fetched_at": "2026-11-09T08:11:41.699204Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.21,
-        "response_duration_seconds": 0.231,
+        "duration_seconds": 1.121,
+        "response_duration_seconds": 0.268,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a3e9109a7df94d05a553eec543017549.body",
-        "body_sha256": "ff5b9e362334650958826bce835f085b7a502c4e56b3e2ea5015ccd8290c3aa3",
+        "body_path": "responses/147c528e66384bd792efaef30eabeb74.body",
+        "body_sha256": "22cb00eeee84bbdef1e0748c70924dfb51da623a6ec218a875a826df82ff0f22",
         "error": null
       },
       "outcome": "success",
@@ -254,21 +254,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
-        "fetched_at": "2026-11-08T11:59:48.382350Z",
+        "fetched_at": "2026-11-09T08:11:42.821177Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.894,
-        "response_duration_seconds": 0.126,
+        "duration_seconds": 1.121,
+        "response_duration_seconds": 0.39,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/814e8c8e48e9483e9d6a8518c859b0a6.body",
-        "body_sha256": "abeba04cd226b6bd08aa8468876c4b7547388bc17bfa4b21bf113231fbe5d815",
+        "body_path": "responses/de9f6c1e2b524eae9809e826c6c5af2a.body",
+        "body_sha256": "e8c0d65a61a0c6679d8fee2c18613e04a1bafb4d6b20736e43a3fd3c24f99e77",
         "error": null
       },
       "outcome": "success",
@@ -287,21 +287,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
         "final_url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
-        "fetched_at": "2026-11-08T11:59:49.277959Z",
+        "fetched_at": "2026-11-09T08:11:43.943558Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.293,
-        "response_duration_seconds": 0.422,
+        "duration_seconds": 0.755,
+        "response_duration_seconds": 0.146,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/f4fa14fc1ac84977b31a7d7d77e9a22a.body",
-        "body_sha256": "f7ebdffdfc697f18120a0e64dae3e6601679b3721531d378431e043f40052926",
+        "body_path": "responses/6907a827be2b4ff8bf0dee0205ece0f8.body",
+        "body_sha256": "9f6c9cd17dd444023d207ebc3566f689f1eea6c9043d5f0fc639b197e3b3e9a7",
         "error": null
       },
       "outcome": "success",
@@ -321,21 +321,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/",
-        "fetched_at": "2026-11-08T11:59:50.573331Z",
+        "fetched_at": "2026-11-09T08:11:44.699334Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.808,
-        "response_duration_seconds": 0.231,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.146,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/185c5b1cdde84df786ca2d66a79f1ada.body",
-        "body_sha256": "a0bd1f5eb6d48979955e4c6ef9c0a28300eb426b0000ae7143740a2cb262b599",
+        "body_path": "responses/ad7d8dbb0bf94c07ba3f8dbdec02530a.body",
+        "body_sha256": "9c32f55652a2ae2b771e69bd2cc73c97feb209dd9dcffa139452b0c9cd88d156",
         "error": null
       },
       "outcome": "success",
@@ -354,21 +354,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
-        "fetched_at": "2026-11-08T11:59:51.383011Z",
+        "fetched_at": "2026-11-09T08:11:45.700148Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.228,
+        "duration_seconds": 0.998,
+        "response_duration_seconds": 0.145,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/0844a0999d5c404ebd8bdfc1044d9abb.body",
-        "body_sha256": "358a2ddf5c110d302e0c579185d2ad2a592327c52cb1cd4e76b93aabe43473f9",
+        "body_path": "responses/2b07d7084ae44c87956a0082acdda2c4.body",
+        "body_sha256": "180f343a2f986ac5be43382080288dd17bd7e68e5187a1b01bcff5e5479e1da5",
         "error": null
       },
       "outcome": "success",
@@ -387,21 +387,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/",
-        "fetched_at": "2026-11-08T11:59:52.380410Z",
+        "fetched_at": "2026-11-09T08:11:46.699044Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.99,
-        "response_duration_seconds": 0.221,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.148,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/80e82ded5a2f41e5972c1b517a39ec59.body",
-        "body_sha256": "67872767ed085232eba4517eefaeae81436a5b2ad2c4565b42edb93f1625b651",
+        "body_path": "responses/2d4888b12af84365bca407944900f87a.body",
+        "body_sha256": "24868f78e26103370cd052df265bbdada0c6e49e727ab6f1eaed4a63882d0931",
         "error": null
       },
       "outcome": "success",
@@ -420,21 +420,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/",
-        "fetched_at": "2026-11-08T11:59:53.372719Z",
+        "fetched_at": "2026-11-09T08:11:47.701498Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.219,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.15,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/10e6b44442de4fe5a0d2525e9a6e67d6.body",
-        "body_sha256": "a991f551453b2f823ce83a98c3cffc2102d43cc5e2dd8ce571d2b508297bc8b2",
+        "body_path": "responses/c900886e0b2e415dbff0877bbf3f58b6.body",
+        "body_sha256": "c07ae2dbebcdde758907a4aa1d4041dc06c8a713413b52523ea6d40e9cf09580",
         "error": null
       },
       "outcome": "success",
@@ -453,21 +453,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/",
-        "fetched_at": "2026-11-08T11:59:54.370831Z",
+        "fetched_at": "2026-11-09T08:11:48.703560Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.006,
-        "response_duration_seconds": 0.227,
+        "duration_seconds": 1.107,
+        "response_duration_seconds": 0.257,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/1d577081ab014bee8004d1f1e4adb6f5.body",
-        "body_sha256": "48a6d3b8ce76ffa36456651e17ddd7d46360ed012acb1ccbe673b1fc39a53c49",
+        "body_path": "responses/33ccafbb7ca44f67923f24ff52c850a8.body",
+        "body_sha256": "5c442b33163876f64be3681c9bb16f333a386333a507317f0d553e56a5cff8b3",
         "error": null
       },
       "outcome": "success",
@@ -486,21 +486,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/",
-        "fetched_at": "2026-11-08T11:59:55.379164Z",
+        "fetched_at": "2026-11-09T08:11:49.811659Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.276,
-        "response_duration_seconds": 0.504,
+        "duration_seconds": 0.997,
+        "response_duration_seconds": 0.256,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a704ce1c8e9b473ba575433df7abb003.body",
-        "body_sha256": "2fd2a0b7637f8e93de82a837153f2bf6ac85e13615ca4f51548864232285ac5a",
+        "body_path": "responses/80564a45e7f64c658c6cfbed034d9f49.body",
+        "body_sha256": "a0712beb62b2fd68271d4ffd3401ffdd99bd5d7f42f2dd28dfb82530a48fdac2",
         "error": null
       },
       "outcome": "success",
@@ -519,21 +519,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/",
-        "fetched_at": "2026-11-08T11:59:56.656788Z",
+        "fetched_at": "2026-11-09T08:11:50.810070Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.73,
-        "response_duration_seconds": 0.235,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.257,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/28bc276f103f414ba66714751fa004e3.body",
-        "body_sha256": "472c0f7b7c0390edef45ed3c95bf609be342e1b8d73872e1748db97ec12b70c6",
+        "body_path": "responses/e347f63a468c46b9957a4d9e8d2207f5.body",
+        "body_sha256": "1d2ea2f4b565c4be7bf5c6e358af09e8cc31ecdbe2978e75e1186f971b029f91",
         "error": null
       },
       "outcome": "success",
@@ -552,21 +552,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/",
-        "fetched_at": "2026-11-08T11:59:57.388426Z",
+        "fetched_at": "2026-11-09T08:11:51.811140Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.984,
-        "response_duration_seconds": 0.221,
+        "duration_seconds": 1.038,
+        "response_duration_seconds": 0.296,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/969e87e2f1604546957e2117cc335d92.body",
-        "body_sha256": "4dfd05020b466fe52ce17355dcc660c8adf39f1eab805350e3d4afd08cf1d274",
+        "body_path": "responses/5172445c59af40fab8298f890b8cb609.body",
+        "body_sha256": "ad6250653898b3ce9552043ee12a5a0491e2d66fb35be012d3aadde8ac7e9453",
         "error": null
       },
       "outcome": "success",
@@ -585,21 +585,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/",
         "final_url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/",
-        "fetched_at": "2026-11-08T11:59:58.374213Z",
+        "fetched_at": "2026-11-09T08:11:52.850297Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.994,
-        "response_duration_seconds": 0.217,
+        "duration_seconds": 0.96,
+        "response_duration_seconds": 0.257,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/aff5b0d5e2bc4540b475e078c8d97272.body",
-        "body_sha256": "d45f7f91a7254bd6398ac86aaeb19e9967ddfe4e92edd3ba47e17744cdeb7d0a",
+        "body_path": "responses/87be4e32956442c1bcd5d0c9b1fc27fa.body",
+        "body_sha256": "0de5190c2520c4964fe898c94e64dede8462e4fbf8cf57574723f2469846e74f",
         "error": null
       },
       "outcome": "success",
@@ -618,21 +618,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/",
-        "fetched_at": "2026-11-08T11:59:59.370362Z",
+        "fetched_at": "2026-11-09T08:11:53.811387Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.02,
-        "response_duration_seconds": 0.238,
+        "duration_seconds": 0.894,
+        "response_duration_seconds": 0.151,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/7fef805bd7a545e785177b0a7f118329.body",
-        "body_sha256": "ba12cc2f04c009ed6248231d68e749a08fc1a1a1a97a22f8569e548fad542484",
+        "body_path": "responses/2e7ff03111ac4b1cae72d9700e3d6852.body",
+        "body_sha256": "40270951b7b0c34401ee3006f5b313996c952d1b778b591adc226cff4582f6fd",
         "error": null
       },
       "outcome": "success",
@@ -651,21 +651,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/",
-        "fetched_at": "2026-11-08T12:00:00.392118Z",
+        "fetched_at": "2026-11-09T08:11:54.706146Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.243,
+        "duration_seconds": 1.099,
+        "response_duration_seconds": 0.251,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/9c24a97abcac490f8f77153f0bf90355.body",
-        "body_sha256": "86ceb22f0e0f979d84fb53faa825bdb0269a1ad481ead8abd36fb44943a06a95",
+        "body_path": "responses/52298a6f111743e5843eabe5f63e9de2.body",
+        "body_sha256": "1df688f44b664f017e198ced7f929878108e7b676b6bf71be906d9d1a31f9e5d",
         "error": null
       },
       "outcome": "success",
@@ -684,21 +684,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/",
-        "fetched_at": "2026-11-08T12:00:01.395936Z",
+        "fetched_at": "2026-11-09T08:11:55.805889Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.01,
-        "response_duration_seconds": 0.254,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.247,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/61c5ef347aa14de38c3bb77a9e86c6e4.body",
-        "body_sha256": "c39bc9b008ec2f75b8e2ab2c2e64277485b14e5f83bbe1b611fdb250311e27bf",
+        "body_path": "responses/611c755a0f674000a40e0cab39e18625.body",
+        "body_sha256": "f8f046fa453a9878abd18711664ff30c6d5ad696bd5cd7d0a31454b8b29d8317",
         "error": null
       },
       "outcome": "success",
@@ -717,21 +717,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/",
-        "fetched_at": "2026-11-08T12:00:02.407421Z",
+        "fetched_at": "2026-11-09T08:11:56.802248Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.976,
-        "response_duration_seconds": 0.232,
+        "duration_seconds": 1.007,
+        "response_duration_seconds": 0.255,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/390ec229c8bf473c80179d768bdf93db.body",
-        "body_sha256": "78515b4c698bab8c59d1ee107719dbb0eb1e00cd680a7dac58a3fdb470ca5c1d",
+        "body_path": "responses/dbbe958bb39a4748ba24274f021c0b2f.body",
+        "body_sha256": "d37fa69383c256d3de77f91fcfbc19ab26962d2ecd5ff61420aaef41c116e385",
         "error": null
       },
       "outcome": "success",
@@ -750,21 +750,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/",
-        "fetched_at": "2026-11-08T12:00:03.385904Z",
+        "fetched_at": "2026-11-09T08:11:57.810379Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.014,
-        "response_duration_seconds": 0.248,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.256,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a9a58bb03fe64f439407f7919c29a29e.body",
-        "body_sha256": "cb5e053b50054e2dfd3443d0b530c174bb9daaca6c3109745a9782d109160f7e",
+        "body_path": "responses/ee227fe9c5f8472ba15e2da0d177775a.body",
+        "body_sha256": "fb67a804e58f226e17259c0e169891b53dc9d96bf97fb2f5c3cab82ab3097da3",
         "error": null
       },
       "outcome": "success",
@@ -783,21 +783,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/",
-        "fetched_at": "2026-11-08T12:00:04.401972Z",
+        "fetched_at": "2026-11-09T08:11:58.811238Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.977,
-        "response_duration_seconds": 0.227,
+        "duration_seconds": 0.992,
+        "response_duration_seconds": 0.25,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/3243d1588c914135a6d8311aa6665bb7.body",
-        "body_sha256": "422236cc2a284a7394e97047a8696f36fe0239842b9e5a93761653dd24b5c9ef",
+        "body_path": "responses/8cf2edff4e2a466284d62b92272ceb84.body",
+        "body_sha256": "264a708324bb955920a8b2dee45154e4b29c5412615722df2109a37d2af5ae22",
         "error": null
       },
       "outcome": "success",
@@ -816,21 +816,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/",
-        "fetched_at": "2026-11-08T12:00:05.380515Z",
+        "fetched_at": "2026-11-09T08:11:59.804615Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.996,
-        "response_duration_seconds": 0.225,
+        "duration_seconds": 1.01,
+        "response_duration_seconds": 0.261,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/4e923190c6344826bf00f3dd4e711bc4.body",
-        "body_sha256": "2a685662f84a7ce77d725e343d72ccc9abf2cd410ba5d21c0420b5beaef61144",
+        "body_path": "responses/6e74aa7441b24e9ea12effafeb4bdb32.body",
+        "body_sha256": "4b3bda9d7fc4c6210d4ffdf638909e4bf30f42ecb7a3f3d49d9956ec4c6af4e6",
         "error": null
       },
       "outcome": "success",
@@ -849,21 +849,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/",
-        "fetched_at": "2026-11-08T12:00:06.378728Z",
+        "fetched_at": "2026-11-09T08:12:00.815947Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.051,
-        "response_duration_seconds": 0.277,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.257,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a2aab6fa3d474363b522df43e62e1187.body",
-        "body_sha256": "3d4a82bcd388f66c9f8b91313df015ccc57603fb975452f0cf3d6d3503613ade",
+        "body_path": "responses/8ec341d04b42422a9c3ec4608431178c.body",
+        "body_sha256": "590d205c50e536e798e351984bd86b2b5f19bb29cd32c951cebc2b32c632294f",
         "error": null
       },
       "outcome": "success",
@@ -882,21 +882,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/",
-        "fetched_at": "2026-11-08T12:00:07.431218Z",
+        "fetched_at": "2026-11-09T08:12:01.812348Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.942,
-        "response_duration_seconds": 0.221,
+        "duration_seconds": 0.989,
+        "response_duration_seconds": 0.247,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/f1cfc1e8dc88478c9cac9da4b464c4ff.body",
-        "body_sha256": "c909f998be7b0886dae758f3db7be9dddc7a3e95b2662b7131980f2b4b93ca70",
+        "body_path": "responses/20605a646510406db306f6d90cdd2305.body",
+        "body_sha256": "ab1067bfd2a07935111e0ff391ab61e1696da6f6664f8d3ad92938c185dc70c1",
         "error": null
       },
       "outcome": "success",
@@ -915,21 +915,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/",
-        "fetched_at": "2026-11-08T12:00:08.375585Z",
+        "fetched_at": "2026-11-09T08:12:02.802429Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.225,
+        "duration_seconds": 1.006,
+        "response_duration_seconds": 0.254,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/fc47f84746b84775bb4d221a670f057b.body",
-        "body_sha256": "75d101f6e2bbbc3d1fe889cd46c9b82418d61bb4e34e05fe0a089acff12ddc0e",
+        "body_path": "responses/b64db285b6754da1b37136077448e4d2.body",
+        "body_sha256": "b55fd636e17c4a9c0f1aa6d12461d846512e8c22f7edb0f4d494e22766a638fe",
         "error": null
       },
       "outcome": "success",
@@ -948,21 +948,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/",
-        "fetched_at": "2026-11-08T12:00:09.379305Z",
+        "fetched_at": "2026-11-09T08:12:03.809620Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.023,
-        "response_duration_seconds": 0.25,
+        "duration_seconds": 1.008,
+        "response_duration_seconds": 0.263,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/6c0bd27af07a446f9a3f6cf1200caa0c.body",
-        "body_sha256": "a813aa14e9d13edd89d9b02041b50e13b61734d1ed896bc0d1479378615e2573",
+        "body_path": "responses/346d395f8c9e4267bef98dc18de2f94b.body",
+        "body_sha256": "ccf3502982f8094d4dafbe602952efda2a7d2441affe22717626e9a3b6f653e9",
         "error": null
       },
       "outcome": "success",
@@ -981,21 +981,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/",
-        "fetched_at": "2026-11-08T12:00:10.404416Z",
+        "fetched_at": "2026-11-09T08:12:04.818959Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.998,
-        "response_duration_seconds": 0.25,
+        "duration_seconds": 0.988,
+        "response_duration_seconds": 0.253,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/81e2e970067745839d3bb96b3d9e4e20.body",
-        "body_sha256": "b618399acff32c1247750b7b037e8bf04d6d4597e2437137a22261bfab3e2a83",
+        "body_path": "responses/86cbe7febdc6475e851dfb42261a28c1.body",
+        "body_sha256": "65bec8334b4815001f42720e1d66de82a9e43ab625887ecb23403cc8dc65362d",
         "error": null
       },
       "outcome": "success",
@@ -1014,21 +1014,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/",
-        "fetched_at": "2026-11-08T12:00:11.404217Z",
+        "fetched_at": "2026-11-09T08:12:05.808476Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.984,
-        "response_duration_seconds": 0.236,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.255,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/a40ba975ca4d459cbd10d6500164023f.body",
-        "body_sha256": "ffbffd9b1f21ff7c6378f44fef88da4f2fdc3ee67077145f46db0f79a5716484",
+        "body_path": "responses/818d4a8d7ac647d6a7ffabc8be5aa881.body",
+        "body_sha256": "e4927067fea6a4e9b5a211661e1711715665963a01b444002f67ef7fd8f33c4b",
         "error": null
       },
       "outcome": "success",
@@ -1047,21 +1047,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/",
-        "fetched_at": "2026-11-08T12:00:12.390406Z",
+        "fetched_at": "2026-11-09T08:12:06.810379Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.003,
-        "response_duration_seconds": 0.24,
+        "duration_seconds": 0.991,
+        "response_duration_seconds": 0.247,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/96ae415316f34aedb65ea202caf7f02b.body",
-        "body_sha256": "4ec6e6b7aaa90bbbe95eebc901b6727bbdbd4b862370aaa33ab45985c11fe7f5",
+        "body_path": "responses/a595c777bf4541fb8ca371b581070d3b.body",
+        "body_sha256": "8cc9f848ded73082b98684fd6aafb67fbf041124b08ffcfa2ba2320f40800ef2",
         "error": null
       },
       "outcome": "success",
@@ -1080,21 +1080,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/",
-        "fetched_at": "2026-11-08T12:00:13.394981Z",
+        "fetched_at": "2026-11-09T08:12:07.802670Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.992,
-        "response_duration_seconds": 0.234,
+        "duration_seconds": 1.014,
+        "response_duration_seconds": 0.262,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/441001967acb40508e2a38189cc37657.body",
-        "body_sha256": "8be44660c03a71c6ad6343523809f69f71cda6dfdaa1661158360f46b6a760b1",
+        "body_path": "responses/7ddaa123d2e240c485fc03a60115002d.body",
+        "body_sha256": "778d411b75139c626a0ee3edb6bce38b43cba700fef5429b50479590b9d2bc64",
         "error": null
       },
       "outcome": "success",
@@ -1113,21 +1113,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/",
-        "fetched_at": "2026-11-08T12:00:14.389311Z",
+        "fetched_at": "2026-11-09T08:12:08.817810Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.018,
-        "response_duration_seconds": 0.254,
+        "duration_seconds": 0.993,
+        "response_duration_seconds": 0.256,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/024af32bd6dc47849dd5dba6864ed005.body",
-        "body_sha256": "270144c6edddbb8c278b6f3c0fd8ac86200ecc12b80b76c5e999c410a2640af1",
+        "body_path": "responses/9e89eefa44754e23a5682a6fff79d9ba.body",
+        "body_sha256": "435561d8139c7942fbfec3111a0e11a93923b332ef2b4b0f112e001b4752b798",
         "error": null
       },
       "outcome": "success",
@@ -1146,21 +1146,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/",
-        "fetched_at": "2026-11-08T12:00:15.409140Z",
+        "fetched_at": "2026-11-09T08:12:09.812691Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.992,
-        "response_duration_seconds": 0.247,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.252,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/211717d576364266841915f456ae0c62.body",
-        "body_sha256": "bc74e71ee506db1e407a43e9822f7b3ac92e03ce515d606c062ecc6e180eb798",
+        "body_path": "responses/0b3879d400b54a559f3d35e70784d930.body",
+        "body_sha256": "c3e77354e857ee223cf8ab9469ba7313605d753bd2d5d08e18c8dfb0915dc35b",
         "error": null
       },
       "outcome": "success",
@@ -1179,21 +1179,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/",
-        "fetched_at": "2026-11-08T12:00:16.402851Z",
+        "fetched_at": "2026-11-09T08:12:10.808491Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.972,
-        "response_duration_seconds": 0.221,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.255,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/6e6afdc1a6b44118adc0838bcd58ddd6.body",
-        "body_sha256": "b68857434f4b17bd6fd1560eed4684a2227159eb73834982cacfe4d86aba965f",
+        "body_path": "responses/ff908f2511954baf8f428e7cfa1d92f0.body",
+        "body_sha256": "7e6590a2cfeed8115c6e6bb4ca001006409d768e647a4a7cb9b9cb671f3b6412",
         "error": null
       },
       "outcome": "success",
@@ -1212,21 +1212,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/",
-        "fetched_at": "2026-11-08T12:00:17.377823Z",
+        "fetched_at": "2026-11-09T08:12:11.811074Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.02,
-        "response_duration_seconds": 0.244,
+        "duration_seconds": 0.998,
+        "response_duration_seconds": 0.254,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/6d195053dd09472d93cee0a7d2de03ae.body",
-        "body_sha256": "8c990bfcbc44ce5a33eb9b36ce3128778bc78a61ac71f639b3778db2418cc8d9",
+        "body_path": "responses/f7d1ab0596434380b0209f5e94468170.body",
+        "body_sha256": "b40c9186e0d842030de0f13bb445c9ac8571630a4bba5de3f363a2cd30ef7161",
         "error": null
       },
       "outcome": "success",
@@ -1245,21 +1245,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/",
-        "fetched_at": "2026-11-08T12:00:18.399619Z",
+        "fetched_at": "2026-11-09T08:12:12.810919Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.98,
-        "response_duration_seconds": 0.226,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.256,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/e99f3a13de864ccdb5cb22032ee3c46e.body",
-        "body_sha256": "ba31948f4c4695884c81174e4d7eba5a9e3cf1b01165b1f4ebfa38c6e9d2d809",
+        "body_path": "responses/c84e0f8d838b4f48812c99b8514f70f6.body",
+        "body_sha256": "3e64132ab45b1c46534122383f104443eb022de63b46efe3eb55f7759e74ba9b",
         "error": null
       },
       "outcome": "success",
@@ -1278,21 +1278,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/",
-        "fetched_at": "2026-11-08T12:00:19.381669Z",
+        "fetched_at": "2026-11-09T08:12:13.812693Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.009,
-        "response_duration_seconds": 0.237,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.259,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/6e573f6dd8094fec992c5c4d82c81e6a.body",
-        "body_sha256": "379754d142d82e4cfa9b768a5745a3b25aa5b6feb42422e899d775ddd3f38017",
+        "body_path": "responses/9531236ce3e74041b61c4edda4b14543.body",
+        "body_sha256": "3bf457b00f534e2dc6a99a49f5ea8822975828348a6b6874014167e96eedaae0",
         "error": null
       },
       "outcome": "success",
@@ -1311,21 +1311,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/",
-        "fetched_at": "2026-11-08T12:00:20.392488Z",
+        "fetched_at": "2026-11-09T08:12:14.815342Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.998,
-        "response_duration_seconds": 0.236,
+        "duration_seconds": 0.997,
+        "response_duration_seconds": 0.257,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/fb177275140646eb89f6f71c7ae4630a.body",
-        "body_sha256": "1e55c8f1ae0fc68d30d6358d8ec7cf0077ac7110b2cfd18c75e92e60c9473e0b",
+        "body_path": "responses/cca98ee58a504a1492f900ac899a15ac.body",
+        "body_sha256": "fb02c1fb29ebab0992e1dd5679129987ac4d1c5b34ed90288f8a2edea0d3515c",
         "error": null
       },
       "outcome": "success",
@@ -1344,21 +1344,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/",
-        "fetched_at": "2026-11-08T12:00:21.392130Z",
+        "fetched_at": "2026-11-09T08:12:15.813505Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.994,
-        "response_duration_seconds": 0.231,
+        "duration_seconds": 0.995,
+        "response_duration_seconds": 0.252,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/4ce816b2ee9c46a09b94601bfe1087dc.body",
-        "body_sha256": "5e74f0f5eb632f2608b7e01ef1dfa54a24159f5ebf8c9efa30928edbbb11ce80",
+        "body_path": "responses/4798c36d1d504276bfa26a21a0f4549c.body",
+        "body_sha256": "de4d68217d5d2bd6ef4c61801bb41df7f6654e0d1e2cacd35d53ef1609745efb",
         "error": null
       },
       "outcome": "success",
@@ -1377,21 +1377,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/",
-        "fetched_at": "2026-11-08T12:00:22.387720Z",
+        "fetched_at": "2026-11-09T08:12:16.809411Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.016,
-        "response_duration_seconds": 0.249,
+        "duration_seconds": 1.002,
+        "response_duration_seconds": 0.256,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/45dab35dbb7a4de79f50b22d9e4bc8bc.body",
-        "body_sha256": "5c938f61f6451fe0c8ef5be2b77600883034fdcd7a0e6466414c587f15e73f3e",
+        "body_path": "responses/1461aef15f034c60a09203141815e351.body",
+        "body_sha256": "415334657717e7ed3e4ee7987b35ea0676b1ef5329cdfeb457ba156a44e54c68",
         "error": null
       },
       "outcome": "success",
@@ -1410,21 +1410,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/",
-        "fetched_at": "2026-11-08T12:00:23.405570Z",
+        "fetched_at": "2026-11-09T08:12:17.812739Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
         "duration_seconds": 0.995,
-        "response_duration_seconds": 0.247,
+        "response_duration_seconds": 0.252,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/25d50620be714e87bbb89cd05dfc503c.body",
-        "body_sha256": "e11867c2e4660e877870a6179bffde58a18def02dc06eb084059edc39e9b6f80",
+        "body_path": "responses/3fd61e3909094847a0ab84444f94d76e.body",
+        "body_sha256": "9623e727a693cb093a35ff6667bcddbc718f9175c9640ce83a797441bf6a0db4",
         "error": null
       },
       "outcome": "success",
@@ -1443,21 +1443,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/",
-        "fetched_at": "2026-11-08T12:00:24.402892Z",
+        "fetched_at": "2026-11-09T08:12:18.809150Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.979,
-        "response_duration_seconds": 0.227,
+        "duration_seconds": 1.001,
+        "response_duration_seconds": 0.255,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/3e7e12a6c0cc4c3fad645fff292eb5b2.body",
-        "body_sha256": "694170d0e520792529a86f4a9dfdb1dc97ebf9bbb81768b024d1b33ab16d1cbd",
+        "body_path": "responses/8f2627f18eb140f0902cf1ac2eab2aef.body",
+        "body_sha256": "13c6dbf8340d48e7c16edef2dab68e7ef8bab69e77f961823b072805fff1f4cf",
         "error": null
       },
       "outcome": "success",
@@ -1476,21 +1476,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/",
-        "fetched_at": "2026-11-08T12:00:25.383723Z",
+        "fetched_at": "2026-11-09T08:12:19.811637Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.997,
-        "response_duration_seconds": 0.226,
+        "duration_seconds": 0.998,
+        "response_duration_seconds": 0.253,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/2b7db1515f6c4a0482d784e19109ee02.body",
-        "body_sha256": "676368a6d3b95d4e4d1510075a2165c53c0e7019cd746aaab196e53c7414c07d",
+        "body_path": "responses/b2178a92e71244f1806a0a56476c9c83.body",
+        "body_sha256": "3e6c18d85c3b496325096c43b631ccb493249ac1335e94e80574137adfd406cb",
         "error": null
       },
       "outcome": "success",
@@ -1509,21 +1509,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/05/security-releases/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/",
-        "fetched_at": "2026-11-08T12:00:26.382592Z",
+        "fetched_at": "2026-11-09T08:12:20.810751Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.006,
-        "response_duration_seconds": 0.234,
+        "duration_seconds": 0.997,
+        "response_duration_seconds": 0.252,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/b6879abca2704770bfd4b3809321c856.body",
-        "body_sha256": "30786d84c5d544f3b2c9800f0f9c41bb9fe26243a85c479a51ec3223317fc9f8",
+        "body_path": "responses/6eeea30a1c474c25a92b3d23c633e07a.body",
+        "body_sha256": "fe1d4042ac47588518da8d0b169b7b7ab726b6886e93e7051e0038770a6fffc2",
         "error": null
       },
       "outcome": "success",
@@ -1542,21 +1542,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/",
         "final_url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/",
-        "fetched_at": "2026-11-08T12:00:27.390622Z",
+        "fetched_at": "2026-11-09T08:12:21.808801Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.995,
-        "response_duration_seconds": 0.231,
+        "duration_seconds": 1.002,
+        "response_duration_seconds": 0.254,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/3a67f700caba463e8a793a35d3fce59d.body",
-        "body_sha256": "2abbaa547cdcf07e45c58c59a506511d67a74ffa29647f7ffa5fe3bfa09a1861",
+        "body_path": "responses/476b5bcc0480453fb9e7ea6ceabb9c23.body",
+        "body_sha256": "530d03ed2c8583a2e092d1c952fbb6824d3e2ef2c6479c662b8769a53aaa510f",
         "error": null
       },
       "outcome": "success",
@@ -1575,21 +1575,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/",
-        "fetched_at": "2026-11-08T12:00:28.387963Z",
+        "fetched_at": "2026-11-09T08:12:22.811463Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.999,
-        "response_duration_seconds": 0.233,
+        "duration_seconds": 0.996,
+        "response_duration_seconds": 0.251,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/05c782c3e8e647f484c6bdaaae41e592.body",
-        "body_sha256": "282ad822c7056ebfbb6971cb8fbd1c7a359259c7c2beffe1e21ee71da1e8ec0d",
+        "body_path": "responses/a4535bb545a94759ae20cc9b4af7808c.body",
+        "body_sha256": "804d094563657a1acd87ddc7c67609b439115c6be0880f33192bdf48ad28f15e",
         "error": null
       },
       "outcome": "success",
@@ -1608,21 +1608,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/",
-        "fetched_at": "2026-11-08T12:00:29.388933Z",
+        "fetched_at": "2026-11-09T08:12:23.808030Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 0.985,
-        "response_duration_seconds": 0.219,
+        "duration_seconds": 0.997,
+        "response_duration_seconds": 0.249,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/af743ff7d6de4275a6aae5fe01ed4820.body",
-        "body_sha256": "884ee522092cad6cff1e38c12c9f6e27f594e513e9fc757bf08df20c015de5a4",
+        "body_path": "responses/27ba9e063f7742168b08b7d7cfa75a8c.body",
+        "body_sha256": "cd735f2171db5206fa5be3dcfab63f2c904dcfd8a247eeb85cf667766b46fe65",
         "error": null
       },
       "outcome": "success",
@@ -1641,21 +1641,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/",
-        "fetched_at": "2026-11-08T12:00:30.376094Z",
+        "fetched_at": "2026-11-09T08:12:24.806087Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.011,
-        "response_duration_seconds": 0.232,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.25,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/536714d44993437eb8572bf6fd9267f5.body",
-        "body_sha256": "496a8a7b1f29643b7c97410f65d44f393973bc5a2ef72febe237d3442a4fa56e",
+        "body_path": "responses/da6e66032903489d870b789e706f102a.body",
+        "body_sha256": "ec5e84d82903af51a9df68a37e89ab0f1e5c301dc95d14f0bd74e2219469a7cd",
         "error": null
       },
       "outcome": "success",
@@ -1674,21 +1674,21 @@
     },
     "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "evidence": {
         "requested_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
         "final_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
-        "fetched_at": "2026-11-08T12:00:31.389009Z",
+        "fetched_at": "2026-11-09T08:12:25.807117Z",
         "status_code": 200,
         "redirects": [],
         "attempts": 1,
-        "duration_seconds": 1.002,
-        "response_duration_seconds": 0.236,
+        "duration_seconds": 1.0,
+        "response_duration_seconds": 0.25,
         "headers": {
           "Content-Type": "text/html; charset=utf-8"
         },
-        "body_path": "responses/454c2e2170a246fcb40e9a4506958aa7.body",
-        "body_sha256": "8eb5ea4fa1906fe6a0d0d1441f7c245fa3ed028f7cc0da1db3ca2a9e228b24cd",
+        "body_path": "responses/058464e308f0496daa1ba38c3ebfb3fa.body",
+        "body_sha256": "84a1d3ef33627531a34e91a4453c0d484cbe00ca99b4abacaa0ec6ae47799b89",
         "error": null
       },
       "outcome": "success",
@@ -2729,7 +2729,7 @@
     "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/",
     "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/"
   ],
-  "sitemap_run_id": "20261108T115940.959358Z-36c1f82b",
+  "sitemap_run_id": "20261109T081135.302853Z-2da7c9f8",
   "known_sitemap_urls": [
     "https://www.djangoproject.com/",
     "https://www.djangoproject.com/accessibility/",
@@ -3858,6 +3858,18 @@
         "deferred": 0
       },
       "completed_at": "2026-11-08T12:02:07.071205+00:00"
+    },
+    {
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
+      "status": "collected",
+      "alert_status": "warning",
+      "coverage": {
+        "attempted": 50,
+        "successful": 50,
+        "failed": 0,
+        "deferred": 0
+      },
+      "completed_at": "2026-11-09T08:13:57.549760+00:00"
     }
   ],
   "active_findings": {
@@ -3872,25 +3884,25 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261107T151913.294864Z-c527f39c",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "requested_url": "https://www.djangoproject.com/",
           "final_url": "https://www.djangoproject.com/",
-          "fetched_at": "2026-11-08T11:59:42.179654Z",
+          "fetched_at": "2026-11-09T08:11:36.697489Z",
           "status_code": 200,
           "redirects": [],
           "attempts": 1,
-          "duration_seconds": 1.079,
-          "response_duration_seconds": 0.11,
+          "duration_seconds": 0.869,
+          "response_duration_seconds": 0.015,
           "headers": {
             "Content-Type": "text/html; charset=utf-8"
           },
-          "body_path": "responses/468069e5ba4547beb1546f1198cda7b9.body",
-          "body_sha256": "554dadf4f02e0b452963d87f1883d6dcccbcd46667b11c2d37074c2c8f0e9a3d",
+          "body_path": "responses/a68d31455b4e4e6dafbaa5cd5bd475f2.body",
+          "body_sha256": "58777baa8f925b021fbf066c50b0f50ca3dd42fcba0b68b313e07a2c65c90e71",
           "error": null
         }
       ],
@@ -3910,25 +3922,25 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261107T151913.294864Z-c527f39c",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "requested_url": "https://www.djangoproject.com/weblog/",
           "final_url": "https://www.djangoproject.com/weblog/",
-          "fetched_at": "2026-11-08T11:59:43.260158Z",
+          "fetched_at": "2026-11-09T08:11:37.567492Z",
           "status_code": 200,
           "redirects": [],
           "attempts": 1,
-          "duration_seconds": 1.431,
-          "response_duration_seconds": 0.542,
+          "duration_seconds": 1.131,
+          "response_duration_seconds": 0.146,
           "headers": {
             "Content-Type": "text/html; charset=utf-8"
           },
-          "body_path": "responses/546cc5b007674badb539b786a96d5eff.body",
-          "body_sha256": "9fb21c063b8304ce52388ffd303781d0a6150c6168f03f83e7caf6b090e042da",
+          "body_path": "responses/4b7603aa80c646c78ab1ef4379c6132b.body",
+          "body_sha256": "054db0664f852ceef519fcef7c53a8d0069af2ead80e9c76d3324b15ce7f4777",
           "error": null
         }
       ],
@@ -3948,20 +3960,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/weblog/",
           "strategy": "mobile",
-          "collected_at": "2026-11-08T12:00:51.623934Z",
+          "collected_at": "2026-11-09T08:12:56.962680Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/weblog/",
-          "body_path": "pagespeed/96c12057c9cc42a1b7bdac72f4e15c28.json",
-          "body_sha256": "0e12fdb9c05e446c39e2a98ba27fa6fd06984dceb08d2b6f3bde60fc80585184"
+          "body_path": "pagespeed/95bf774d2c614f9f81a3b9972e36ac09.json",
+          "body_sha256": "ca05a60acd91c48a52867d5d3a580dc703b3ad0d4f14d6f02a0f816bb91abde5"
         }
       ],
       "before": null,
@@ -3991,20 +4003,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/weblog/",
           "strategy": "desktop",
-          "collected_at": "2026-11-08T12:01:07.239714Z",
+          "collected_at": "2026-11-09T08:13:11.255065Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/weblog/",
-          "body_path": "pagespeed/cc4d57a525d940918b5e2088e2d744ea.json",
-          "body_sha256": "176990370f071bbdec2577283603b062887d4e8d463e1e962c8d910c0b46838d"
+          "body_path": "pagespeed/5ad68e6b0f544f1a8bc4a3a197f90391.json",
+          "body_sha256": "aab610d54603c72d28c9bd1d002688ae4738e9a4f8d441cb82587d1d32f6f35c"
         }
       ],
       "before": null,
@@ -4034,20 +4046,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/",
           "strategy": "mobile",
-          "collected_at": "2026-11-08T12:00:32.396521Z",
+          "collected_at": "2026-11-09T08:12:26.809746Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/",
-          "body_path": "pagespeed/f6025ffb8b12494390a7232914d3b8c9.json",
-          "body_sha256": "760aeefaa01f43d7d75ae05e5397e66daf65620c3425c5d99c21ae1ec452f200"
+          "body_path": "pagespeed/1b16b341f57b4f8682ad39dc8695b844.json",
+          "body_sha256": "671f29de5118f6593550873d5bf5f885ddcf8d27bd52624047abf922db8ad76b"
         }
       ],
       "before": null,
@@ -4077,20 +4089,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/",
           "strategy": "desktop",
-          "collected_at": "2026-11-08T12:00:42.038906Z",
+          "collected_at": "2026-11-09T08:12:41.330125Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/",
-          "body_path": "pagespeed/8e3cfbf3c6ee41688750bffc5d7ebf3d.json",
-          "body_sha256": "fc10d0347523da59dfbbde9d80f032b86bb0a0f92ff991f805162429d6e0ff68"
+          "body_path": "pagespeed/669d464b99b14ac48f5abe38973b05a9.json",
+          "body_sha256": "cbf651ca3e9b7ef9829cd7bf0e397acd477c752a58519cf75a3aafef59711e83"
         }
       ],
       "before": null,
@@ -4120,20 +4132,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/weblog/",
           "strategy": "desktop",
-          "collected_at": "2026-11-08T12:01:07.239714Z",
+          "collected_at": "2026-11-09T08:13:11.255065Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/weblog/",
-          "body_path": "pagespeed/cc4d57a525d940918b5e2088e2d744ea.json",
-          "body_sha256": "176990370f071bbdec2577283603b062887d4e8d463e1e962c8d910c0b46838d"
+          "body_path": "pagespeed/5ad68e6b0f544f1a8bc4a3a197f90391.json",
+          "body_sha256": "aab610d54603c72d28c9bd1d002688ae4738e9a4f8d441cb82587d1d32f6f35c"
         }
       ],
       "before": null,
@@ -4163,20 +4175,20 @@
       "confidence": "high",
       "state": "ongoing",
       "first_seen_run": "20261108T095852.279531Z-00014ac8",
-      "last_seen_run": "20261108T115940.959358Z-36c1f82b",
+      "last_seen_run": "20261109T081135.302853Z-2da7c9f8",
       "baseline_issue": true,
       "regression": false,
       "evidence": [
         {
-          "run_id": "20261108T115940.959358Z-36c1f82b",
+          "run_id": "20261109T081135.302853Z-2da7c9f8",
           "url": "https://www.djangoproject.com/weblog/",
           "strategy": "mobile",
-          "collected_at": "2026-11-08T12:00:51.623934Z",
+          "collected_at": "2026-11-09T08:12:56.962680Z",
           "status": "success",
           "lighthouse_version": "13.6.0",
           "final_url": "https://www.djangoproject.com/weblog/",
-          "body_path": "pagespeed/96c12057c9cc42a1b7bdac72f4e15c28.json",
-          "body_sha256": "0e12fdb9c05e446c39e2a98ba27fa6fd06984dceb08d2b6f3bde60fc80585184"
+          "body_path": "pagespeed/95bf774d2c614f9f81a3b9972e36ac09.json",
+          "body_sha256": "ca05a60acd91c48a52867d5d3a580dc703b3ad0d4f14d6f02a0f816bb91abde5"
         }
       ],
       "before": null,
@@ -4197,14 +4209,14 @@
     }
   },
   "robots_sha256": "f584941ee39cc07ee18b15f3205ac289fa5f2ce328218f97b5b0dd2bce4e9f6e",
-  "latest_run_id": "20261108T115940.959358Z-36c1f82b",
+  "latest_run_id": "20261109T081135.302853Z-2da7c9f8",
   "pagespeed_successful": {
     "mobile\nhttps://www.djangoproject.com/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/",
       "strategy": "mobile",
-      "collected_at": "2026-11-08T12:00:32.396521Z",
+      "collected_at": "2026-11-09T08:12:26.809746Z",
       "status": "success",
       "error": null,
       "attempts": 1,
@@ -4212,11 +4224,11 @@
       "performance_score": 93.0,
       "seo_score": 92.0,
       "metrics": {
-        "lcp_ms": 3165.739879659751,
-        "cls": 0.0013702854918979514,
-        "fcp_ms": 1655.7398796597508,
+        "lcp_ms": 3174.150774201411,
+        "cls": 0.001898089507405065,
+        "fcp_ms": 1657.150774201411,
         "tbt_ms": 0.0,
-        "speed_index_ms": 1655.7398796597508
+        "speed_index_ms": 1657.150774201411
       },
       "audits": {
         "first-contentful-paint": {
@@ -4226,7 +4238,7 @@
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
           "score": 0.93,
           "display_value": "1.7 s",
-          "numeric_value": 1655.7398796597508,
+          "numeric_value": 1657.150774201411,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -4237,7 +4249,7 @@
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
           "score": 0.73,
           "display_value": "3.2 s",
-          "numeric_value": 3165.739879659751,
+          "numeric_value": 3174.150774201411,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -4258,8 +4270,8 @@
           "title": "Cumulative Layout Shift",
           "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/articles/cls).",
           "score": 1.0,
-          "display_value": "0.001",
-          "numeric_value": 0.0013702854918979514,
+          "display_value": "0.002",
+          "numeric_value": 0.001898089507405065,
           "numeric_unit": "unitless",
           "failed": false
         },
@@ -4270,7 +4282,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "1.7 s",
-          "numeric_value": 1655.7398796597508,
+          "numeric_value": 1657.150774201411,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4281,7 +4293,7 @@
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
           "score": 0.5,
           "display_value": "Est savings of 3 KiB",
-          "numeric_value": 3012.6833333333334,
+          "numeric_value": 3013.675,
           "numeric_unit": "byte",
           "failed": true
         },
@@ -4312,7 +4324,7 @@
           "category": "performance",
           "title": "Optimize DOM size",
           "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/performance/insights/dom-size).",
-          "score": 1.0,
+          "score": null,
           "display_value": null,
           "numeric_value": 268.0,
           "numeric_unit": "element",
@@ -4335,8 +4347,8 @@
           "title": "Font display",
           "description": "Consider setting [`font-display`](https://developer.chrome.com/docs/performance/insights/font-display) to `swap` or `optional` to ensure text is consistently visible. `swap` can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
           "score": 0.0,
-          "display_value": "Est savings of 60 ms",
-          "numeric_value": 60.0,
+          "display_value": "Est savings of 40 ms",
+          "numeric_value": 40.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -4423,8 +4435,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 1,160 ms",
-          "numeric_value": 1161.0,
+          "display_value": "Est savings of 1,090 ms",
+          "numeric_value": 1092.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -4457,7 +4469,7 @@
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
           "score": 0.95,
           "display_value": "3.2 s",
-          "numeric_value": 3165.739879659751,
+          "numeric_value": 3174.150774201411,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -4523,7 +4535,7 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
           "display_value": "Total size was 333 KiB",
-          "numeric_value": 340860.0,
+          "numeric_value": 340873.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -4545,7 +4557,7 @@
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
           "display_value": "0.0 s",
-          "numeric_value": 4.518,
+          "numeric_value": 6.709199999999997,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4555,8 +4567,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.2 s",
-          "numeric_value": 155.72520000000006,
+          "display_value": "0.5 s",
+          "numeric_value": 455.4264,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4566,7 +4578,7 @@
           "title": "Avoid long main-thread tasks",
           "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)",
           "score": null,
-          "display_value": null,
+          "display_value": "1 long task found",
           "numeric_value": null,
           "numeric_unit": null,
           "failed": false
@@ -4610,8 +4622,8 @@
           "title": "Network Round Trip Times",
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
-          "display_value": "0 ms",
-          "numeric_value": 2.8539599999999994,
+          "display_value": "10 ms",
+          "numeric_value": 8.73003,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4622,7 +4634,7 @@
           "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 1.0,
+          "numeric_value": 2.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4655,7 +4667,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 3166.0,
+          "numeric_value": 3174.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4721,7 +4733,7 @@
           "description": "Keep the server response time for the main document short because all other requests depend on it. [Learn more about the Time to First Byte metric](https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/).",
           "score": 1.0,
           "display_value": "Root document took 0 ms",
-          "numeric_value": 1.0,
+          "numeric_value": 2.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -4731,7 +4743,7 @@
           "title": "Avoid large layout shifts",
           "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
           "score": null,
-          "display_value": "2 layout shifts found",
+          "display_value": "1 layout shift found",
           "numeric_value": null,
           "numeric_unit": null,
           "failed": false
@@ -4861,7 +4873,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/",
-      "fetch_time": "2026-11-08T12:00:34.303Z",
+      "fetch_time": "2026-11-09T08:12:30.076Z",
       "crux_page": {
         "status": "available",
         "scope": "page",
@@ -4875,7 +4887,7 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.8748
+                "proportion": 0.8762
               },
               {
                 "min": 10.0,
@@ -4884,7 +4896,7 @@
               },
               {
                 "min": 25.0,
-                "proportion": 0.1221
+                "proportion": 0.1208
               }
             ]
           },
@@ -4895,36 +4907,36 @@
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.6829
+                "proportion": 0.6824
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.2402
+                "proportion": 0.2416
               },
               {
                 "min": 1800.0,
-                "proportion": 0.077
+                "proportion": 0.076
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1803.0,
-            "category": "AVERAGE",
+            "percentile": 1795.0,
+            "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7484
+                "proportion": 0.7504
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1526
+                "proportion": 0.1513
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0989
+                "proportion": 0.0982
               }
             ]
           },
@@ -4935,36 +4947,36 @@
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9635
+                "proportion": 0.9683
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0339
+                "proportion": 0.0291
               },
               {
                 "min": 500.0,
-                "proportion": 0.0027
+                "proportion": 0.0026
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 2083.0,
+            "percentile": 2082.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8498
+                "proportion": 0.8558
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0912
+                "proportion": 0.089
               },
               {
                 "min": 4000.0,
-                "proportion": 0.059
+                "proportion": 0.0551
               }
             ]
           }
@@ -4983,110 +4995,110 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9028
+                "proportion": 0.9
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.006
+                "proportion": 0.0064
               },
               {
                 "min": 25.0,
-                "proportion": 0.0913
+                "proportion": 0.0936
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 804.0,
+            "percentile": 802.0,
             "category": "AVERAGE",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.7473
+                "proportion": 0.7509
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1815
+                "proportion": 0.1821
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0712
+                "proportion": 0.0669
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1505.0,
+            "percentile": 1493.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7999
+                "proportion": 0.8044
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1072
+                "proportion": 0.1086
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0929
+                "proportion": 0.087
               }
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 86.0,
+            "percentile": 85.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9485
+                "proportion": 0.9468
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0472
+                "proportion": 0.0482
               },
               {
                 "min": 500.0,
-                "proportion": 0.0043
+                "proportion": 0.005
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1819.0,
+            "percentile": 1801.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8799
+                "proportion": 0.8838
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0673
+                "proportion": 0.0649
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0528
+                "proportion": 0.0513
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/f6025ffb8b12494390a7232914d3b8c9.json",
-      "body_sha256": "760aeefaa01f43d7d75ae05e5397e66daf65620c3425c5d99c21ae1ec452f200"
+      "body_path": "pagespeed/1b16b341f57b4f8682ad39dc8695b844.json",
+      "body_sha256": "671f29de5118f6593550873d5bf5f885ddcf8d27bd52624047abf922db8ad76b"
     },
     "desktop\nhttps://www.djangoproject.com/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/",
       "strategy": "desktop",
-      "collected_at": "2026-11-08T12:00:42.038906Z",
+      "collected_at": "2026-11-09T08:12:41.330125Z",
       "status": "success",
       "error": null,
       "attempts": 1,
@@ -5094,11 +5106,11 @@
       "performance_score": 100.0,
       "seo_score": 92.0,
       "metrics": {
-        "lcp_ms": 693.698423266397,
+        "lcp_ms": 698.1976352630529,
         "cls": 0.001769859547577242,
-        "fcp_ms": 444.6984232663969,
+        "fcp_ms": 444.6976352630529,
         "tbt_ms": 0.0,
-        "speed_index_ms": 444.6984232663969
+        "speed_index_ms": 444.6976352630529
       },
       "audits": {
         "first-contentful-paint": {
@@ -5108,7 +5120,7 @@
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 444.6984232663969,
+          "numeric_value": 444.6976352630529,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5119,7 +5131,7 @@
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
           "score": 0.99,
           "display_value": "0.7 s",
-          "numeric_value": 693.698423266397,
+          "numeric_value": 698.1976352630529,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -5152,7 +5164,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 444.6984232663969,
+          "numeric_value": 444.6976352630529,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5163,7 +5175,7 @@
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
           "score": 0.5,
           "display_value": "Est savings of 3 KiB",
-          "numeric_value": 3010.7000000000003,
+          "numeric_value": 3011.6916666666666,
           "numeric_unit": "byte",
           "failed": true
         },
@@ -5305,8 +5317,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 260 ms",
-          "numeric_value": 257.0,
+          "display_value": "Est savings of 250 ms",
+          "numeric_value": 245.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -5339,7 +5351,7 @@
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
           "score": 1.0,
           "display_value": "0.7 s",
-          "numeric_value": 693.998423266397,
+          "numeric_value": 698.5476352630529,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5405,7 +5417,7 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
           "display_value": "Total size was 331 KiB",
-          "numeric_value": 339322.0,
+          "numeric_value": 339332.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -5427,7 +5439,7 @@
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
           "display_value": "0.0 s",
-          "numeric_value": 1.9619999999999993,
+          "numeric_value": 4.409000000000001,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5437,8 +5449,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.1 s",
-          "numeric_value": 136.28400000000008,
+          "display_value": "0.2 s",
+          "numeric_value": 188.51800000000003,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5493,7 +5505,7 @@
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 2.417279999999998,
+          "numeric_value": 1.5114599999999998,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5537,7 +5549,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 694.0,
+          "numeric_value": 699.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -5743,7 +5755,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/",
-      "fetch_time": "2026-11-08T12:00:43.817Z",
+      "fetch_time": "2026-11-09T08:12:43.531Z",
       "crux_page": {
         "status": "available",
         "scope": "page",
@@ -5757,56 +5769,56 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9721
+                "proportion": 0.9722
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.0012
+                "proportion": 0.0013
               },
               {
                 "min": 25.0,
-                "proportion": 0.0267
+                "proportion": 0.0265
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 640.0,
+            "percentile": 643.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.8153
+                "proportion": 0.8136
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1299
+                "proportion": 0.1298
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0548
+                "proportion": 0.0567
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1077.0,
+            "percentile": 1081.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.8871
+                "proportion": 0.8847
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.0614
+                "proportion": 0.0627
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0515
+                "proportion": 0.0526
               }
             ]
           },
@@ -5831,22 +5843,22 @@
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1472.0,
+            "percentile": 1478.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.93
+                "proportion": 0.9281
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0383
+                "proportion": 0.0393
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0316
+                "proportion": 0.0326
               }
             ]
           }
@@ -5865,27 +5877,27 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9694
+                "proportion": 0.969
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.007
+                "proportion": 0.0072
               },
               {
                 "min": 25.0,
-                "proportion": 0.0235
+                "proportion": 0.0239
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 476.0,
+            "percentile": 479.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.8776
+                "proportion": 0.8779
               },
               {
                 "min": 800.0,
@@ -5894,27 +5906,27 @@
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0369
+                "proportion": 0.0368
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 825.0,
+            "percentile": 827.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.9226
+                "proportion": 0.9219
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.0424
+                "proportion": 0.0426
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0349
+                "proportion": 0.0355
               }
             ]
           },
@@ -5925,7 +5937,7 @@
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.994
+                "proportion": 0.9937
               },
               {
                 "min": 200.0,
@@ -5934,7 +5946,7 @@
               },
               {
                 "min": 500.0,
-                "proportion": 0.0028
+                "proportion": 0.003
               }
             ]
           },
@@ -5945,42 +5957,42 @@
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.9502
+                "proportion": 0.951
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.026
+                "proportion": 0.0257
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0239
+                "proportion": 0.0233
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/8e3cfbf3c6ee41688750bffc5d7ebf3d.json",
-      "body_sha256": "fc10d0347523da59dfbbde9d80f032b86bb0a0f92ff991f805162429d6e0ff68"
+      "body_path": "pagespeed/669d464b99b14ac48f5abe38973b05a9.json",
+      "body_sha256": "cbf651ca3e9b7ef9829cd7bf0e397acd477c752a58519cf75a3aafef59711e83"
     },
     "mobile\nhttps://www.djangoproject.com/weblog/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/weblog/",
       "strategy": "mobile",
-      "collected_at": "2026-11-08T12:00:51.623934Z",
+      "collected_at": "2026-11-09T08:12:56.962680Z",
       "status": "success",
       "error": null,
       "attempts": 1,
       "http_status": 200,
-      "performance_score": 91.0,
+      "performance_score": 90.0,
       "seo_score": 83.0,
       "metrics": {
-        "lcp_ms": 3461.257426090963,
+        "lcp_ms": 3466.867364585309,
         "cls": 0.000964955336342765,
-        "fcp_ms": 1657.2574260909628,
-        "tbt_ms": 0.0,
-        "speed_index_ms": 1657.2574260909628
+        "fcp_ms": 1676.8673645853094,
+        "tbt_ms": 10.5,
+        "speed_index_ms": 1693.466713972212
       },
       "audits": {
         "first-contentful-paint": {
@@ -5988,9 +6000,9 @@
           "category": "performance",
           "title": "First Contentful Paint",
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
-          "score": 0.93,
+          "score": 0.92,
           "display_value": "1.7 s",
-          "numeric_value": 1657.2574260909628,
+          "numeric_value": 1676.8673645853094,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6001,7 +6013,7 @@
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
           "score": 0.65,
           "display_value": "3.5 s",
-          "numeric_value": 3461.257426090963,
+          "numeric_value": 3466.867364585309,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6011,8 +6023,8 @@
           "title": "Total Blocking Time",
           "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more about the Total Blocking Time metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/).",
           "score": 1.0,
-          "display_value": "0 ms",
-          "numeric_value": 0.0,
+          "display_value": "10 ms",
+          "numeric_value": 10.5,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6034,7 +6046,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "1.7 s",
-          "numeric_value": 1657.2574260909628,
+          "numeric_value": 1693.466713972212,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6045,7 +6057,7 @@
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
           "score": 0.5,
           "display_value": "Est savings of 3 KiB",
-          "numeric_value": 3011.6916666666666,
+          "numeric_value": 3012.6833333333334,
           "numeric_unit": "byte",
           "failed": true
         },
@@ -6076,7 +6088,7 @@
           "category": "performance",
           "title": "Optimize DOM size",
           "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/performance/insights/dom-size).",
-          "score": 1.0,
+          "score": null,
           "display_value": null,
           "numeric_value": 972.0,
           "numeric_unit": "element",
@@ -6098,9 +6110,9 @@
           "category": "performance",
           "title": "Font display",
           "description": "Consider setting [`font-display`](https://developer.chrome.com/docs/performance/insights/font-display) to `swap` or `optional` to ensure text is consistently visible. `swap` can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
-          "score": 0.5,
-          "display_value": "Est savings of 20 ms",
-          "numeric_value": 20.0,
+          "score": 0.0,
+          "display_value": "Est savings of 30 ms",
+          "numeric_value": 30.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6109,18 +6121,18 @@
           "category": "performance",
           "title": "Forced reflow",
           "description": "A forced reflow occurs when JavaScript queries geometric properties (such as `offsetWidth`) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about [forced reflows](https://developer.chrome.com/docs/performance/insights/forced-reflow) and possible mitigations.",
-          "score": 1.0,
+          "score": 0.0,
           "display_value": null,
           "numeric_value": null,
           "numeric_unit": null,
-          "failed": false
+          "failed": true
         },
         "image-delivery-insight": {
           "id": "image-delivery-insight",
           "category": "performance",
           "title": "Improve image delivery",
           "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery).",
-          "score": 0.0,
+          "score": 0.5,
           "display_value": "Est savings of 54 KiB",
           "numeric_value": 54811.0,
           "numeric_unit": "byte",
@@ -6187,8 +6199,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 1,160 ms",
-          "numeric_value": 1156.0,
+          "display_value": "Est savings of 1,090 ms",
+          "numeric_value": 1090.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6219,9 +6231,9 @@
           "category": "performance",
           "title": "Time to Interactive",
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
-          "score": 0.92,
-          "display_value": "3.5 s",
-          "numeric_value": 3461.2574260909632,
+          "score": 0.91,
+          "display_value": "3.7 s",
+          "numeric_value": 3665.4173645853093,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6230,11 +6242,11 @@
           "category": "performance",
           "title": "Max Potential First Input Delay",
           "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task. [Learn more about the Maximum Potential First Input Delay metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-max-potential-fid/).",
-          "score": 1.0,
-          "display_value": "30 ms",
-          "numeric_value": 28.0,
+          "score": 0.99,
+          "display_value": "70 ms",
+          "numeric_value": 71.0,
           "numeric_unit": "millisecond",
-          "failed": false
+          "failed": true
         },
         "unminified-css": {
           "id": "unminified-css",
@@ -6287,7 +6299,7 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
           "display_value": "Total size was 435 KiB",
-          "numeric_value": 445403.0,
+          "numeric_value": 445406.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -6308,8 +6320,8 @@
           "title": "JavaScript execution time",
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
-          "display_value": "0.0 s",
-          "numeric_value": 6.298799999999999,
+          "display_value": "0.1 s",
+          "numeric_value": 73.314,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6319,8 +6331,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.3 s",
-          "numeric_value": 258.31560000000036,
+          "display_value": "0.6 s",
+          "numeric_value": 635.2235999999992,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6330,7 +6342,7 @@
           "title": "Avoid long main-thread tasks",
           "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)",
           "score": null,
-          "display_value": null,
+          "display_value": "2 long tasks found",
           "numeric_value": null,
           "numeric_unit": null,
           "failed": false
@@ -6375,7 +6387,7 @@
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 2.1729299999999996,
+          "numeric_value": 4.94595,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6419,7 +6431,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 3461.0,
+          "numeric_value": 3665.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6625,7 +6637,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/weblog/",
-      "fetch_time": "2026-11-08T12:00:53.535Z",
+      "fetch_time": "2026-11-09T08:12:59.141Z",
       "crux_page": {
         "status": "available",
         "scope": "origin",
@@ -6639,96 +6651,96 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9028
+                "proportion": 0.9
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.006
+                "proportion": 0.0064
               },
               {
                 "min": 25.0,
-                "proportion": 0.0913
+                "proportion": 0.0936
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 804.0,
+            "percentile": 802.0,
             "category": "AVERAGE",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.7473
+                "proportion": 0.7509
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1815
+                "proportion": 0.1821
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0712
+                "proportion": 0.0669
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1505.0,
+            "percentile": 1493.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7999
+                "proportion": 0.8044
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1072
+                "proportion": 0.1086
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0929
+                "proportion": 0.087
               }
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 86.0,
+            "percentile": 85.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9485
+                "proportion": 0.9468
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0472
+                "proportion": 0.0482
               },
               {
                 "min": 500.0,
-                "proportion": 0.0043
+                "proportion": 0.005
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1819.0,
+            "percentile": 1801.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8799
+                "proportion": 0.8838
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0673
+                "proportion": 0.0649
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0528
+                "proportion": 0.0513
               }
             ]
           }
@@ -6747,110 +6759,110 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9028
+                "proportion": 0.9
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.006
+                "proportion": 0.0064
               },
               {
                 "min": 25.0,
-                "proportion": 0.0913
+                "proportion": 0.0936
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 804.0,
+            "percentile": 802.0,
             "category": "AVERAGE",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.7473
+                "proportion": 0.7509
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1815
+                "proportion": 0.1821
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0712
+                "proportion": 0.0669
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1505.0,
+            "percentile": 1493.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7999
+                "proportion": 0.8044
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1072
+                "proportion": 0.1086
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0929
+                "proportion": 0.087
               }
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 86.0,
+            "percentile": 85.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9485
+                "proportion": 0.9468
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0472
+                "proportion": 0.0482
               },
               {
                 "min": 500.0,
-                "proportion": 0.0043
+                "proportion": 0.005
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1819.0,
+            "percentile": 1801.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8799
+                "proportion": 0.8838
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0673
+                "proportion": 0.0649
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0528
+                "proportion": 0.0513
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/96c12057c9cc42a1b7bdac72f4e15c28.json",
-      "body_sha256": "0e12fdb9c05e446c39e2a98ba27fa6fd06984dceb08d2b6f3bde60fc80585184"
+      "body_path": "pagespeed/95bf774d2c614f9f81a3b9972e36ac09.json",
+      "body_sha256": "ca05a60acd91c48a52867d5d3a580dc703b3ad0d4f14d6f02a0f816bb91abde5"
     },
     "desktop\nhttps://www.djangoproject.com/weblog/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/weblog/",
       "strategy": "desktop",
-      "collected_at": "2026-11-08T12:01:07.239714Z",
+      "collected_at": "2026-11-09T08:13:11.255065Z",
       "status": "success",
       "error": null,
       "attempts": 1,
@@ -6858,11 +6870,11 @@
       "performance_score": 100.0,
       "seo_score": 83.0,
       "metrics": {
-        "lcp_ms": 768.6976352906787,
-        "cls": 0.001240013118612492,
-        "fcp_ms": 445.69763529067865,
+        "lcp_ms": 773.6968470759128,
+        "cls": 0.0012409626548573784,
+        "fcp_ms": 444.69684707591284,
         "tbt_ms": 0.0,
-        "speed_index_ms": 445.69763529067865
+        "speed_index_ms": 444.69684707591284
       },
       "audits": {
         "first-contentful-paint": {
@@ -6872,7 +6884,7 @@
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 445.69763529067865,
+          "numeric_value": 444.69684707591284,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6883,7 +6895,7 @@
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
           "score": 0.98,
           "display_value": "0.8 s",
-          "numeric_value": 768.6976352906787,
+          "numeric_value": 773.6968470759128,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6905,7 +6917,7 @@
           "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/articles/cls).",
           "score": 1.0,
           "display_value": "0.001",
-          "numeric_value": 0.001240013118612492,
+          "numeric_value": 0.0012409626548573784,
           "numeric_unit": "unitless",
           "failed": false
         },
@@ -6916,7 +6928,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 445.69763529067865,
+          "numeric_value": 444.69684707591284,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -6927,7 +6939,7 @@
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
           "score": 0.5,
           "display_value": "Est savings of 3 KiB",
-          "numeric_value": 3011.6916666666666,
+          "numeric_value": 3012.6833333333334,
           "numeric_unit": "byte",
           "failed": true
         },
@@ -6958,7 +6970,7 @@
           "category": "performance",
           "title": "Optimize DOM size",
           "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/performance/insights/dom-size).",
-          "score": 1.0,
+          "score": null,
           "display_value": null,
           "numeric_value": 972.0,
           "numeric_unit": "element",
@@ -6980,9 +6992,9 @@
           "category": "performance",
           "title": "Font display",
           "description": "Consider setting [`font-display`](https://developer.chrome.com/docs/performance/insights/font-display) to `swap` or `optional` to ensure text is consistently visible. `swap` can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
-          "score": 0.5,
-          "display_value": "Est savings of 20 ms",
-          "numeric_value": 20.0,
+          "score": 0.0,
+          "display_value": "Est savings of 130 ms",
+          "numeric_value": 125.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -6991,11 +7003,11 @@
           "category": "performance",
           "title": "Forced reflow",
           "description": "A forced reflow occurs when JavaScript queries geometric properties (such as `offsetWidth`) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about [forced reflows](https://developer.chrome.com/docs/performance/insights/forced-reflow) and possible mitigations.",
-          "score": 0.0,
+          "score": 1.0,
           "display_value": null,
           "numeric_value": null,
           "numeric_unit": null,
-          "failed": true
+          "failed": false
         },
         "image-delivery-insight": {
           "id": "image-delivery-insight",
@@ -7069,8 +7081,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 240 ms",
-          "numeric_value": 242.0,
+          "display_value": "Est savings of 220 ms",
+          "numeric_value": 215.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7103,7 +7115,7 @@
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
           "score": 1.0,
           "display_value": "0.8 s",
-          "numeric_value": 768.6976352906788,
+          "numeric_value": 773.6968470759128,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7168,8 +7180,8 @@
           "title": "Avoids enormous network payloads",
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
-          "display_value": "Total size was 433 KiB",
-          "numeric_value": 443861.0,
+          "display_value": "Total size was 434 KiB",
+          "numeric_value": 443909.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -7191,7 +7203,7 @@
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
           "display_value": "0.0 s",
-          "numeric_value": 3.6649999999999996,
+          "numeric_value": 5.074,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7201,8 +7213,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.2 s",
-          "numeric_value": 206.29500000000013,
+          "display_value": "0.3 s",
+          "numeric_value": 286.0550000000002,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7256,8 +7268,8 @@
           "title": "Network Round Trip Times",
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
-          "display_value": "0 ms",
-          "numeric_value": 0.9738299999999995,
+          "display_value": "10 ms",
+          "numeric_value": 8.740979999999999,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7268,7 +7280,7 @@
           "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 2.0,
+          "numeric_value": 1.5,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7301,7 +7313,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 769.0,
+          "numeric_value": 774.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7367,7 +7379,7 @@
           "description": "Keep the server response time for the main document short because all other requests depend on it. [Learn more about the Time to First Byte metric](https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/).",
           "score": 1.0,
           "display_value": "Root document took 0 ms",
-          "numeric_value": 2.0,
+          "numeric_value": 1.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7377,7 +7389,7 @@
           "title": "Avoid large layout shifts",
           "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
           "score": null,
-          "display_value": "1 layout shift found",
+          "display_value": "2 layout shifts found",
           "numeric_value": null,
           "numeric_unit": null,
           "failed": false
@@ -7507,7 +7519,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/weblog/",
-      "fetch_time": "2026-11-08T12:01:10.041Z",
+      "fetch_time": "2026-11-09T08:13:13.249Z",
       "crux_page": {
         "status": "available",
         "scope": "page",
@@ -7521,7 +7533,7 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9731
+                "proportion": 0.9728
               },
               {
                 "min": 10.0,
@@ -7530,27 +7542,27 @@
               },
               {
                 "min": 25.0,
-                "proportion": 0.0269
+                "proportion": 0.0272
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 416.0,
+            "percentile": 417.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.9223
+                "proportion": 0.9259
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.051
+                "proportion": 0.0468
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0267
+                "proportion": 0.0273
               }
             ]
           },
@@ -7561,12 +7573,12 @@
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.9619
+                "proportion": 0.9639
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.029
+                "proportion": 0.027
               },
               {
                 "min": 3000.0,
@@ -7575,42 +7587,42 @@
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 40.0,
+            "percentile": 39.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9882
+                "proportion": 0.9915
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0087
+                "proportion": 0.0057
               },
               {
                 "min": 500.0,
-                "proportion": 0.0031
+                "proportion": 0.0028
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 684.0,
+            "percentile": 696.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.9868
+                "proportion": 0.9858
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0088
+                "proportion": 0.0093
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0044
+                "proportion": 0.0049
               }
             ]
           }
@@ -7629,27 +7641,27 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9694
+                "proportion": 0.969
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.007
+                "proportion": 0.0072
               },
               {
                 "min": 25.0,
-                "proportion": 0.0235
+                "proportion": 0.0239
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 476.0,
+            "percentile": 479.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.8776
+                "proportion": 0.8779
               },
               {
                 "min": 800.0,
@@ -7658,27 +7670,27 @@
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0369
+                "proportion": 0.0368
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 825.0,
+            "percentile": 827.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.9226
+                "proportion": 0.9219
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.0424
+                "proportion": 0.0426
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0349
+                "proportion": 0.0355
               }
             ]
           },
@@ -7689,7 +7701,7 @@
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.994
+                "proportion": 0.9937
               },
               {
                 "min": 200.0,
@@ -7698,7 +7710,7 @@
               },
               {
                 "min": 500.0,
-                "proportion": 0.0028
+                "proportion": 0.003
               }
             ]
           },
@@ -7709,42 +7721,42 @@
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.9502
+                "proportion": 0.951
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.026
+                "proportion": 0.0257
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0239
+                "proportion": 0.0233
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/cc4d57a525d940918b5e2088e2d744ea.json",
-      "body_sha256": "176990370f071bbdec2577283603b062887d4e8d463e1e962c8d910c0b46838d"
+      "body_path": "pagespeed/5ad68e6b0f544f1a8bc4a3a197f90391.json",
+      "body_sha256": "aab610d54603c72d28c9bd1d002688ae4738e9a4f8d441cb82587d1d32f6f35c"
     },
     "mobile\nhttps://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
       "strategy": "mobile",
-      "collected_at": "2026-11-08T12:01:45.275958Z",
+      "collected_at": "2026-11-09T08:13:26.813355Z",
       "status": "success",
       "error": null,
       "attempts": 1,
       "http_status": 200,
-      "performance_score": 91.0,
+      "performance_score": 90.0,
       "seo_score": 100.0,
       "metrics": {
-        "lcp_ms": 3462.0845670845574,
+        "lcp_ms": 3474.80317278692,
         "cls": 0.000964955336342765,
-        "fcp_ms": 1656.0845670845576,
+        "fcp_ms": 1669.8031727869202,
         "tbt_ms": 0.0,
-        "speed_index_ms": 1656.0845670845576
+        "speed_index_ms": 1669.8031727869202
       },
       "audits": {
         "first-contentful-paint": {
@@ -7754,7 +7766,7 @@
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
           "score": 0.93,
           "display_value": "1.7 s",
-          "numeric_value": 1656.0845670845576,
+          "numeric_value": 1669.8031727869202,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7763,9 +7775,9 @@
           "category": "performance",
           "title": "Largest Contentful Paint",
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
-          "score": 0.65,
+          "score": 0.64,
           "display_value": "3.5 s",
-          "numeric_value": 3462.0845670845574,
+          "numeric_value": 3474.80317278692,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7798,7 +7810,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "1.7 s",
-          "numeric_value": 1656.0845670845576,
+          "numeric_value": 1669.8031727869202,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -7807,9 +7819,9 @@
           "category": "performance",
           "title": "Use efficient cache lifetimes",
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
-          "score": 0.5,
+          "score": 0.0,
           "display_value": "Est savings of 3 KiB",
-          "numeric_value": 3012.6833333333334,
+          "numeric_value": 3011.6916666666666,
           "numeric_unit": "byte",
           "failed": true
         },
@@ -7863,8 +7875,8 @@
           "title": "Font display",
           "description": "Consider setting [`font-display`](https://developer.chrome.com/docs/performance/insights/font-display) to `swap` or `optional` to ensure text is consistently visible. `swap` can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
           "score": 0.0,
-          "display_value": "Est savings of 40 ms",
-          "numeric_value": 40.0,
+          "display_value": "Est savings of 70 ms",
+          "numeric_value": 65.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7884,7 +7896,7 @@
           "category": "performance",
           "title": "Improve image delivery",
           "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery).",
-          "score": 0.5,
+          "score": 0.0,
           "display_value": "Est savings of 54 KiB",
           "numeric_value": 54811.0,
           "numeric_unit": "byte",
@@ -7951,8 +7963,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 1,110 ms",
-          "numeric_value": 1109.0,
+          "display_value": "Est savings of 1,100 ms",
+          "numeric_value": 1100.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7985,7 +7997,7 @@
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
           "score": 0.92,
           "display_value": "3.5 s",
-          "numeric_value": 3462.0845670845574,
+          "numeric_value": 3474.80317278692,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -7996,7 +8008,7 @@
           "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task. [Learn more about the Maximum Potential First Input Delay metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-max-potential-fid/).",
           "score": 1.0,
           "display_value": "30 ms",
-          "numeric_value": 28.0,
+          "numeric_value": 27.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8051,7 +8063,7 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
           "display_value": "Total size was 435 KiB",
-          "numeric_value": 445408.0,
+          "numeric_value": 445409.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -8073,7 +8085,7 @@
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
           "display_value": "0.0 s",
-          "numeric_value": 5.465999999999999,
+          "numeric_value": 4.949999999999999,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8083,8 +8095,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.4 s",
-          "numeric_value": 395.5320000000002,
+          "display_value": "0.5 s",
+          "numeric_value": 500.1168,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8094,7 +8106,7 @@
           "title": "Avoid long main-thread tasks",
           "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)",
           "score": null,
-          "display_value": "1 long task found",
+          "display_value": "2 long tasks found",
           "numeric_value": null,
           "numeric_unit": null,
           "failed": false
@@ -8139,7 +8151,7 @@
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 3.00618,
+          "numeric_value": 3.715230000000001,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8183,7 +8195,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 3462.0,
+          "numeric_value": 3475.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8389,7 +8401,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
-      "fetch_time": "2026-11-08T12:01:47.441Z",
+      "fetch_time": "2026-11-09T08:13:29.675Z",
       "crux_page": {
         "status": "available",
         "scope": "origin",
@@ -8403,96 +8415,96 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9028
+                "proportion": 0.9
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.006
+                "proportion": 0.0064
               },
               {
                 "min": 25.0,
-                "proportion": 0.0913
+                "proportion": 0.0936
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 804.0,
+            "percentile": 802.0,
             "category": "AVERAGE",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.7473
+                "proportion": 0.7509
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1815
+                "proportion": 0.1821
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0712
+                "proportion": 0.0669
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1505.0,
+            "percentile": 1493.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7999
+                "proportion": 0.8044
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1072
+                "proportion": 0.1086
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0929
+                "proportion": 0.087
               }
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 86.0,
+            "percentile": 85.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9485
+                "proportion": 0.9468
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0472
+                "proportion": 0.0482
               },
               {
                 "min": 500.0,
-                "proportion": 0.0043
+                "proportion": 0.005
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1819.0,
+            "percentile": 1801.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8799
+                "proportion": 0.8838
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0673
+                "proportion": 0.0649
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0528
+                "proportion": 0.0513
               }
             ]
           }
@@ -8511,110 +8523,110 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9028
+                "proportion": 0.9
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.006
+                "proportion": 0.0064
               },
               {
                 "min": 25.0,
-                "proportion": 0.0913
+                "proportion": 0.0936
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 804.0,
+            "percentile": 802.0,
             "category": "AVERAGE",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.7473
+                "proportion": 0.7509
               },
               {
                 "min": 800.0,
                 "max": 1800.0,
-                "proportion": 0.1815
+                "proportion": 0.1821
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0712
+                "proportion": 0.0669
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1505.0,
+            "percentile": 1493.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.7999
+                "proportion": 0.8044
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.1072
+                "proportion": 0.1086
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0929
+                "proportion": 0.087
               }
             ]
           },
           "INTERACTION_TO_NEXT_PAINT": {
-            "percentile": 86.0,
+            "percentile": 85.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.9485
+                "proportion": 0.9468
               },
               {
                 "min": 200.0,
                 "max": 500.0,
-                "proportion": 0.0472
+                "proportion": 0.0482
               },
               {
                 "min": 500.0,
-                "proportion": 0.0043
+                "proportion": 0.005
               }
             ]
           },
           "LARGEST_CONTENTFUL_PAINT_MS": {
-            "percentile": 1819.0,
+            "percentile": 1801.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.8799
+                "proportion": 0.8838
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.0673
+                "proportion": 0.0649
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0528
+                "proportion": 0.0513
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/479a51da9b124208b1fd9b5bb7001378.json",
-      "body_sha256": "e2324f0fdb20f918e829228d119dd04245cddde2eee9bf9bb17f727395336617"
+      "body_path": "pagespeed/6dd85234fd014ff6a948c7ea277c4cce.json",
+      "body_sha256": "6e5fb948feded8b060c79411d24196c565d5f67708ca568e2909910160d34f4e"
     },
     "desktop\nhttps://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/": {
       "schema_version": 1,
-      "run_id": "20261108T115940.959358Z-36c1f82b",
+      "run_id": "20261109T081135.302853Z-2da7c9f8",
       "url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
       "strategy": "desktop",
-      "collected_at": "2026-11-08T12:01:57.365940Z",
+      "collected_at": "2026-11-09T08:13:40.441981Z",
       "status": "success",
       "error": null,
       "attempts": 1,
@@ -8622,11 +8634,11 @@
       "performance_score": 100.0,
       "seo_score": 100.0,
       "metrics": {
-        "lcp_ms": 771.6968470678319,
+        "lcp_ms": 772.6984235900131,
         "cls": 0.001240013118612492,
-        "fcp_ms": 445.69684706783187,
+        "fcp_ms": 445.6984235900132,
         "tbt_ms": 0.0,
-        "speed_index_ms": 445.69684706783187
+        "speed_index_ms": 445.6984235900132
       },
       "audits": {
         "first-contentful-paint": {
@@ -8636,7 +8648,7 @@
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 445.69684706783187,
+          "numeric_value": 445.6984235900132,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8647,7 +8659,7 @@
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
           "score": 0.98,
           "display_value": "0.8 s",
-          "numeric_value": 771.6968470678319,
+          "numeric_value": 772.6984235900131,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -8680,7 +8692,7 @@
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
           "score": 1.0,
           "display_value": "0.4 s",
-          "numeric_value": 445.69684706783187,
+          "numeric_value": 445.6984235900132,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8722,7 +8734,7 @@
           "category": "performance",
           "title": "Optimize DOM size",
           "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/performance/insights/dom-size).",
-          "score": 1.0,
+          "score": null,
           "display_value": null,
           "numeric_value": 934.0,
           "numeric_unit": "element",
@@ -8746,7 +8758,7 @@
           "description": "Consider setting [`font-display`](https://developer.chrome.com/docs/performance/insights/font-display) to `swap` or `optional` to ensure text is consistently visible. `swap` can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
           "score": 0.5,
           "display_value": "Est savings of 20 ms",
-          "numeric_value": 20.0,
+          "numeric_value": 15.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -8755,18 +8767,18 @@
           "category": "performance",
           "title": "Forced reflow",
           "description": "A forced reflow occurs when JavaScript queries geometric properties (such as `offsetWidth`) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about [forced reflows](https://developer.chrome.com/docs/performance/insights/forced-reflow) and possible mitigations.",
-          "score": 1.0,
+          "score": 0.0,
           "display_value": null,
           "numeric_value": null,
           "numeric_unit": null,
-          "failed": false
+          "failed": true
         },
         "image-delivery-insight": {
           "id": "image-delivery-insight",
           "category": "performance",
           "title": "Improve image delivery",
           "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery).",
-          "score": 0.5,
+          "score": 0.0,
           "display_value": "Est savings of 54 KiB",
           "numeric_value": 54961.0,
           "numeric_unit": "byte",
@@ -8833,8 +8845,8 @@
           "title": "Render-blocking requests",
           "description": "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0.0,
-          "display_value": "Est savings of 250 ms",
-          "numeric_value": 246.0,
+          "display_value": "Est savings of 220 ms",
+          "numeric_value": 220.0,
           "numeric_unit": "millisecond",
           "failed": true
         },
@@ -8867,7 +8879,7 @@
           "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
           "score": 1.0,
           "display_value": "0.8 s",
-          "numeric_value": 771.6968470678319,
+          "numeric_value": 772.6984235900131,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8877,8 +8889,8 @@
           "title": "Max Potential First Input Delay",
           "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task. [Learn more about the Maximum Potential First Input Delay metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-max-potential-fid/).",
           "score": 1.0,
-          "display_value": "20 ms",
-          "numeric_value": 21.0,
+          "display_value": "30 ms",
+          "numeric_value": 28.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8933,7 +8945,7 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 1.0,
           "display_value": "Total size was 433 KiB",
-          "numeric_value": 443867.0,
+          "numeric_value": 443863.0,
           "numeric_unit": "byte",
           "failed": false
         },
@@ -8955,7 +8967,7 @@
           "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
           "score": 1.0,
           "display_value": "0.0 s",
-          "numeric_value": 4.079999999999999,
+          "numeric_value": 5.507999999999999,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -8965,8 +8977,8 @@
           "title": "Minimizes main-thread work",
           "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/)",
           "score": 1.0,
-          "display_value": "0.2 s",
-          "numeric_value": 198.4300000000002,
+          "display_value": "0.3 s",
+          "numeric_value": 349.428,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -9021,7 +9033,7 @@
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 3.1218299999999997,
+          "numeric_value": 1.0025099999999998,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -9032,7 +9044,7 @@
           "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
           "score": null,
           "display_value": "0 ms",
-          "numeric_value": 3.5,
+          "numeric_value": 2.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -9065,7 +9077,7 @@
           "description": "Collects all available metrics.",
           "score": null,
           "display_value": null,
-          "numeric_value": 772.0,
+          "numeric_value": 773.0,
           "numeric_unit": "millisecond",
           "failed": false
         },
@@ -9271,7 +9283,7 @@
       "missing": [],
       "lighthouse_version": "13.6.0",
       "final_url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/",
-      "fetch_time": "2026-11-08T12:01:59.098Z",
+      "fetch_time": "2026-11-09T08:13:42.142Z",
       "crux_page": {
         "status": "available",
         "scope": "origin",
@@ -9285,27 +9297,27 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9694
+                "proportion": 0.969
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.007
+                "proportion": 0.0072
               },
               {
                 "min": 25.0,
-                "proportion": 0.0235
+                "proportion": 0.0239
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 476.0,
+            "percentile": 479.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.8776
+                "proportion": 0.8779
               },
               {
                 "min": 800.0,
@@ -9314,27 +9326,27 @@
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0369
+                "proportion": 0.0368
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 825.0,
+            "percentile": 827.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.9226
+                "proportion": 0.9219
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.0424
+                "proportion": 0.0426
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0349
+                "proportion": 0.0355
               }
             ]
           },
@@ -9345,7 +9357,7 @@
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.994
+                "proportion": 0.9937
               },
               {
                 "min": 200.0,
@@ -9354,7 +9366,7 @@
               },
               {
                 "min": 500.0,
-                "proportion": 0.0028
+                "proportion": 0.003
               }
             ]
           },
@@ -9365,16 +9377,16 @@
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.9502
+                "proportion": 0.951
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.026
+                "proportion": 0.0257
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0239
+                "proportion": 0.0233
               }
             ]
           }
@@ -9393,27 +9405,27 @@
               {
                 "min": 0.0,
                 "max": 10.0,
-                "proportion": 0.9694
+                "proportion": 0.969
               },
               {
                 "min": 10.0,
                 "max": 25.0,
-                "proportion": 0.007
+                "proportion": 0.0072
               },
               {
                 "min": 25.0,
-                "proportion": 0.0235
+                "proportion": 0.0239
               }
             ]
           },
           "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
-            "percentile": 476.0,
+            "percentile": 479.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 800.0,
-                "proportion": 0.8776
+                "proportion": 0.8779
               },
               {
                 "min": 800.0,
@@ -9422,27 +9434,27 @@
               },
               {
                 "min": 1800.0,
-                "proportion": 0.0369
+                "proportion": 0.0368
               }
             ]
           },
           "FIRST_CONTENTFUL_PAINT_MS": {
-            "percentile": 825.0,
+            "percentile": 827.0,
             "category": "FAST",
             "distributions": [
               {
                 "min": 0.0,
                 "max": 1800.0,
-                "proportion": 0.9226
+                "proportion": 0.9219
               },
               {
                 "min": 1800.0,
                 "max": 3000.0,
-                "proportion": 0.0424
+                "proportion": 0.0426
               },
               {
                 "min": 3000.0,
-                "proportion": 0.0349
+                "proportion": 0.0355
               }
             ]
           },
@@ -9453,7 +9465,7 @@
               {
                 "min": 0.0,
                 "max": 200.0,
-                "proportion": 0.994
+                "proportion": 0.9937
               },
               {
                 "min": 200.0,
@@ -9462,7 +9474,7 @@
               },
               {
                 "min": 500.0,
-                "proportion": 0.0028
+                "proportion": 0.003
               }
             ]
           },
@@ -9473,23 +9485,23 @@
               {
                 "min": 0.0,
                 "max": 2500.0,
-                "proportion": 0.9502
+                "proportion": 0.951
               },
               {
                 "min": 2500.0,
                 "max": 4000.0,
-                "proportion": 0.026
+                "proportion": 0.0257
               },
               {
                 "min": 4000.0,
-                "proportion": 0.0239
+                "proportion": 0.0233
               }
             ]
           }
         }
       },
-      "body_path": "pagespeed/0207784c999e48dca2425e0eec60770b.json",
-      "body_sha256": "8f3e7380769602717617bb1b4c69914361ba1d25a6d3181ac568c5c194c9a1a7"
+      "body_path": "pagespeed/f76b12b1e7f0400d999f840822fa88de.json",
+      "body_sha256": "5fab507542e73f0554f7c68332674c5effee6cec828bec87ad24d288806476dd"
     }
   }
 }
