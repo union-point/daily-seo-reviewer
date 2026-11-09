@@ -236,10 +236,11 @@ data/reviews/.review.lock
 # Local verification artifacts
 /data/narrative_verification/
 
-# Keep only repository instructions and README in Markdown
+# Keep selected repository documentation in Markdown
 *.[mM][dD]
 !AGENTS.md
 !README.md
+!DATA_SOURCES.md
 
 # Local documentation screenshots and verification artifacts
 /docs/
