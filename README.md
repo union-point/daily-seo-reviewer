@@ -9,6 +9,8 @@ Built as a take-home assignment for the **AI Automation Specialist** position at
 - **[Latest SEO report](https://union-point.github.io/daily-seo-reviewer/)**
 - [Report history](https://union-point.github.io/daily-seo-reviewer/archive/index.html)
 - [Daily collection workflow and run history](https://github.com/union-point/daily-seo-reviewer/actions/workflows/collect.yml)
+- [Data Sources](DATA_SOURCES.md)
+
 
 ## What it does
 
