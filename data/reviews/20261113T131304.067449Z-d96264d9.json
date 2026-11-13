@@ -1,0 +1,972 @@
+{
+  "schema_version": 1,
+  "run_id": "20261113T131304.067449Z-d96264d9",
+  "created_at": "2026-11-13T13:15:33.583827Z",
+  "collection_path": "runs/20261113T131304.067449Z-d96264d9/collection.json",
+  "collection_sha256": "e1fae035219001bec04dfcc6d3c052ddca69ff59f2caf328833d74c766e7ce6b",
+  "alert_status": "warning",
+  "collection_status": "collected",
+  "coverage": {
+    "attempted": 50,
+    "successful": 50,
+    "failed": 0,
+    "deferred": 0
+  },
+  "baseline_only": false,
+  "findings": [
+    {
+      "schema_version": 1,
+      "id": "7dbd6035a1140239c8086615",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "requested_url": "https://www.djangoproject.com/",
+          "final_url": "https://www.djangoproject.com/",
+          "fetched_at": "2026-11-13T13:13:05.320769Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 1.14,
+          "response_duration_seconds": 0.158,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/44a99f404e9d4fbcaf440b5f5ec1a2b6.body",
+          "body_sha256": "9c308e7932eb9c4e57ac23f8d3c35e13d1eff31623560b1762fa58f9f0c93a84",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "bd9d04dd9f2cfcb9a90a4afb",
+      "rule": "missing_description",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261107T151913.294864Z-c527f39c",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "requested_url": "https://www.djangoproject.com/weblog/",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "fetched_at": "2026-11-13T13:13:06.462024Z",
+          "status_code": 200,
+          "redirects": [],
+          "attempts": 1,
+          "duration_seconds": 1.007,
+          "response_duration_seconds": 0.165,
+          "headers": {
+            "Content-Type": "text/html; charset=utf-8"
+          },
+          "body_path": "responses/d09227bd9627450189c1639080b83dc9.body",
+          "body_sha256": "2601d533cac048ef5543e7b1d4f712f9066fb4781eefd06868c3f1f84a718126",
+          "error": null
+        }
+      ],
+      "before": null,
+      "observed": "",
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "5a4e49dc97d326e1bb734ed6",
+      "rule": "lighthouse_seo:link-text",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/weblog/",
+          "strategy": "mobile",
+          "collected_at": "2026-11-13T13:14:27.311360Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "body_path": "pagespeed/c06d9ab2796d49b7a36f5c340d6c94da.json",
+          "body_sha256": "1e6438ba6ad6a01bdf29ffa006a1223658cf331108cfc496850a68b29380802d"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "mobile",
+        "id": "link-text",
+        "category": "seo",
+        "title": "Links do not have descriptive text",
+        "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/).",
+        "score": 0.0,
+        "display_value": "10 links found",
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "a08c5bbea044d106fe297d1b",
+      "rule": "lighthouse_seo:link-text",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/weblog/",
+          "strategy": "desktop",
+          "collected_at": "2026-11-13T13:14:42.658410Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "body_path": "pagespeed/cfb4f6f193274cc3a13d74fd5237be53.json",
+          "body_sha256": "dfbe120698eab4361f4a4c864806e13a596832f7418f6d4ceceaeed6407e8648"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "desktop",
+        "id": "link-text",
+        "category": "seo",
+        "title": "Links do not have descriptive text",
+        "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/).",
+        "score": 0.0,
+        "display_value": "10 links found",
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "b767f3e339d7b816d8e0609f",
+      "rule": "lighthouse_seo:meta-description",
+      "urls": [
+        "https://www.djangoproject.com/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/",
+          "strategy": "mobile",
+          "collected_at": "2026-11-13T13:13:55.583679Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/",
+          "body_path": "pagespeed/d4f0a689914a4fde818ef07170717ad0.json",
+          "body_sha256": "d7cfabe1671a9bb98138a38c6c621155f96ac40d1aba8dc199dc85b12bb2a073"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "mobile",
+        "id": "meta-description",
+        "category": "seo",
+        "title": "Document does not have a meta description",
+        "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+        "score": 0.0,
+        "display_value": null,
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "c4a5f27413337ccc79de6e0e",
+      "rule": "lighthouse_seo:meta-description",
+      "urls": [
+        "https://www.djangoproject.com/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/",
+          "strategy": "desktop",
+          "collected_at": "2026-11-13T13:14:07.801509Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/",
+          "body_path": "pagespeed/780a97b00e154c77a7ea40f17bbbb14b.json",
+          "body_sha256": "3361ad2fe45626c0a9eb0cea4984629cb32e064599fa3390c4fda55ecb2bcceb"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "desktop",
+        "id": "meta-description",
+        "category": "seo",
+        "title": "Document does not have a meta description",
+        "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+        "score": 0.0,
+        "display_value": null,
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "f35bdb1fc38768a4af2cdb21",
+      "rule": "lighthouse_seo:meta-description",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/weblog/",
+          "strategy": "desktop",
+          "collected_at": "2026-11-13T13:14:42.658410Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "body_path": "pagespeed/cfb4f6f193274cc3a13d74fd5237be53.json",
+          "body_sha256": "dfbe120698eab4361f4a4c864806e13a596832f7418f6d4ceceaeed6407e8648"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "desktop",
+        "id": "meta-description",
+        "category": "seo",
+        "title": "Document does not have a meta description",
+        "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+        "score": 0.0,
+        "display_value": null,
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    },
+    {
+      "schema_version": 1,
+      "id": "fb42e3a11272245f5221abc7",
+      "rule": "lighthouse_seo:meta-description",
+      "urls": [
+        "https://www.djangoproject.com/weblog/"
+      ],
+      "severity": "warning",
+      "confidence": "high",
+      "state": "ongoing",
+      "first_seen_run": "20261108T095852.279531Z-00014ac8",
+      "last_seen_run": "20261113T131304.067449Z-d96264d9",
+      "baseline_issue": true,
+      "regression": false,
+      "evidence": [
+        {
+          "run_id": "20261113T131304.067449Z-d96264d9",
+          "url": "https://www.djangoproject.com/weblog/",
+          "strategy": "mobile",
+          "collected_at": "2026-11-13T13:14:27.311360Z",
+          "status": "success",
+          "lighthouse_version": "13.6.0",
+          "final_url": "https://www.djangoproject.com/weblog/",
+          "body_path": "pagespeed/c06d9ab2796d49b7a36f5c340d6c94da.json",
+          "body_sha256": "1e6438ba6ad6a01bdf29ffa006a1223658cf331108cfc496850a68b29380802d"
+        }
+      ],
+      "before": null,
+      "observed": {
+        "strategy": "mobile",
+        "id": "meta-description",
+        "category": "seo",
+        "title": "Document does not have a meta description",
+        "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+        "score": 0.0,
+        "display_value": null,
+        "numeric_value": null,
+        "numeric_unit": null,
+        "failed": true
+      },
+      "magnitude": 1,
+      "related_urls": []
+    }
+  ],
+  "detection": {
+    "schema_version": 1,
+    "rules_version": "1",
+    "baseline_only": false,
+    "alert_status": "warning",
+    "findings": [
+      {
+        "schema_version": 1,
+        "id": "7dbd6035a1140239c8086615",
+        "rule": "missing_description",
+        "urls": [
+          "https://www.djangoproject.com/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261107T151913.294864Z-c527f39c",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "requested_url": "https://www.djangoproject.com/",
+            "final_url": "https://www.djangoproject.com/",
+            "fetched_at": "2026-11-13T13:13:05.320769Z",
+            "status_code": 200,
+            "redirects": [],
+            "attempts": 1,
+            "duration_seconds": 1.14,
+            "response_duration_seconds": 0.158,
+            "headers": {
+              "Content-Type": "text/html; charset=utf-8"
+            },
+            "body_path": "responses/44a99f404e9d4fbcaf440b5f5ec1a2b6.body",
+            "body_sha256": "9c308e7932eb9c4e57ac23f8d3c35e13d1eff31623560b1762fa58f9f0c93a84",
+            "error": null
+          }
+        ],
+        "before": null,
+        "observed": "",
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "bd9d04dd9f2cfcb9a90a4afb",
+        "rule": "missing_description",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261107T151913.294864Z-c527f39c",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "requested_url": "https://www.djangoproject.com/weblog/",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "fetched_at": "2026-11-13T13:13:06.462024Z",
+            "status_code": 200,
+            "redirects": [],
+            "attempts": 1,
+            "duration_seconds": 1.007,
+            "response_duration_seconds": 0.165,
+            "headers": {
+              "Content-Type": "text/html; charset=utf-8"
+            },
+            "body_path": "responses/d09227bd9627450189c1639080b83dc9.body",
+            "body_sha256": "2601d533cac048ef5543e7b1d4f712f9066fb4781eefd06868c3f1f84a718126",
+            "error": null
+          }
+        ],
+        "before": null,
+        "observed": "",
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "5a4e49dc97d326e1bb734ed6",
+        "rule": "lighthouse_seo:link-text",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/weblog/",
+            "strategy": "mobile",
+            "collected_at": "2026-11-13T13:14:27.311360Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "body_path": "pagespeed/c06d9ab2796d49b7a36f5c340d6c94da.json",
+            "body_sha256": "1e6438ba6ad6a01bdf29ffa006a1223658cf331108cfc496850a68b29380802d"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "mobile",
+          "id": "link-text",
+          "category": "seo",
+          "title": "Links do not have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/).",
+          "score": 0.0,
+          "display_value": "10 links found",
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "a08c5bbea044d106fe297d1b",
+        "rule": "lighthouse_seo:link-text",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/weblog/",
+            "strategy": "desktop",
+            "collected_at": "2026-11-13T13:14:42.658410Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "body_path": "pagespeed/cfb4f6f193274cc3a13d74fd5237be53.json",
+            "body_sha256": "dfbe120698eab4361f4a4c864806e13a596832f7418f6d4ceceaeed6407e8648"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "desktop",
+          "id": "link-text",
+          "category": "seo",
+          "title": "Links do not have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/).",
+          "score": 0.0,
+          "display_value": "10 links found",
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "b767f3e339d7b816d8e0609f",
+        "rule": "lighthouse_seo:meta-description",
+        "urls": [
+          "https://www.djangoproject.com/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/",
+            "strategy": "mobile",
+            "collected_at": "2026-11-13T13:13:55.583679Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/",
+            "body_path": "pagespeed/d4f0a689914a4fde818ef07170717ad0.json",
+            "body_sha256": "d7cfabe1671a9bb98138a38c6c621155f96ac40d1aba8dc199dc85b12bb2a073"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "mobile",
+          "id": "meta-description",
+          "category": "seo",
+          "title": "Document does not have a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+          "score": 0.0,
+          "display_value": null,
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "c4a5f27413337ccc79de6e0e",
+        "rule": "lighthouse_seo:meta-description",
+        "urls": [
+          "https://www.djangoproject.com/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/",
+            "strategy": "desktop",
+            "collected_at": "2026-11-13T13:14:07.801509Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/",
+            "body_path": "pagespeed/780a97b00e154c77a7ea40f17bbbb14b.json",
+            "body_sha256": "3361ad2fe45626c0a9eb0cea4984629cb32e064599fa3390c4fda55ecb2bcceb"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "desktop",
+          "id": "meta-description",
+          "category": "seo",
+          "title": "Document does not have a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+          "score": 0.0,
+          "display_value": null,
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "f35bdb1fc38768a4af2cdb21",
+        "rule": "lighthouse_seo:meta-description",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/weblog/",
+            "strategy": "desktop",
+            "collected_at": "2026-11-13T13:14:42.658410Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "body_path": "pagespeed/cfb4f6f193274cc3a13d74fd5237be53.json",
+            "body_sha256": "dfbe120698eab4361f4a4c864806e13a596832f7418f6d4ceceaeed6407e8648"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "desktop",
+          "id": "meta-description",
+          "category": "seo",
+          "title": "Document does not have a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+          "score": 0.0,
+          "display_value": null,
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      },
+      {
+        "schema_version": 1,
+        "id": "fb42e3a11272245f5221abc7",
+        "rule": "lighthouse_seo:meta-description",
+        "urls": [
+          "https://www.djangoproject.com/weblog/"
+        ],
+        "severity": "warning",
+        "confidence": "high",
+        "state": "ongoing",
+        "first_seen_run": "20261108T095852.279531Z-00014ac8",
+        "last_seen_run": "20261113T131304.067449Z-d96264d9",
+        "baseline_issue": true,
+        "regression": false,
+        "evidence": [
+          {
+            "run_id": "20261113T131304.067449Z-d96264d9",
+            "url": "https://www.djangoproject.com/weblog/",
+            "strategy": "mobile",
+            "collected_at": "2026-11-13T13:14:27.311360Z",
+            "status": "success",
+            "lighthouse_version": "13.6.0",
+            "final_url": "https://www.djangoproject.com/weblog/",
+            "body_path": "pagespeed/c06d9ab2796d49b7a36f5c340d6c94da.json",
+            "body_sha256": "1e6438ba6ad6a01bdf29ffa006a1223658cf331108cfc496850a68b29380802d"
+          }
+        ],
+        "before": null,
+        "observed": {
+          "strategy": "mobile",
+          "id": "meta-description",
+          "category": "seo",
+          "title": "Document does not have a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+          "score": 0.0,
+          "display_value": null,
+          "numeric_value": null,
+          "numeric_unit": null,
+          "failed": true
+        },
+        "magnitude": 1,
+        "related_urls": []
+      }
+    ],
+    "context": [
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/nov/03/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/26/natalia-bidart-planned-short-term-leave/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/19/quarterly-contributor-outreach/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/"
+      },
+      {
+        "rule": "multiple_h1s",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
+        "observed": [
+          "Nominate Someone for the 2026 Malcolm Tredinnick Memorial Prize",
+          "The prize"
+        ]
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/24/dsf-member-of-the-month-ken-whitesell/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/22/new-technical-governance-approved/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/18/proposed-change-to-dsf-voting-membership/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/16/executive-director-search-extended/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/15/djangocon-europe-2027-is-heading-to-innsbruck/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/10/pycharm-django-fundraiser-extended/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/08/call-for-volunteers-fundraising-working-group/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/02/bugfix-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/sep/01/djangonaut-space-session-7-accepting-applications/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/31/dsf-member-of-the-month-benjamin-balder-bach/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/28/django-developers-survey-2026-results/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/25/pycharm-django-fall-fundraiser/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/24/coc-block-tackle/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/20/dsf-membership-open-space-at-djangocon-us/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/12/dsf-office-hours/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/06/call-for-applicants-for-a-django-executive-directo/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/05/django-61-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/aug/04/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/29/dsf-member-of-the-month-katherine-michel/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/24/see-you-in-chicago-in-one-month/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/22/django-61-rc-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/15/supporting-the-triptych-project/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/13/explore-the-djangocon-us-2026-speaker-lineup-and-r/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/08/last-call-2026-django-developer-survey/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/30/keeping-up-with-the-django-community/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/29/dsf-member-of-the-month-salim-nuru/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/25/how-the-django-software-foundation-became-a-cna/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/24/django-61-beta-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/17/announcing-the-search-for-a-dsf-executive-director/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/10/dsf-2026-fundraising-goals/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/20/django-61-alpha-1-released/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/12/2026-django-developers-survey/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/11/dsf-member-of-the-month-bhuvnesh-sharma/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/05/security-releases/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/may/05/gsoc-2026-django-contributors/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/28/renew-your-pycharm-license-and-support-django/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/27/its-time-to-redesign-djangoprojectcom/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/19/dsf-member-of-the-month-rob-hudson/"
+      },
+      {
+        "rule": "structured_data_absent",
+        "url": "https://www.djangoproject.com/weblog/2026/apr/16/pycharm-django-annual-fundraiser/"
+      }
+    ],
+    "comparable_pages": 50,
+    "changed_pages": 0,
+    "widespread_change": false
+  },
+  "deterministic_summary": "SEO status: warning. Collected 50 of 50 attempted pages; 0 deferred. 3 active findings. Compared with stored successful observations.",
+  "narrative": {
+    "headline": "Three ongoing SEO issues across two pages",
+    "summary": "All 50 pages were successfully checked and comparable. Three previously detected issues remain: missing meta descriptions on two pages and non-descriptive links on the news page. No new regressions were confirmed. The description issues may have a shared cause, but that needs checking.",
+    "prioritized_issues": [
+      {
+        "finding_id": "7dbd6035a1140239c8086615",
+        "evidence_ids": [
+          "7dbd6035a1140239c8086615:finding"
+        ],
+        "explanation": "The homepage has no meta description, reducing editorial control over its search snippet. Google may instead use page content and does not guarantee use of a supplied description.",
+        "recommended_action": "Add a concise, page-specific meta description to https://www.djangoproject.com/.",
+        "title": "Add a homepage meta description",
+        "completion_criterion": "The homepage's rendered HTML contains a non-empty, page-specific meta description."
+      },
+      {
+        "finding_id": "bd9d04dd9f2cfcb9a90a4afb",
+        "evidence_ids": [
+          "bd9d04dd9f2cfcb9a90a4afb:finding"
+        ],
+        "explanation": "The news page also lacks a meta description, limiting control over the summary that may appear in search results.",
+        "recommended_action": "Add a concise description for https://www.djangoproject.com/weblog/ and check whether the two missing descriptions have a shared cause.",
+        "title": "Add a news page meta description",
+        "completion_criterion": "The news page's rendered HTML contains a non-empty, page-specific meta description."
+      },
+      {
+        "finding_id": "5a4e49dc97d326e1bb734ed6",
+        "evidence_ids": [
+          "5a4e49dc97d326e1bb734ed6:finding"
+        ],
+        "explanation": "The mobile Lighthouse lab audit found 10 links with non-descriptive text on the news page, which can make link destinations harder to understand.",
+        "recommended_action": "Review the links flagged by Lighthouse and replace vague link text with wording that identifies each destination.",
+        "title": "Make news page link text descriptive",
+        "completion_criterion": "A repeat mobile Lighthouse audit of the news page no longer flags non-descriptive link text."
+      }
+    ],
+    "verification_items": []
+  },
+  "narrative_source": "ai",
+  "generation": {
+    "outcome": "success",
+    "reason": "validated",
+    "requested_model": "gpt-6.1-terra",
+    "prompt_version": "triage-v5",
+    "input_sha256": "9713892151d31b459be9e1a281afb6bfaa00ed6000c9bd5c4cf1b43949df1da4",
+    "input_bytes": 5070,
+    "included_finding_ids": [
+      "5a4e49dc97d326e1bb734ed6",
+      "7dbd6035a1140239c8086615",
+      "bd9d04dd9f2cfcb9a90a4afb"
+    ],
+    "omitted_findings": 0,
+    "attempts": [
+      {
+        "outcome": "success",
+        "returned_model": "gpt-6.1-terra",
+        "response_id": "resp_0f97bffd5434e566016af70d6e7ec887d0bf0d63d85e0c4c21",
+        "usage": {
+          "input_tokens": 2363,
+          "output_tokens": 458,
+          "total_tokens": 2821
+        }
+      }
+    ]
+  }
+}
